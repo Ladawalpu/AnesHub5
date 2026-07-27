@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ยาทางวิสัญญี | AnesHub</title>
+<style>
+  :root {
+    --purple-900: #241468;
+    --purple-700: #3a1f9e;
+    --purple-600: #4b2acb;
+    --purple-500: #6947e0;
+    --purple-100: #e2ddfa;
+    --purple-50: #f2effd;
+    --white: #ffffff;
+    --gray-700: #374151;
+    --gray-500: #6b7280;
+    --red-600: #dc2626;
+    --amber-600: #d97706;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Sarabun', Tahoma, sans-serif;
+    background: linear-gradient(180deg, var(--purple-50) 0%, var(--white) 100%);
+    color: var(--gray-700);
+    padding-bottom: 40px;
+  }
+  header {
+    background: linear-gradient(135deg, var(--purple-700), var(--purple-900));
+    color: white;
+    padding: 20px 16px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(58,31,158,0.25);
+  }
+  header h1 { margin: 0 0 4px; font-size: 1.3rem; }
+  header p { margin: 0; font-size: 0.8rem; opacity: 0.85; }
+
+  .weight-bar {
+    max-width: 720px;
+    margin: -18px auto 0;
+    padding: 0 16px;
+  }
+  .weight-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(58,31,158,0.15);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .weight-card label { font-weight: 600; font-size: 0.9rem; color: var(--purple-900); white-space: nowrap; }
+  .weight-card input {
+    flex: 1;
+    border: 2px solid var(--purple-100);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color .15s;
+  }
+  .weight-card input:focus { border-color: var(--purple-500); }
+  .weight-card .unit { color: var(--gray-500); font-size: 0.85rem; }
+
+  .container { max-width: 720px; margin: 20px auto 0; padding: 0 16px; }
+
+  .search-box {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px solid var(--purple-100);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    outline: none;
+  }
+  .search-box:focus { border-color: var(--purple-500); }
+
+  .category {
+    margin-bottom: 18px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(58,31,158,0.08);
+    overflow: hidden;
+    border: 1px solid var(--purple-100);
+  }
+  .category-header {
+    padding: 14px 16px;
+    background: var(--purple-50);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  .category-header h2 { margin: 0; font-size: 1rem; color: var(--purple-900); }
+  .category-header .sub { font-size: 0.75rem; color: var(--gray-500); margin-top: 2px; }
+  .chevron { transition: transform .2s; color: var(--purple-600); font-size: 1.1rem; }
+  .category.open .chevron { transform: rotate(90deg); }
+  .category-body { display: none; padding: 6px 12px 12px; }
+  .category.open .category-body { display: block; }
+
+  .drug-card {
+    background: var(--purple-50);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 8px 4px;
+    border-left: 4px solid var(--purple-500);
+  }
+  .drug-card h3 {
+    margin: 0 0 6px;
+    font-size: 0.98rem;
+    color: var(--purple-900);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--purple-600);
+    color: white;
+    font-weight: 600;
+  }
+  .badge.alert { background: var(--red-600); }
+  .keypoint {
+    font-size: 0.82rem;
+    color: var(--purple-700);
+    background: white;
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+  }
+  .dose-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--purple-100);
+    font-size: 0.86rem;
+    gap: 8px;
+  }
+  .dose-row:last-child { border-bottom: none; }
+  .dose-label { color: var(--gray-700); flex: 1; }
+  .dose-note { display: block; font-size: 0.72rem; color: var(--gray-500); margin-top: 1px; }
+  .dose-value {
+    font-weight: 700;
+    color: var(--purple-700);
+    white-space: nowrap;
+    background: white;
+    padding: 3px 8px;
+    border-radius: 8px;
+  }
+  details.info-block { margin-top: 8px; font-size: 0.82rem; }
+  details.info-block summary {
+    cursor: pointer;
+    color: var(--purple-600);
+    font-weight: 600;
+    padding: 4px 0;
+  }
+  .tag-list { margin: 4px 0 0; padding-left: 18px; }
+  .tag-list li { margin-bottom: 3px; }
+  .warn-title { color: var(--red-600); font-weight: 700; }
+  .caution-title { color: var(--amber-600); font-weight: 700; }
+
+  .footer-note {
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 12px 16px;
+    font-size: 0.72rem;
+    color: var(--gray-500);
+    text-align: center;
+  }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💜 ยาทางวิสัญญี</h1>
+  <p>Anesth-cal — Thai National Formulary 2016 (ยาที่ใช้ทางวิสัญญีวิทยาและการระงับปวด)</p>
+</header>
+
+<div class="weight-bar">
+  <div class="weight-card">
+    <label for="weightInput">น้ำหนักผู้ป่วย</label>
+    <input type="number" id="weightInput" placeholder="เช่น 60" min="0" step="0.1">
+    <span class="unit">กก.</span>
+  </div>
+</div>
+
+<div class="container">
+  <input type="text" class="search-box" id="searchBox" placeholder="🔍 ค้นหาชื่อยา เช่น propofol, fentanyl, dantrolene...">
+  <div id="categoriesContainer"></div>
+</div>
+
+<div class="footer-note">
+  ข้อมูลนี้ใช้ประกอบการตัดสินใจทางคลินิกเท่านั้น ผู้สั่งใช้ยาต้องใช้วิจารณญาณของตนเองและพิจารณาความเหมาะสมกับผู้ป่วยแต่ละราย<br>
+  อ้างอิง: คู่มือการใช้ยาอย่างสมเหตุผลตามบัญชียาหลักแห่งชาติ (Thai National Formulary 2016)
+</div>
+
+<script>
+const DRUG_DATA = {"meta": {"title": "ยาทางวิสัญญีวิทยา", "source": "Thai National Formulary 2016 - ยาที่ใช้ทางวิสัญญีวิทยาและการระงับปวด", "version": "1.0", "disclaimer": "ข้อมูลนี้ใช้ประกอบการตัดสินใจทางคลินิกเท่านั้น ผู้สั่งใช้ยาต้องใช้วิจารณญาณของตนเองและพิจารณาความเหมาะสมกับผู้ป่วยแต่ละราย"}, "categories": [{"id": "iv_induction", "name": "IV Induction Agents", "nameThai": "ยานำสลบชนิดฉีดเข้าหลอดเลือดดำ", "icon": "syringe", "drugs": [{"id": "propofol", "name": "Propofol", "schedule": "ค", "indications": ["นำสลบ (induction)", "รักษาระดับการระงับความรู้สึก (maintenance)", "กล่อมประสาทใน ICU (>16 ปี)", "กล่อมประสาทระหว่างหัตถการ"], "dosing": [{"label": "Induction (อายุ < 55 ปี)", "type": "weight_range", "minMgKg": 1.5, "maxMgKg": 2.5, "unit": "mg/kg", "route": "IV", "note": "ฉีดครั้งเดียว"}, {"label": "Induction (อายุ > 55 ปี)", "type": "weight_range", "minMgKg": 1.0, "maxMgKg": 1.5, "unit": "mg/kg", "route": "IV", "note": "ฉีดครั้งเดียว"}, {"label": "Maintenance (ผู้ใหญ่)", "type": "weight_rate_range", "minMgKgHr": 4, "maxMgKgHr": 12, "unit": "mg/kg/hr", "route": "IV infusion"}, {"label": "Maintenance (สูงอายุ/มีโรคประจำตัว)", "type": "weight_rate_range", "minMgKgHr": 3, "maxMgKgHr": 6, "unit": "mg/kg/hr", "route": "IV infusion"}, {"label": "Sedation ICU (> 16 ปี)", "type": "weight_rate_range", "minMgKgHr": 0.3, "maxMgKgHr": 4, "unit": "mg/kg/hr", "route": "IV infusion"}, {"label": "Sedation หัตถการ - เริ่มต้น", "type": "weight_range", "minMgKg": 0.5, "maxMgKg": 1, "unit": "mg/kg", "route": "IV", "note": "ฉีดช้าๆ"}, {"label": "Sedation หัตถการ - คงระดับ", "type": "weight_rate_range", "minMgKgHr": 1.5, "maxMgKgHr": 4.5, "unit": "mg/kg/hr", "route": "IV infusion"}], "contraindications": ["ประวัติแพ้ยานี้หรือแพ้ egg/soy (fat emulsion)"], "precautions": ["โรคตับ", "โรคไต", "ตั้งครรภ์ (ผลต่อทารกถ้าให้ปริมาณสูง)", "ไม่แนะนำในเด็กเล็ก"], "adverseEffects": ["ความดันเลือดต่ำ", "หัวใจเต้นเร็ว", "หยุดหายใจชั่วคราว", "ปวดขณะฉีด", "Propofol infusion syndrome (มักพบเมื่อ >4 mg/kg/hr): metabolic acidosis, arrhythmia, heart failure, rhabdomyolysis, hyperlipidemia, hyperkalemia, ตับโต, ไตวาย"], "keyPoint": "ฟื้นเร็ว ไม่มี hang over แต่เจ็บขณะฉีด (ลดได้ด้วย lidocaine ก่อนฉีด)"}, {"id": "thiopental", "name": "Thiopental Sodium", "schedule": "ค", "indications": ["นำสลบ", "ระงับความรู้สึกระยะสั้น", "ลดภาวะความดันในสมองสูง", "รักษาภาวะชักต่อเนื่อง (status epilepticus)"], "dosing": [{"label": "นำสลบ (ผู้ใหญ่)", "type": "weight_range", "minMgKg": 3, "maxMgKg": 5, "unit": "mg/kg", "route": "IV", "note": "ขนาดสูงสุดไม่เกิน 500 มก. ความเข้มข้น ≤2.5%"}, {"label": "ลดความดันในสมอง", "type": "weight_range", "minMgKg": 1.5, "maxMgKg": 3, "unit": "mg/kg", "route": "IV", "note": "ฉีดช้าๆ ซ้ำได้"}, {"label": "ภาวะชัก (ผู้ใหญ่)", "type": "fixed_range", "minMg": 75, "maxMg": 125, "unit": "mg", "route": "IV", "note": "ฉีดช้าๆ"}], "contraindications": ["Acute porphyria", "Myotonic dystrophy", "แพ้ยา"], "precautions": ["โรคหัวใจและหลอดเลือด", "ห้ามฉีดออกนอกเส้นเลือด (ด่างสูง ทำลายเนื้อเยื่อ)", "ห้ามฉีดเข้าหลอดเลือดแดง", "โรคไต/ตับ", "หญิงตั้งครรภ์ผ่าคลอด (กดการหายใจทารกถ้าขนาดสูง)", "โรคหอบหืด"], "adverseEffects": ["กดการหายใจ", "ความดันเลือดต่ำ", "หัวใจเต้นผิดจังหวะ", "laryngeal spasm", "ฟื้นช้า"], "keyPoint": "ไม่มีฤทธิ์แก้ปวด สะสมในไขมัน อาจง่วงซึมได้ถึง 24 ชม."}, {"id": "ketamine", "name": "Ketamine Hydrochloride", "schedule": "ง", "indications": ["นำสลบ", "รักษาระดับการระงับความรู้สึก", "ระงับปวดหัตถการระยะสั้น (เช่น ทำแผลไฟไหม้)", "เสริมระงับปวดในผู้ป่วยมะเร็ง"], "dosing": [{"label": "ฉีดเข้ากล้าม (IM)", "type": "weight_range", "minMgKg": 5, "maxMgKg": 10, "unit": "mg/kg", "route": "IM"}, {"label": "ฉีดเข้าหลอดเลือดดำ (IV)", "type": "weight_range", "minMgKg": 1, "maxMgKg": 2, "unit": "mg/kg", "route": "IV"}, {"label": "นำสลบ (IV ต่อเนื่อง)", "type": "weight_range", "minMgKg": 0.5, "maxMgKg": 2, "unit": "mg/kg", "route": "IV", "note": "ความเข้มข้น 1 mg/mL"}, {"label": "Maintenance (IV infusion)", "type": "weight_rate_range", "minMcgKgMin": 10, "maxMcgKgMin": 45, "unit": "mcg/kg/min", "route": "IV infusion"}], "contraindications": ["ความดันเลือดสูง", "Pre-eclampsia/eclampsia", "โรคหัวใจขั้นรุนแรง", "โรคหลอดเลือดสมอง", "ความดันในกะโหลกศีรษะสูง", "บาดเจ็บที่ศีรษะ", "Acute porphyria"], "precautions": ["ภาวะพร่องน้ำ", "ความดันเลือดสูง", "การติดเชื้อทางเดินหายใจ", "โอกาสชัก/ประสาทหลอน/ฝันร้าย/ปัญหาจิตเวช", "thyroid dysfunction", "ความดันลูกตาสูง", "โรคตับ (ลดขนาดยา)"], "adverseEffects": ["คลื่นไส้อาเจียน", "หัวใจเต้นเร็ว", "ความดันเลือดสูง", "กล้ามเนื้อเกร็ง/กระตุก", "น้ำลาย/เสมหะเพิ่ม", "nystagmus", "diplopia"], "keyPoint": "ความดันเลือดตกน้อยกว่า propofol/thiopental มีฤทธิ์ระงับปวดในตัว — ลด hallucination ได้ด้วยการให้ร่วมกับ benzodiazepine"}, {"id": "etomidate", "name": "Etomidate", "schedule": "ค", "indications": ["นำสลบ (induction of anesthesia)"], "dosing": [{"label": "นำสลบ", "type": "weight_range", "minMgKg": 0.15, "maxMgKg": 0.3, "unit": "mg/kg", "route": "IV", "note": "ฉีดช้าๆ นานกว่า 30-60 วินาที"}], "contraindications": ["แพ้ยาหรือแพ้ fat emulsion"], "precautions": ["หลีกเลี่ยงใน acute porphyria", "ลดขนาดยาในโรคตับ", "อาจกดการหายใจทารกถ้าให้ขณะคลอด"], "adverseEffects": ["คลื่นไส้อาเจียน", "ความดันเลือดต่ำ", "หยุดหายใจ", "hyperventilation", "AV block, หัวใจหยุดเต้น (rare)"], "keyPoint": "ความดันตกน้อยที่สุด แต่กดการทำงานต่อมหมวกไต — ห้ามใช้เป็น maintenance ต่อเนื่อง"}]}, {"id": "inhalational", "name": "Inhalational Anesthetics", "nameThai": "ยาสลบชนิดสูดดม", "icon": "wind", "drugs": [{"id": "sevoflurane", "name": "Sevoflurane", "schedule": "ค", "bloodGasCoefficient": 0.65, "indications": ["ยาสลบทั่วไป นำสลบและรักษาระดับการสลบ ได้ทั้งเด็กและผู้ใหญ่"], "dosing": [{"label": "นำสลบ", "type": "percent_range", "minPercent": 4, "maxPercent": 8, "note": "ร่วมกับ O2 หรือ 50% N2O"}, {"label": "Maintenance", "type": "percent_range", "minPercent": 1, "maxPercent": 3, "note": "1 MAC ≈ 2%; BIS target 40-60"}], "contraindications": ["Severe hypovolemia", "Susceptibility to malignant hyperthermia"], "precautions": ["ไม่ควรใช้เกิน 2 MAC-hr ที่ fresh gas flow 1-2 L/min (Compound A พิษต่อไต)", "ไม่ใช้ flow ต่ำกว่า 1 L/min", "epileptiform EEG change ในเด็ก/วัยรุ่น", "cerebral blood flow เพิ่มแบบ dose-dependent (>2 MAC)"], "adverseEffects": ["ความดันโลหิตตก (dose-dependent)", "agitation (7-15%)", "nausea (25%)", "vomiting (18%)"], "keyPoint": "ไม่มีกลิ่นฉุน ไม่ระคายทางเดินหายใจ นำสลบได้เร็ว"}, {"id": "desflurane", "name": "Desflurane", "schedule": "ง", "bloodGasCoefficient": 0.42, "indications": ["ยาสลบทั่วไป มีข้อพิจารณาเฉพาะราย"], "dosing": [{"label": "นำสลบ", "type": "percent_range", "minPercent": 4, "maxPercent": 11, "note": "เริ่ม 3% เพิ่มทีละ 0.5% ไม่แนะนำเดี่ยว"}, {"label": "Maintenance", "type": "percent_range", "minPercent": 2.5, "maxPercent": 8.5, "note": "1 MAC ≈ 6%; BIS target 40-60"}], "contraindications": ["Severe hypovolemia", "Susceptibility to malignant hyperthermia"], "precautions": [">12% ลด inspired O2 concentration", "เปิดยาสูง >1 MAC ทันที อาจเพิ่ม HR", "ทำปฏิกิริยากับ desiccated CO2 absorbent → เกิด carbon monoxide", "กดการหายใจถ้า >1.5 MAC", "coughing, breath-holding, laryngospasm — ไม่ใช้เดี่ยวนำสลบ"], "adverseEffects": ["ความดันโลหิตตก (dose-dependent)"], "keyPoint": "กลิ่นฉุน ระคายทางเดินหายใจ — ไม่ใช้เดี่ยวในการนำสลบ"}, {"id": "isoflurane", "name": "Isoflurane", "schedule": "ค", "bloodGasCoefficient": 1.43, "indications": ["ยาสลบทั่วไป"], "dosing": [{"label": "นำสลบ", "type": "percent_range", "minPercent": 1.5, "maxPercent": 3.0, "note": "สลบใน 7-10 นาที แนะนำใช้ร่วมกับยานำสลบ IV"}, {"label": "Maintenance", "type": "percent_range", "minPercent": 1.0, "maxPercent": 2.5, "note": "1 MAC ≈ 1.15%; ร่วมกับ N2O"}], "contraindications": ["Severe hypovolemia", "Susceptibility to malignant hyperthermia"], "precautions": ["Coronary artery disease — รักษาระดับ BP/HR ให้ปกติ", "อาจทำปฏิกิริยากับ desiccated CO2 absorbent → CO", "sensitivity hepatitis ในผู้ที่เคย sensitized จาก halogenated anesthetics"], "adverseEffects": ["ความดันโลหิตตก", "cerebral blood flow เพิ่ม (dose-dependent >1.5-2 MAC)"], "keyPoint": "กลิ่นฉุน (pungency) เสถียรที่อุณหภูมิห้อง"}]}, {"id": "muscle_relaxants", "name": "Muscle Relaxants", "nameThai": "ยาหย่อนกล้ามเนื้อ (Neuromuscular Blocking Drugs)", "icon": "activity", "drugs": [{"id": "atracurium", "name": "Atracurium besilate", "schedule": "ค", "type": "Non-depolarizing (benzylisoquinoline)", "onsetMin": 3, "onsetMax": 5, "durationMin": 30, "durationMax": 45, "indications": ["ใส่ท่อหายใจ", "ให้กล้ามเนื้อหย่อนตัวระหว่างการระงับความรู้สึก", "ใช้กับเครื่องช่วยหายใจ"], "dosing": [{"label": "ขนาดมาตรฐาน", "type": "weight_range", "minMgKg": 0.5, "maxMgKg": 0.6, "unit": "mg/kg", "route": "IV"}], "contraindications": ["แพ้ยากลุ่ม benzylisoquinoline"], "precautions": ["หลีกเลี่ยงในโรคหืด/ภูมิแพ้ (หลั่ง histamine ได้โดยเฉพาะขนาดสูง)", "ใช้นานอาจเกิดชักจาก laudanosine"], "adverseEffects": ["ความดันเลือดต่ำ", "หัวใจเต้นเร็ว", "หลอดลมตีบ"], "keyPoint": "ปลอดภัยในผู้ป่วยตับ/ไตวาย (Hofmann elimination ไม่ขึ้นกับอวัยวะ)"}, {"id": "cisatracurium", "name": "Cisatracurium besilate", "schedule": "ค", "type": "Non-depolarizing (benzylisoquinoline)", "onsetMin": 4, "onsetMax": 5, "durationMin": 30, "durationMax": 45, "indications": ["ใส่ท่อหายใจ", "ให้กล้ามเนื้อหย่อนตัวระหว่างการระงับความรู้สึก", "ใช้กับเครื่องช่วยหายใจ"], "dosing": [{"label": "ขนาดมาตรฐาน", "type": "weight_range", "minMgKg": 0.1, "maxMgKg": 0.15, "unit": "mg/kg", "route": "IV"}], "contraindications": ["แพ้ยากลุ่ม benzylisoquinoline"], "precautions": ["ปลอดภัยในตับ/ไตวาย ผู้สูงอายุ เด็ก"], "adverseEffects": ["คล้าย atracurium แต่อุบัติการณ์น้อยกว่ามาก"], "keyPoint": "แรงกว่า atracurium 4 เท่า ไม่หลั่ง histamine"}, {"id": "pancuronium", "name": "Pancuronium bromide", "schedule": "ค", "type": "Non-depolarizing (aminosteroid)", "onsetMin": 3, "onsetMax": 5, "durationMin": 60, "durationMax": 90, "indications": ["ใส่ท่อหายใจ", "ให้กล้ามเนื้อหย่อนตัวระหว่างการระงับความรู้สึก", "ใช้กับเครื่องช่วยหายใจ"], "dosing": [{"label": "ขนาดมาตรฐาน", "type": "weight_range", "minMgKg": 0.08, "maxMgKg": 0.12, "unit": "mg/kg", "route": "IV"}], "contraindications": ["แพ้ยาหรือสารประกอบ bromide"], "precautions": ["หลีกเลี่ยงในความดันโลหิตสูง/กล้ามเนื้อหัวใจขาดเลือด/สมองขาดเลือด (vagolytic → HR/BP เพิ่ม)", "หลีกเลี่ยง/ลดขนาดในตับ/ไตผิดปกติ ผู้สูงอายุ (ออกฤทธิ์นานขึ้น)"], "adverseEffects": ["ความดันเลือดสูงขึ้น", "หัวใจเต้นเร็วขึ้น"], "keyPoint": "ออกฤทธิ์นานที่สุดในกลุ่ม ไม่หลั่ง histamine แต่มีฤทธิ์ vagolytic"}, {"id": "rocuronium", "name": "Rocuronium bromide", "schedule": "ค", "type": "Non-depolarizing (aminosteroid)", "onsetMin": 1, "onsetMax": 2, "durationMin": 20, "durationMax": 35, "indications": ["ใส่ท่อหายใจ (rapid intubation)", "ให้กล้ามเนื้อหย่อนตัวระหว่างการระงับความรู้สึก", "ใช้กับเครื่องช่วยหายใจ"], "dosing": [{"label": "ขนาดมาตรฐาน", "type": "weight_range", "minMgKg": 0.6, "maxMgKg": 1.2, "unit": "mg/kg", "route": "IV", "note": "ขนาดสูง >1 mg/kg ให้ onset เร็วใกล้เคียง succinylcholine"}], "contraindications": ["แพ้ยานี้"], "precautions": ["หลีกเลี่ยง/ลดขนาดในตับ/ไตวาย (ออกฤทธิ์นานขึ้น)", "ลดขนาดในผู้สูงอายุ/เด็ก <1 ปี"], "adverseEffects": ["ไม่หลั่ง histamine ไม่มีผลต่อหัวใจและระบบไหลเวียนอย่างมีนัยสำคัญ"], "keyPoint": "Onset เร็วที่สุดในกลุ่ม non-depolarizing — เลือกใช้แทน succinylcholine เมื่อมีข้อห้าม"}, {"id": "succinylcholine", "name": "Suxamethonium chloride (Succinylcholine)", "schedule": "ค", "type": "Depolarizing", "onsetSec": 30, "onsetSecMax": 60, "durationMin": 3, "durationMax": 5, "indications": ["ใส่ท่อหายใจ", "ให้กล้ามเนื้อหย่อนตัวระหว่างการระงับความรู้สึกทั่วไป"], "dosing": [{"label": "ผู้ใหญ่", "type": "weight_range", "minMgKg": 1, "maxMgKg": 1.5, "unit": "mg/kg", "route": "IV"}, {"label": "เด็ก", "type": "weight_range", "minMgKg": 1, "maxMgKg": 2, "unit": "mg/kg", "route": "IV"}], "contraindications": ["ประวัติแพ้ยา", "ประวัติ/สงสัย malignant hyperthermia", "severe burn/massive trauma/spinal cord injury/neuromuscular disease (K+ พุ่งสูงอันตราย)", "ภาวะ K+ สูงผิดปกติ", "atypical pseudocholinesterase"], "precautions": ["ให้หลัง non-depolarizing agent ต้องการขนาดเพิ่มขึ้น", "ให้ซ้ำในเด็ก/ภายใน 5 นาที อาจเกิด bradycardia รุนแรง (รักษาด้วย atropine 0.02-0.04 mg/kg)"], "adverseEffects": ["K+ ในเลือดสูงขึ้น", "หัวใจเต้นเร็ว/ความดันสูง", "ปวดกล้ามเนื้อจาก fasciculation", "ความดันในกระเพาะ/ลูกตา/กะโหลกศีรษะเพิ่ม", "masseter muscle rigidity", "ทริกเกอร์ malignant hyperthermia"], "keyPoint": "ตัวเดียวในกลุ่ม depolarizing — onset/offset เร็วที่สุด แต่มีข้อห้ามสำคัญหลายข้อ"}, {"id": "vecuronium", "name": "Vecuronium bromide", "schedule": "ค", "type": "Non-depolarizing (aminosteroid)", "onsetMin": 3, "onsetMax": 5, "durationMin": 20, "durationMax": 35, "indications": ["ใส่ท่อหายใจ", "ให้กล้ามเนื้อหย่อนตัวระหว่างการระงับความรู้สึก", "ใช้กับเครื่องช่วยหายใจ"], "dosing": [{"label": "ขนาดมาตรฐาน", "type": "weight_range", "minMgKg": 0.1, "maxMgKg": 0.15, "unit": "mg/kg", "route": "IV"}], "contraindications": ["แพ้ยานี้"], "precautions": ["หลีกเลี่ยง/ลดขนาดในตับ/ไตวาย", "เด็ก <1 ปี ออกฤทธิ์นานขึ้น", "ร่วมกับ fentanyl ทำให้ HR ช้าลง"], "adverseEffects": ["ไม่หลั่ง histamine ไม่มีผลต่อหัวใจ/ไหลเวียนอย่างมีนัยสำคัญ"], "keyPoint": "3-desacetylvecuronium metabolite มีฤทธิ์ครึ่งหนึ่ง ขับทางไต"}], "generalPrecautions": ["เตรียมอุปกรณ์ช่วยหายใจ/ใส่ท่อหายใจให้พร้อมก่อนให้ยาเสมอ", "ระวังใน myasthenia gravis, Duchenne muscular dystrophy", "aminoglycosides เสริมฤทธิ์ยาหย่อนกล้ามเนื้อ", "ระวังภาวะ K+ ต่ำ/Mg2+ ต่ำ"]}, {"id": "opioids", "name": "Opioids", "nameThai": "ยาระงับปวดชนิดอนุพันธ์ฝิ่น", "icon": "pill", "drugs": [{"id": "morphine", "name": "Morphine sulfate", "schedule": "ค", "indications": ["ปวดเฉียบพลัน/เรื้อรังระดับปานกลาง-รุนแรง", "ปวดจากกล้ามเนื้อหัวใจขาดเลือด", "หายใจเหนื่อยจากหัวใจล้มเหลว", "premedication"], "dosing": [{"label": "เด็ก >6 เดือน - IV", "type": "weight_range", "minMgKg": 0.05, "maxMgKg": 0.1, "unit": "mg/kg", "route": "IV", "note": "ทุก 3-4 ชม. ตามต้องการ"}, {"label": "เด็ก >6 เดือน - infusion", "type": "weight_rate_range", "minMcgKgHr": 10, "maxMcgKgHr": 30, "unit": "mcg/kg/hr", "route": "IV infusion"}, {"label": "ผู้ใหญ่ - IV เริ่มต้น", "type": "fixed_range", "minMg": 2.5, "maxMg": 5, "unit": "mg", "route": "IV", "note": "ทุก 3-4 ชม. เพิ่มทีละ 1 มก."}, {"label": "ผู้ใหญ่ - IM", "type": "fixed_range", "minMg": 5, "maxMg": 10, "unit": "mg", "route": "IM", "note": "ทุก 3-4 ชม."}, {"label": "PCA IV", "type": "pca", "concentration": "1 mg/mL", "doseMin": 0.5, "doseMax": 2.5, "unit": "mg", "lockoutMin": 5, "lockoutMax": 10}, {"label": "Epidural เริ่มต้น", "type": "fixed_range", "minMg": 3, "maxMg": 5, "unit": "mg", "route": "Epidural", "note": "infusion ≤0.1-0.2 mg/hr สูงสุด 10 mg/24hr"}], "contraindications": ["แพ้ยา", "ความดันในสมองสูง", "หอบหืดรุนแรง", "กดการหายใจรุนแรง", "ลำไส้อุดตัน/paralytic ileus"], "precautions": ["ปรับขนาดตาม CrCl (75% ถ้า CrCl 10-50, 50% ถ้า <10 mL/min)", "ผู้สูงอายุ/โรคอ้วน/adrenal insufficiency/ตับรุนแรง", "ทางเดินน้ำดีอุดกั้น/ตับอ่อนอักเสบ (sphincter of Oddi หดตัว)"], "adverseEffects": ["กดระบบประสาทกลาง", "ใจสั่น ความดันต่ำ หัวใจเต้นช้า", "คลื่นไส้อาเจียน ท้องผูก", "ปัสสาวะลำบาก"], "keyPoint": "onset IV 5-10 นาที ไม่มี ceiling effect"}, {"id": "pethidine", "name": "Pethidine hydrochloride (Meperidine)", "schedule": "ค", "indications": ["ปวดปานกลาง-รุนแรง", "เสริมฤทธิ์ยาระงับความรู้สึก", "premedication", "รักษาอาการสั่นหลังยาระงับความรู้สึก"], "dosing": [{"label": "ผู้ใหญ่ - IM/SC", "type": "fixed_range", "minMg": 50, "maxMg": 75, "unit": "mg", "route": "IM/SC", "note": "ทุก 3-4 ชม."}, {"label": "ผู้ใหญ่ - IV", "type": "fixed_range", "minMg": 0, "maxMg": 100, "unit": "mg", "route": "IV", "note": "ความเข้มข้นไม่เกิน 10 mg/mL ขนาดสูงสุดไม่เกิน 100 มก."}, {"label": "รักษาอาการสั่น", "type": "fixed_range", "minMg": 10, "maxMg": 15, "unit": "mg", "route": "IM/SC/IV"}, {"label": "เด็ก - IM/IV", "type": "weight_fixed", "mgKg": 1, "unit": "mg/kg", "route": "IM/IV", "note": "ทุก 3-4 ชม."}], "contraindications": ["แพ้ยา", "ห้ามใช้ร่วม/ภายใน 14 วันของ MAOIs"], "precautions": ["ไม่ควรใช้ต่อเนื่อง — norpethidine สะสมทำให้ชัก โดยเฉพาะไตวาย", "ระวังในโรคปอด/ตับ/ไต/hypothyroid", "American Pain Society/ISMP ไม่แนะนำใช้ทั่วไป — ถ้าจำเป็นไม่ควรเกิน 48 ชม."], "adverseEffects": ["ความดันเลือดต่ำ", "ชัก จาก norpethidine", "serotonin syndrome (ร่วมกับ SSRIs)", "หัวใจเต้นเร็ว (antimuscarinic effect)"], "keyPoint": "ติดยาง่ายกว่า opioid ตัวอื่น — ใช้ด้วยความระมัดระวัง"}, {"id": "fentanyl", "name": "Fentanyl citrate", "schedule": "ค", "highAlert": true, "indications": ["ระงับปวดเฉียบพลัน/เรื้อรัง", "ยาเสริมระหว่างระงับความรู้สึก", "สงบประสาท (sedation)", "premedication"], "dosing": [{"label": "ระงับปวดเฉียบพลัน", "type": "weight_fixed", "mgKg": 0.001, "unit": "mg/kg (≈1 mcg/kg)", "route": "IV ช้าๆ"}, {"label": "PCA IV", "type": "pca", "concentration": "10 mcg/mL", "doseMin": 10, "doseMax": 20, "unit": "mcg", "lockoutMin": 5, "lockoutMax": 5}, {"label": "เสริมยา - ลดขนาดยาหลัก", "type": "weight_range", "minMcgKg": 0.5, "maxMcgKg": 2, "unit": "mcg/kg", "route": "IV"}, {"label": "เสริมยา - ลด autonomic response", "type": "weight_fixed", "mcgKg": 2, "unit": "mcg/kg", "route": "IV"}, {"label": "ผ่าตัดใหญ่ (คงระดับสลบ)", "type": "weight_range", "minMcgKg": 15, "maxMcgKg": 20, "unit": "mcg/kg", "route": "IV infusion", "note": "ผ่าตัดหัวใจอาจสูงถึง 50 mcg/kg (ปัจจุบันไม่ค่อยนิยม)"}, {"label": "สงบประสาทก่อน/ระหว่างหัตถการ", "type": "weight_range", "minMcgKg": 0.5, "maxMcgKg": 2, "unit": "mcg/kg", "route": "IV"}], "contraindications": ["แพ้ยา", "โรคทางเดินหายใจรุนแรงที่ไม่มี ventilator", "ท้องอืดมาก/paralytic ileus", "โรคตับ/ไตรุนแรง"], "precautions": ["ปรับขนาดตามผู้ป่วยแต่ละราย", "ร่วมกับยากดระบบประสาทกลางอื่นต้องลดขนาด", "ระวังในหัวใจเต้นช้า/โรคอ้วนรุนแรง", "ยาที่ยับยั้ง CYP3A4 เสริมฤทธิ์ fentanyl", "ห้ามหยุดยาฉับพลันถ้าใช้ต่อเนื่องนาน (withdrawal)"], "adverseEffects": ["ความดันตก หัวใจเต้นช้า", "กล้ามเนื้อเกร็ง (ฉีดเร็วขนาดสูง)", "กดการหายใจ สับสน รูม่านตาหด"], "keyPoint": "แรงกว่า morphine 100 เท่า ออกฤทธิ์เร็วแต่สั้น — high alert drug"}], "reversal": {"drug": "Naloxone", "dosing": [{"label": "Perioperative - ผู้ใหญ่", "type": "fixed_range", "minMg": 0.1, "maxMg": 0.2, "unit": "mg", "route": "IV", "note": "ทุก 2-3 นาที ค่อยๆ ปรับ ป้องกัน withdrawal เฉียบพลัน"}, {"label": "Perioperative - เด็ก", "type": "fixed_range", "minMg": 0.005, "maxMg": 0.01, "unit": "mg", "route": "IV", "note": "ทุก 2-3 นาที"}, {"label": "Chronic use/abuse - ผู้ใหญ่", "type": "fixed_range", "minMg": 0.4, "maxMg": 2, "unit": "mg", "route": "IV", "note": "ทุก 2-3 นาที ไม่เกิน 10 มก. รวม"}, {"label": "Chronic use/abuse - เด็ก", "type": "weight_fixed", "mgKg": 0.01, "unit": "mg/kg", "route": "IV"}, {"label": "Continuous infusion", "type": "weight_rate_range", "minMcgKgHr": 3, "maxMcgKgHr": 5, "unit": "mcg/kg/hr", "route": "IV infusion", "note": "ผสม 2 mg ใน NSS/D5W 500 mL = 4 mcg/mL"}], "note": "Onset 2 นาที ฤทธิ์อยู่นาน 30-60 นาที (สั้นกว่า opioid ส่วนใหญ่) — เฝ้าระวัง re-sedation"}}, {"id": "sedatives", "name": "Sedatives (Benzodiazepines)", "nameThai": "ยาสงบประสาทกลุ่ม Benzodiazepine", "icon": "moon", "drugs": [{"id": "diazepam", "name": "Diazepam", "schedule": "ก", "indications": ["คลายวิตกกังวล/เครียด", "คลายกล้ามเนื้อ", "ระงับชัก", "premedication"], "dosing": [{"label": "กิน - เด็ก", "type": "weight_range", "minMgKg": 0.2, "maxMgKg": 0.3, "unit": "mg/kg", "route": "PO", "note": "สูงสุดไม่เกิน 10 มก. ให้ก่อนหัตถการ 45-60 นาที"}, {"label": "กิน - ผู้ใหญ่", "type": "fixed_range", "minMg": 5, "maxMg": 10, "unit": "mg", "route": "PO"}, {"label": "กิน - สูงอายุ", "type": "fixed_value", "mg": 2, "unit": "mg", "route": "PO"}, {"label": "IV - ผู้ใหญ่", "type": "fixed_value", "mg": 5, "unit": "mg", "route": "IV", "note": "ซ้ำได้ครึ่งขนาด"}], "contraindications": ["แพ้ยา", "ต้อหินชนิด narrow angle", "ตั้งครรภ์ไตรมาสแรก", "ทารกอายุน้อยกว่า 1 ปี"], "precautions": ["ลดขนาดครึ่งหนึ่งในตับบกพร่อง/ตับแข็ง", "ไม่มีฤทธิ์ระงับปวด — ระวังสับสนถ้าผู้ป่วยปวด", "ใช้ต่อเนื่อง >10 วันเกิด withdrawal"], "adverseEffects": ["ปวดขณะฉีด", "หลอดเลือดขยาย ความดันตก กดการหายใจ", "สับสน ซึมเศร้า ความจำบกพร่อง"], "reversal": "Flumazenil (แก้ sedation แต่ไม่ช่วยแก้กดการหายใจ)", "keyPoint": "ออกฤทธิ์นาน (t½ 20-50 ชม.) นิยมใช้ระงับชัก/คลายกล้ามเนื้อมากกว่าสงบประสาท"}, {"id": "midazolam", "name": "Midazolam", "schedule": "ง", "indications": ["สงบประสาทก่อน/ระหว่าง/หลังผ่าตัด", "ช่วยนอนหลับ", "นำสลบ", "ผู้ป่วยเครื่องช่วยหายใจใน ICU", "ระงับชัก"], "dosing": [{"label": "กิน (sedation)", "type": "weight_range", "minMgKg": 0.2, "maxMgKg": 0.4, "unit": "mg/kg", "route": "PO", "note": "สูงสุดไม่เกิน 15 มก."}, {"label": "IV เด็ก", "type": "weight_range", "minMgKg": 0.02, "maxMgKg": 0.05, "unit": "mg/kg", "route": "IV", "note": "ค่อยๆ titrate"}, {"label": "IV ผู้ใหญ่", "type": "weight_range", "minMgKg": 0.02, "maxMgKg": 0.04, "unit": "mg/kg", "route": "IV", "note": "หรือให้ช้าๆ 0.5-2.5 มก. ลดขนาดในสูงอายุ"}, {"label": "ระงับชัก", "type": "weight_range", "minMgKg": 0.02, "maxMgKg": 0.04, "unit": "mg/kg", "route": "IV", "note": "หรือให้ช้าๆ 0.5-2.5 มก."}], "contraindications": ["แพ้ยา", "ต้อหินชนิด narrow angle", "ตั้งครรภ์ไตรมาสแรก", "ทารกอายุน้อยกว่า 1 ปี", "myasthenia gravis", "โรคระบบประสาท/กล้ามเนื้อ", "ช็อก/coma/พิษสุราเฉียบพลัน"], "precautions": ["ลดขนาดอย่างน้อย 30% เมื่อใช้ร่วมกับ opioid", "ผู้ป่วยที่ได้ยาชนิดฉีดต้องรอ 3-4 ชม. ก่อนออกจากรพ. พร้อมผู้ดูแล"], "adverseEffects": ["กดระบบทางเดินหายใจ (เสี่ยงขาดออกซิเจนโดยเฉพาะ COPD)", "ความดันตกเล็กน้อย"], "reversal": "Flumazenil (อาจไม่ช่วยแก้กดการหายใจ)", "keyPoint": "onset เร็ว (1-5 นาที IV) สั้นกว่า diazepam ทำให้จำเหตุการณ์ไม่ได้ (amnesia)"}]}, {"id": "reversal_agents", "name": "Reversal Agents", "nameThai": "ยาแก้ฤทธิ์ยาหย่อนกล้ามเนื้อ (Anticholinesterase + Antimuscarinic)", "icon": "rotate-ccw", "drugs": [{"id": "neostigmine", "name": "Neostigmine methylsulfate", "schedule": "ก", "type": "Anticholinesterase", "onsetMin": 1, "peakMin": 10, "durationMin": 30, "indications": ["แก้ฤทธิ์ยาหย่อนกล้ามเนื้อกลุ่ม non-depolarizing"], "dosing": [{"label": "ผู้ใหญ่ (>18 ปี)", "type": "fixed_value", "mg": 2.5, "unit": "mg", "route": "IV", "note": "สูงสุด 5 มก. ให้ร่วมกับ atropine หรือ glycopyrronium"}, {"label": "เด็ก (<18 ปี)", "type": "weight_range", "minMgKg": 0.03, "maxMgKg": 0.07, "unit": "mg/kg", "route": "IV", "note": "สูงสุด 5 มก."}], "contraindications": ["ประวัติแพ้ยา"], "precautions": ["ไตผิดปกติ — พิจารณาลดขนาด", "ตั้งครรภ์/ให้นมบุตร", "ลำไส้/ทางเดินปัสสาวะอุดตัน"], "adverseEffects": ["Bradycardia (รักษาด้วย atropine 0.02-0.04 mg/kg IV)", "cardiac arrest (rare)", "คลื่นไส้อาเจียน น้ำลายเพิ่ม ท้องเสีย"], "pairWith": "atropine หรือ glycopyrronium"}, {"id": "edrophonium", "name": "Edrophonium chloride", "type": "Anticholinesterase", "onsetMin": 1, "onsetMax": 2, "durationMin": 10, "indications": ["แก้ฤทธิ์ยาหย่อนกล้ามเนื้อกลุ่ม non-depolarizing", "วินิจฉัย dual block จาก succinylcholine"], "dosing": [{"label": "แก้ฤทธิ์ยาหย่อนกล้ามเนื้อ", "type": "weight_range", "minMgKg": 0.5, "maxMgKg": 0.7, "unit": "mg/kg", "route": "IV ช้าๆ", "note": "ให้ร่วมกับ atropine"}, {"label": "วินิจฉัย dual block", "type": "fixed_value", "mg": 10, "unit": "mg", "route": "IV", "note": "ให้ร่วมกับ atropine"}], "contraindications": ["ประวัติแพ้ยา"], "precautions": ["ตั้งครรภ์/ให้นมบุตร", "โรคหืด/หลอดลมหดเกร็ง", "หัวใจเต้นผิดจังหวะ", "ลำไส้/ทางเดินปัสสาวะอุดตัน"], "adverseEffects": ["Bradycardia (รักษาด้วย atropine)", "cardiac arrest (rare)"], "pairWith": "atropine"}, {"id": "atropine", "name": "Atropine sulfate", "schedule": "ก", "type": "Antimuscarinic", "onsetMin": 1, "onsetMax": 2, "durationHr": 3, "indications": ["Premedication (ลดสารคัดหลั่งทางเดินหายใจ)", "ป้องกัน/รักษา bradycardia", "ป้องกัน muscarinic effect ของ neostigmine/edrophonium"], "dosing": [{"label": "Premedication (ผู้ใหญ่ >18 ปี)", "type": "fixed_range", "minMg": 0.3, "maxMg": 0.6, "unit": "mg", "route": "IM/SC", "note": "30-60 นาทีก่อนนำสลบ"}, {"label": "Bradycardia (ผู้ใหญ่ >18 ปี)", "type": "fixed_range", "minMg": 0.3, "maxMg": 0.6, "unit": "mg", "route": "IV"}, {"label": "Bradycardia (เด็ก 1 เดือน-12 ปี)", "type": "weight_range", "minMgKg": 0.01, "maxMgKg": 0.02, "unit": "mg/kg", "route": "IV"}, {"label": "คู่กับ neostigmine", "type": "note_only", "note": "ครึ่งขนาดของ neostigmine"}], "contraindications": ["ประวัติแพ้ยา", "ลำไส้อุดตัน (paralytic ileus, pyloric stenosis)", "ต่อมลูกหมากโต"], "precautions": ["Down's syndrome", "กรดไหลย้อน", "กล้ามเนื้อหัวใจตาย", "ความดันสูง", "ไข้", "เสี่ยงต้อหินมุมปิด"], "adverseEffects": ["ท้องผูก", "หัวใจเต้นช้าชั่วคราวตามด้วยเต้นเร็ว", "ปัสสาวะคั่ง", "รูม่านตาขยาย", "ปากแห้ง", "สับสน (โดยเฉพาะสูงอายุ — รักษาด้วย physostigmine 1-2 mg IV)"]}, {"id": "glycopyrronium", "name": "Glycopyrronium bromide", "type": "Antimuscarinic", "onsetMin": 1, "peakMin": 3, "durationHr": 6, "indications": ["Premedication (ลดสารคัดหลั่งทางเดินหายใจ)", "ป้องกัน/รักษา bradycardia", "ป้องกัน muscarinic effect ของ neostigmine"], "dosing": [{"label": "Premedication (ผู้ใหญ่)", "type": "fixed_range", "minMg": 0.2, "maxMg": 0.4, "unit": "mg", "route": "IM", "note": "หรือ 4-5 mcg/kg สูงสุด 0.4 มก."}, {"label": "Bradycardia (ผู้ใหญ่ >18 ปี)", "type": "fixed_range", "minMg": 0.2, "maxMg": 0.4, "unit": "mg", "route": "IV", "note": "ให้ซ้ำได้"}, {"label": "คู่กับ neostigmine (ผู้ใหญ่)", "type": "weight_range", "minMgKg": 0.01, "maxMgKg": 0.015, "unit": "mg/kg", "route": "IV", "note": "หรือ 0.2 มก. ต่อ neostigmine 1 มก."}], "contraindications": ["ประวัติแพ้ยา", "ลำไส้อุดตัน", "ต่อมลูกหมากโต"], "precautions": ["Down's syndrome", "กรดไหลย้อน", "กล้ามเนื้อหัวใจตาย", "ความดันสูง", "ไข้"], "adverseEffects": ["ท้องผูก", "หัวใจเต้นช้าชั่วคราวตามด้วยเต้นเร็ว", "ปัสสาวะคั่ง", "ปากแห้ง", "เวียนศีรษะ"], "keyPoint": "ผ่าน blood-brain barrier น้อยกว่า atropine — ผลข้างเคียงต่อ CNS น้อยกว่า"}]}, {"id": "malignant_hyperthermia", "name": "Malignant Hyperthermia", "nameThai": "ภาวะไข้สูงจากยาสลบ", "icon": "thermometer", "drugs": [{"id": "dantrolene", "name": "Dantrolene sodium", "schedule": "ง", "orphanDrug": true, "indications": ["รักษา malignant hyperthermia crisis", "ป้องกันก่อนผ่าตัดในผู้ป่วยที่สงสัยเป็น MH"], "dosing": [{"label": "รักษา MH crisis - เริ่มต้น", "type": "weight_fixed", "mgKg": 2.5, "unit": "mg/kg", "route": "IV เร็วและต่อเนื่อง", "note": "ให้ต่อจนอาการดีขึ้น สะสมได้ถึง 10-30 mg/kg"}, {"label": "Maintenance - bolus ซ้ำ", "type": "weight_fixed", "mgKg": 1, "unit": "mg/kg", "route": "IV", "note": "ซ้ำทุก 4-6 ชม."}, {"label": "Maintenance - infusion", "type": "weight_rate_fixed", "mgKgHr": 0.25, "unit": "mg/kg/hr", "route": "IV infusion", "note": "อย่างน้อย 36 ชม."}, {"label": "Prophylaxis", "type": "weight_fixed", "mgKg": 2.5, "unit": "mg/kg", "route": "IV infusion", "note": "1 ชม. 15 นาทีก่อนนำสลบ ให้ต่อเนื่อง ~1 ชม."}], "preparation": "1 vial (dantrolene 20 mg + mannitol 3000 mg) ผสมน้ำกลั่นปราศจากเชื้อ 60 mL ใช้ภายใน 6 ชม. หลังผสม เก็บ 15-30°C ห้ามใช้ขวดแก้ว (ตกตะกอน)", "contraindications": [], "precautions": ["ฤทธิ์หย่อนกล้ามเนื้ออาจกดกล้ามเนื้อหายใจ — เฝ้าระวังใกล้ชิด", "ระวังฉีดออกนอกเส้น (ด่างสูง)", "หลีกเลี่ยง calcium channel blocker ร่วมด้วย (cardiovascular collapse, hyperkalemia)", "ติดตามการทำงานตับ (hepatotoxic)"], "adverseEffects": ["กล้ามเนื้ออ่อนแรงหลังผ่าตัด", "วิงเวียนศีรษะได้ถึง 48 ชม."]}], "protocol": {"triggers": ["Succinylcholine", "ยาสลบชนิดสูดดมทุกตัว (sevoflurane, desflurane, isoflurane)"], "signs": ["Tachycardia", "Tachypnea", "Central venous desaturation", "Hypercarbia", "Metabolic acidosis", "Skeletal muscle rigidity", "Increased CO2 absorber utilization", "Cyanosis/mottling", "ไข้สูง"], "steps": ["หยุดยา trigger ทันที เปลี่ยนเป็น TIVA", "Hyperventilate ด้วย O2 100% flow สูง", "ให้ dantrolene ตามขนาด", "Active cooling (cold IV fluid, ice packs, cooling blanket)", "รักษา arrhythmia, hyperkalemia, acidosis ตามมาตรฐาน ACLS", "ติดตาม urine output, CK, electrolyte, coagulation"]}}, {"id": "local_anesthetics", "name": "Local Anesthetics", "nameThai": "ยาชาเฉพาะที่", "icon": "target", "drugClasses": {"ester": ["Cocaine", "Procaine", "Chloroprocaine", "Tetracaine", "Benzocaine"], "amide": ["Lidocaine", "Etidocaine", "Bupivacaine", "Ropivacaine", "Levobupivacaine", "Prilocaine", "Mepivacaine"]}, "crossAllergyWarning": "ผู้ป่วยแพ้ยาชาในกลุ่มใด ห้ามใช้ยาชาตัวอื่นในกลุ่มเดียวกัน แต่อาจใช้อีกกลุ่มหนึ่งได้ (เลือกชนิดไม่มีสารกันเสีย)", "drugs": [{"id": "benzocaine", "name": "Benzocaine", "schedule": "ก", "class": "ester", "indications": ["ลดปวดผิวหนัง/เนื้อเยื่อจากการระคายเคือง", "อมบรรเทาเจ็บคอ", "ชาที่อุปกรณ์สอดใส่เข้าร่างกาย"], "dosing": [{"label": "ทาผิวหนัง (เด็ก≥2ปี/ผู้ใหญ่)", "type": "percent_range", "minPercent": 5, "maxPercent": 20, "note": "ทาบางๆ 3-4 ครั้ง/วัน"}, {"label": "ทาในปาก", "type": "percent_range", "minPercent": 10, "maxPercent": 20, "note": "ไม่เกิน 4 ครั้ง/วัน"}], "contraindications": ["แพ้ยา/แพ้กลุ่ม ester", "เด็ก<2 ปีโดยไม่มีคำแนะนำแพทย์", "พ่นเป็นละอองฝอย >2 วินาที"], "precautions": ["เสี่ยง methemoglobinemia โดยเฉพาะเด็ก<2 ปี", "เสี่ยงสำลักถ้าอมมากก่อนนอน"], "adverseEffects": ["Methemoglobinemia", "ปฏิกิริยาแพ้ค่อนข้างสูง"]}, {"id": "lidocaine_topical", "name": "Lidocaine HCl (gel/spray/viscous)", "schedule": "ก", "class": "amide", "indications": ["ยาชาเฉพาะที่ (ทา/พ่น/ฉีด)", "พ่นลำคอลดการกระตุ้นจากใส่ท่อช่วยหายใจ", "รักษา ventricular arrhythmia", "ลดปวดจากฉีด propofol"], "dosing": [{"label": "Spray ลำคอ", "type": "weight_range", "minMgKg": 0, "maxMgKg": 2, "unit": "mg/kg", "route": "Topical spray 10%", "note": "แต่ละพ่น ~10 มก."}, {"label": "Local infiltration ไม่ผสม epi", "type": "weight_fixed", "mgKg": 5, "unit": "mg/kg", "route": "Infiltration", "note": "สูงสุด 300 มก."}, {"label": "Local infiltration ผสม epi", "type": "weight_fixed", "mgKg": 7, "unit": "mg/kg", "route": "Infiltration", "note": "สูงสุด 500 มก."}, {"label": "Antiarrhythmic", "type": "weight_fixed", "mgKg": 1, "unit": "mg/kg", "route": "IV", "note": "หรือ 100 มก."}, {"label": "ก่อนใส่ท่อ (ลด HR/BP reflex)", "type": "weight_fixed", "mgKg": 1.5, "unit": "mg/kg", "route": "IV"}, {"label": "ลดปวดจากฉีด propofol", "type": "weight_fixed", "mgKg": 0.5, "unit": "mg/kg", "route": "IV", "note": "ผู้ใหญ่ไม่เกิน 40 มก."}], "contraindications": ["แพ้ยา/แพ้กลุ่ม amide", "2nd/3rd degree heart block ไม่มี pacemaker", "ใช้ร่วมกับ antiarrhythmic อื่น", "Wolff-Parkinson-White syndrome"], "precautions": ["ความดันเลือดต่ำ", "หัวใจเต้นช้า", "ตับผิดปกติ", "ผู้สูงอายุ"], "adverseEffects": ["Systemic toxicity (LAST)", "แพ้ยา"]}, {"id": "lidocaine_regional", "name": "Lidocaine HCl (regional/spinal/epidural)", "schedule": "ก", "class": "amide", "indications": ["Intravenous regional anesthesia (Bier block)", "Spinal block", "Epidural/Caudal block", "Peripheral nerve block"], "dosing": [{"label": "Bier block", "type": "weight_fixed", "mgKg": 3, "unit": "mg/kg", "route": "IV regional", "note": "ความเข้มข้น 0.25-0.5% ปริมาตร 30-40 mL สูงสุด 300 มก."}, {"label": "Spinal block", "type": "weight_fixed", "mgKg": 1.5, "unit": "mg/kg", "route": "Spinal", "note": "5% สูงสุด 100 มก."}, {"label": "Epidural/Caudal block", "type": "weight_fixed", "mgKg": 4, "unit": "mg/kg", "route": "Epidural", "note": "1.5-2% สูงสุด 350 มก."}, {"label": "Peripheral nerve block", "type": "weight_fixed", "mgKg": 4, "unit": "mg/kg", "route": "Perineural", "note": "1-1.5% สูงสุด 350 มก."}], "contraindications": ["แพ้ยา/แพ้กลุ่ม amide", "อักเสบบริเวณที่จะฉีด", "unstable CVS/cardiogenic/hypovolemic shock (ห้าม spinal/epidural)", "Raynaud's disease (ห้าม Bier block)"], "precautions": ["เตรียมอุปกรณ์ resuscitate พร้อมเสมอ", "aspirate ก่อนฉีดทุกครั้ง", "ลดขนาดในบริเวณเลือดไปเลี้ยงมาก/ผู้สูงอายุ/โรคอ้วน (ใช้ ideal body weight)"], "adverseEffects": ["LAST", "ความดันตกหลัง spinal/epidural", "Transient neurological symptoms (TNS)"]}], "toxicity": {"name": "Local Anesthetic Systemic Toxicity (LAST)", "signs": ["ชารอบปาก/ลิ้น", "หูอื้อ ตาพร่า", "กล้ามเนื้อกระตุก มือสั่น", "ชัก", "หมดสติ/หยุดหายใจ", "หัวใจเต้นช้า/ผิดจังหวะ ความดันตก หัวใจหยุดเต้น"], "management": [{"step": 1, "action": "หยุดฉีดยาชาทันที ให้ O2 100%"}, {"step": 2, "action": "ชัก: midazolam 0.03-0.05 mg/kg หรือ propofol 0.25-0.5 mg/kg IV; ถ้าช่วยหายใจไม่ได้ อาจใช้ succinylcholine 0.5-1 mg/kg"}, {"step": 3, "action": "หัวใจผิดปกติ/ความดันตก: ACLS, สารน้ำ, ephedrine 10-30 mg, atropine ถ้า HR ช้า"}, {"step": 4, "action": "20% Lipid emulsion: bolus 1.5 mL/kg (>1 นาที) ตามด้วย infusion 0.25 mL/kg/min อย่างน้อย 10 นาที (ซ้ำ bolus + เพิ่ม infusion เป็น 0.5 mL/kg/min ได้ถ้าจำเป็น; สูงสุดไม่เกิน 10 mL/kg ใน 30 นาทีแรก)"}, {"step": 5, "action": "ไม่ตอบสนองต่อ lipid emulsion → พิจารณา cardiopulmonary bypass"}], "avoidDrugs": ["Vasopressin", "Calcium channel blocker", "Beta-blocker", "Lidocaine (เป็นสาเหตุ)", "Procainamide"], "lipidEmulsionDose": {"bolusMlKg": 1.5, "infusionMlKgMin": 0.25, "infusionMlKgMinMax": 0.5, "maxMlKgFirst30Min": 10}}, "methemoglobinemia": {"causes": ["Prilocaine >10 mg/kg", "Benzocaine เกินขนาด"], "treatment": {"drug": "Methylene blue", "doseMgKg": [1, 2], "route": "IV ช้าๆ ~5 นาที", "maxMgKg": 7.5, "note": "อาการดีขึ้นใน 15-20 นาที อาจให้ซ้ำได้"}}}]};
+</script>
+<script>
+// ============ Calculator functions (จาก anesth-drugs-calculator.js) ============
+function round(num, decimals) {
+  decimals = decimals || 2;
+  const factor = Math.pow(10, decimals);
+  return Math.round(num * factor) / factor;
+}
+
+function calculateDose(entry, weightKg) {
+  if (!entry) return null;
+  const w = Number(weightKg);
+  const hasWeight = !isNaN(w) && w > 0;
+
+  switch (entry.type) {
+    case 'weight_range': {
+      const unit = entry.unit || 'mg/kg';
+      const minKey = entry.minMgKg !== undefined ? 'minMgKg' : (entry.minMcgKg !== undefined ? 'minMcgKg' : null);
+      const maxKey = entry.maxMgKg !== undefined ? 'maxMgKg' : (entry.maxMcgKg !== undefined ? 'maxMcgKg' : null);
+      const perKgMin = entry[minKey];
+      const perKgMax = entry[maxKey];
+      if (!hasWeight) return { text: perKgMin + '-' + perKgMax + ' ' + unit, perKg: true };
+      const min = round(perKgMin * w, 2);
+      const max = round(perKgMax * w, 2);
+      const outUnit = unit.indexOf('mcg') >= 0 ? 'mcg' : 'mg';
+      return { text: (min === max ? (min + ' ' + outUnit) : (min + ' - ' + max + ' ' + outUnit)) };
+    }
+    case 'weight_fixed': {
+      const perKg = entry.mgKg !== undefined ? entry.mgKg : entry.mcgKg;
+      const unit = entry.unit || (entry.mgKg !== undefined ? 'mg/kg' : 'mcg/kg');
+      if (!hasWeight) return { text: perKg + ' ' + unit, perKg: true };
+      const value = round(perKg * w, 3);
+      const outUnit = unit.indexOf('mcg') >= 0 ? 'mcg' : 'mg';
+      return { text: value + ' ' + outUnit, value: value };
+    }
+    case 'weight_rate_range': {
+      const keys = ['minMgKgHr','minMcgKgMin','minMcgKgHr'];
+      const minKey = keys.find(k => entry[k] !== undefined);
+      const maxKeys = ['maxMgKgHr','maxMcgKgMin','maxMcgKgHr'];
+      const maxKey = maxKeys.find(k => entry[k] !== undefined);
+      const perKgMin = entry[minKey];
+      const perKgMax = entry[maxKey];
+      const unit = entry.unit;
+      if (!hasWeight) return { text: perKgMin + '-' + perKgMax + ' ' + unit, perKg: true };
+      const min = round(perKgMin * w, 2);
+      const max = round(perKgMax * w, 2);
+      const outUnit = unit.replace('/kg', '');
+      return { text: min + ' - ' + max + ' ' + outUnit };
+    }
+    case 'weight_rate_fixed': {
+      const perKg = entry.mgKgHr;
+      const unit = entry.unit || 'mg/kg/hr';
+      if (!hasWeight) return { text: perKg + ' ' + unit, perKg: true };
+      const value = round(perKg * w, 2);
+      return { text: value + ' mg/hr' };
+    }
+    case 'fixed_range':
+      return { text: entry.minMg + '-' + entry.maxMg + ' ' + entry.unit };
+    case 'fixed_value':
+      return { text: entry.mg + ' ' + entry.unit };
+    case 'percent_range':
+      return { text: entry.minPercent + '-' + entry.maxPercent + '%' };
+    case 'pca':
+      return { text: entry.concentration + ' | dose ' + entry.doseMin + '-' + entry.doseMax + ' ' + entry.unit + ' | lockout ' + entry.lockoutMin + '-' + entry.lockoutMax + ' นาที' };
+    case 'note_only':
+      return { text: entry.note };
+    default:
+      return { text: '' };
+  }
+}
+
+// ============ Rendering ============
+const container = document.getElementById('categoriesContainer');
+const weightInput = document.getElementById('weightInput');
+const searchBox = document.getElementById('searchBox');
+
+function listBlock(title, items, cssClass) {
+  if (!items || !items.length) return '';
+  return '<details class="info-block"><summary class="' + cssClass + '">' + title + ' (' + items.length + ')</summary>' +
+    '<ul class="tag-list">' + items.map(i => '<li>' + i + '</li>').join('') + '</ul></details>';
+}
+
+function renderDrugCard(drug, weightKg) {
+  let badges = '<span class="badge">' + (drug.schedule ? 'บัญชี ' + drug.schedule : (drug.type || '')) + '</span>';
+  if (drug.highAlert) badges += ' <span class="badge alert">High Alert</span>';
+
+  let doseRows = '';
+  (drug.dosing || []).forEach(entry => {
+    const result = calculateDose(entry, weightKg);
+    doseRows += '<div class="dose-row">' +
+      '<div class="dose-label">' + entry.label + (entry.route ? ' <span style="color:#9ca3af">(' + entry.route + ')</span>' : '') +
+        (entry.note ? '<span class="dose-note">' + entry.note + '</span>' : '') +
+      '</div>' +
+      '<div class="dose-value">' + (result ? result.text : '-') + '</div>' +
+    '</div>';
+  });
+
+  const keypoint = drug.keyPoint ? '<div class="keypoint">💡 ' + drug.keyPoint + '</div>' : '';
+  const indications = listBlock('ข้อบ่งใช้', drug.indications, '');
+  const contraindications = listBlock('ข้อห้ามใช้', drug.contraindications, 'warn-title');
+  const precautions = listBlock('ข้อควรระวัง', drug.precautions, 'caution-title');
+  const adverse = listBlock('อาการไม่พึงประสงค์', drug.adverseEffects, '');
+
+  return '<div class="drug-card" data-drug-name="' + drug.name.toLowerCase() + '">' +
+    '<h3>' + drug.name + badges + '</h3>' +
+    keypoint +
+    doseRows +
+    indications + contraindications + precautions + adverse +
+  '</div>';
+}
+
+function renderAll() {
+  const weightKg = parseFloat(weightInput.value);
+  container.innerHTML = DRUG_DATA.categories.map((cat, idx) => {
+    const drugCards = (cat.drugs || []).map(d => renderDrugCard(d, weightKg)).join('');
+    return '<div class="category" id="cat-' + idx + '">' +
+      '<div class="category-header" onclick="toggleCategory(' + idx + ')">' +
+        '<div><h2>' + cat.nameThai + '</h2><div class="sub">' + cat.name + '</div></div>' +
+        '<span class="chevron">▶</span>' +
+      '</div>' +
+      '<div class="category-body">' + drugCards + '</div>' +
+    '</div>';
+  }).join('');
+  applySearchFilter();
+}
+
+function toggleCategory(idx) {
+  document.getElementById('cat-' + idx).classList.toggle('open');
+}
+
+function applySearchFilter() {
+  const kw = searchBox.value.trim().toLowerCase();
+  document.querySelectorAll('.category').forEach(cat => {
+    let anyMatch = false;
+    cat.querySelectorAll('.drug-card').forEach(card => {
+      const match = !kw || card.dataset.drugName.includes(kw);
+      card.classList.toggle('hidden', !match);
+      if (match) anyMatch = true;
+    });
+    cat.classList.toggle('hidden', !anyMatch);
+    if (kw && anyMatch) cat.classList.add('open');
+  });
+}
+
+weightInput.addEventListener('input', renderAll);
+searchBox.addEventListener('input', applySearchFilter);
+
+renderAll();
+// เปิดหมวดแรกไว้เป็นตัวอย่าง
+document.getElementById('cat-0').classList.add('open');
+</script>
+</body>
+</html>

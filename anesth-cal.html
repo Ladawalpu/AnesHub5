@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Anesth-cal — ตารางคำนวณยา CVT</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3B1760">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Anesth-cal">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F1FA;
+    --panel: #FFFFFF;
+    --ink: #2E1746;
+    --ink-soft: #6E5D89;
+    --teal-deep: #3B1760;
+    --teal: #7E2FAD;
+    --accent: #9B4FD1;
+    --amber: #E8A23D;
+    --alert: #D9534F;
+    --line: #E4D6F2;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Sarabun', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 20px 80px;}
+
+  /* ---- header ---- */
+  header{
+    background: linear-gradient(160deg, var(--teal-deep) 0%, #5B268F 100%);
+    color:#F4EBFC; padding:28px 20px 22px; position:relative; overflow:hidden;
+  }
+  header .inner{max-width:920px; margin:0 auto; position:relative; z-index:2;}
+  header h1{font-size:22px; margin:0 0 4px; font-weight:700; letter-spacing:.2px;}
+  header p.sub{margin:0; font-size:13.5px; color:#D9C2F0; font-weight:500;}
+  .ecg{position:absolute; left:0; right:0; bottom:-6px; height:38px; opacity:.55; z-index:1;}
+  .ecg path{stroke:#D2A6F5; stroke-width:1.6; fill:none;}
+
+  /* sticky BW bar */
+  .bwbar{
+    position:sticky; top:0; z-index:10; background:var(--panel);
+    border-bottom:1px solid var(--line); box-shadow:0 4px 14px rgba(13,59,57,.06);
+    padding:12px 20px;
+  }
+  .bwbar .inner{max-width:920px; margin:0 auto; display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .bwbar label{font-weight:600; font-size:14.5px; color:var(--teal-deep); white-space:nowrap;}
+  .bwbar input[type=number]{
+    width:110px; font-family:var(--mono); font-size:20px; font-weight:600;
+    padding:6px 10px; border-radius:8px; border:1.5px solid var(--teal);
+    color:var(--teal-deep); background:#F8F1FC;
+  }
+  .bwbar .bwrange{flex:1; min-width:160px; accent-color:var(--teal);}
+  .bwbar .unit{font-size:13px; color:var(--ink-soft); font-weight:500;}
+
+  section.block{margin-top:34px;}
+  .block h2{
+    font-size:16px; color:var(--teal-deep); border-bottom:2px solid var(--teal);
+    padding-bottom:8px; margin:0 0 16px; display:flex; align-items:center; gap:8px;
+  }
+  .block h2 .tag{
+    font-family:var(--mono); font-size:11px; background:var(--teal-deep); color:#F4EBFC;
+    padding:2px 8px; border-radius:20px; font-weight:600;
+  }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(16,48,46,.04);
+  }
+  .card .head{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap;}
+  .card .name{font-size:16.5px; font-weight:700; color:var(--teal-deep);}
+  .card .conc{font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); background:#F1E6FA; padding:2px 8px; border-radius:6px;}
+  .card .prep{font-size:12.5px; color:var(--ink-soft); margin-top:4px; line-height:1.5;}
+
+  .row{display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:10px;}
+  .result{
+    font-family:var(--mono); font-weight:700; font-size:22px; color:var(--accent);
+    background:#F1E6FA; border-radius:10px; padding:6px 14px; min-width:110px; text-align:center;
+  }
+  .result .u{font-size:12px; color:var(--ink-soft); font-weight:600; display:block; margin-top:-2px;}
+  .miniresult{font-family:var(--mono); font-weight:600; font-size:15px; color:var(--teal-deep);}
+
+  .result-wrap{display:flex; flex-direction:column; align-items:center; min-width:110px;}
+  .rate-input{
+    font-family:var(--mono); font-weight:700; font-size:20px; color:var(--accent);
+    background:#F1E6FA; border:1.5px solid var(--teal); border-radius:10px;
+    padding:5px 6px; width:88px; text-align:center;
+  }
+  .rate-input:focus{outline:none; border-color:var(--accent); background:#fff;}
+  .result-wrap .u{font-size:11px; color:var(--ink-soft); font-weight:600; margin-top:2px;}
+
+  select, .segbtn{
+    font-family:var(--sans); font-size:13px; border:1.3px solid var(--line); border-radius:8px;
+    padding:5px 9px; background:#fff; color:var(--ink);
+  }
+  .segrow{display:flex; gap:6px; flex-wrap:wrap;}
+  .segbtn{cursor:pointer; user-select:none; font-weight:600;}
+  .segbtn.active{background:var(--teal); color:#fff; border-color:var(--teal);}
+
+  input[type=range]{-webkit-appearance:none; width:100%; height:6px; border-radius:6px; background:var(--line); accent-color:var(--teal);}
+  .doselabel{font-family:var(--mono); font-size:14px; font-weight:600; color:var(--teal-deep); min-width:126px;}
+
+  .zone{height:10px; border-radius:6px; margin-top:8px; position:relative;
+    background:linear-gradient(90deg, #4FA9E8 0%, #6FC6B0 35%, #E8A23D 65%, #D9534F 100%);}
+  .zone .marker{position:absolute; top:-4px; width:3px; height:18px; background:#10302E; border-radius:2px;}
+  .zonelabels{display:flex; justify-content:space-between; font-size:10.5px; color:var(--ink-soft); margin-top:3px; font-weight:600;}
+
+  .note{font-size:12.5px; color:var(--ink-soft); margin-top:8px; line-height:1.55;}
+  .flag{
+    font-size:12px; background:#FDF3E7; border:1px solid #F0D9B5; color:#8A5A16;
+    padding:6px 10px; border-radius:8px; margin-top:8px; line-height:1.5;
+  }
+
+  details{margin-top:10px;}
+  summary{
+    cursor:pointer; font-size:13px; font-weight:600; color:var(--teal);
+    list-style:none;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"▸ "; }
+  details[open] summary:before{content:"▾ ";}
+  .infobox{font-size:13px; line-height:1.7; color:var(--ink); margin-top:8px; padding:10px 12px; background:#F8F1FC; border-radius:10px;}
+  .infobox b{color:var(--teal-deep);}
+
+  .install-banner{
+    background:#3B1760; color:#F4EBFC; font-size:13px;
+  }
+  .install-banner .inner{
+    max-width:920px; margin:0 auto; padding:10px 20px; display:flex; align-items:center;
+    gap:12px; flex-wrap:wrap;
+  }
+  .install-banner span{flex:1; min-width:220px; line-height:1.5;}
+  .install-banner button{
+    font-family:var(--sans); font-weight:600; border:none; border-radius:8px; cursor:pointer;
+    padding:7px 14px; font-size:13px;
+  }
+  #installBtn{background:var(--accent); color:#FFFFFF;}
+  #installDismiss{background:transparent; color:#D9C2F0; padding:6px 8px;}
+
+  footer{
+    max-width:920px; margin:40px auto 0; padding:16px 20px; font-size:12px;
+    color:var(--ink-soft); border-top:1px solid var(--line); line-height:1.7;
+  }
+  @media (max-width:520px){
+    .card .name{font-size:15px;} .result{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>Anesth-cal — ตารางคำนวณยา CVT</h1>
+  </div>
+  <svg class="ecg" viewBox="0 0 900 40" preserveAspectRatio="none"><path d="M0,20 L200,20 L215,5 L230,35 L245,20 L400,20 L415,10 L430,30 L445,20 L900,20"/></svg>
+</header>
+
+<div class="bwbar">
+  <div class="inner">
+    <label for="bwNum">น้ำหนักผู้ป่วย (BW)</label>
+    <input type="number" id="bwNum" value="50" min="1" max="200" step="0.5">
+    <span class="unit">kg</span>
+    <input type="range" id="bwRange" class="bwrange" min="1" max="150" step="0.5" value="50">
+  </div>
+</div>
+
+
+<div id="installBanner" class="install-banner" style="display:none;">
+  <div class="inner">
+    <span id="installText">📲 ติดตั้งแอปนี้ไว้ที่หน้าจอหลัก เพื่อเปิดใช้งานได้เร็วขึ้นและใช้งานแบบออฟไลน์</span>
+    <button id="installBtn" style="display:none;">ติดตั้งแอป</button>
+    <button id="installDismiss" aria-label="ปิด">✕</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============ BOLUS SECTION ============ -->
+<section class="block">
+  <h2>ยาให้ครั้งเดียว (Bolus / Loading dose) <span class="tag">คำนวณจาก BW</span></h2>
+
+  <div class="card" data-drug="heparin">
+    <div class="head"><span class="name">1. Heparin</span><span class="conc">50 mg/ml</span></div>
+    <div class="prep">Full anticoagulation ก่อนขึ้นเครื่อง CPB</div>
+    <div class="row">
+      <span class="doselabel">3 mg/kg</span>
+      <span class="result" id="hep3">–<span class="u">mg → ml</span></span>
+      <span class="doselabel" style="margin-left:12px">1 mg/kg (redose)</span>
+      <span class="result" id="hep1">–<span class="u">mg → ml</span></span>
+    </div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Unfractionated heparin ยับยั้ง thrombin ผ่าน antithrombin III ใช้ป้องกันการแข็งตัวของเลือดก่อนเข้าเครื่อง CPB เป้าหมาย <b>ACT &gt; 400 วินาที</b> ก่อนเริ่ม bypass ให้ตรวจ ACT ซ้ำเป็นระยะ และเตรียม protamine ไว้ reverse เมื่อเลิกเครื่อง</div>
+    </details>
+  </div>
+
+  <div class="card" data-drug="protamine">
+    <div class="head"><span class="name">2. Protamine</span><span class="conc">10 mg/ml</span></div>
+    <div class="prep">Reverse ฤทธิ์ heparin หลังเลิกเครื่อง CPB</div>
+    <div class="row">
+      <span class="doselabel">3 mg/kg</span>
+      <span class="result" id="prot3">–<span class="u">mg → ml</span></span>
+    </div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">โปรตีนเบสิกจับกับ heparin (กรด) เป็นสารประกอบเสถียร ให้ <b>ช้า ๆ</b> เท่านั้น เพราะให้เร็วเสี่ยง hypotension, anaphylactoid reaction และ pulmonary vasoconstriction/right heart failure โดยเฉพาะผู้ป่วยที่เคยได้ protamine หรือ NPH insulin มาก่อน ควรมี inotrope/vasopressor พร้อมใช้ขณะให้ยา</div>
+    </details>
+  </div>
+
+  <div class="card" data-drug="dexa">
+    <div class="head"><span class="name">3. Dexamethasone</span><span class="conc">5 mg/ml</span></div>
+    <div class="row">
+      <span class="doselabel">0.2 mg/kg</span>
+      <span class="result" id="dexa">–<span class="u">mg → ml</span></span>
+    </div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Corticosteroid ลด systemic inflammatory response จาก CPB มักให้ก่อนขึ้นเครื่อง ผลข้างเคียงระยะสั้นที่พบได้คือ น้ำตาลในเลือดสูงชั่วคราว ควร monitor glucose ระหว่างและหลังผ่าตัด</div>
+    </details>
+  </div>
+
+  <div class="card" data-drug="mgso4">
+    <div class="head"><span class="name">4. MgSO4</span><span class="conc">500 mg/ml</span></div>
+    <div class="row">
+      <span class="doselabel">25 mg/kg</span>
+      <span class="result" id="mgso4">–<span class="u">mg → ml</span></span>
+    </div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">ป้องกัน/รักษา arrhythmia (โดยเฉพาะ post-CPB) และช่วยเสถียร myocardial membrane ให้ทาง IV ช้า เพราะให้เร็วเกินไปทำให้ hypotension และ flushing ระวังในผู้ป่วยไตวาย (เสี่ยง magnesium toxicity)</div>
+    </details>
+  </div>
+
+  <div class="card" data-drug="transamin-load">
+    <div class="head"><span class="name">11a. Transamin (Tranexamic acid) — Loading</span><span class="conc">50 mg/ml</span></div>
+    <div class="row">
+      <span class="doselabel">10 mg/kg</span>
+      <span class="result" id="txaLoad">–<span class="u">mg → ml</span></span>
+    </div>
+  </div>
+
+  <div class="card" data-drug="primacor-load">
+    <div class="head"><span class="name">10a. Primacor (Milrinone) — Loading</span><span class="conc">1 mg/ml</span></div>
+    <div class="prep">ให้ช้า ๆ over ~10 นาที</div>
+    <div class="row">
+      <span class="doselabel">50 mcg/kg</span>
+      <span class="result" id="primLoad">–<span class="u">ml</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFUSION SECTION ============ -->
+<section class="block">
+  <h2>ยาหยดต่อเนื่อง (Continuous Infusion) <span class="tag">ปรับ dose หรือกรอก rate ได้ทั้งสองทาง</span></h2>
+
+  <!-- Adrenaline -->
+  <div class="card" data-drug="adrenaline">
+    <div class="head"><span class="name">5. Adrenaline (Epinephrine)</span><span class="conc">1 mg (1 ml) + NSS 19 ml = 50 mcg/ml</span></div>
+    <div class="row">
+      <input type="range" id="adr-r" min="0.01" max="0.3" step="0.005" value="0.1" style="flex:1">
+      <span class="doselabel" id="adr-d">0.100 mcg/kg/min</span>
+      <span class="result-wrap"><input type="number" class="rate-input" id="adr-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
+    </div>
+    <div class="zone"><div class="marker" id="adr-mark"></div></div>
+    <div class="zonelabels"><span>0.01 β</span><span>0.03–0.15 β+α</span><span>0.15–0.3 α&gt;β</span></div>
+    <div class="note" id="adr-zone-note"></div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Catecholamine ธรรมชาติ ออกฤทธิ์แบบ dose-dependent: ขนาดต่ำ (0.01–0.03 mcg/kg/min) เด่น β1 เพิ่ม contractility/HR; ขนาดกลาง (0.03–0.15) ผสม β+α; ขนาดสูง (&gt;0.15) α เด่นขึ้น เพิ่ม afterload และเสี่ยง arrhythmia (พบบ่อยช่วง 0.12–0.18) นิยมใช้เป็น first-line inotrope หลังเลิกเครื่อง CPB ที่มี low cardiac output</div>
+    </details>
+  </div>
+
+  <!-- Levophed -->
+  <div class="card" data-drug="levophed">
+    <div class="head"><span class="name">7. Levophed (Norepinephrine)</span></div>
+    <div class="row">
+      <span style="font-size:13px; color:var(--ink-soft); font-weight:600;">ความเข้มข้นที่ผสม:</span>
+      <div class="segrow" id="lev-conc-group">
+        <span class="segbtn" data-v="5">5 mcg/ml</span>
+        <span class="segbtn" data-v="40">40 mcg/ml</span>
+        <span class="segbtn active" data-v="50">50 mcg/ml</span>
+      </div>
+    </div>
+    <div class="prep" id="lev-prep">ยา 1 ml (1,000 mcg) + 5%D/W 19 ml</div>
+    <div class="row">
+      <input type="range" id="lev-r" min="0.01" max="0.7" step="0.005" value="0.1" style="flex:1">
+      <span class="doselabel" id="lev-d">0.100 mcg/kg/min</span>
+      <span class="result-wrap"><input type="number" class="rate-input" id="lev-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
+    </div>
+    <div class="note">Dose ทั่วไป 0.01–0.7 mcg/kg/min ออกฤทธิ์ทั้ง β และ α แต่ α เด่นกว่า ขนาดสูงเพิ่ม coronary perfusion pressure แต่ก็เพิ่ม afterload ด้วย</div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Potent α1 agonist ร่วมกับฤทธิ์ β1 บางส่วน เป็น first-line vasopressor ใน vasoplegic/distributive shock หลัง CPB ระวัง extravasation (เนื้อตายเฉพาะที่) ควรให้ทาง central line และเฝ้าระวังการไหลเวียนปลายมือปลายเท้า</div>
+    </details>
+  </div>
+
+  <!-- Cordarone -->
+  <div class="card" data-drug="cordarone">
+    <div class="head"><span class="name">6. Cordarone (Amiodarone)</span><span class="conc">amp 3 ml (150 mg) + D5W 17 ml = 20 ml</span></div>
+    <div class="prep">⚠️ ใช้ D5W เท่านั้น (ห้ามผสม NSS) — Push 150 mg ช้า ๆ over 3–5 นาที</div>
+    <div class="note">หากต้องการ drip ต่อ อัตราตามตารางอ้างอิงของหน่วยงานอยู่ที่ประมาณ <b>240–400 ml/hr</b> ในช่วงแรกแล้วค่อยลดลง (ไม่ใช่สูตรคำนวณตาม BW โดยตรง โปรดยึดตาม protocol ของหน่วยงาน/คำสั่งแพทย์)</div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Class III antiarrhythmic ใช้รักษา ventricular/atrial arrhythmia หลัง CPB ผลข้างเคียงเฉียบพลันที่สำคัญคือ hypotension และ bradycardia จาก vasoactive solvent ให้ push ช้าและมี pacing/inotrope พร้อมใช้</div>
+    </details>
+  </div>
+
+  <!-- Nitroglycerin -->
+  <div class="card" data-drug="ntg">
+    <div class="head"><span class="name">8. Nitroglycerin</span><span class="conc">50 mg (10 ml) + NSS 40 ml = 1 mg/ml</span></div>
+    <div class="row">
+      <input type="range" id="ntg-r" min="1" max="4" step="0.1" value="1" style="flex:1">
+      <span class="doselabel" id="ntg-d">1.0 mcg/kg/min</span>
+      <span class="result-wrap"><input type="number" class="rate-input" id="ntg-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
+    </div>
+    <div class="note">Drip rate ทั่วไป 1–4 mcg/kg/min</div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Venodilator เด่น ลด preload และลด myocardial oxygen demand ใช้รักษา myocardial ischemia/hypertension หลัง CPB เฝ้าระวัง hypotension และ reflex tachycardia; ฤทธิ์ลดลงเมื่อใช้ต่อเนื่องนาน (tolerance) ปวดศีรษะเป็นผลข้างเคียงที่พบบ่อย</div>
+    </details>
+  </div>
+
+  <!-- Dobutamine -->
+  <div class="card" data-drug="dobutamine">
+    <div class="head"><span class="name">9. Dobutamine</span></div>
+    <div class="row">
+      <span style="font-size:13px; color:var(--ink-soft); font-weight:600;">ความเข้มข้น:</span>
+      <div class="segrow" id="dobu-conc-group">
+        <span class="segbtn active" data-v="1">1 mg/ml</span>
+        <span class="segbtn" data-v="2">2 mg/ml</span>
+        <span class="segbtn" data-v="5">5 mg/ml (BW&gt;50 kg)</span>
+      </div>
+    </div>
+    <div class="prep" id="dobu-prep">ยา vial 4 ml (50 mg) + NSS 46 ml = 50 ml</div>
+    <div class="row">
+      <input type="range" id="dobu-r" min="1" max="20" step="0.5" value="5" style="flex:1">
+      <span class="doselabel" id="dobu-d">5.0 mcg/kg/min</span>
+      <span class="result-wrap"><input type="number" class="rate-input" id="dobu-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
+    </div>
+    <div class="zone"><div class="marker" id="dobu-mark"></div></div>
+    <div class="zonelabels"><span>1–3</span><span>3–7</span><span>7–10</span><span>&gt;10</span></div>
+    <div class="note" id="dobu-zone-note"></div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Synthetic catecholamine เด่น β1 (เพิ่ม contractility และ HR เล็กน้อย) มีฤทธิ์ β2/α1 เล็กน้อย เป็น first-line inotrope สำหรับ low cardiac output ที่ไม่มี severe hypotension เกิด tachyphylaxis ได้เมื่อใช้ต่อเนื่องนาน และ HR มักเพิ่มขึ้นชัดเจนที่ขนาด &gt;7 mcg/kg/min</div>
+    </details>
+  </div>
+
+  <!-- Primacor infusion -->
+  <div class="card" data-drug="primacor">
+    <div class="head"><span class="name">10b. Primacor (Milrinone) — Maintenance</span><span class="conc">เจือจาง 1:5 → 200 mcg/ml</span></div>
+    <div class="prep">NSS ที่ผสม = ยาที่เหลือในขวด (ml) × 4</div>
+    <div class="row">
+      <input type="range" id="prim-r" min="0.1" max="0.75" step="0.025" value="0.375" style="flex:1">
+      <span class="doselabel" id="prim-d">0.375 mcg/kg/min</span>
+      <span class="result-wrap"><input type="number" class="rate-input" id="prim-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
+    </div>
+    <div class="note">Maintenance ทั่วไป 0.3–0.7 mcg/kg/min</div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Phosphodiesterase-3 inhibitor (inodilator) เพิ่ม contractility และลด afterload/preload พร้อมกัน โดยไม่เพิ่ม myocardial O2 demand มากเหมือน catecholamine เหมาะกับ low CO ที่มี high SVR ผลข้างเคียงหลักคือ hypotension และ thrombocytopenia; ปรับลดขนาดในผู้ป่วยไตวาย</div>
+    </details>
+  </div>
+
+  <!-- Transamin infusion -->
+  <div class="card" data-drug="transamin-inf">
+    <div class="head"><span class="name">11b. Transamin — Maintenance</span><span class="conc">เจือจาง → 10 mg/ml</span></div>
+    <div class="prep">amp 5 ml (250 mg) + NSS 20 ml</div>
+    <div class="row">
+      <span class="doselabel">1 mg/kg/hr</span>
+      <span class="result" id="txa-out">–<span class="u">ml/hr</span></span>
+    </div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Antifibrinolytic ลดการสลายลิ่มเลือด ใช้ลดปริมาณเลือดออกระหว่างและหลัง CPB ระวังในผู้ป่วยไตวาย (ลดขับออก เพิ่มความเสี่ยง seizure) และหลีกเลี่ยงในผู้ที่มีภาวะ thromboembolic disease ที่ยังไม่ควบคุม</div>
+    </details>
+  </div>
+
+  <!-- Precedex -->
+  <div class="card" data-drug="precedex">
+    <div class="head"><span class="name">12. Precedex (Dexmedetomidine)</span><span class="conc">amp 100 mcg (1 ml) + NSS 24 ml = 4 mcg/ml</span></div>
+    <div class="row">
+      <input type="range" id="prec-r" min="0.2" max="1.0" step="0.05" value="0.4" style="flex:1">
+      <span class="doselabel" id="prec-d">0.40 mcg/kg/hr</span>
+      <span class="result-wrap"><input type="number" class="rate-input" id="prec-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
+    </div>
+    <div class="note">Maintenance ทั่วไป 0.2–0.7 (สูงสุดถึง ~1.4) mcg/kg/hr — ในผู้ป่วย CVT มักเริ่มด้วย maintenance โดยไม่ให้ loading dose เพื่อหลีกเลี่ยง bradycardia/hypotension</div>
+    <details><summary>ข้อมูลยา</summary>
+      <div class="infobox">Selective α2-agonist ให้ sedation/analgesia โดยไม่กด respiratory drive มาก เหมาะกับการ sedate ผู้ป่วยหลังผ่าตัดหัวใจที่ต้องการ wean เร็ว ผลข้างเคียงหลักคือ bradycardia และ hypotension โดยเฉพาะเมื่อให้ loading dose เร็ว จึงมักข้าม loading ในผู้ป่วยกลุ่มนี้</div>
+    </details>
+  </div>
+
+</section>
+
+<footer>
+  โปรแกรมนี้สร้างจากตารางคำนวณยา CVT ของหน่วยงาน (ไฟล์ต้นฉบับ) เพื่อใช้เป็นเครื่องมือช่วยคำนวณเบื้องต้นเท่านั้น
+  ค่าที่คำนวณได้ต้องตรวจสอบซ้ำกับคำสั่งแพทย์ ขนาดยาที่เจือจางจริง และนโยบายของหน่วยงานทุกครั้งก่อนให้ยาแก่ผู้ป่วยจริง
+  ช่วง dose บางรายการอ้างอิงจากค่าทางเภสัชวิทยาโดยทั่วไป อาจแตกต่างจาก protocol เฉพาะของแต่ละสถาบัน
+</footer>
+
+</div>
+
+<script>
+function bw(){ return parseFloat(document.getElementById('bwNum').value) || 0; }
+
+function fmt(n, d){ if(!isFinite(n)) return '–'; return n.toFixed(d===undefined?1:d); }
+
+function syncBW(v){
+  document.getElementById('bwNum').value = v;
+  document.getElementById('bwRange').value = v;
+  recalcAll();
+}
+
+document.getElementById('bwNum').addEventListener('input', e=>syncBW(e.target.value));
+document.getElementById('bwRange').addEventListener('input', e=>syncBW(e.target.value));
+
+// ---- Levophed concentration state ----
+let levConc = 50;
+const levPrepMap = {
+  5: 'ยา 0.5 ml (500 mcg) + 5% D/W 99.5 ml',
+  40: 'ยา 2 ml (2,000 mcg) + 5% D/W 48 ml',
+  50: 'ยา 1 ml (1,000 mcg) + 5% D/W 19 ml'
+};
+document.querySelectorAll('#lev-conc-group .segbtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#lev-conc-group .segbtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    levConc = parseFloat(btn.dataset.v);
+    document.getElementById('lev-prep').textContent = levPrepMap[levConc];
+    recalcAll();
+  });
+});
+
+// ---- Dobutamine concentration state ----
+let dobuConc = 1;
+const dobuPrepMap = {
+  1: 'ยา vial 4 ml (50 mg) + NSS 46 ml = 50 ml',
+  2: 'ยา vial 8 ml (100 mg) + NSS 42 ml = 50 ml',
+  5: 'ยา vial 10 ml (125 mg) + NSS 15 ml = 25 ml (หรือ 20 ml (250 mg) + NSS 30 ml = 50 ml)'
+};
+document.querySelectorAll('#dobu-conc-group .segbtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#dobu-conc-group .segbtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    dobuConc = parseFloat(btn.dataset.v);
+    document.getElementById('dobu-prep').textContent = dobuPrepMap[dobuConc];
+    recalcAll();
+  });
+});
+
+// sliders
+['adr','lev','ntg','dobu','prim','prec'].forEach(id=>{
+  const el = document.getElementById(id+'-r');
+  if(el) el.addEventListener('input', recalcAll);
+});
+
+// ---- Two-way bind: editing the rate (ml/hr) field back-calculates the dose ----
+const rateToDose = {
+  adr:  (rate, W) => rate*50/(60*W),
+  lev:  (rate, W) => rate*levConc/(60*W),
+  ntg:  (rate, W) => rate*1000/(60*W),
+  dobu: (rate, W) => rate*dobuConc*1000/(60*W),
+  prim: (rate, W) => rate*200/(60*W),
+  prec: (rate, W) => rate*4/W
+};
+
+['adr','lev','ntg','dobu','prim','prec'].forEach(id=>{
+  const rateEl = document.getElementById(id+'-out');
+  const sliderEl = document.getElementById(id+'-r');
+  if(!rateEl || !sliderEl) return;
+  rateEl.addEventListener('input', ()=>{
+    const W = bw();
+    const rateVal = parseFloat(rateEl.value);
+    if(!isFinite(rateVal) || W<=0) return;
+    const dose = rateToDose[id](rateVal, W);
+    const min = parseFloat(sliderEl.min), max = parseFloat(sliderEl.max);
+    sliderEl.value = Math.min(max, Math.max(min, dose));
+    recalcAll();
+  });
+});
+
+function setZoneMarker(markerId, value, min, max){
+  const pct = Math.min(100, Math.max(0, (value-min)/(max-min)*100));
+  document.getElementById(markerId).style.left = 'calc(' + pct + '% - 1.5px)';
+}
+
+function recalcAll(){
+  const W = bw();
+
+  // Bolus
+  document.getElementById('hep3').innerHTML = fmt(3*W,0)+' mg → '+fmt(3*W/50)+'<span class="u">ml</span>';
+  document.getElementById('hep1').innerHTML = fmt(1*W,0)+' mg → '+fmt(1*W/50)+'<span class="u">ml</span>';
+  document.getElementById('prot3').innerHTML = fmt(3*W,0)+' mg → '+fmt(3*W/10)+'<span class="u">ml</span>';
+  document.getElementById('dexa').innerHTML = fmt(0.2*W,1)+' mg → '+fmt(0.2*W/5)+'<span class="u">ml</span>';
+  document.getElementById('mgso4').innerHTML = fmt(25*W,0)+' mg → '+fmt(25*W/500)+'<span class="u">ml</span>';
+  document.getElementById('txaLoad').innerHTML = fmt(10*W,0)+' mg → '+fmt(10*W/50)+'<span class="u">ml</span>';
+  document.getElementById('primLoad').innerHTML = fmt(0.05*W)+'<span class="u">ml</span>';
+
+  // Adrenaline
+  const adrDose = parseFloat(document.getElementById('adr-r').value);
+  document.getElementById('adr-d').textContent = adrDose.toFixed(3)+' mcg/kg/min';
+  const adrOut = document.getElementById('adr-out');
+  if(document.activeElement !== adrOut) adrOut.value = fmt(adrDose*60*W/50);
+  setZoneMarker('adr-mark', adrDose, 0.01, 0.3);
+  document.getElementById('adr-zone-note').textContent =
+    adrDose <= 0.03 ? 'โซน: β เด่น (chronotropy/inotropy)'
+    : adrDose <= 0.15 ? 'โซน: β + α ผสม (β มากกว่า)'
+    : 'โซน: α + β (α มากกว่า) — เสี่ยง arrhythmia มากขึ้นโดยเฉพาะช่วง 0.12–0.18';
+
+  // Levophed
+  const levDose = parseFloat(document.getElementById('lev-r').value);
+  document.getElementById('lev-d').textContent = levDose.toFixed(3)+' mcg/kg/min';
+  const levOut = document.getElementById('lev-out');
+  if(document.activeElement !== levOut) levOut.value = fmt(levDose*60*W/levConc);
+
+  // NTG
+  const ntgDose = parseFloat(document.getElementById('ntg-r').value);
+  document.getElementById('ntg-d').textContent = ntgDose.toFixed(1)+' mcg/kg/min';
+  const ntgOut = document.getElementById('ntg-out');
+  if(document.activeElement !== ntgOut) ntgOut.value = fmt(ntgDose*60*W/1000);
+
+  // Dobutamine
+  const dobuDose = parseFloat(document.getElementById('dobu-r').value);
+  document.getElementById('dobu-d').textContent = dobuDose.toFixed(1)+' mcg/kg/min';
+  const dobuOut = document.getElementById('dobu-out');
+  if(document.activeElement !== dobuOut) dobuOut.value = fmt(dobuDose*60*W/(dobuConc*1000));
+  setZoneMarker('dobu-mark', dobuDose, 1, 20);
+  document.getElementById('dobu-zone-note').textContent =
+    dobuDose <= 3 ? 'โซน 1–3 mcg/kg/min'
+    : dobuDose <= 7 ? 'โซน β เด่น'
+    : dobuDose <= 10 ? 'โซน β เด่น — HR มักเริ่มเพิ่มขึ้นชัดเจน'
+    : 'โซน α เริ่มมีบทบาทมากขึ้น';
+
+  // Primacor
+  const primDose = parseFloat(document.getElementById('prim-r').value);
+  document.getElementById('prim-d').textContent = primDose.toFixed(3)+' mcg/kg/min';
+  const primOut = document.getElementById('prim-out');
+  if(document.activeElement !== primOut) primOut.value = fmt(primDose*60*W/200);
+
+  // Transamin infusion
+  document.getElementById('txa-out').innerHTML = fmt(1*W/10)+'<span class="u">ml/hr</span>';
+
+  // Precedex
+  const precDose = parseFloat(document.getElementById('prec-r').value);
+  document.getElementById('prec-d').textContent = precDose.toFixed(2)+' mcg/kg/hr';
+  const precOut = document.getElementById('prec-out');
+  if(document.activeElement !== precOut) precOut.value = fmt(precDose*W/4);
+}
+
+recalcAll();
+
+// ---- PWA: service worker registration ----
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+  });
+}
+
+// ---- PWA: install prompt (Android/Desktop Chrome) ----
+let deferredPrompt = null;
+const banner = document.getElementById('installBanner');
+const installBtn = document.getElementById('installBtn');
+const dismissBtn = document.getElementById('installDismiss');
+const installText = document.getElementById('installText');
+
+function isStandalone(){
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+function dismissedRecently(){
+  const t = localStorage.getItem('cvtInstallDismissed');
+  return t && (Date.now() - parseInt(t,10) < 1000*60*60*24*7);
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (!isStandalone() && !dismissedRecently()){
+    installBtn.style.display = 'inline-block';
+    banner.style.display = 'block';
+  }
+});
+
+installBtn.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  banner.style.display = 'none';
+});
+
+dismissBtn.addEventListener('click', () => {
+  banner.style.display = 'none';
+  localStorage.setItem('cvtInstallDismissed', Date.now().toString());
+});
+
+// iOS Safari has no beforeinstallprompt — show manual instructions instead
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+if (isIOS && !isStandalone() && !dismissedRecently()){
+  installText.textContent = '📲 เพิ่มแอปนี้ที่หน้าจอหลัก: แตะปุ่ม แชร์ (Share) แล้วเลือก "เพิ่มไปยังหน้าจอโฮม"';
+  banner.style.display = 'block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AnesHub — Smart Tools for Safe Anesthesia</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3B1760">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AnesHub">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep: #22093f;
+    --bg-mid: #3a1272;
+    --bg-light: #5a1fa0;
+    --card-purple: #7E2FAD;
+    --card-anjan: #3a1f9e;
+    --card-pink: #b3175f;
+    --blue-pill-1: #2f6fe0;
+    --blue-pill-2: #1c3f9e;
+    --white: #ffffff;
+    --sans: 'Sarabun', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0; font-family:var(--sans); color:var(--white);
+    -webkit-font-smoothing:antialiased;
+    background: radial-gradient(circle at 15% 8%, var(--bg-light) 0%, transparent 45%),
+                radial-gradient(circle at 90% 82%, #6c1f9e 0%, transparent 40%),
+                linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-mid) 55%, var(--bg-deep) 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* decorative dotted grids */
+  .dots{
+    position:fixed; width:150px; height:150px; pointer-events:none; z-index:0;
+    background-image: radial-gradient(rgba(255,255,255,0.35) 1.6px, transparent 1.6px);
+    background-size: 16px 16px;
+    opacity:.55;
+  }
+  .dots.tr{ top:26px; right:18px; }
+  .dots.bl{ bottom:18px; left:14px; }
+
+  /* decorative swirl lines */
+  .swirl{ position:fixed; pointer-events:none; z-index:0; opacity:.35; }
+  .swirl.top-left{ top:-40px; left:-60px; width:260px; height:260px; }
+  .swirl.bottom-left{ bottom:-30px; left:-40px; width:220px; height:220px; }
+
+  .blob{
+    position:fixed; z-index:0; pointer-events:none; border-radius:50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 70%);
+  }
+  .blob.br{ width:340px; height:340px; right:-120px; bottom:-100px; }
+
+  /* ============ HOME SCREEN ============ */
+  #home{
+    position:relative; z-index:1;
+    max-width:760px; margin:0 auto;
+    padding:calc(64px + env(safe-area-inset-top)) 22px 60px;
+    display:flex; flex-direction:column; align-items:center;
+    min-height:100vh;
+  }
+
+  h1.wordmark{
+    margin:0 0 18px; text-align:center; font-weight:800; font-size:2.6rem;
+    letter-spacing:.5px;
+    background: linear-gradient(180deg, #f3e6ff 0%, #d9a9ff 55%, #b46bff 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-stroke:1px rgba(255,255,255,.55);
+    text-shadow: 0 6px 22px rgba(150,60,220,.45);
+  }
+
+  .subtitle-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    background:none;
+    color:#cfe0ff; font-weight:700; font-size:.95rem;
+    padding:10px 22px; border-radius:999px;
+    box-shadow:none;
+    margin-bottom:36px;
+  }
+
+  .cards{
+    width:100%; display:flex; gap:16px; flex-wrap:wrap;
+    justify-content:center; align-items:stretch;
+  }
+
+  .cat-card{
+    flex:1 1 200px; max-width:230px; min-height:230px;
+    background:linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.05));
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:22px; padding:18px 14px 22px;
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center; cursor:pointer; user-select:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:transform .15s ease, box-shadow .15s ease;
+    backdrop-filter: blur(6px);
+  }
+  .cat-card:active{ transform:scale(.97); }
+  .cat-card:hover{ box-shadow:0 14px 30px rgba(0,0,0,.28); transform:translateY(-2px); }
+
+  .cat-pill{
+    display:inline-block; font-weight:800; font-size:1.05rem;
+    padding:10px 22px; border-radius:999px; color:#fff;
+    box-shadow:0 6px 16px rgba(0,0,0,.28);
+    margin-bottom:18px; white-space:nowrap;
+  }
+  .cat-card.anesthcal .cat-pill{ background:linear-gradient(120deg, var(--card-purple), #5c1f80); }
+  .cat-card.drugs .cat-pill{ background:linear-gradient(120deg, var(--card-anjan), #201060); }
+  .cat-card.cpr .cat-pill{ background:linear-gradient(120deg, var(--card-pink), #7a0c47); }
+
+  .cat-card .cat-icon{ font-size:2.1rem; margin-bottom:10px; }
+  .cat-card .cat-desc{ font-size:.86rem; line-height:1.6; color:#efe6ff; font-weight:500; }
+  .cat-card .cat-desc b{ display:block; font-weight:700; color:#fff; margin-bottom:2px; }
+
+  footer.home-footer{
+    position:relative; z-index:1; text-align:center; font-size:.72rem;
+    color:#d9c2f0; opacity:.7; padding:26px 20px 10px; max-width:600px; line-height:1.7;
+  }
+
+  /* ============ TOOL VIEW ============ */
+  #toolView{
+    position:fixed; inset:0; z-index:20; display:none;
+    background:#F5F1FA; flex-direction:column;
+  }
+  #toolView.active{ display:flex; }
+  .toolbar{
+    flex:0 0 auto; display:flex; align-items:center; gap:10px;
+    padding:calc(12px + env(safe-area-inset-top)) 14px 12px;
+    color:#fff;
+    box-shadow:0 4px 14px rgba(0,0,0,.18);
+  }
+  .toolbar button{
+    display:flex; align-items:center; gap:6px;
+    background:rgba(255,255,255,.18); border:none; color:#fff;
+    font-family:var(--sans); font-weight:700; font-size:.9rem;
+    padding:8px 14px; border-radius:10px; cursor:pointer;
+  }
+  .toolbar button:active{ background:rgba(255,255,255,.3); }
+  .toolbar .tb-title{ font-weight:700; font-size:.95rem; }
+  #toolFrame{ flex:1 1 auto; width:100%; border:none; background:#F5F1FA; }
+
+  .toolbar.anesthcal{ background:linear-gradient(120deg, #3B1760, #5B268F); }
+  .toolbar.drugs{ background:linear-gradient(120deg, #241468, #3a1f9e); }
+  .toolbar.cpr{ background:linear-gradient(120deg, #7a0c47, #b3175f); }
+
+  @media (max-width:480px){
+    h1.wordmark{ font-size:2.1rem; }
+    .cat-card{ flex:1 1 45%; min-height:200px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dots tr"></div>
+<div class="dots bl"></div>
+<div class="blob br"></div>
+
+<div id="home">
+  <h1 class="wordmark">AnesHub</h1>
+  <div class="subtitle-pill">✨ Smart Tools for Safe Anesthesia</div>
+
+  <div class="cards">
+    <div class="cat-card anesthcal" onclick="openTool('anesthcal')">
+      <div class="cat-pill">Anesth Cal</div>
+      <div class="cat-icon">💜</div>
+      <div class="cat-desc"><b>Program</b>ช่วยคำนวณยา<br>ตามน้ำหนักผู้ป่วย</div>
+    </div>
+
+    <div class="cat-card drugs" onclick="openTool('drugs')">
+      <div class="cat-pill">ยา</div>
+      <div class="cat-icon">💉</div>
+      <div class="cat-desc"><b>ยาทางวิสัญญี</b>ที่ใช้ทางวิสัญญี<br>และการระงับปวด</div>
+    </div>
+
+    <div class="cat-card cpr" onclick="openTool('cpr')">
+      <div class="cat-pill">CPR</div>
+      <div class="cat-icon">💗</div>
+      <div class="cat-desc"><b>Guideline</b>การช่วยชีวิต<br>2025</div>
+    </div>
+  </div>
+</div>
+
+<footer class="home-footer">
+  AnesHub รวมเครื่องมือช่วยงานวิสัญญีไว้ในที่เดียว ใช้ประกอบการตัดสินใจทางคลินิกเบื้องต้นเท่านั้น
+  ผู้ใช้งานต้องตรวจสอบซ้ำกับคำสั่งแพทย์และนโยบายของหน่วยงานทุกครั้งก่อนใช้กับผู้ป่วยจริง
+</footer>
+
+<div id="toolView">
+  <div class="toolbar" id="toolbar">
+    <button onclick="closeTool()">← กลับ</button>
+    <span class="tb-title" id="tbTitle"></span>
+  </div>
+  <iframe id="toolFrame" src="" title="AnesHub tool"></iframe>
+</div>
+
+<script>
+const TOOLS = {
+  anesthcal: { src:'anesth-cal.html', title:'Anesth Cal', cls:'anesthcal' },
+  drugs:     { src:'anesth-drugs.html', title:'ยาทางวิสัญญี', cls:'drugs' },
+  cpr:       { src:'cpr-protocol.html', title:'CPR Guideline 2025', cls:'cpr' }
+};
+
+function openTool(key){
+  const t = TOOLS[key];
+  if(!t) return;
+  const toolbar = document.getElementById('toolbar');
+  toolbar.className = 'toolbar ' + t.cls;
+  document.getElementById('tbTitle').textContent = t.title;
+  document.getElementById('toolFrame').src = t.src;
+  document.getElementById('toolView').classList.add('active');
+  history.pushState({tool:key}, '', '#' + key);
+}
+
+function closeTool(){
+  document.getElementById('toolView').classList.remove('active');
+  document.getElementById('toolFrame').src = '';
+  if(location.hash) history.pushState({}, '', location.pathname);
+}
+
+window.addEventListener('popstate', (e)=>{
+  if(e.state && e.state.tool){ openTool(e.state.tool); }
+  else { closeTool(); }
+});
+
+// open directly from hash on load (e.g. shared link)
+window.addEventListener('load', ()=>{
+  const key = location.hash.replace('#','');
+  if(TOOLS[key]) openTool(key);
+});
+
+// ---- PWA: service worker registration ----
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>

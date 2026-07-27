@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPR Guideline 2025 | AnesHub</title>
+<style>
+  :root {
+    --purple-900: #7a0c47;
+    --purple-700: #b3175f;
+    --purple-600: #d1267a;
+    --purple-500: #e14f96;
+    --purple-100: #fbdbea;
+    --purple-50: #fdf0f6;
+    --white: #ffffff;
+    --gray-700: #374151;
+    --gray-500: #6b7280;
+    --red-600: #dc2626;
+    --red-50: #fef2f2;
+    --blue-600: #2563eb;
+    --blue-50: #eff6ff;
+    --green-600: #16a34a;
+    --green-50: #f0fdf4;
+    --amber-600: #d97706;
+    --amber-50: #fffbeb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Sarabun', Tahoma, sans-serif;
+    background: linear-gradient(180deg, var(--purple-50) 0%, var(--white) 100%);
+    color: var(--gray-700);
+    padding-bottom: 40px;
+  }
+  header {
+    background: linear-gradient(135deg, var(--purple-700), var(--purple-900));
+    color: white;
+    padding: 20px 16px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(179,23,95,0.25);
+  }
+  header h1 { margin: 0 0 4px; font-size: 1.3rem; }
+  header p { margin: 0; font-size: 0.8rem; opacity: 0.85; }
+
+  .weight-bar { max-width: 720px; margin: -18px auto 0; padding: 0 16px; }
+  .weight-card {
+    background: white; border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(179,23,95,0.15);
+    padding: 14px 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .weight-card label { font-weight: 600; font-size: 0.9rem; color: var(--purple-900); white-space: nowrap; }
+  .weight-card input {
+    flex: 1; border: 2px solid var(--purple-100); border-radius: 10px;
+    padding: 10px 12px; font-size: 1rem; outline: none; transition: border-color .15s;
+  }
+  .weight-card input:focus { border-color: var(--purple-500); }
+  .weight-card .unit { color: var(--gray-500); font-size: 0.85rem; }
+
+  .container { max-width: 720px; margin: 20px auto 0; padding: 0 16px; }
+
+  /* Tab menu for the 5 algorithms - vertical stacked list */
+  .tab-menu {
+    display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;
+  }
+  .tab-btn {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 13px 16px; border-radius: 12px; border: 1.5px solid var(--purple-100);
+    background: white; color: var(--purple-700); font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; text-align: left; transition: all .15s;
+    box-shadow: 0 1px 4px rgba(179,23,95,0.06);
+  }
+  .tab-btn::after {
+    content: '›'; font-size: 1.2rem; font-weight: 700; color: var(--purple-300, #f0a8cc);
+    transition: transform .15s;
+  }
+  .tab-btn.active { background: var(--purple-700); color: white; border-color: var(--purple-700); }
+  .tab-btn.active::after { color: white; transform: rotate(90deg); }
+  .tab-group-title {
+    font-size: 0.75rem; font-weight: 700; color: var(--purple-500);
+    text-transform: uppercase; letter-spacing: 0.03em; margin: 10px 0 -2px 4px;
+  }
+  .tab-group-title:first-child { margin-top: 0; }
+
+  .algo-section { display: none; }
+  .algo-section.active { display: block; }
+
+  .card {
+    background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(179,23,95,0.08);
+    border: 1px solid var(--purple-100); padding: 16px; margin-bottom: 14px;
+  }
+  .card h2 { margin: 0 0 4px; font-size: 1.05rem; color: var(--purple-900); }
+  .card .subtitle { font-size: 0.78rem; color: var(--gray-500); margin-bottom: 10px; }
+
+  .step-item {
+    display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--purple-100);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num {
+    flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--purple-600); color: white;
+    display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700;
+  }
+  .step-text { flex: 1; }
+  .step-title { font-weight: 600; font-size: 0.9rem; color: var(--gray-700); }
+  .step-detail { font-size: 0.82rem; color: var(--gray-500); margin-top: 2px; }
+
+  .branch-item { margin-top: 6px; padding: 8px 10px; background: var(--purple-50); border-radius: 8px; font-size: 0.82rem; }
+  .branch-item b { color: var(--purple-700); }
+
+  .keynum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+  .keynum { background: var(--purple-50); border-radius: 10px; padding: 8px 10px; }
+  .keynum .kn-label { font-size: 0.72rem; color: var(--gray-500); }
+  .keynum .kn-value { font-size: 0.92rem; font-weight: 700; color: var(--purple-700); }
+
+  .quality-list { margin: 6px 0 0; padding-left: 18px; font-size: 0.85rem; }
+  .quality-list li { margin-bottom: 4px; }
+
+  .branch-card {
+    border-radius: 14px; padding: 12px 14px; margin-bottom: 12px; border-left: 5px solid;
+  }
+  .branch-card.red { background: var(--red-50); border-color: var(--red-600); }
+  .branch-card.blue { background: var(--blue-50); border-color: var(--blue-600); }
+  .branch-card.green { background: var(--green-50); border-color: var(--green-600); }
+  .branch-card.amber { background: var(--amber-50); border-color: var(--amber-600); }
+  .branch-card h3 { margin: 0 0 8px; font-size: 0.95rem; }
+  .branch-card.red h3 { color: var(--red-600); }
+  .branch-card.blue h3 { color: var(--blue-600); }
+  .branch-card.green h3 { color: var(--green-600); }
+  .branch-card.amber h3 { color: var(--amber-600); }
+  .branch-steps { margin: 0; padding-left: 18px; font-size: 0.84rem; }
+  .branch-steps li { margin-bottom: 6px; }
+
+  .subgroup { background: white; border-radius: 10px; padding: 8px 10px; margin-top: 8px; }
+  .subgroup .sg-title { font-weight: 700; font-size: 0.82rem; color: var(--purple-700); margin-bottom: 4px; }
+  .subgroup ul { margin: 0; padding-left: 16px; font-size: 0.8rem; }
+  .subgroup li { margin-bottom: 3px; }
+
+  .energy-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.8rem; }
+  .energy-table td { padding: 6px 4px; border-bottom: 1px solid var(--purple-100); }
+  .energy-table td:last-child { text-align: right; font-weight: 700; color: var(--purple-700); }
+
+  .drug-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 6px 0; border-bottom: 1px dashed var(--purple-100); font-size: 0.86rem; gap: 8px;
+  }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-name { font-weight: 600; color: var(--gray-700); }
+  .drug-dose-label { flex: 1; color: var(--gray-500); font-size: 0.78rem; }
+  .drug-value { font-weight: 700; color: var(--purple-700); background: var(--purple-50); padding: 3px 8px; border-radius: 8px; white-space: nowrap; }
+
+  .cause-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; margin-top: 6px; font-size: 0.78rem; }
+  .cause-grid .cause-col b { color: var(--purple-700); display:block; margin-bottom: 4px; }
+  .cause-grid ul { margin: 0; padding-left: 16px; }
+
+  details.info-block { margin-top: 6px; font-size: 0.82rem; }
+  details.info-block summary { cursor: pointer; color: var(--purple-600); font-weight: 600; padding: 4px 0; }
+
+  .note-box {
+    background: var(--amber-50); border-left: 4px solid var(--amber-600);
+    padding: 8px 10px; border-radius: 8px; font-size: 0.8rem; margin-top: 8px; color: #7c4a03;
+  }
+
+  .footer-note { max-width: 720px; margin: 20px auto; padding: 12px 16px; font-size: 0.72rem; color: var(--gray-500); text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💗 CPR Guideline 2025</h1>
+  <p>Anesth-cal — แนวทางการช่วยชีวิต ค.ศ. 2025 (BLS / ACLS)</p>
+</header>
+
+<div class="weight-bar">
+  <div class="weight-card">
+    <label for="weightInput">น้ำหนักผู้ป่วย</label>
+    <input type="number" id="weightInput" placeholder="เช่น 60" min="0" step="0.1">
+    <span class="unit">กก. (ใช้คำนวณยาที่ปรับตามน้ำหนัก)</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tab-menu" id="tabMenu"></div>
+  <div id="algoContainer"></div>
+</div>
+
+<div class="footer-note">
+  แนวทางนี้ใช้ประกอบการตัดสินใจทางคลินิกเท่านั้น ผู้ปฏิบัติต้องผ่านการฝึกอบรมและใช้วิจารณญาณของตนเองตามบริบทผู้ป่วยจริง<br>
+  อ้างอิง: Thai CPR Guidelines 2025
+</div>
+
+<script>
+const CPR_DATA = {"meta": {"title": "CPR Guideline 2025", "titleThai": "แนวทางการช่วยชีวิต ค.ศ. 2025", "source": "สมาคมแพทย์โรคหัวใจแห่งประเทศไทยฯ / Thai CPR Guidelines 2025 (สอดคล้องแนวทาง AHA)", "version": "1.0", "disclaimer": "แนวทางนี้ใช้ประกอบการตัดสินใจทางคลินิกเท่านั้น ผู้ปฏิบัติต้องผ่านการฝึกอบรมและใช้วิจารณญาณของตนเองตามบริบทผู้ป่วยจริง"}, "algorithms": [{"id": "bls", "name": "Basic Life Support", "nameThai": "การช่วยชีวิตขั้นพื้นฐานในผู้ใหญ่ (สำหรับบุคลากรทางการแพทย์)", "icon": "heart-pulse", "steps": [{"no": 1, "title": "ประเมินความปลอดภัยของสถานที่เกิดเหตุ", "detail": "ตรวจสอบความปลอดภัยก่อนเข้าช่วยเหลือผู้ป่วยเสมอ"}, {"no": 2, "title": "ผู้ป่วยไม่ตอบสนอง", "detail": "ตะโกนขอความช่วยเหลือจากผู้ที่อยู่ใกล้เคียง ติดต่อหน่วยบริการการแพทย์ฉุกเฉิน โทร. 1669 และให้ผู้ช่วยเหลืออีกคนไปนำ AED มาโดยเร็วที่สุด"}, {"no": 3, "title": "ตรวจคลำชีพจรพร้อมกับตรวจดูการหายใจ", "detail": "ตรวจคลำชีพจรภายใน 5-10 วินาที พร้อม ๆ กับตรวจดูว่าหายใจหรือไม่ หรือหายใจเฮือก (gasping)", "branches": [{"condition": "หายใจปกติ + มีชีพจร", "action": "เฝ้าระวังอาการอย่างต่อเนื่องจนกว่าทีมช่วยชีวิตขั้นสูง (ACLS) จะมาถึง"}, {"condition": "หายใจผิดปกติ/ไม่หายใจ/หายใจเฮือก + มีชีพจร (ภาวะหยุดหายใจ)", "action": "ช่วยหายใจ 1 ครั้งทุก 6 วินาที (10 ครั้ง/นาที) และคลำชีพจรทุก 2 นาที หากไม่พบชีพจรให้เริ่มทำ CPR ทันที"}, {"condition": "ไม่หายใจ หรือ หายใจเฮือก + ไม่มีชีพจร (Cardiac Arrest)", "action": "เริ่มทำ CPR ทันที: กดหน้าอก 30 ครั้ง สลับกับช่วยหายใจ 2 ครั้ง"}]}, {"no": 4, "title": "AED มาถึง", "detail": "เปิดใช้และทำตามคำแนะนำของ AED โดยเร็วที่สุด", "branches": [{"condition": "AED แนะนำว่าต้องช็อกไฟฟ้า", "action": "ช็อกไฟฟ้า 1 ครั้ง แล้วทำ CPR ต่อทันที"}, {"condition": "AED แนะนำว่าไม่ต้องช็อกไฟฟ้า", "action": "ทำ CPR ต่อทันที"}]}], "keyNumbers": [{"label": "ความลึกในการกดหน้าอก", "value": "5-6 ซม. (2-2.4 นิ้ว)"}, {"label": "อัตราเร็วในการกดหน้าอก", "value": "100-120 ครั้ง/นาที"}, {"label": "อัตราส่วนกดหน้าอกต่อช่วยหายใจ", "value": "30 : 2"}, {"label": "ช่วยหายใจ (ภาวะหยุดหายใจ มีชีพจร)", "value": "1 ครั้งทุก 6 วินาที (10 ครั้ง/นาที)"}, {"label": "หยุดกดหน้าอกได้ไม่เกิน", "value": "10 วินาที"}, {"label": "เปลี่ยนคนกดหน้าอกทุก", "value": "2 นาที หรือเมื่อเหนื่อยล้า"}, {"label": "ตรวจคลำชีพจร/ประเมินภายใน", "value": "5-10 วินาที"}], "qualityPoints": ["กดหน้าอกด้วยความลึก 5-6 ซม. (2-2.4 นิ้ว)", "กดหน้าอกด้วยอัตราเร็ว 100-120 ครั้ง/นาที", "ปล่อยหน้าอกให้คืนตัวกลับอย่างเต็มที่หลังการกดหน้าอกแต่ละครั้ง", "ขัดจังหวะการกดหน้าอกให้น้อยที่สุด หรือหยุดกดหน้าอกไม่เกิน 10 วินาที", "หลีกเลี่ยงการช่วยหายใจที่มากเกินไป", "เปลี่ยนคนกดหน้าอกทุก 2 นาที หรือเมื่อรู้สึกเหนื่อยล้า"], "note": "ทำ CPR ต่อเนื่องครบ 2 นาที หรือจนกว่า AED จะสั่งให้หยุดเพื่อประเมินจังหวะการเต้นของหัวใจ ดำเนินการช่วยชีวิตต่อเนื่องจนกว่าทีมช่วยชีวิตขั้นสูง (ACLS) จะมาถึง หรือผู้ป่วยเริ่มมีชีพจร"}, {"id": "cardiac_arrest", "name": "Adult Cardiac Arrest Algorithm", "nameThai": "การช่วยชีวิตขั้นสูงในผู้ใหญ่ — ภาวะหัวใจหยุดเต้น", "icon": "activity-square", "steps": [{"no": 1, "title": "พบผู้ป่วยหมดสติ ไม่มีชีพจร", "detail": "หลังจากขอความช่วยเหลือแล้ว เริ่ม High-Quality CPR ช่วยหายใจและให้ oxygen ติด defibrillator"}, {"no": 2, "title": "วิเคราะห์คลื่นไฟฟ้าหัวใจว่าต้องช็อกไฟฟ้า (Defibrillation) หรือไม่", "detail": "วิเคราะห์คลื่นไฟฟ้าหัวใจพร้อมกับคลำชีพจรไม่เกิน 10 วินาที แบ่งเป็น 2 กลุ่ม: VF/pulseless VT (ต้องช็อกไฟฟ้า) และ Asystole/PEA (ไม่ต้องช็อกไฟฟ้า)"}], "branches": [{"id": "shockable", "title": "VF / pulseless VT (ต้องช็อกไฟฟ้า)", "color": "red", "steps": ["ช็อกไฟฟ้า 1 ครั้ง → CPR ต่อทันที 2 นาที", "เปิดหลอดเลือดดำ (IV/IO)", "ให้ Adrenaline 1 mg IV/IO ทุก 3-5 นาที", "พิจารณาใส่ advanced airway และ capnography", "วิเคราะห์คลื่นไฟฟ้าหัวใจซ้ำ (คลำชีพจรไม่เกิน 10 วินาที)", "ถ้ายังต้องช็อกไฟฟ้า: ช็อกไฟฟ้าซ้ำ → รีบให้ adrenaline โดยด่วนที่สุด → CPR 2 นาที → ให้ Amiodarone หรือ Lidocaine → ตรวจประเมินและค้นหาสาเหตุที่แก้ไขได้ (5H/5T)", "ประเมินซ้ำ: ถ้ามีชีพจร → ไปที่ Post-Cardiac Arrest Care; ถ้าไม่มีชีพจร → วนขั้นตอนต่อ (ให้ adrenaline ทุก 3-5 นาที, CPR 2 นาที, วิเคราะห์คลื่นไฟฟ้าหัวใจซ้ำ)"]}, {"id": "nonshockable", "title": "Asystole / PEA (ไม่ต้องช็อกไฟฟ้า)", "color": "blue", "steps": ["เริ่ม CPR 2 นาที", "เปิดหลอดเลือดดำ (IV/IO)", "ให้ Adrenaline 1 mg IV ทุก 3-5 นาที โดยด่วนที่สุด", "พิจารณาใส่ advanced airway และ capnography", "ตรวจประเมินและค้นหาสาเหตุที่แก้ไขได้ (5H/5T)", "วิเคราะห์คลื่นไฟฟ้าหัวใจซ้ำ (คลำชีพจรไม่เกิน 10 วินาที)", "ถ้าเปลี่ยนเป็นจังหวะที่ต้องช็อกไฟฟ้า → ไปกลุ่ม VF/pulseless VT", "ถ้ายังไม่ต้องช็อกไฟฟ้า → CPR 2 นาทีต่อ, ให้ adrenaline ทุก 3-5 นาที, ค้นหา 5H/5T ต่อเนื่อง", "ถ้ามีชีพจร → ไปที่ Post-Cardiac Arrest Care"]}], "drugs": [{"name": "Adrenaline (Epinephrine)", "dosing": [{"label": "ทุกจังหวะ", "type": "fixed_value", "mg": 1, "unit": "mg", "route": "IV/IO", "note": "ให้ซ้ำทุก 3-5 นาที"}]}, {"name": "Amiodarone", "dosing": [{"label": "ครั้งแรก", "type": "fixed_value", "mg": 300, "unit": "mg", "route": "IV/IO"}, {"label": "ครั้งที่สอง", "type": "fixed_value", "mg": 150, "unit": "mg", "route": "IV/IO"}]}, {"name": "Lidocaine", "dosing": [{"label": "ครั้งแรก", "type": "weight_range", "minMgKg": 1, "maxMgKg": 1.5, "unit": "mg/kg", "route": "IV/IO"}, {"label": "ครั้งที่สอง", "type": "weight_range", "minMgKg": 0.5, "maxMgKg": 0.75, "unit": "mg/kg", "route": "IV/IO"}]}], "defibrillationNotes": ["การช็อกไฟฟ้าครั้งแรกให้ใช้พลังงานตามคำแนะนำของบริษัทผู้ผลิต หากไม่ทราบ ให้ใช้พลังงานสูงสุดของเครื่อง Defibrillator", "หลังการช็อกครั้งที่ 3 พิจารณาใช้ Vector Change หรือ Double Sequential External Defibrillation ถ้าอุปกรณ์และผู้ช่วยเหลือมีความพร้อม", "หากไม่สามารถเปิดหลอดเลือดดำได้ ให้พิจารณาทำ IO (Intraosseous) access"], "reversibleCauses": {"title": "สาเหตุที่พบได้บ่อย (5H/5T)", "H": ["Hypovolemia", "Hypoxia", "Hydrogen ion (acidosis)", "Hypo-/Hyperkalemia", "Hypothermia"], "T": ["Thrombosis, cardiac", "Thrombosis, pulmonary", "Tamponade, cardiac", "Tension pneumothorax", "Toxins"]}}, {"id": "tachycardia", "name": "Adult Tachycardia with Pulse Algorithm", "nameThai": "การช่วยชีวิตขั้นสูงในผู้ใหญ่ — หัวใจเต้นเร็วที่มีชีพจร", "icon": "trending-up", "steps": [{"no": 1, "title": "ผู้ป่วยมีอาการผิดปกติจากหัวใจเต้นเร็ว", "detail": "โดยเฉพาะเมื่อหัวใจเต้น ≥ 150 ครั้ง/นาที"}, {"no": 2, "title": "ประเมินเบื้องต้นและค้นหาสาเหตุ", "detail": "Airway: เปิดทางเดินหายใจ ช่วยหายใจ วัด O2 Sat ให้ออกซิเจนเมื่อ SpO2 < 94% | Hemodynamic: วัดความดันโลหิต เปิดหลอดเลือดดำ ติด monitor และทำ 12-lead ECG โดยไม่ทำให้การรักษาล่าช้า"}, {"no": 3, "title": "ประเมินว่าผู้ป่วยมีอาการคงที่หรือไม่"}], "unstableCriteria": ["ความดันโลหิตต่ำ (SBP < 90 mmHg)", "ระดับความรู้สึกตัวเปลี่ยนไป ซึม สับสน", "มีภาวะช็อกหรือมีอาการแสดงของ Poor Tissue Perfusion", "มีอาการแน่นหน้าอกจากกล้ามเนื้อหัวใจขาดเลือด", "มีภาวะหัวใจล้มเหลว (Acute Heart Failure)"], "branches": [{"id": "unstable", "title": "อาการไม่คงที่ (Unstable)", "color": "red", "steps": ["Synchronized Cardioversion (หรือ Defibrillation ถ้าเป็น Polymorphic VT)", "พิจารณา sedation เช่น IV Diazepam/Midazolam/Etomidate และ/หรือ IV analgesic เช่น Fentanyl", "ถ้าทำ Synchronized Cardioversion ครั้งแรกไม่ตอบสนอง ให้ทำซ้ำโดยเพิ่มพลังงานในการทำครั้งต่อไป", "ถ้ายังไม่ตอบสนอง: หาสาเหตุ, เพิ่มพลังงานที่ใช้, ให้ยา Antiarrhythmic, ปรึกษาผู้เชี่ยวชาญ"], "cardioversionEnergy": [{"rhythm": "Regular Narrow QRS (SVT)", "energy": "100 J"}, {"rhythm": "Regular Wide QRS (Monomorphic VT)", "energy": "100 J"}, {"rhythm": "Irregular Narrow QRS (AF/Flutter)", "energy": "200 J"}]}, {"id": "stable", "title": "อาการคงที่ (Stable)", "color": "green", "detail": "ประเมิน 12-lead ECG เพื่อดู morphology ของ QRS complex แบ่งเป็น QRS กว้าง (≥120 msec) และ QRS แคบ (<120 msec) แต่ละแบบแบ่งเป็น Regular / Irregular", "subgroups": [{"title": "QRS แคบ (< 120 msec) — Regular", "steps": ["Vagal Maneuvers", "Adenosine 6 mg rapid IV bolus หากไม่ตอบสนอง ให้ทำซ้ำ 12 mg rapid IV bolus", "Beta-blocker, Verapamil, Diltiazem (ทางเลือก)", "ปรึกษาผู้เชี่ยวชาญ"]}, {"title": "QRS แคบ (< 120 msec) — Irregular", "steps": ["ปรึกษาผู้เชี่ยวชาญ", "Beta-blocker, Verapamil, Diltiazem เพื่อ control rate", "พิจารณาให้ Digoxin, Amiodarone ถ้าเป็น AF with Heart Failure"]}, {"title": "QRS กว้าง (≥ 120 msec) — Regular", "steps": ["ปรึกษาผู้เชี่ยวชาญ", "พิจารณาให้ Antiarrhythmic Drug เช่น Amiodarone", "พิจารณาให้ Synchronized Cardioversion"]}, {"title": "QRS กว้าง (≥ 120 msec) — Irregular", "steps": ["ปรึกษาผู้เชี่ยวชาญ", "หลีกเลี่ยงการให้ Amiodarone หากสงสัย AF with WPW", "พิจารณาให้ Synchronized Cardioversion 200 J"]}]}], "drugs": [{"name": "Adenosine", "dosing": [{"label": "ครั้งแรก", "type": "fixed_value", "mg": 6, "unit": "mg", "route": "Rapid IV bolus"}, {"label": "ครั้งที่สอง (ถ้าไม่ตอบสนอง)", "type": "fixed_value", "mg": 12, "unit": "mg", "route": "Rapid IV bolus"}]}]}, {"id": "bradycardia", "name": "Adult Bradycardia with Pulse Algorithm", "nameThai": "การช่วยชีวิตขั้นสูงในผู้ใหญ่ — หัวใจเต้นช้าที่มีชีพจร", "icon": "trending-down", "steps": [{"no": 1, "title": "ผู้ป่วยมีอาการผิดปกติจากหัวใจเต้นช้า", "detail": "โดยเฉพาะเมื่อหัวใจเต้น < 50 ครั้ง/นาที"}, {"no": 2, "title": "ประเมินว่าผู้ป่วยมีอาการไม่คงที่หรือไม่", "detail": "1) ประเมิน Airway เบื้องต้น เปิดทางเดินหายใจ 2) ช่วยหายใจเมื่อหายใจไม่เพียงพอ/ผิดปกติ และให้ออกซิเจนเมื่อ SpO2 < 94% 3) ติด monitor ความดันโลหิต ECG และ Pulse oximeter"}], "unstableCriteria": ["ความดันโลหิตต่ำ (SBP < 90 mmHg)", "ระดับความรู้สึกตัวเปลี่ยนไป ซึม สับสน", "มีภาวะช็อกหรือมีอาการแสดงของ Poor Tissue Perfusion", "มีอาการแน่นหน้าอกจากกล้ามเนื้อหัวใจขาดเลือด", "มีภาวะหัวใจล้มเหลว (Acute Heart Failure)"], "branches": [{"id": "stable", "title": "อาการคงที่", "color": "green", "steps": ["สังเกตอาการ", "ปรึกษาผู้เชี่ยวชาญ"]}, {"id": "unstable_responding", "title": "อาการไม่คงที่ — ตอบสนองต่อการดูแลเบื้องต้น", "color": "amber", "steps": ["ค้นหาสาเหตุที่พบบ่อย และให้การรักษาเบื้องต้น", "ให้การดูแลทางเดินหายใจ การหายใจ และพิจารณาให้ออกซิเจนเมื่อ SpO2 < 94%", "ให้การดูแลระบบไหลเวียนโลหิต", "ทำ 12-lead ECG", "สังเกตอาการ และปรึกษาผู้เชี่ยวชาญ"]}, {"id": "unstable_persisting", "title": "อาการไม่คงที่ — ไม่ตอบสนอง / ยังคงหัวใจเต้นช้า", "color": "red", "steps": ["ให้ Atropine 1 mg IV bolus ให้ซ้ำได้ทุก 3-5 นาที สูงสุดไม่เกิน 3 mg", "หากไม่ตอบสนอง: พิจารณา Transcutaneous Pacing หรือให้ Dopamine IV infusion 5-20 mcg/kg/min หรือให้ Adrenaline IV infusion 2-10 mcg/min", "ปรึกษาผู้เชี่ยวชาญ", "พิจารณา Transvenous Pacing (ถ้าสามารถทำได้)"], "specialNote": "หากมั่นใจว่า ECG เป็น Second-Degree AV block Mobitz type II, High-Grade AV block หรือ Third-Degree AV block (complete heart block) ให้พิจารณา Pacing ได้เลย (Transcutaneous หรือ Transvenous) เพราะมักไม่ตอบสนองต่อ Atropine"}], "commonCauses": ["Myocardial Ischemia/Infarction", "Drugs/toxicology (เช่น Calcium-Channel Blockers, Beta Blockers, Digoxin)", "Hypoxia", "Electrolyte abnormality (เช่น Hyperkalemia)"], "drugs": [{"name": "Atropine", "dosing": [{"label": "ขนาดยา", "type": "fixed_value", "mg": 1, "unit": "mg", "route": "IV bolus", "note": "ซ้ำได้ทุก 3-5 นาที สูงสุดไม่เกิน 3 mg รวม"}]}, {"name": "Dopamine", "dosing": [{"label": "Infusion", "type": "weight_rate_range", "minMcgKgMin": 5, "maxMcgKgMin": 20, "unit": "mcg/kg/min", "route": "IV infusion"}]}, {"name": "Adrenaline (Epinephrine)", "dosing": [{"label": "Infusion", "type": "fixed_range", "minMcg": 2, "maxMcg": 10, "unit": "mcg/min", "route": "IV infusion", "note": "ไม่ปรับตามน้ำหนักตัว"}]}]}, {"id": "post_cardiac_arrest", "name": "Post-Cardiac Arrest Care (ROSC)", "nameThai": "การดูแลผู้ป่วยหลังภาวะหัวใจหยุดเต้น — Return of Spontaneous Circulation", "icon": "heart-handshake", "steps": [{"no": 1, "title": "ผู้ป่วยกลับมามีชีพจร (ROSC)"}, {"no": 2, "title": "หยุดยากดประสาทและยาหย่อนกล้ามเนื้อ (ถ้าทำได้)"}], "immediateCare": [{"title": "Airway", "detail": "ใส่ท่อช่วยหายใจและยืนยันตำแหน่ง"}, {"title": "Oxygen and Ventilation", "detail": "ใช้ FiO2 100% จนสามารถประเมิน SpO2 ได้น่าเชื่อถือ ปรับ FiO2 ให้ SpO2 90-98% (PaO2 60-105 mmHg) ปรับ RR ให้ PaCO2 35-45 mmHg"}, {"title": "Hemodynamics", "detail": "เป้าหมายให้ MAP ≥ 65 mmHg"}, {"title": "Early diagnostic testing", "detail": "ตรวจ 12-lead ECG พิจารณาตรวจทางรังสีวิทยา"}], "decisionPoint": {"question": "ผู้ป่วยทำตามสั่งหรือไม่", "follows": {"label": "ทำตามสั่ง", "action": "การดูแลภาวะวิกฤตอย่างต่อเนื่อง"}, "notFollows": {"label": "ไม่ทำตามสั่ง", "action": "ควบคุมอุณหภูมิ (Targeted Temperature Management) แล้วดูแลภาวะวิกฤตอย่างต่อเนื่อง"}}, "continuedCare": [{"title": "Cardiac Intervention", "detail": "ค้นหาภาวะ STEMI, Severe Myocardial Ischemia, Cardiogenic Shock, Ventricular Arrhythmia และให้การรักษา เช่น การสวนหัวใจ, การใส่ IABP หรือ ECMO ในกรณีที่มีข้อบ่งชี้"}, {"title": "การรักษาด้วยการควบคุมอุณหภูมิ (TTM)", "detail": "พิจารณาควบคุมอุณหภูมิ โดยมีเป้าหมายที่ 32-37.5°C และคงอุณหภูมิเป้าหมายไว้อย่างน้อย 36 ชั่วโมง"}, {"title": "ประเมินภาวะชักและอาการทางสมอง", "detail": "สังเกตภาวะชัก และพิจารณาติด EEG ถ้าทำได้"}, {"title": "พยากรณ์โรคของผู้ป่วย", "detail": "ประเมินพยากรณ์โรคควรทำเมื่อผู้ป่วยสิ้นสุดการควบคุมอุณหภูมิแล้ว และ/หรือพ้นระยะ 72 ชม. จาก ROSC (พยากรณ์โรคด้วยวิธีผสมผสาน)"}, {"title": "การดูแลภาวะวิกฤตอย่างต่อเนื่อง", "detail": "ดูแล PaO2 60-105 mmHg, PaCO2 35-45 mmHg ระวัง Hypoglycemia (<70 mg/dL) และ Hyperglycemia (>180 mg/dL) รักษาระดับ MAP ≥ 65 mmHg รวมถึงพิจารณาให้ยาปฏิชีวนะเมื่อสงสัยว่ามีภาวะติดเชื้อ"}], "keyNumbers": [{"label": "SpO2 เป้าหมาย", "value": "90-98%"}, {"label": "PaO2 เป้าหมาย", "value": "60-105 mmHg"}, {"label": "PaCO2 เป้าหมาย", "value": "35-45 mmHg"}, {"label": "MAP เป้าหมาย", "value": "≥ 65 mmHg"}, {"label": "อุณหภูมิเป้าหมาย (TTM)", "value": "32-37.5°C นาน ≥ 36 ชั่วโมง"}, {"label": "Hypoglycemia threshold", "value": "< 70 mg/dL"}, {"label": "Hyperglycemia threshold", "value": "> 180 mg/dL"}, {"label": "ประเมินพยากรณ์โรคหลัง ROSC", "value": "≥ 72 ชั่วโมง"}]}, {"id": "peds_bls_single", "name": "Pediatric BLS (1 Rescuer)", "nameThai": "การช่วยชีวิตขั้นพื้นฐานในเด็ก (1 ปี–วัยเจริญพันธุ์) — ผู้ช่วยเหลือคนเดียว", "icon": "baby", "ageNote": "ใช้กับเด็กอายุ 1 ปี จนถึงวัยเจริญพันธุ์ (puberty)", "steps": [{"no": 1, "title": "ตรวจสอบความปลอดภัยของสถานที่เกิดเหตุ"}, {"no": 2, "title": "ตรวจดูการตอบสนอง", "detail": "ตะโกนขอความช่วยเหลือจากผู้ที่อยู่ใกล้เคียง และเปิดใช้ระบบตอบสนองฉุกเฉิน"}, {"no": 3, "title": "ดูว่าไม่หายใจหรือหายใจเฮือกเท่านั้น พร้อมคลำชีพจร (พร้อมกัน)", "detail": "มีชีพจรแน่ชัดภายใน 10 วินาทีหรือไม่?", "branches": [{"condition": "หายใจปกติ + มีชีพจร", "action": "เฝ้าระวังอาการจนกว่าทีมช่วยเหลือขั้นสูงจะมาถึง"}, {"condition": "หายใจผิดปกติ + มีชีพจร", "action": "ช่วยการหายใจ: เปิดทางเดินหายใจและจัดท่า, ช่วยหายใจ 1 ครั้งทุก 2-3 วินาที (20-30 ครั้ง/นาที), ประเมินอัตราชีพจรทุก 2 นาที"}, {"condition": "หายใจผิดปกติ + ไม่มีชีพจร", "action": "ประเมินว่าพบเหตุการณ์ล้มลงกะทันหันต่อหน้าหรือไม่ (Witnessed Sudden Collapse)"}]}, {"no": 4, "title": "HR < 60 ครั้ง/นาที ร่วมกับสัญญาณของ perfusion ไม่ดี ทั้งที่ให้ออกซิเจนและช่วยหายใจแล้วหรือไม่", "branches": [{"condition": "Yes", "action": "เริ่มทำ CPR ทันที (ไปข้อ 6)"}, {"condition": "No", "action": "ช่วยหายใจต่อเนื่อง และตรวจชีพจรทุก 2 นาที"}]}, {"no": 5, "title": "พบเหตุการณ์ล้มลงกะทันหันต่อหน้าหรือไม่ (Witnessed Sudden Collapse)", "branches": [{"condition": "Yes", "action": "เปิดใช้ระบบฉุกเฉิน (ถ้ายังไม่ได้ทำ) ไปนำ AED/Defibrillator มาใช้ทันที"}, {"condition": "No", "action": "เริ่มทำ CPR ทันที (ไปข้อ 6)"}]}, {"no": 6, "title": "เริ่มทำ CPR", "detail": "ผู้ช่วยเหลือคนแรก: ทำ CPR วนรอบละ กดหน้าอก 30 ครั้ง สลับช่วยหายใจ 2 ครั้ง | เมื่อผู้ช่วยเหลือคนที่สองมาถึง เปลี่ยนเป็นวนรอบละ กดหน้าอก 15 ครั้ง สลับช่วยหายใจ 2 ครั้ง | ใช้ AED/Defibrillator ทันทีที่มี"}, {"no": 7, "title": "หลัง 2 นาที ถ้ายังอยู่คนเดียว", "detail": "เปิดใช้ระบบฉุกเฉินและไปนำ AED/Defibrillator มา (ถ้ายังไม่ได้ทำ)"}, {"no": 8, "title": "ตรวจจังหวะการเต้นของหัวใจ (Check rhythm) — เป็นจังหวะที่ต้องช็อกไฟฟ้าหรือไม่ (Shockable rhythm)", "branches": [{"condition": "Yes, shockable", "action": "ช็อกไฟฟ้า 1 ครั้ง ทำ CPR ต่อทันที 2 นาที (จนกว่า AED/Defibrillator จะแจ้งให้ตรวจจังหวะอีกครั้ง) ทำต่อเนื่องจนกว่าทีม PALS จะมาถึงหรือเด็กเริ่มขยับตัว"}, {"condition": "No, nonshockable", "action": "ทำ CPR ต่อทันที 2 นาที (จนกว่า AED/Defibrillator จะแจ้งให้ตรวจจังหวะอีกครั้ง) ทำต่อเนื่องจนกว่าทีม PALS จะมาถึงหรือเด็กเริ่มขยับตัว"}]}]}, {"id": "peds_bls_multi", "name": "Pediatric BLS (2+ Rescuers)", "nameThai": "การช่วยชีวิตขั้นพื้นฐานในเด็ก (1 ปี–วัยเจริญพันธุ์) — ผู้ช่วยเหลือ 2 คนขึ้นไป", "icon": "users", "ageNote": "ใช้กับเด็กอายุ 1 ปี จนถึงวัยเจริญพันธุ์ (puberty)", "steps": [{"no": 1, "title": "ตรวจสอบความปลอดภัยของสถานที่เกิดเหตุ"}, {"no": 2, "title": "ตรวจดูการตอบสนอง", "detail": "ตะโกนขอความช่วยเหลือ เปิดใช้ระบบตอบสนองฉุกเฉิน และส่งผู้ช่วยเหลืออีกคนไปนำ AED/Defibrillator มา"}, {"no": 3, "title": "ดูว่าไม่หายใจหรือหายใจเฮือกเท่านั้น พร้อมคลำชีพจร (พร้อมกัน)", "detail": "มีชีพจรแน่ชัดภายใน 10 วินาทีหรือไม่?", "branches": [{"condition": "หายใจปกติ + มีชีพจร", "action": "เฝ้าระวังอาการจนกว่าทีมช่วยเหลือขั้นสูงจะมาถึง"}, {"condition": "หายใจผิดปกติ + มีชีพจร", "action": "ช่วยการหายใจ: เปิดทางเดินหายใจและจัดท่า, ช่วยหายใจ 1 ครั้งทุก 2-3 วินาที (20-30 ครั้ง/นาที), ประเมินอัตราชีพจรทุก 2 นาที"}, {"condition": "หายใจผิดปกติ + ไม่มีชีพจร", "action": "เริ่มทำ CPR ทันที"}]}, {"no": 4, "title": "HR < 60 ครั้ง/นาที ร่วมกับสัญญาณของ perfusion ไม่ดี ทั้งที่ให้ออกซิเจนและช่วยหายใจแล้วหรือไม่", "branches": [{"condition": "Yes", "action": "เริ่มทำ CPR ทันที"}, {"condition": "No", "action": "ช่วยหายใจต่อเนื่อง และตรวจชีพจรทุก 2 นาที"}]}, {"no": 5, "title": "เริ่มทำ CPR", "detail": "ผู้ช่วยเหลือคนแรก: ทำ CPR วนรอบละ กดหน้าอก 30 ครั้ง สลับช่วยหายใจ 2 ครั้ง | เมื่อผู้ช่วยเหลือคนที่สองกลับมา เปลี่ยนเป็นวนรอบละ กดหน้าอก 15 ครั้ง สลับช่วยหายใจ 2 ครั้ง | ใช้ AED/Defibrillator ทันทีที่มี"}, {"no": 6, "title": "ตรวจจังหวะการเต้นของหัวใจ — เป็นจังหวะที่ต้องช็อกไฟฟ้าหรือไม่", "branches": [{"condition": "Yes, shockable", "action": "ช็อกไฟฟ้า 1 ครั้ง ทำ CPR ต่อทันที 2 นาที (จนกว่า AED/Defibrillator จะแจ้งให้ตรวจจังหวะอีกครั้ง) ทำต่อเนื่องจนกว่าทีม PALS จะมาถึงหรือเด็กเริ่มขยับตัว"}, {"condition": "No, nonshockable", "action": "ทำ CPR ต่อทันที 2 นาที (จนกว่า AED/Defibrillator จะแจ้งให้ตรวจจังหวะอีกครั้ง) ทำต่อเนื่องจนกว่าทีม PALS จะมาถึงหรือเด็กเริ่มขยับตัว"}]}]}, {"id": "peds_cardiac_arrest", "name": "Pediatric Cardiac Arrest", "nameThai": "การช่วยชีวิตขั้นสูงในเด็ก — ภาวะหัวใจหยุดเต้น", "icon": "activity-square", "steps": [{"no": 1, "title": "เริ่มทำ CPR", "detail": "เริ่ม bag-mask ventilation และให้ออกซิเจน ติด monitor/defibrillator"}, {"no": 2, "title": "ตรวจจังหวะการเต้นของหัวใจ — เป็นจังหวะที่ต้องช็อกไฟฟ้าหรือไม่", "detail": "แบ่งเป็น 2 กลุ่ม: VF/pVT (ต้องช็อกไฟฟ้า) และ Asystole/PEA (ไม่ต้องช็อกไฟฟ้า)"}], "branches": [{"id": "shockable", "title": "VF / pVT (ต้องช็อกไฟฟ้า)", "color": "red", "steps": ["ช็อกไฟฟ้าโดยด่วนที่สุด (Shock ASAP) → CPR 2 นาที พร้อมเปิดหลอดเลือดดำ (IV/IO)", "ตรวจจังหวะ — ยัง shockable: ช็อกไฟฟ้าโดยด่วนที่สุด → CPR 2 นาที ให้ Epinephrine ทุก 3-5 นาที พิจารณาใส่ advanced airway และ capnography", "ตรวจจังหวะ — ยัง shockable: ช็อกไฟฟ้าโดยด่วนที่สุด → CPR 2 นาที ให้ Amiodarone หรือ Lidocaine และรักษาสาเหตุที่แก้ไขได้ (5H/5T)", "วนขั้นตอนต่อจนกว่าจะไม่ shockable หรือมี ROSC", "ถ้าไม่มีสัญญาณ ROSC → กลับไปที่ Asystole/PEA pathway (CPR 2 นาที) | ถ้ามี ROSC → ไปที่ Post-Cardiac Arrest Care checklist"]}, {"id": "nonshockable", "title": "Asystole / PEA (ไม่ต้องช็อกไฟฟ้า)", "color": "blue", "steps": ["ให้ Epinephrine โดยด่วนที่สุด (ASAP) → CPR 2 นาที พร้อมเปิดหลอดเลือดดำ (IV/IO), ให้ Epinephrine ทุก 3-5 นาที, พิจารณาใส่ advanced airway และ capnography", "ตรวจจังหวะ — ถ้า shockable → ไปกลุ่ม VF/pVT", "ตรวจจังหวะ — ถ้ายังไม่ shockable → CPR 2 นาที รักษาสาเหตุที่แก้ไขได้ (5H/5T)", "ตรวจจังหวะซ้ำ — ถ้า shockable → ไปกลุ่ม VF/pVT | ถ้าไม่ shockable → วนขั้นตอน CPR 2 นาทีต่อ (กลับไปข้อแรกของกลุ่มนี้)"]}], "highQualityCPR": ["กดหน้าอกให้แรงพอ (≥1/3 ของเส้นผ่านศูนย์กลางทรวงอกแนวหน้า-หลัง)", "กดหน้าอกเร็วพอ: 100-120 ครั้ง/นาที", "ปล่อยหน้าอกให้คืนตัวกลับอย่างเต็มที่", "ลดการหยุดชะงักในการกดหน้าอกให้น้อยที่สุด", "เปลี่ยนคนกดหน้าอกทุก 2 นาที หรือเร็วกว่านั้นถ้าเหนื่อยล้า", "ถ้ายังไม่ได้ใส่ advanced airway ใช้อัตราส่วนกดหน้าอก:ช่วยหายใจ = 15:2 (ผู้ช่วยเหลือ 2 คน, ก่อนวัยเจริญพันธุ์) หรือ 30:2 (ผู้ช่วยเหลือ 2 คน, เข้าสู่วัยเจริญพันธุ์แล้ว) หรือ 30:2 (ผู้ช่วยเหลือ 1 คน ทุกช่วงอายุ)", "ถ้าใส่ advanced airway แล้ว ให้กดหน้าอกต่อเนื่องและช่วยหายใจ 1 ครั้งทุก 2-3 วินาที", "ติดตาม ETCO2 และวัด invasive diastolic BP ถ้าทำได้"], "shockEnergy": {"title": "พลังงานที่ใช้ Defibrillation (ตามน้ำหนักตัว)", "items": [{"label": "Shock ครั้งแรก", "joulesPerKg": 2, "unit": "J/kg"}, {"label": "Shock ครั้งที่สอง", "joulesPerKg": 4, "unit": "J/kg"}, {"label": "Shock ครั้งถัดไป", "joulesPerKg": 4, "unit": "J/kg", "note": "≥4 J/kg สูงสุด 10 J/kg หรือขนาดผู้ใหญ่"}]}, "drugs": [{"name": "Epinephrine", "dosing": [{"label": "ทุกจังหวะ", "type": "weight_fixed", "mgKg": 0.01, "unit": "mg/kg", "route": "IV/IO", "note": "ความเข้มข้น 0.1 mg/mL | สูงสุดไม่เกิน 1 mg ต่อครั้ง | ให้ซ้ำทุก 3-5 นาที"}]}, {"name": "Amiodarone", "dosing": [{"label": "ขนาดยา", "type": "weight_fixed", "mgKg": 5, "unit": "mg/kg", "route": "IV/IO bolus", "note": "สูงสุด 300 mg/ครั้ง ให้ซ้ำได้ถึง 3 ครั้ง (ครั้งถัดไปสูงสุด 150 mg)"}]}, {"name": "Lidocaine (ทางเลือกแทน Amiodarone)", "dosing": [{"label": "ขนาดยา", "type": "weight_fixed", "mgKg": 1, "unit": "mg/kg", "route": "IV/IO"}]}], "advancedAirway": ["ใส่ท่อช่วยหายใจ (ET intubation) หรือ Supraglottic airway", "ใช้ ETCO2 เพื่อยืนยันและติดตามตำแหน่งท่อช่วยหายใจ"], "reversibleCauses": {"title": "สาเหตุที่พบได้บ่อย (H's and T's)", "H": ["Hypovolemia", "Hypoxia", "Hydrogen ion (acidosis)", "Hypoglycemia", "Hypo-/Hyperkalemia", "Hypothermia"], "T": ["Tension pneumothorax", "Tamponade, cardiac", "Toxins", "Thrombosis, pulmonary", "Thrombosis, coronary"]}}, {"id": "peds_bradycardia", "name": "Pediatric Bradycardia", "nameThai": "การช่วยชีวิตขั้นสูงในเด็ก — หัวใจเต้นช้าที่มีชีพจร", "icon": "trending-down", "steps": [{"no": 1, "title": "เด็กที่มีภาวะหัวใจเต้นช้าและมีชีพจร (Child with bradycardia and a pulse)"}], "unstableCriteria": ["ระดับความรู้สึกตัวเปลี่ยนแปลงเฉียบพลัน (Acutely altered mental status)", "มีอาการแสดงของภาวะช็อก (Signs of shock)", "ความดันโลหิตต่ำ (Hypotension)"], "unstableCriteriaTitle": "ประเมินภาวะ Cardiopulmonary Compromise", "branches": [{"id": "no_compromise", "title": "ไม่มี Cardiopulmonary Compromise", "color": "green", "steps": ["ค้นหาและรักษาสาเหตุที่เป็นต้นเหตุ: สนับสนุน ABCs, พิจารณาให้ออกซิเจน, พิจารณาทำ 12-lead ECG", "สังเกตอาการต่อเนื่อง"]}, {"id": "compromise_initial", "title": "มี Cardiopulmonary Compromise — การประเมินและช่วยเหลือเบื้องต้น", "color": "amber", "steps": ["รักษาทางเดินหายใจให้โล่งและให้ออกซิเจน", "ช่วยการหายใจด้วยแรงดันบวก (Positive-pressure ventilation) ตามความจำเป็น", "ติด Cardiorespiratory monitor", "ติดตามชีพจรอย่างต่อเนื่อง"]}, {"id": "persist", "title": "หัวใจเต้นช้ายังคงอยู่ร่วมกับ Cardiopulmonary Compromise", "color": "red", "steps": ["เริ่มทำ CPR ถ้า HR < 60 ครั้ง/นาที", "เปิดหลอดเลือดดำ (IV/IO access)", "ให้ Epinephrine", "ให้ Atropine ในกรณี vagal tone สูงขึ้น หรือ primary AV block", "ค้นหาและรักษาสาเหตุที่เป็นต้นเหตุ พิจารณาทำ Transthoracic/Transvenous Pacing", "ตรวจชีพจรทุก 2 นาที — ถ้ายังไม่มีชีพจร ไปที่ Pediatric Cardiac Arrest Algorithm | ถ้ามีชีพจร ประเมินซ้ำว่ายังมี compromise หรือไม่"]}], "drugs": [{"name": "Epinephrine", "dosing": [{"label": "ขนาดยา", "type": "weight_fixed", "mgKg": 0.01, "unit": "mg/kg", "route": "IV/IO", "note": "ความเข้มข้น 0.1 mg/mL | สูงสุดไม่เกิน 1 mg"}]}, {"name": "Atropine", "dosing": [{"label": "ขนาดยา", "type": "weight_fixed", "mgKg": 0.02, "unit": "mg/kg", "route": "IV/IO", "note": "ให้ซ้ำได้ 1 ครั้ง | ขนาดต่ำสุด 0.1 mg และขนาดสูงสุดต่อครั้ง 0.5 mg"}]}], "commonCauses": ["Hypothermia", "Hypoxia", "Toxins/medications", "ความดันในกะโหลกศีรษะสูง (Increased ICP)", "Vagal tone สูงขึ้น (Increased vagal tone)", "Heart block", "ภาวะทางสรีรวิทยาปกติ (Physiologic/appropriate)"]}, {"id": "peds_tachycardia", "name": "Pediatric Tachyarrhythmia", "nameThai": "การช่วยชีวิตขั้นสูงในเด็ก — หัวใจเต้นเร็วที่มีชีพจร", "icon": "trending-up", "steps": [{"no": 1, "title": "เด็กที่สงสัยภาวะหัวใจเต้นเร็วผิดจังหวะ (Suspected tachyarrhythmia)"}, {"no": 2, "title": "การประเมินและช่วยเหลือเบื้องต้น", "detail": "รักษาทางเดินหายใจให้โล่ง ช่วยหายใจด้วยแรงดันบวกและให้ออกซิเจนตามความจำเป็น ติด cardiorespiratory monitor เปิดหลอดเลือดดำ (IV/IO) และทำ 12-lead ECG ถ้าทำได้"}, {"no": 3, "title": "ประเมินจังหวะการเต้นของหัวใจ (Evaluate rhythm)"}], "sinusVsSvt": {"sinusTach": {"title": "Probable Sinus Tachycardia ถ้า", "criteria": ["มี P wave ปกติ", "RR interval ผันแปรได้ (Variable)", "อัตราในทารกมักจะ < 220 ครั้ง/นาที", "อัตราในเด็กมักจะ < 180 ครั้ง/นาที"], "action": "ค้นหาและรักษาสาเหตุที่เป็นต้นเหตุ"}, "svt": {"title": "Probable Supraventricular Tachycardia ถ้า", "criteria": ["ไม่มี P wave หรือ P wave ผิดปกติ", "RR interval ไม่ผันแปร (Not variable)", "อัตราในทารกมักจะ ≥ 220 ครั้ง/นาที", "อัตราในเด็กมักจะ ≥ 180 ครั้ง/นาที", "มีประวัติอัตราการเต้นเปลี่ยนแปลงกะทันหัน"]}}, "unstableCriteriaTitle": "ประเมินภาวะ Cardiopulmonary Compromise", "unstableCriteria": ["ระดับความรู้สึกตัวเปลี่ยนแปลงเฉียบพลัน (Acutely altered mental status)", "มีอาการแสดงของภาวะช็อก (Signs of shock)", "ความดันโลหิตต่ำ (Hypotension)"], "branches": [{"id": "compromise_narrow", "title": "มี Compromise + QRS แคบ (≤ 0.09 วินาที) → Probable SVT", "color": "red", "steps": ["ถ้ามีหลอดเลือดดำ (IV/IO access) แล้ว ให้ Adenosine", "หรือ ทำ Synchronized Cardioversion"]}, {"id": "compromise_wide", "title": "มี Compromise + QRS กว้าง (> 0.09 วินาที) → Possible VT", "color": "red", "steps": ["ทำ Synchronized Cardioversion", "ควรปรึกษาผู้เชี่ยวชาญก่อนให้ยา Antiarrhythmic เพิ่มเติม"]}, {"id": "stable_narrow", "title": "ไม่มี Compromise + QRS แคบ (≤ 0.09 วินาที) → Probable SVT", "color": "green", "steps": ["พิจารณาทำ Vagal Maneuvers", "ให้ Adenosine ทางหลอดเลือดดำ (IV/IO)"]}, {"id": "stable_wide", "title": "ไม่มี Compromise + QRS กว้าง (> 0.09 วินาที) → Possible VT หรือ SVT with Aberrancy", "color": "amber", "steps": ["ถ้าจังหวะสม่ำเสมอ (Regular) และ QRS เป็น Monomorphic พิจารณาให้ Adenosine", "แนะนำให้ปรึกษาผู้เชี่ยวชาญ (Expert consultation)"]}], "cardioversionEnergy": [{"rhythm": "Synchronized Cardioversion — ขนาดเริ่มต้น", "energy": "0.5-1 J/kg"}, {"rhythm": "ถ้าไม่ได้ผล เพิ่มเป็น", "energy": "2 J/kg"}], "drugs": [{"name": "Adenosine", "dosing": [{"label": "ครั้งแรก", "type": "weight_fixed", "mgKg": 0.1, "unit": "mg/kg", "route": "Rapid IV/IO push + flush", "note": "ขนาดสูงสุด 6 mg"}, {"label": "ครั้งที่สอง (ถ้าไม่ตอบสนอง)", "type": "weight_fixed", "mgKg": 0.2, "unit": "mg/kg", "route": "Rapid IV/IO push + flush", "note": "ขนาดสูงสุด 12 mg"}]}], "cardioversionNote": "เริ่ม Synchronized Cardioversion ที่ 0.5-1 J/kg หากไม่ได้ผลให้เพิ่มเป็น 2 J/kg พิจารณาให้ยาระงับความรู้สึก (Sedation) หากทำได้ แต่ห้ามทำให้การทำ Cardioversion ล่าช้า"}, {"id": "pregnancy_cardiac_arrest", "name": "Cardiac Arrest in Pregnancy", "nameThai": "การช่วยชีวิตขั้นสูงในหญิงตั้งครรภ์ — ภาวะหัวใจหยุดเต้น", "icon": "heart-pulse", "steps": [{"no": 1, "title": "เริ่ม BLS/ALS", "detail": "ทำ CPR อย่างมีคุณภาพสูง (High-quality CPR) | ทำ Continuous Left Lateral Uterine Displacement ต่อเนื่อง เมื่อระดับยอดมดลูก (Fundal Height) อยู่ที่หรือสูงกว่าระดับสะดือ | ใช้ AED/Defibrillator เมื่อมีข้อบ่งชี้"}, {"no": 2, "title": "เปิดใช้ทีมช่วยชีวิตภาวะหัวใจหยุดเต้นในหญิงตั้งครรภ์", "detail": "ค้นหาและแก้ไขสาเหตุของภาวะหัวใจหยุดเต้น (Address etiology of arrest)"}], "branches": [{"id": "optimize", "title": "เพิ่มประสิทธิภาพการช่วยชีวิตในหญิงตั้งครรภ์", "color": "green", "steps": ["ให้ความสำคัญกับการจัดการทางเดินหายใจตั้งแต่เนิ่นๆ (Prioritize early airway management)", "เปิดเส้นให้สารน้ำทางหลอดเลือดดำเหนือระดับกระบังลม (Place IV above diaphragm)", "ถ้ากำลังได้รับ IV Magnesium ให้หยุดยาและให้ Calcium ทดแทน", "ถอดเครื่องติดตามสัญญาณทารกในครรภ์ออก (Detach fetal monitors)", "เปิดใช้ Massive Blood Transfusion Protocol หากสงสัยภาวะ Amniotic Fluid Embolism"]}, {"id": "prepare_delivery", "title": "เตรียมทำคลอดเพื่อการช่วยชีวิต", "color": "blue", "steps": ["ดำเนินการเมื่อระดับยอดมดลูก (Fundal Height) อยู่ที่หรือสูงกว่าระดับสะดือ"]}], "goal": {"title": "เป้าหมาย", "detail": "คลอดทารกให้สำเร็จภายใน 5 นาที หากยังไม่มี ROSC (Goal is delivery by 5 minutes if no ROSC)"}, "decisionPoint": {"question": "ผลลัพธ์หลังทำคลอด/ครบเป้าหมาย 5 นาที", "follows": {"label": "ยังไม่คลอด — ไม่มี ROSC", "action": "ทำ ALS ต่อเนื่อง (Continue ALS)"}, "notFollows": {"label": "ทำคลอดแล้ว", "action": "ช่วยชีวิตทารกแรกเกิดโดยใช้ Neonatal Resuscitation Algorithm"}}, "teamMembers": {"title": "ทีมช่วยชีวิตภาวะหัวใจหยุดเต้นในหญิงตั้งครรภ์ (อาจแตกต่างกันตามทรัพยากรของแต่ละสถานที่)", "items": ["Team Leader", "วิสัญญีแพทย์ (Anesthesiologist)", "สูติแพทย์ (Obstetrician)", "กุมารแพทย์ทารกแรกเกิด (Neonatologist)", "พยาบาล (Nurses)", "เภสัชกร (Pharmacists)", "บุคลากรวิชาชีพอื่นๆ"]}, "keyPoints": ["เป้าหมายของ Left Lateral Uterine Displacement คือลดภาวะ Aortocaval Compression และช่วยให้การกดหน้าอกมีประสิทธิภาพมากขึ้น", "เป้าหมายของการทำคลอดเพื่อการช่วยชีวิต คือเพิ่มโอกาสรอดของมารดา และเมื่อเป็นไปได้ เพิ่มโอกาสรอดของทารกด้วย", "ควรทำคลอดเพื่อการช่วยชีวิตให้สำเร็จภายใน 5 นาที ขึ้นอยู่กับทรัพยากรที่มีในสถานที่นั้น", "ภาวะทางเดินหายใจยากลำบาก (Difficult Airway) พบได้บ่อยในหญิงตั้งครรภ์ ควรให้ผู้ที่มีประสบการณ์มากที่สุดเป็นผู้จัดการทางเดินหายใจ (เช่น ใส่ท่อช่วยหายใจ หรือใช้ Supraglottic Airway)"], "etiologies": {"title": "สาเหตุของภาวะหัวใจหยุดเต้นในหญิงตั้งครรภ์ (A-H Mnemonic)", "items": [{"letter": "A", "cause": "Anesthetic complications — ภาวะแทรกซ้อนจากการระงับความรู้สึก"}, {"letter": "B", "cause": "Bleeding — ภาวะเลือดออก"}, {"letter": "C", "cause": "Cardiovascular — โรคหัวใจและหลอดเลือด"}, {"letter": "D", "cause": "Drugs — ยา"}, {"letter": "E", "cause": "Embolic — ภาวะลิ่มเลือด/สิ่งอุดตัน (Amniotic Fluid Embolism หรือ Pulmonary Embolism)"}, {"letter": "F", "cause": "Fever — ไข้/การติดเชื้อ"}, {"letter": "G", "cause": "General causes — สาเหตุทั่วไป (H's and T's)"}, {"letter": "H", "cause": "Hypertension — ความดันโลหิตสูง (เช่น Preeclampsia)"}]}}]};
+
+function round(num, decimals) {
+  decimals = decimals || 2;
+  const factor = Math.pow(10, decimals);
+  return Math.round(num * factor) / factor;
+}
+
+function calcDoseText(entry, weightKg) {
+  const w = Number(weightKg);
+  const hasWeight = !isNaN(w) && w > 0;
+  switch (entry.type) {
+    case 'fixed_value':
+      return entry.mg + ' ' + entry.unit;
+    case 'fixed_range':
+      return entry.minMcg + '-' + entry.maxMcg + ' ' + entry.unit;
+    case 'weight_fixed': {
+      const perKg = entry.mgKg;
+      const unit = entry.unit || 'mg/kg';
+      if (!hasWeight) return perKg + ' ' + unit;
+      const value = round(perKg * w, 3);
+      return value + ' mg';
+    }
+    case 'weight_range': {
+      const unit = entry.unit || 'mg/kg';
+      const minV = entry.minMgKg, maxV = entry.maxMgKg;
+      if (!hasWeight) return minV + '-' + maxV + ' ' + unit;
+      const min = round(minV * w, 2), max = round(maxV * w, 2);
+      return min + ' - ' + max + ' mg';
+    }
+    case 'weight_rate_range': {
+      const minV = entry.minMcgKgMin, maxV = entry.maxMcgKgMin;
+      const unit = entry.unit || 'mcg/kg/min';
+      if (!hasWeight) return minV + '-' + maxV + ' ' + unit;
+      const min = round(minV * w, 1), max = round(maxV * w, 1);
+      return min + ' - ' + max + ' mcg/min';
+    }
+    default: return '';
+  }
+}
+
+function renderSteps(steps) {
+  return steps.map(s => {
+    const branchesHtml = (s.branches || []).map(b =>
+      '<div class="branch-item"><b>' + b.condition + '</b><br>' + b.action + '</div>'
+    ).join('');
+    return '<div class="step-item">' +
+      '<div class="step-num">' + s.no + '</div>' +
+      '<div class="step-text">' +
+        '<div class="step-title">' + s.title + '</div>' +
+        (s.detail ? '<div class="step-detail">' + s.detail + '</div>' : '') +
+        branchesHtml +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderBranchCard(branch, weightKg) {
+  let inner = '<h3>' + branch.title + '</h3>';
+  if (branch.detail) inner += '<div style="font-size:0.83rem;margin-bottom:8px;">' + branch.detail + '</div>';
+  if (branch.steps) {
+    inner += '<ol class="branch-steps">' + branch.steps.map(s => '<li>' + s + '</li>').join('') + '</ol>';
+  }
+  if (branch.cardioversionEnergy) {
+    inner += '<table class="energy-table">' + branch.cardioversionEnergy.map(e =>
+      '<tr><td>' + e.rhythm + '</td><td>' + e.energy + '</td></tr>'
+    ).join('') + '</table>';
+  }
+  if (branch.subgroups) {
+    inner += branch.subgroups.map(sg =>
+      '<div class="subgroup"><div class="sg-title">' + sg.title + '</div><ul>' +
+      sg.steps.map(s => '<li>' + s + '</li>').join('') + '</ul></div>'
+    ).join('');
+  }
+  if (branch.specialNote) {
+    inner += '<div class="note-box">⚠️ ' + branch.specialNote + '</div>';
+  }
+  return '<div class="branch-card ' + branch.color + '">' + inner + '</div>';
+}
+
+function renderDrugs(drugs, weightKg) {
+  if (!drugs || !drugs.length) return '';
+  let rows = '';
+  drugs.forEach(d => {
+    d.dosing.forEach(entry => {
+      rows += '<div class="drug-row">' +
+        '<div><span class="drug-name">' + d.name + '</span> <span class="drug-dose-label">' + entry.label +
+        (entry.route ? ' (' + entry.route + ')' : '') +
+        (entry.note ? ' — ' + entry.note : '') + '</span></div>' +
+        '<div class="drug-value">' + calcDoseText(entry, weightKg) + '</div>' +
+      '</div>';
+    });
+  });
+  return '<div class="card"><h2>💉 ขนาดยาที่ใช้</h2>' + rows + '</div>';
+}
+
+function renderAlgorithm(algo, weightKg) {
+  let html = '';
+
+  // Main steps card
+  html += '<div class="card"><h2>' + algo.nameThai + '</h2>';
+  if (algo.ageNote) html += '<div class="subtitle">👶 ' + algo.ageNote + '</div>';
+  if (algo.steps) html += '<div>' + renderSteps(algo.steps) + '</div>';
+
+  if (algo.unstableCriteria) {
+    const title = algo.unstableCriteriaTitle || 'เกณฑ์ "อาการไม่คงที่"';
+    html += '<div class="note-box"><b>' + title + '</b> (มีข้อใดข้อหนึ่ง):<ul style="margin:4px 0 0;padding-left:18px;">' +
+      algo.unstableCriteria.map(c => '<li>' + c + '</li>').join('') + '</ul></div>';
+  }
+
+  if (algo.sinusVsSvt) {
+    const sv = algo.sinusVsSvt;
+    html += '<div class="branch-card green"><h3>' + sv.sinusTach.title + '</h3><ul class="branch-steps">' +
+      sv.sinusTach.criteria.map(c => '<li>' + c + '</li>').join('') + '</ul>' +
+      (sv.sinusTach.action ? '<div style="font-size:0.82rem;margin-top:6px;">➡️ ' + sv.sinusTach.action + '</div>' : '') +
+    '</div>';
+    html += '<div class="branch-card amber"><h3>' + sv.svt.title + '</h3><ul class="branch-steps">' +
+      sv.svt.criteria.map(c => '<li>' + c + '</li>').join('') + '</ul></div>';
+  }
+
+  if (algo.qualityPoints) {
+    html += '<details class="info-block" open><summary>การช่วยชีวิตอย่างมีประสิทธิภาพ</summary><ul class="quality-list">' +
+      algo.qualityPoints.map(q => '<li>' + q + '</li>').join('') + '</ul></details>';
+  }
+
+  if (algo.highQualityCPR) {
+    html += '<details class="info-block" open><summary>High-Quality CPR</summary><ul class="quality-list">' +
+      algo.highQualityCPR.map(q => '<li>' + q + '</li>').join('') + '</ul></details>';
+  }
+
+  if (algo.keyNumbers) {
+    html += '<div class="keynum-grid">' + algo.keyNumbers.map(k =>
+      '<div class="keynum"><div class="kn-label">' + k.label + '</div><div class="kn-value">' + k.value + '</div></div>'
+    ).join('') + '</div>';
+  }
+
+  // Goal box (pregnancy)
+  if (algo.goal) {
+    html += '<div class="note-box"><b>🎯 ' + algo.goal.title + ':</b> ' + algo.goal.detail + '</div>';
+  }
+
+  if (algo.note) html += '<div class="note-box">' + algo.note + '</div>';
+  html += '</div>';
+
+  // Branches
+  if (algo.branches) {
+    html += '<div class="card"><h2>แนวทางแยกตามกลุ่มอาการ</h2>' +
+      algo.branches.map(b => renderBranchCard(b, weightKg)).join('') +
+    '</div>';
+  }
+
+  // Shock energy (J/kg) - pediatric
+  if (algo.shockEnergy) {
+    const w = Number(weightKg);
+    const hasW = !isNaN(w) && w > 0;
+    html += '<div class="card"><h2>⚡ ' + algo.shockEnergy.title + '</h2><table class="energy-table">' +
+      algo.shockEnergy.items.map(it => {
+        const val = hasW ? round(it.joulesPerKg * w, 1) + ' J' : it.joulesPerKg + ' J/kg';
+        return '<tr><td>' + it.label + (it.note ? '<div class="dose-note" style="color:#9ca3af;font-size:0.72rem;">' + it.note + '</div>' : '') + '</td><td>' + val + '</td></tr>';
+      }).join('') + '</table></div>';
+  }
+
+  // Algorithm-level cardioversion energy (pediatric tachycardia)
+  if (algo.cardioversionEnergy) {
+    const w = Number(weightKg);
+    const hasW = !isNaN(w) && w > 0;
+    html += '<div class="card"><h2>⚡ Synchronized Cardioversion</h2><table class="energy-table">' +
+      algo.cardioversionEnergy.map(e => {
+        let val = e.energy;
+        if (hasW) {
+          const m = e.energy.match(/([\d.]+)(?:-([\d.]+))?\s*J\/kg/);
+          if (m) {
+            const lo = round(parseFloat(m[1]) * w, 1);
+            val = m[2] ? (lo + ' - ' + round(parseFloat(m[2]) * w, 1) + ' J') : (lo + ' J');
+          }
+        }
+        return '<tr><td>' + e.rhythm + '</td><td>' + val + '</td></tr>';
+      }).join('') + '</table>' +
+      (algo.cardioversionNote ? '<div class="note-box">' + algo.cardioversionNote + '</div>' : '') +
+    '</div>';
+  }
+
+  // Advanced airway (pediatric cardiac arrest)
+  if (algo.advancedAirway) {
+    html += '<details class="info-block"><summary>Advanced Airway</summary><ul class="quality-list">' +
+      algo.advancedAirway.map(a => '<li>' + a + '</li>').join('') + '</ul></details>';
+  }
+
+  // Defibrillation notes (cardiac arrest specific)
+  if (algo.defibrillationNotes) {
+    html += '<div class="card"><h2>⚡ การช็อกไฟฟ้า</h2><ul class="quality-list">' +
+      algo.defibrillationNotes.map(n => '<li>' + n + '</li>').join('') + '</ul></div>';
+  }
+
+  // Reversible causes 5H/5T
+  if (algo.reversibleCauses) {
+    html += '<div class="card"><h2>🔍 ' + algo.reversibleCauses.title + '</h2><div class="cause-grid">' +
+      '<div class="cause-col"><b>5H</b><ul>' + algo.reversibleCauses.H.map(h => '<li>' + h + '</li>').join('') + '</ul></div>' +
+      '<div class="cause-col"><b>5T</b><ul>' + algo.reversibleCauses.T.map(t => '<li>' + t + '</li>').join('') + '</ul></div>' +
+    '</div></div>';
+  }
+
+  // Team members (pregnancy)
+  if (algo.teamMembers) {
+    html += '<details class="info-block"><summary>' + algo.teamMembers.title + '</summary><ul class="quality-list">' +
+      algo.teamMembers.items.map(m => '<li>' + m + '</li>').join('') + '</ul></details>';
+  }
+
+  // Key points (pregnancy)
+  if (algo.keyPoints) {
+    html += '<div class="card"><h2>💡 ประเด็นสำคัญ</h2><ul class="quality-list">' +
+      algo.keyPoints.map(p => '<li>' + p + '</li>').join('') + '</ul></div>';
+  }
+
+  // Etiologies mnemonic table (pregnancy A-H)
+  if (algo.etiologies) {
+    html += '<div class="card"><h2>🔍 ' + algo.etiologies.title + '</h2><table class="energy-table">' +
+      algo.etiologies.items.map(it =>
+        '<tr><td style="width:24px;"><b style="color:var(--purple-700);">' + it.letter + '</b></td><td style="text-align:left;font-weight:400;color:var(--gray-700);">' + it.cause + '</td></tr>'
+      ).join('') + '</table></div>';
+  }
+
+  // Common causes (bradycardia)
+  if (algo.commonCauses) {
+    html += '<div class="card"><h2>🔍 สาเหตุที่พบบ่อย</h2><ul class="quality-list">' +
+      algo.commonCauses.map(c => '<li>' + c + '</li>').join('') + '</ul></div>';
+  }
+
+  // Immediate care (post-cardiac arrest)
+  if (algo.immediateCare) {
+    html += '<div class="card"><h2>🚑 การดูแลเบื้องต้นหลัง ROSC</h2>' +
+      algo.immediateCare.map(c => '<div class="step-item"><div class="step-text"><div class="step-title">' + c.title + '</div><div class="step-detail">' + c.detail + '</div></div></div>').join('') +
+    '</div>';
+  }
+
+  if (algo.decisionPoint) {
+    const dp = algo.decisionPoint;
+    html += '<div class="card"><h2>❓ ' + dp.question + '</h2>' +
+      '<div class="branch-card green"><h3>' + dp.follows.label + '</h3><div style="font-size:0.85rem">' + dp.follows.action + '</div></div>' +
+      '<div class="branch-card amber"><h3>' + dp.notFollows.label + '</h3><div style="font-size:0.85rem">' + dp.notFollows.action + '</div></div>' +
+    '</div>';
+  }
+
+  if (algo.continuedCare) {
+    html += '<div class="card"><h2>🏥 การดูแลต่อเนื่อง</h2>' +
+      algo.continuedCare.map(c => '<div class="step-item"><div class="step-text"><div class="step-title">' + c.title + '</div><div class="step-detail">' + c.detail + '</div></div></div>').join('') +
+    '</div>';
+  }
+
+  // Drugs
+  html += renderDrugs(algo.drugs, weightKg);
+
+  return html;
+}
+
+const tabMenu = document.getElementById('tabMenu');
+const algoContainer = document.getElementById('algoContainer');
+const weightInput = document.getElementById('weightInput');
+let activeAlgoId = CPR_DATA.algorithms[0].id;
+
+const PEDS_PREFIX = 'peds_';
+const PREG_PREFIX = 'pregnancy_';
+
+function renderTabs() {
+  const adult = CPR_DATA.algorithms.filter(a => !a.id.startsWith(PEDS_PREFIX) && !a.id.startsWith(PREG_PREFIX));
+  const peds = CPR_DATA.algorithms.filter(a => a.id.startsWith(PEDS_PREFIX));
+  const preg = CPR_DATA.algorithms.filter(a => a.id.startsWith(PREG_PREFIX));
+
+  const btn = a => '<button class="tab-btn' + (a.id === activeAlgoId ? ' active' : '') + '" onclick="setActive(\'' + a.id + '\')">' + a.name + '</button>';
+
+  let html = '<div class="tab-group-title">🧑‍⚕️ ผู้ใหญ่ (Adult)</div>';
+  html += adult.map(btn).join('');
+  html += '<div class="tab-group-title">👶 เด็ก (Pediatric)</div>';
+  html += peds.map(btn).join('');
+  html += '<div class="tab-group-title">🤰 หญิงตั้งครรภ์ (Pregnancy)</div>';
+  html += preg.map(btn).join('');
+
+  tabMenu.innerHTML = html;
+}
+
+function renderActive() {
+  const weightKg = parseFloat(weightInput.value);
+  const algo = CPR_DATA.algorithms.find(a => a.id === activeAlgoId);
+  algoContainer.innerHTML = renderAlgorithm(algo, weightKg);
+}
+
+function setActive(id) {
+  activeAlgoId = id;
+  renderTabs();
+  renderActive();
+}
+
+weightInput.addEventListener('input', renderActive);
+
+renderTabs();
+renderActive();
+</script>
+</body>
+</html>
