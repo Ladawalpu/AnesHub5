@@ -24,6 +24,8 @@
     --card-purple: #7E2FAD;
     --card-anjan: #3a1f9e;
     --card-pink: #b3175f;
+    --card-teal: #0E8A8F;
+    --card-blue: #2f6fe0;
     --blue-pill-1: #2f6fe0;
     --blue-pill-2: #1c3f9e;
     --white: #ffffff;
@@ -118,6 +120,8 @@
   .cat-card.anesthcal .cat-pill{ background:linear-gradient(120deg, var(--card-purple), #5c1f80); }
   .cat-card.drugs .cat-pill{ background:linear-gradient(120deg, var(--card-anjan), #201060); }
   .cat-card.cpr .cat-pill{ background:linear-gradient(120deg, var(--card-pink), #7a0c47); }
+  .cat-card.airway .cat-pill{ background:linear-gradient(120deg, var(--card-teal), #0B5A63); }
+  .cat-card.fluid .cat-pill{ background:linear-gradient(120deg, var(--card-blue), #1c3f9e); }
 
   .cat-card .cat-icon{ font-size:2.1rem; margin-bottom:10px; }
   .cat-card .cat-desc{ font-size:.86rem; line-height:1.6; color:#efe6ff; font-weight:500; }
@@ -153,6 +157,8 @@
   .toolbar.anesthcal{ background:linear-gradient(120deg, #3B1760, #5B268F); }
   .toolbar.drugs{ background:linear-gradient(120deg, #241468, #3a1f9e); }
   .toolbar.cpr{ background:linear-gradient(120deg, #7a0c47, #b3175f); }
+  .toolbar.airway{ background:linear-gradient(120deg, #0B5A63, #0E8A8F); }
+  .toolbar.fluid{ background:linear-gradient(120deg, #123072, #2f6fe0); }
 
   @media (max-width:480px){
     h1.wordmark{ font-size:2.1rem; }
@@ -188,6 +194,18 @@
       <div class="cat-icon">💗</div>
       <div class="cat-desc"><b>Guideline</b>การช่วยชีวิต<br>2025</div>
     </div>
+
+    <div class="cat-card airway" onclick="openTool('airway')">
+      <div class="cat-pill">Airway Tip</div>
+      <div class="cat-icon">🫁</div>
+      <div class="cat-desc"><b>คำนวณอุปกรณ์</b>ETT, LMA, Blade<br>OPA/NPA ตามผู้ป่วย</div>
+    </div>
+
+    <div class="cat-card fluid" onclick="openTool('fluid')">
+      <div class="cat-pill">Fluid Tip</div>
+      <div class="cat-icon">💧</div>
+      <div class="cat-desc"><b>MABL & Fluid</b>คำนวณเลือดที่ยอมเสีย<br>และสารน้ำที่ควรได้</div>
+    </div>
   </div>
 </div>
 
@@ -208,7 +226,9 @@
 const TOOLS = {
   anesthcal: { src:'anesth-cal.html', title:'Anesth Cal', cls:'anesthcal' },
   drugs:     { src:'anesth-drugs.html', title:'ยาทางวิสัญญี', cls:'drugs' },
-  cpr:       { src:'cpr-protocol.html', title:'CPR Guideline 2025', cls:'cpr' }
+  cpr:       { src:'cpr-protocol.html', title:'CPR Guideline 2025', cls:'cpr' },
+  airway:    { src:'airway-tip.html', title:'Airway Tip', cls:'airway' },
+  fluid:     { src:'fluid-tip.html', title:'Fluid Tip', cls:'fluid' }
 };
 
 function openTool(key){

@@ -1,9 +1,11 @@
-const CACHE_NAME = 'aneshub-cache-v1';
+const CACHE_NAME = 'aneshub-cache-v3';
 const ASSETS = [
   './index.html',
   './anesth-cal.html',
   './anesth-drugs.html',
   './cpr-protocol.html',
+  './airway-tip.html',
+  './fluid-tip.html',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',

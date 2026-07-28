@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Fluid Tip — AnesHub</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1C3F9E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fluid Tip">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F1F5FC;
+    --panel: #FFFFFF;
+    --ink: #172642;
+    --ink-soft: #5C6E93;
+    --teal-deep: #1C3F9E;
+    --teal: #2F6FE0;
+    --accent: #3D7DFB;
+    --amber: #E8A23D;
+    --alert: #D9534F;
+    --line: #DCE6F9;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Sarabun', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 20px 80px;}
+
+  header{
+    background: linear-gradient(160deg, var(--teal-deep) 0%, #123072 100%);
+    color:#EAF1FF; padding:28px 20px 22px; position:relative; overflow:hidden;
+  }
+  header .inner{max-width:920px; margin:0 auto; position:relative; z-index:2;}
+  header h1{font-size:22px; margin:0 0 4px; font-weight:700; letter-spacing:.2px;}
+  header p.sub{margin:0; font-size:13.5px; color:#C2D6FA; font-weight:500;}
+  .wave{position:absolute; left:0; right:0; bottom:-6px; height:38px; opacity:.5; z-index:1;}
+  .wave path{stroke:#8FB4F5; stroke-width:1.6; fill:none;}
+
+  .pbar{
+    position:sticky; top:0; z-index:10; background:var(--panel);
+    border-bottom:1px solid var(--line); box-shadow:0 4px 14px rgba(13,32,59,.06);
+    padding:12px 20px;
+  }
+  .pbar .inner{max-width:920px; margin:0 auto;}
+  .pbar .seg{display:flex; border:1.5px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:10px;}
+  .pbar .seg button{flex:1; border:none; background:#fff; padding:9px 0; font-family:var(--sans); font-size:13px; color:var(--ink-soft); cursor:pointer;}
+  .pbar .seg button.active{background:var(--teal); color:#fff; font-weight:700;}
+  .pbar .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
+  .pbar .grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-top:8px;}
+  .pbar label{display:block; font-size:11px; color:var(--ink-soft); margin-bottom:3px; font-weight:600;}
+  .pbar select, .pbar input{
+    width:100%; font-family:var(--sans); font-size:14px; padding:7px 8px;
+    border-radius:8px; border:1.3px solid var(--line); background:#F7FAFF; color:var(--ink);
+  }
+  .calcbtn{
+    margin-top:10px; width:100%; padding:11px; border:none; border-radius:10px;
+    background:var(--teal-deep); color:#fff; font-family:var(--sans); font-weight:700;
+    font-size:14.5px; cursor:pointer;
+  }
+  .calcbtn:active{background:#0E2A6E;}
+
+  section.block{margin-top:28px;}
+  .block h2{
+    font-size:16px; color:var(--teal-deep); border-bottom:2px solid var(--teal);
+    padding-bottom:8px; margin:0 0 16px; display:flex; align-items:center; gap:8px;
+  }
+  .block h2 .tag{
+    font-family:var(--mono); font-size:11px; background:var(--teal-deep); color:#EAF1FF;
+    padding:2px 8px; border-radius:20px; font-weight:600;
+  }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(16,32,72,.04);
+  }
+  .card .name{font-size:15.5px; font-weight:700; color:var(--teal-deep); margin-bottom:8px; display:block;}
+  .metric{display:flex; justify-content:space-between; align-items:baseline; padding:7px 0; border-bottom:1px dashed var(--line); font-size:13.5px;}
+  .metric:last-of-type{border-bottom:none;}
+  .metric .k{color:var(--ink-soft);}
+  .metric .v{font-family:var(--mono); font-weight:700; color:var(--accent); font-size:14.5px;}
+  .metric .sub{display:block; font-size:10.5px; color:var(--ink-soft); font-weight:500;}
+
+  .note{font-size:12.5px; color:var(--ink-soft); margin-top:8px; line-height:1.55; background:#F1F6FF; border-radius:8px; padding:8px 10px;}
+  .flagbox{font-size:12.5px; padding:7px 10px; border-radius:8px; margin-bottom:6px; line-height:1.5; display:flex; gap:8px; align-items:flex-start;}
+  .flagbox.warn{background:#FDF3E7; border:1px solid #F0D9B5; color:#8A5A16;}
+  .flagbox.ok{background:#E9F1FE; border:1px solid #BFD5F5; color:#1D4E9C;}
+  .dot{width:7px; height:7px; border-radius:50%; margin-top:5px; flex-shrink:0;}
+  .dot.warn{background:var(--amber);}
+  .dot.ok{background:#2E6BC7;}
+
+  details{margin-top:10px;}
+  summary{cursor:pointer; font-size:13px; font-weight:600; color:var(--teal); list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"▸ ";}
+  details[open] summary:before{content:"▾ ";}
+  .infobox{font-size:13px; line-height:1.7; color:var(--ink); margin-top:8px; padding:10px 12px; background:#F1F6FF; border-radius:10px;}
+  .infobox b{color:var(--teal-deep);}
+
+  footer{
+    max-width:920px; margin:40px auto 0; padding:16px 20px; font-size:12px;
+    color:var(--ink-soft); border-top:1px solid var(--line); line-height:1.7;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>Fluid Tip — MABL & Fluid Management</h1>
+    <p class="sub">คำนวณ Maximum Allowable Blood Loss และปริมาณสารน้ำระหว่างผ่าตัด</p>
+  </div>
+  <svg class="wave" viewBox="0 0 900 40" preserveAspectRatio="none"><path d="M0,20 Q50,5 100,20 T200,20 T300,20 T400,20 T500,20 T600,20 T700,20 T800,20 T900,20"/></svg>
+</header>
+
+<div class="pbar">
+  <div class="inner">
+    <div class="seg" id="ageGroupSeg">
+      <button data-v="neonate">ทารกแรกเกิด</button>
+      <button data-v="pediatric">เด็ก</button>
+      <button data-v="adult" class="active">ผู้ใหญ่</button>
+    </div>
+    <div class="grid">
+      <div>
+        <label>เพศ</label>
+        <select id="sex"><option value="female">หญิง</option><option value="male">ชาย</option></select>
+      </div>
+      <div><label>อายุ (ปี)</label><input type="number" id="age" placeholder="เช่น 45" step="0.1" min="0"></div>
+      <div><label>น้ำหนัก (kg)</label><input type="number" id="weight" placeholder="เช่น 60" step="0.1" min="0"></div>
+      <div><label>ส่วนสูง (cm)</label><input type="number" id="height" placeholder="เช่น 160" step="0.1" min="0"></div>
+    </div>
+    <div class="grid2">
+      <div><label>Hct เริ่มต้น (%)</label><input type="number" id="hctInitial" placeholder="เช่น 38" step="0.1" min="0"></div>
+      <div><label>Hct ที่ยอมรับได้ (%)</label><input type="number" id="hctTarget" placeholder="ค่าเริ่มต้น 30" value="30" step="0.1" min="0"></div>
+    </div>
+    <div class="grid2">
+      <div><label>งดน้ำงดอาหาร (ชม.)</label><input type="number" id="npoHours" placeholder="เช่น 6" value="6" step="0.5" min="0"></div>
+      <div><label>ระยะเวลาผ่าตัด (ชม.)</label><input type="number" id="duration" placeholder="เช่น 2" value="2" step="0.5" min="0"></div>
+    </div>
+    <div style="margin-top:8px;">
+      <label>ชนิดการผ่าตัด (Third-space loss)</label>
+      <select id="surgeryType">
+        <option value="minor">เล็กน้อย (ผิวเผิน / laparoscopic) — 2 ml/kg/h</option>
+        <option value="moderate" selected>ปานกลาง (เปิดช่องท้องทั่วไป) — 5 ml/kg/h</option>
+        <option value="major">ใหญ่ (thoracotomy / เปิดกว้าง) — 7 ml/kg/h</option>
+        <option value="extensive">ใหญ่มาก (major abdominal/vascular) — 9 ml/kg/h</option>
+      </select>
+    </div>
+    <button class="calcbtn" onclick="calculate()">คำนวณ Fluid & Blood Loss</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="block" id="resultsSection" style="display:none;">
+    <h2>ผลการคำนวณ <span class="tag">Fluid & MABL</span></h2>
+
+    <div class="card">
+      <span class="name">🩸 Maximum Allowable Blood Loss (MABL)</span>
+      <div class="metric"><span class="k">Estimated Blood Volume (EBV)</span><span class="v" id="ebv">-</span></div>
+      <div class="metric"><span class="k">MABL (ยอมรับ Hct ตามที่กำหนด)</span><span class="v" id="mabl">-</span></div>
+      <div id="replaceBlock">
+        <div class="metric"><span class="k">ทดแทนด้วย Crystalloid (3:1)</span><span class="v" id="crystalloidReplace">-</span></div>
+        <div class="metric"><span class="k">ทดแทนด้วย Colloid (1:1)</span><span class="v" id="colloidReplace">-</span></div>
+      </div>
+      <div class="note">สูตร: EBV = น้ำหนัก(kg) × ml/kg (ทารกแรกเกิด 85, เด็ก 75, ผู้ใหญ่ชาย 75, ผู้ใหญ่หญิง 65)<br>MABL = EBV × (Hct เริ่มต้น − Hct เป้าหมาย) / Hct เริ่มต้น</div>
+    </div>
+
+    <div class="card">
+      <span class="name">⏱️ Maintenance Fluid (4-2-1 Rule)</span>
+      <div class="metric"><span class="k">อัตรา Maintenance</span><span class="v" id="maintRate">-</span></div>
+      <div class="metric"><span class="k">Fasting deficit ทั้งหมด</span><span class="v" id="fastingDeficit">-</span></div>
+      <div class="metric"><span class="k">ชม.ที่ 1 (maintenance + 50% deficit)</span><span class="v" id="hour1">-</span></div>
+      <div class="metric"><span class="k">ชม.ที่ 2 (maintenance + 25% deficit)</span><span class="v" id="hour2">-</span></div>
+      <div class="metric"><span class="k">ชม.ที่ 3 (maintenance + 25% deficit)</span><span class="v" id="hour3">-</span></div>
+      <div class="note">4-2-1: 4 mL/kg สำหรับ 10 kg แรก + 2 mL/kg สำหรับ 10 kg ถัดไป + 1 mL/kg ทุก kg ที่เกิน 20 kg (ต่อชั่วโมง)</div>
+    </div>
+
+    <div class="card">
+      <span class="name">💧 Third-space Loss</span>
+      <div class="metric"><span class="k">อัตราตามชนิดผ่าตัด</span><span class="v" id="tsRate">-</span></div>
+      <div class="metric"><span class="k">ปริมาณต่อชั่วโมง</span><span class="v" id="tsPerHour">-</span></div>
+      <div class="metric"><span class="k">รวมตลอดการผ่าตัด</span><span class="v" id="tsTotal">-</span></div>
+    </div>
+
+    <div class="card">
+      <span class="name">🧮 สรุปสารน้ำรวมโดยประมาณตลอดเคส</span>
+      <div class="metric"><span class="k">Maintenance รวม</span><span class="v" id="totalMaint">-</span></div>
+      <div class="metric"><span class="k">Fasting deficit</span><span class="v" id="totalDeficit">-</span></div>
+      <div class="metric"><span class="k">Third-space รวม</span><span class="v" id="totalTs">-</span></div>
+      <div class="metric"><span class="k">รวมทั้งหมด (ไม่รวมเลือดที่เสีย)</span><span class="v" id="totalAll">-</span></div>
+      <div class="note">หากมีเลือดออกเกิน MABL ให้เริ่มพิจารณาให้ blood product ทดแทนแทน crystalloid/colloid เพียงอย่างเดียว</div>
+    </div>
+
+    <div class="card">
+      <span class="name">⚠️ ข้อควรระวัง</span>
+      <div id="flags"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>สรุปความรู้สำคัญ <span class="tag">Fluid Management</span></h2>
+
+    <div class="card">
+      <details open>
+        <summary>วัตถุประสงค์ของ Fluid Therapy</summary>
+        <div class="infobox">รักษาสมดุลสารน้ำและ tissue perfusion ให้ใกล้เคียงปกติที่สุด แบ่งเป็นระยะ preoperative, intraoperative และ postoperative ทางเลือกของสารน้ำต้องพิจารณาจากความต้องการเฉพาะบุคคลและคุณสมบัติทางสรีรวิทยาของสารน้ำแต่ละชนิด</div>
+      </details>
+      <details>
+        <summary>Maintenance Fluid — 4-2-1 Rule (Holliday–Segar)</summary>
+        <div class="infobox">4 mL/kg/h สำหรับ 10 kg แรก, 2 mL/kg/h สำหรับ 10 kg ถัดไป (11–20 kg), 1 mL/kg/h สำหรับทุก kg ที่เกิน 20 kg ใช้ได้ทั้งเด็กและผู้ใหญ่เป็นค่าเริ่มต้นทางคลินิก</div>
+      </details>
+      <details>
+        <summary>Fasting Deficit</summary>
+        <div class="infobox">คำนวณจาก maintenance rate × จำนวนชั่วโมงที่งดอาหาร แนวทางคลาสสิกให้ทดแทน 50% ในชั่วโมงแรก และ 25% ในชั่วโมงที่ 2 และ 3 ของการผ่าตัด ปัจจุบันแนวทาง fasting ที่สั้นลง (clear fluid 1-2 ชม.) ทำให้ deficit จริงมักน้อยกว่าที่คำนวณ</div>
+      </details>
+      <details>
+        <summary>Third-space Loss</summary>
+        <div class="infobox">การสูญเสียสารน้ำเข้าสู่ interstitial space ที่ประเมินยาก ขึ้นกับชนิดผ่าตัด: ผิวเผิน ~2 mL/kg/h, thoracotomy ~4-7 mL/kg/h, เปิดช่องท้อง ~5-10 mL/kg/h แนวคิด "third space" ยังเป็นที่ถกเถียงทางวิชาการ แต่ยังใช้เป็นแนวทางปฏิบัติทั่วไป</div>
+      </details>
+      <details>
+        <summary>Maximum Allowable Blood Loss (MABL)</summary>
+        <div class="infobox">MABL = EBV × (Hct เริ่มต้น − Hct เป้าหมาย) / Hct เริ่มต้น โดย EBV ประมาณจากน้ำหนักตัว (ผู้ใหญ่ชาย ~75 mL/kg, ผู้ใหญ่หญิง ~65 mL/kg, เด็ก ~75-80 mL/kg, ทารกแรกเกิด ~85-90 mL/kg) เลือดที่เสียเกิน MABL ควรพิจารณาให้ blood product</div>
+      </details>
+      <details>
+        <summary>อัตราส่วนการทดแทนเลือดที่เสีย</summary>
+        <div class="infobox">Crystalloid ทดแทนในอัตราส่วน 3:1 (เนื่องจากกระจายออกนอกหลอดเลือดส่วนใหญ่) · Colloid ทดแทนในอัตราส่วน 1:1 · Blood product ให้ในปริมาณเทียบเท่าที่เสียไปเพื่อรักษา Hb/Hct เป้าหมาย (มักอ้างอิง Hb 7-9 g/dL, Hct 30-35% ในสถานการณ์เสียเลือดมาก)</div>
+      </details>
+      <details>
+        <summary>ข้อพิจารณาพิเศษในเด็ก</summary>
+        <div class="infobox">เด็กทนต่อการงดอาหารได้แย่กว่าผู้ใหญ่ เสี่ยง hypoglycemia และ hyponatremia มากกว่า ควรใช้ isotonic crystalloid เป็นหลัก ทารกอายุน้อยกว่า 6 เดือนมักต้องการ glucose เสริมระหว่างงดอาหาร หลังผ่าตัดให้ fluid ต่อในอัตราครึ่งหนึ่งของ 4-2-1 (2-1-0.5) จนกว่าจะดื่มน้ำได้เอง</div>
+      </details>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  เครื่องมือนี้ใช้สูตรและค่ามาตรฐานทางคลินิกทั่วไปเพื่อการศึกษาและเป็นจุดเริ่มต้นในการประเมิน ไม่ทดแทนดุลยพินิจทางคลินิก ควรพิจารณาร่วมกับ vital signs, urine output และ clinical context ของผู้ป่วยแต่ละราย
+</footer>
+
+<script>
+let ageGroup = 'adult';
+document.querySelectorAll('#ageGroupSeg button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#ageGroupSeg button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    ageGroup = btn.dataset.v;
+  });
+});
+
+function round(n,d=1){ return Math.round(n*Math.pow(10,d))/Math.pow(10,d); }
+
+function maintenanceRate(w){
+  if(w<=10) return 4*w;
+  if(w<=20) return 40+2*(w-10);
+  return 60+1*(w-20);
+}
+
+const THIRD_SPACE = { minor:2, moderate:5, major:7, extensive:9 };
+
+function calculate(){
+  const sex = document.getElementById('sex').value;
+  const w = parseFloat(document.getElementById('weight').value) || 0;
+  const age = parseFloat(document.getElementById('age').value) || 0;
+  const hi = parseFloat(document.getElementById('hctInitial').value) || 0;
+  const ht = parseFloat(document.getElementById('hctTarget').value) || 30;
+  const npo = parseFloat(document.getElementById('npoHours').value) || 0;
+  const dur = parseFloat(document.getElementById('duration').value) || 0;
+  const surgeryType = document.getElementById('surgeryType').value;
+
+  if(w<=0 || hi<=0){ alert('กรุณาใส่น้ำหนักและ Hct เริ่มต้นอย่างน้อย'); return; }
+
+  let ebvPerKg;
+  if(ageGroup==='neonate') ebvPerKg = 85;
+  else if(ageGroup==='pediatric') ebvPerKg = 75;
+  else ebvPerKg = sex==='male' ? 75 : 65;
+
+  const ebv = round(w*ebvPerKg, 0);
+  const belowTarget = hi <= ht;
+  const mabl = belowTarget ? 0 : round((ebv*(hi-ht))/hi, 0);
+  const crystalloidReplace = round(mabl*3, 0);
+  const colloidReplace = round(mabl*1, 0);
+
+  document.getElementById('ebv').textContent = ebv + ' mL';
+  document.getElementById('ebv').nextElementSibling; // no-op
+  document.getElementById('mabl').textContent = mabl + ' mL';
+  document.getElementById('replaceBlock').style.display = belowTarget ? 'none' : 'block';
+  document.getElementById('crystalloidReplace').textContent = crystalloidReplace + ' mL';
+  document.getElementById('colloidReplace').textContent = colloidReplace + ' mL';
+
+  const maintRate = round(maintenanceRate(w), 0);
+  const fastingDeficit = round(maintRate*npo, 0);
+  const hour1 = round(maintRate + fastingDeficit*0.5, 0);
+  const hour2 = round(maintRate + fastingDeficit*0.25, 0);
+  const hour3 = round(maintRate + fastingDeficit*0.25, 0);
+
+  document.getElementById('maintRate').textContent = maintRate + ' mL/hr';
+  document.getElementById('fastingDeficit').textContent = fastingDeficit + ' mL';
+  document.getElementById('hour1').textContent = hour1 + ' mL';
+  document.getElementById('hour2').textContent = hour2 + ' mL';
+  document.getElementById('hour3').textContent = hour3 + ' mL';
+
+  const tsRate = THIRD_SPACE[surgeryType];
+  const tsPerHour = round(tsRate*w, 0);
+  const tsTotal = round(tsPerHour*dur, 0);
+  document.getElementById('tsRate').textContent = tsRate + ' mL/kg/h';
+  document.getElementById('tsPerHour').textContent = tsPerHour + ' mL/hr';
+  document.getElementById('tsTotal').textContent = tsTotal + ' mL';
+
+  const totalMaint = round(maintRate*dur, 0);
+  const totalAll = round(totalMaint + fastingDeficit + tsTotal, 0);
+  document.getElementById('totalMaint').textContent = totalMaint + ' mL';
+  document.getElementById('totalDeficit').textContent = fastingDeficit + ' mL';
+  document.getElementById('totalTs').textContent = tsTotal + ' mL';
+  document.getElementById('totalAll').textContent = totalAll + ' mL';
+
+  let flags = [];
+  if(belowTarget) flags.push({t:`Hct เริ่มต้น (${hi}%) ต่ำกว่าหรือเท่ากับเป้าหมาย (${ht}%) อยู่แล้ว → ไม่มี allowable blood loss เหลือ ควรพิจารณาเตรียมเลือดล่วงหน้า`, l:'warn'});
+  if(ageGroup!=='adult' && npo>2) flags.push({t:'เด็กที่งดน้ำนานเกิน 2 ชม. (clear fluid) เสี่ยง hypoglycemia/dehydration — พิจารณาให้ clear fluid ได้ถึง 1-2 ชม.ก่อนผ่าตัดตามแนวทางปัจจุบัน', l:'warn'});
+  if(ageGroup!=='adult') flags.push({t:'เด็ก: ใช้ isotonic crystalloid ± dextrose ตามอายุ, เฝ้าระวัง hyponatremia/hyperglycemia', l:'ok'});
+  if(mabl>0 && mabl<200 && ageGroup==='adult') flags.push({t:'MABL ค่อนข้างต่ำ — เสียเลือดเพียงเล็กน้อยอาจถึงเกณฑ์ต้องพิจารณาให้เลือด', l:'warn'});
+  document.getElementById('flags').innerHTML = flags.map(f=>
+    '<div class="flagbox '+f.l+'"><span class="dot '+f.l+'"></span><span>'+f.t+'</span></div>'
+  ).join('');
+
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('resultsSection').scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+</body>
+</html>

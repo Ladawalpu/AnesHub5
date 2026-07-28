@@ -1,7 +1,7 @@
 {
   "name": "AnesHub — Smart Tools for Safe Anesthesia",
   "short_name": "AnesHub",
-  "description": "รวมเครื่องมือช่วยงานวิสัญญี: คำนวณยาตามน้ำหนัก, ข้อมูลยาทางวิสัญญี, และแนวทาง CPR Guideline 2025",
+  "description": "รวมเครื่องมือช่วยงานวิสัญญี: คำนวณยาตามน้ำหนัก, ข้อมูลยาทางวิสัญญี, แนวทาง CPR Guideline 2025, คำนวณอุปกรณ์ Airway และคำนวณ Fluid/MABL",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

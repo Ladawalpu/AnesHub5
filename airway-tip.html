@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Airway Tip — AnesHub</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0B5A63">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Airway Tip">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F1F9FA;
+    --panel: #FFFFFF;
+    --ink: #17393C;
+    --ink-soft: #5C8288;
+    --teal-deep: #0B5A63;
+    --teal: #0E8A8F;
+    --accent: #12A7A0;
+    --amber: #E8A23D;
+    --alert: #D9534F;
+    --line: #D6ECEC;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Sarabun', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 20px 80px;}
+
+  header{
+    background: linear-gradient(160deg, var(--teal-deep) 0%, #135C6E 100%);
+    color:#EAFBFA; padding:28px 20px 22px; position:relative; overflow:hidden;
+  }
+  header .inner{max-width:920px; margin:0 auto; position:relative; z-index:2;}
+  header h1{font-size:22px; margin:0 0 4px; font-weight:700; letter-spacing:.2px;}
+  header p.sub{margin:0; font-size:13.5px; color:#BFE8E6; font-weight:500;}
+  .wave{position:absolute; left:0; right:0; bottom:-6px; height:38px; opacity:.5; z-index:1;}
+  .wave path{stroke:#8FD8D2; stroke-width:1.6; fill:none;}
+
+  .pbar{
+    position:sticky; top:0; z-index:10; background:var(--panel);
+    border-bottom:1px solid var(--line); box-shadow:0 4px 14px rgba(13,59,57,.06);
+    padding:12px 20px;
+  }
+  .pbar .inner{max-width:920px; margin:0 auto;}
+  .pbar .seg{display:flex; border:1.5px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:10px;}
+  .pbar .seg button{flex:1; border:none; background:#fff; padding:9px 0; font-family:var(--sans); font-size:13px; color:var(--ink-soft); cursor:pointer;}
+  .pbar .seg button.active{background:var(--teal); color:#fff; font-weight:700;}
+  .pbar .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
+  .pbar label{display:block; font-size:11px; color:var(--ink-soft); margin-bottom:3px; font-weight:600;}
+  .pbar select, .pbar input{
+    width:100%; font-family:var(--sans); font-size:14px; padding:7px 8px;
+    border-radius:8px; border:1.3px solid var(--line); background:#F8FEFE; color:var(--ink);
+  }
+  .calcbtn{
+    margin-top:10px; width:100%; padding:11px; border:none; border-radius:10px;
+    background:var(--teal-deep); color:#fff; font-family:var(--sans); font-weight:700;
+    font-size:14.5px; cursor:pointer;
+  }
+  .calcbtn:active{background:#083F46;}
+
+  section.block{margin-top:28px;}
+  .block h2{
+    font-size:16px; color:var(--teal-deep); border-bottom:2px solid var(--teal);
+    padding-bottom:8px; margin:0 0 16px; display:flex; align-items:center; gap:8px;
+  }
+  .block h2 .tag{
+    font-family:var(--mono); font-size:11px; background:var(--teal-deep); color:#EAFBFA;
+    padding:2px 8px; border-radius:20px; font-weight:600;
+  }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(16,48,46,.04);
+  }
+  .card .name{font-size:15.5px; font-weight:700; color:var(--teal-deep); margin-bottom:8px; display:block;}
+  .metric{display:flex; justify-content:space-between; align-items:baseline; padding:7px 0; border-bottom:1px dashed var(--line); font-size:13.5px;}
+  .metric:last-of-type{border-bottom:none;}
+  .metric .k{color:var(--ink-soft);}
+  .metric .v{font-family:var(--mono); font-weight:700; color:var(--accent); font-size:14.5px;}
+  .metric .sub{display:block; font-size:10.5px; color:var(--ink-soft); font-weight:500;}
+
+  .note{font-size:12.5px; color:var(--ink-soft); margin-top:8px; line-height:1.55; background:#F1FAFA; border-radius:8px; padding:8px 10px;}
+  .flagbox{font-size:12.5px; padding:7px 10px; border-radius:8px; margin-bottom:6px; line-height:1.5; display:flex; gap:8px; align-items:flex-start;}
+  .flagbox.warn{background:#FDF3E7; border:1px solid #F0D9B5; color:#8A5A16;}
+  .flagbox.ok{background:#E9F7F1; border:1px solid #BFE5D3; color:#1E7A4E;}
+  .dot{width:7px; height:7px; border-radius:50%; margin-top:5px; flex-shrink:0;}
+  .dot.warn{background:var(--amber);}
+  .dot.ok{background:#2E9A63;}
+
+  details{margin-top:10px;}
+  summary{cursor:pointer; font-size:13px; font-weight:600; color:var(--teal); list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"▸ ";}
+  details[open] summary:before{content:"▾ ";}
+  .infobox{font-size:13px; line-height:1.7; color:var(--ink); margin-top:8px; padding:10px 12px; background:#F1FAFA; border-radius:10px;}
+  .infobox b{color:var(--teal-deep);}
+
+  footer{
+    max-width:920px; margin:40px auto 0; padding:16px 20px; font-size:12px;
+    color:var(--ink-soft); border-top:1px solid var(--line); line-height:1.7;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>Airway Tip — คำนวณอุปกรณ์ทางเดินหายใจ</h1>
+    <p class="sub">ขนาด/ความลึก ETT, LMA, Blade, OPA, NPA จากข้อมูลผู้ป่วย</p>
+  </div>
+  <svg class="wave" viewBox="0 0 900 40" preserveAspectRatio="none"><path d="M0,20 Q50,5 100,20 T200,20 T300,20 T400,20 T500,20 T600,20 T700,20 T800,20 T900,20"/></svg>
+</header>
+
+<div class="pbar">
+  <div class="inner">
+    <div class="seg" id="ageGroupSeg">
+      <button data-v="neonate" class="active">ทารกแรกเกิด</button>
+      <button data-v="pediatric">เด็ก</button>
+      <button data-v="adult">ผู้ใหญ่</button>
+    </div>
+    <div class="grid">
+      <div>
+        <label>เพศ</label>
+        <select id="sex"><option value="female">หญิง</option><option value="male">ชาย</option></select>
+      </div>
+      <div><label>อายุ (ปี)</label><input type="number" id="age" placeholder="เช่น 5" step="0.1" min="0"></div>
+      <div><label>น้ำหนัก (kg)</label><input type="number" id="weight" placeholder="เช่น 18" step="0.1" min="0"></div>
+      <div><label>ส่วนสูง (cm)</label><input type="number" id="height" placeholder="เช่น 110" step="0.1" min="0"></div>
+    </div>
+    <button class="calcbtn" onclick="calculate()">คำนวณอุปกรณ์ Airway ทั้งหมด</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="block" id="resultsSection" style="display:none;">
+    <h2>ผลการคำนวณ <span class="tag">Airway devices</span></h2>
+
+    <div class="card">
+      <span class="name">🫁 Endotracheal Tube (ETT)</span>
+      <div style="font-size:11px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; margin:6px 0 2px;">Cuffed</div>
+      <div class="metric"><span class="k">ขนาด ID แนะนำ</span><span class="v" id="cuffedSize">-</span></div>
+      <div class="metric"><span class="k">ความลึก Oral</span><span class="v" id="oralDepth">-</span></div>
+      <div class="metric"><span class="k">ความลึก Nasal</span><span class="v" id="nasalDepth">-</span></div>
+      <div class="metric"><span class="k">ตรวจสอบด้วยกฎ 3×ID</span><span class="v" id="depthRule">-</span></div>
+      <div id="uncuffedBlock">
+        <div style="font-size:11px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; margin:10px 0 2px;">Uncuffed (เด็ก &lt; 8 ปี)</div>
+        <div class="metric"><span class="k">ขนาด ID แนะนำ<span class="sub">สเกล 2.5–6.0 mm</span></span><span class="v" id="uncuffedSize">-</span></div>
+        <div class="metric"><span class="k">ความลึกโดยประมาณ (3×ID)</span><span class="v" id="uncuffedDepth">-</span></div>
+      </div>
+      <div class="note">สูตร cuffed: ID = อายุ/4 + 3.5 · uncuffed: ID = อายุ/4 + 4 (ปัดเข้าเบอร์จริง 2.5/3.0/3.5/4.0/4.5/5.0/5.5/6.0) · Oral depth (ผู้ใหญ่) = ส่วนสูง(cm)/10 + 5 · Nasal = Oral × 1.2</div>
+    </div>
+
+    <div class="card">
+      <span class="name">😷 Laryngeal Mask Airway (LMA)</span>
+      <div class="metric"><span class="k">ขนาด LMA</span><span class="v" id="lmaSize">-</span></div>
+      <div class="metric"><span class="k">ปริมาตรลม cuff สูงสุด</span><span class="v" id="lmaCuff">-</span></div>
+      <div class="metric"><span class="k">ETT ลอดผ่านได้สูงสุด (Fastrach)</span><span class="v" id="lmaEtt">-</span></div>
+    </div>
+
+    <div class="card">
+      <span class="name">🔦 Laryngoscope Blade</span>
+      <div class="metric"><span class="k">ชนิด/เบอร์แนะนำ</span><span class="v" id="blade">-</span></div>
+    </div>
+
+    <div class="card">
+      <span class="name">👄 Oropharyngeal Airway (OPA)</span>
+      <div class="metric"><span class="k">เบอร์โดยประมาณ</span><span class="v" id="opaSize">-</span></div>
+      <div class="metric"><span class="k">ความยาวโดยประมาณ</span><span class="v" id="opaLen">-</span></div>
+    </div>
+
+    <div class="card">
+      <span class="name">👃 Nasopharyngeal Airway (NPA)</span>
+      <div class="metric"><span class="k">ขนาด ID</span><span class="v" id="npaSize">-</span></div>
+      <div class="metric"><span class="k">ความยาวโดยประมาณ</span><span class="v" id="npaLen">-</span></div>
+    </div>
+
+    <div class="card" id="cricoCard" style="display:none;">
+      <span class="name">🔪 Emergency Front-of-Neck Airway</span>
+      <div class="metric"><span class="k">ขนาดท่อ (surgical cric.)</span><span class="v">6.0 mm ID</span></div>
+      <div class="note">ใช้เฉพาะสถานการณ์ CICO — scalpel-bougie-tube technique</div>
+    </div>
+
+    <div class="card">
+      <span class="name">⚠️ Difficult Airway Flags</span>
+      <div id="flags"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>สรุปความรู้สำคัญ <span class="tag">Airway Management</span></h2>
+
+    <div class="card">
+      <details open>
+        <summary>Sniffing Position & การจัดท่า</summary>
+        <div class="infobox">ท่า “sniffing position” จัดแนวแกน 3 แกนให้ตรงกัน: <b>Oral axis, Pharyngeal axis, Laryngeal axis</b> โดยอาศัย cervical flexion + atlanto-occipital extension เพื่อให้เห็น glottis ชัดที่สุด ในผู้ป่วยอ้วนควรใช้ <b>Ramping</b> หรือ <b>HELP position</b> ร่วมกับ Reverse Trendelenburg เพื่อเพิ่ม FRC และเวลา apnea ที่ปลอดภัย</div>
+      </details>
+      <details>
+        <summary>“The tube follows the nose”</summary>
+        <div class="infobox">Neck flexion → ท่อลึกขึ้น เสี่ยง endobronchial intubation · Neck extension/หมุนคอ → ท่อตื้นขึ้น เสี่ยง accidental extubation ต้อง reassess ทุกครั้งหลังพลิกตัวผู้ป่วย</div>
+      </details>
+      <details>
+        <summary>Preoxygenation</summary>
+        <div class="infobox">เป้าหมาย EtO₂ &gt;90% · Tidal volume breathing 3 นาที (gold standard) หรือ 8 vital-capacity breaths ใน 60 วินาที หรือ THRIVE 60 L/min 3 นาที Safe apnea time ผู้ใหญ่สุขภาพดี ~9 นาที เทียบเด็ก/อ้วน ≤3 นาที</div>
+      </details>
+      <details>
+        <summary>Difficult Airway — ตัวชี้วัดหลัก</summary>
+        <div class="infobox">Mallampati (0–4), Thyromental distance (&lt;6 cm = เสี่ยงสูง), Mouth opening (&lt;2 cm = เสี่ยงสูง), Cormack-Lehane (III–IV = ยาก) ปัจจัยร่วม: คอสั้น/หนา, BMI&gt;26, OSA, มีเครา, ฟันปลอม, อายุ&gt;55</div>
+      </details>
+      <details>
+        <summary>DAS 2025 Algorithm</summary>
+        <div class="infobox">A: Videolaryngoscope (สูงสุด 3+1) → B: 2nd-gen SGA (สูงสุด 3) → C: Two-person facemask ครั้งสุดท้าย → D: ประกาศ CICO แล้วทำ FONA (scalpel-bougie-tube 6.0)</div>
+      </details>
+      <details>
+        <summary>Bougie vs Stylet</summary>
+        <div class="infobox">Bougie: glottis เห็นไม่ชัด (C-L 2b–3) ปลายโค้ง 35–40° · Stylet: เห็นชัด (grade 1–2) ต้องการควบคุมทิศทางแม่นยำ เหมาะกับ RSI</div>
+      </details>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  เครื่องมือนี้ใช้สูตรและค่ามาตรฐานทางคลินิกทั่วไปเพื่อการศึกษาและเป็นจุดเริ่มต้นในการประเมิน ไม่ทดแทนดุลยพินิจทางคลินิกของผู้ปฏิบัติงาน ควรตรวจสอบตำแหน่ง/ขนาดจริงหน้างานเสมอ
+</footer>
+
+<script>
+let ageGroup = 'neonate';
+document.querySelectorAll('#ageGroupSeg button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#ageGroupSeg button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    ageGroup = btn.dataset.v;
+  });
+});
+
+const UNCUFFED_STEPS = [2.5,3.0,3.5,4.0,4.5,5.0,5.5,6.0];
+function snapToStep(v, steps){ return steps.reduce((p,c)=>Math.abs(c-v)<Math.abs(p-v)?c:p); }
+function round(n,d=1){ return Math.round(n*Math.pow(10,d))/Math.pow(10,d); }
+
+function calculate(){
+  const sex = document.getElementById('sex').value;
+  const age = parseFloat(document.getElementById('age').value) || 0;
+  const weight = parseFloat(document.getElementById('weight').value) || 0;
+  const height = parseFloat(document.getElementById('height').value) || 0;
+  if(weight<=0){ alert('กรุณาใส่น้ำหนักอย่างน้อย'); return; }
+
+  let cuffedSize, oralDepth, nasalDepth, depthRule, uncuffedSize=null, uncuffedDepth=null;
+
+  if(ageGroup==='neonate' || (ageGroup==='pediatric' && age<1)){
+    if(weight<1){ cuffedSize=2.5; uncuffedSize=2.5; }
+    else if(weight<2){ cuffedSize=3.0; uncuffedSize=3.0; }
+    else if(weight<3){ cuffedSize=3.0; uncuffedSize=3.5; }
+    else { cuffedSize=3.5; uncuffedSize=3.5; }
+    oralDepth = round(weight+6,1);
+    nasalDepth = round(oralDepth*1.2,1);
+    depthRule = round(cuffedSize*3,1);
+    uncuffedDepth = round(uncuffedSize*3,1);
+  } else if(ageGroup==='pediatric'){
+    cuffedSize = round(age/4+3.5,1);
+    oralDepth = round(age/2+12,1);
+    nasalDepth = round(oralDepth*1.2,1);
+    depthRule = round(cuffedSize*3,1);
+    uncuffedSize = snapToStep(age/4+4, UNCUFFED_STEPS);
+    uncuffedDepth = round(uncuffedSize*3,1);
+  } else {
+    let base = sex==='male' ? 8.0 : 7.0;
+    if(height>0){
+      if(sex==='male' && height<160) base=7.0;
+      if(sex==='female' && height<150) base=6.5;
+    }
+    cuffedSize = base;
+    oralDepth = height>0 ? round(height/10+5,1) : round(base*3,1);
+    nasalDepth = round(oralDepth*1.2,1);
+    depthRule = round(cuffedSize*3,1);
+  }
+
+  document.getElementById('cuffedSize').textContent = cuffedSize + ' mm ID';
+  document.getElementById('oralDepth').textContent = oralDepth + ' cm';
+  document.getElementById('nasalDepth').textContent = nasalDepth + ' cm';
+  document.getElementById('depthRule').textContent = depthRule + ' cm';
+  document.getElementById('uncuffedBlock').style.display = (ageGroup==='adult') ? 'none' : 'block';
+  if(ageGroup!=='adult'){
+    document.getElementById('uncuffedSize').textContent = uncuffedSize + ' mm ID';
+    document.getElementById('uncuffedDepth').textContent = uncuffedDepth + ' cm';
+  }
+
+  let lmaSize, lmaCuff, lmaEtt;
+  if(weight<5){ lmaSize=1; lmaCuff=4; lmaEtt=3.5; }
+  else if(weight<10){ lmaSize=1.5; lmaCuff=7; lmaEtt=4.0; }
+  else if(weight<20){ lmaSize=2; lmaCuff=10; lmaEtt=4.5; }
+  else if(weight<30){ lmaSize=2.5; lmaCuff=14; lmaEtt=5.0; }
+  else if(weight<50){ lmaSize=3; lmaCuff=20; lmaEtt=6.0; }
+  else if(weight<70){ lmaSize=4; lmaCuff=30; lmaEtt=6.0; }
+  else { lmaSize=5; lmaCuff=40; lmaEtt=7.0; }
+  document.getElementById('lmaSize').textContent = 'เบอร์ ' + lmaSize;
+  document.getElementById('lmaCuff').textContent = '≤ ' + lmaCuff + ' mL';
+  document.getElementById('lmaEtt').textContent = lmaEtt + ' mm';
+
+  let blade;
+  if(ageGroup==='neonate' || (ageGroup==='pediatric' && age<1)) blade='Miller 0–1 (straight)';
+  else if(ageGroup==='pediatric' && age<2) blade='Miller/Macintosh 1–1.5';
+  else if(ageGroup==='pediatric' && age<8) blade='Macintosh 2';
+  else if(ageGroup==='pediatric') blade='Macintosh 2–3';
+  else {
+    blade='Macintosh 3 (มาตรฐาน)';
+    if(weight>90 || (height && height>185)) blade='Macintosh 4 (long blade / คอหนา)';
+  }
+  document.getElementById('blade').textContent = blade;
+
+  let opaSize, opaLen;
+  if(ageGroup==='neonate'){ opaSize='000–00'; opaLen='4–5 cm'; }
+  else if(ageGroup==='pediatric' && age<1){ opaSize='00–0'; opaLen='5–6 cm'; }
+  else if(ageGroup==='pediatric' && age<6){ opaSize='1–2'; opaLen='6–7 cm'; }
+  else if(ageGroup==='pediatric'){ opaSize='2–3'; opaLen='7–9 cm'; }
+  else if(sex==='male'){ opaSize='4–5'; opaLen='9–10 cm'; }
+  else { opaSize='3–4'; opaLen='8–9 cm'; }
+  document.getElementById('opaSize').textContent = opaSize;
+  document.getElementById('opaLen').textContent = opaLen;
+
+  let npaSize, npaLen;
+  if(ageGroup==='neonate' || (ageGroup==='pediatric' && age<1)){ npaSize='2.5–3.0 mm ID'; npaLen='~ '+round((height||50)*0.16,1)+' cm'; }
+  else if(ageGroup==='pediatric'){ npaSize=round(age/3+3.5,1)+' mm ID'; npaLen = height? round(height*0.14,1)+' cm' : '~ ตามอายุ'; }
+  else { npaSize = sex==='male' ? '7.0–8.0 mm ID (32–34 Fr)' : '6.0–7.0 mm ID (28–30 Fr)'; npaLen='ปลายจมูก → ติ่งหู (~13–15 cm)'; }
+  document.getElementById('npaSize').textContent = npaSize;
+  document.getElementById('npaLen').textContent = npaLen;
+
+  document.getElementById('cricoCard').style.display = (ageGroup==='adult') ? 'block' : 'none';
+
+  let flags = [];
+  if(ageGroup==='adult'){
+    let bmi = height>0 ? weight/Math.pow(height/100,2) : 0;
+    if(bmi>=35) flags.push({t:'BMI ≥35 → เสี่ยง difficult mask ventilation & LMA leak', l:'warn'});
+    else if(bmi>=26) flags.push({t:'BMI ≥26 → เสี่ยง difficult intubation', l:'warn'});
+    if(sex==='male') flags.push({t:'เพศชาย → ปัจจัยเสี่ยง difficult mask ventilation', l:'warn'});
+    if(age>55) flags.push({t:'อายุ >55 ปี → เนื้อเยื่อคอหย่อนยาน เสี่ยง mask ventilation ยาก', l:'warn'});
+  }
+  if(flags.length===0) flags.push({t:'ยังไม่มีข้อบ่งชี้ความเสี่ยงจากพารามิเตอร์พื้นฐาน — ควรประเมิน Mallampati, thyromental distance และ mouth opening เพิ่มเติมเสมอ', l:'ok'});
+  document.getElementById('flags').innerHTML = flags.map(f=>
+    '<div class="flagbox '+f.l+'"><span class="dot '+f.l+'"></span><span>'+f.t+'</span></div>'
+  ).join('');
+
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('resultsSection').scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+</body>
+</html>
