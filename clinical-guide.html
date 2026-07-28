@@ -23,6 +23,8 @@
     --ink-soft: #7A6A57;
     --amber-deep: #B45309;
     --amber: #F59E0B;
+    --cat-primary: #B45309;
+    --cat-dark: #92400E;
     --line: #EEE3D3;
     --sans: 'Sarabun', sans-serif;
   }
@@ -34,8 +36,9 @@
   .wrap{max-width:920px; margin:0 auto; padding:0 16px 60px;}
 
   header{
-    background: linear-gradient(160deg, var(--amber-deep) 0%, #92400E 100%);
+    background: linear-gradient(160deg, var(--cat-primary) 0%, var(--cat-dark) 100%);
     color:#FFF7ED; padding:24px 18px 20px; position:relative;
+    transition: background .25s ease;
   }
   header .inner{max-width:920px; margin:0 auto;}
   header h1{font-size:20px; margin:0 0 4px; font-weight:800;}
@@ -46,14 +49,14 @@
     font-size:12.5px; color:var(--ink-soft); font-weight:600; flex-wrap:wrap;
   }
   .crumb .seg{cursor:pointer;}
-  .crumb .seg.current{color:var(--amber-deep); cursor:default;}
+  .crumb .seg.current{color:var(--cat-primary); cursor:default; transition:color .2s ease;}
   .crumb .sep{opacity:.5;}
 
   .backbtn{
     display:inline-flex; align-items:center; gap:6px; margin:14px 0 4px;
-    background:#fff; border:1.4px solid var(--line); color:var(--amber-deep);
+    background:#fff; border:1.4px solid var(--line); color:var(--cat-primary);
     font-family:var(--sans); font-weight:700; font-size:13px; padding:8px 14px;
-    border-radius:10px; cursor:pointer;
+    border-radius:10px; cursor:pointer; transition:color .2s ease;
   }
   .backbtn:active{ background:#FDF3E7; }
 
@@ -81,7 +84,7 @@
   }
   .proc-item:active{ background:#FDF3E7; }
   .proc-item .pname{ font-weight:700; font-size:14px; color:var(--ink); }
-  .proc-item .chev{ color:var(--ink-soft); font-size:14px; }
+  .proc-item .chev{ color:var(--cat-primary); font-size:14px; transition:color .2s ease; }
 
   .detail-title{ font-size:19px; font-weight:800; margin:14px 0 2px; color:var(--ink); }
   .detail-sub{ font-size:12.5px; color:var(--ink-soft); margin-bottom:16px; }
@@ -89,8 +92,8 @@
   .acc{ border:1px solid var(--line); border-radius:14px; margin-bottom:10px; overflow:hidden; background:var(--panel); }
   .acc-head{
     display:flex; align-items:center; justify-content:space-between; padding:13px 16px;
-    cursor:pointer; font-weight:700; font-size:14px; color:var(--amber-deep);
-    -webkit-tap-highlight-color:transparent;
+    cursor:pointer; font-weight:700; font-size:14px; color:var(--cat-primary);
+    -webkit-tap-highlight-color:transparent; transition:color .2s ease;
   }
   .acc-head .chev{ transition:transform .15s ease; color:var(--ink-soft); font-size:13px; }
   .acc.open .acc-head .chev{ transform:rotate(180deg); }
@@ -194,6 +197,20 @@ function renderSection(key, val){
   return out;
 }
 
+const DEFAULT_PRIMARY = '#B45309';
+const DEFAULT_DARK = '#92400E';
+
+function applyTheme(catKey){
+  const root = document.documentElement.style;
+  if(catKey && DATA[catKey] && DATA[catKey]._meta){
+    root.setProperty('--cat-primary', DATA[catKey]._meta.primary);
+    root.setProperty('--cat-dark', DATA[catKey]._meta.dark);
+  } else {
+    root.setProperty('--cat-primary', DEFAULT_PRIMARY);
+    root.setProperty('--cat-dark', DEFAULT_DARK);
+  }
+}
+
 let state = { view:'categories', catKey:null, procId:null };
 
 function setCrumb(){
@@ -227,6 +244,7 @@ function goDetail(catKey, procId){
 
 function render(){
   setCrumb();
+  applyTheme(state.view === 'categories' ? null : state.catKey);
   const view = document.getElementById('view');
   if(state.view === 'categories'){
     let html = '<div class="grid8">';
