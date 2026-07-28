@@ -122,6 +122,7 @@
   .cat-card.cpr .cat-pill{ background:linear-gradient(120deg, var(--card-pink), #7a0c47); }
   .cat-card.airway .cat-pill{ background:linear-gradient(120deg, var(--card-teal), #0B5A63); }
   .cat-card.fluid .cat-pill{ background:linear-gradient(120deg, var(--card-blue), #1c3f9e); }
+  .cat-card.clinicalguide .cat-pill{ background:linear-gradient(120deg, #D97706, #92400E); }
 
   .cat-pill .cat-icon-inline{ font-size:1rem; line-height:1; }
 
@@ -160,6 +161,7 @@
   .toolbar.cpr{ background:linear-gradient(120deg, #7a0c47, #b3175f); }
   .toolbar.airway{ background:linear-gradient(120deg, #0B5A63, #0E8A8F); }
   .toolbar.fluid{ background:linear-gradient(120deg, #123072, #2f6fe0); }
+  .toolbar.clinicalguide{ background:linear-gradient(120deg, #92400E, #D97706); }
 
   @media (max-width:480px){
     h1.wordmark{ font-size:1.85rem; }
@@ -208,6 +210,11 @@
       <div class="cat-pill"><span class="cat-icon-inline">💧</span>Fluid Tip</div>
       <div class="cat-desc"><b>MABL & Fluid</b>คำนวณเลือดที่ยอมเสีย<br>และสารน้ำที่ควรได้</div>
     </div>
+
+    <div class="cat-card clinicalguide" onclick="openTool('clinicalguide')">
+      <div class="cat-pill"><span class="cat-icon-inline">📖</span>Clinical Guide</div>
+      <div class="cat-desc"><b>Guide</b>แนวทางดูแลผู้ป่วย<br>ตามชนิดการผ่าตัด</div>
+    </div>
   </div>
 </div>
 
@@ -230,7 +237,8 @@ const TOOLS = {
   drugs:     { src:'anesth-drugs.html', title:'ยาทางวิสัญญี', cls:'drugs' },
   cpr:       { src:'cpr-protocol.html', title:'CPR Guideline 2025', cls:'cpr' },
   airway:    { src:'airway-tip.html', title:'Airway Tip', cls:'airway' },
-  fluid:     { src:'fluid-tip.html', title:'Fluid Tip', cls:'fluid' }
+  fluid:     { src:'fluid-tip.html', title:'Fluid Tip', cls:'fluid' },
+  clinicalguide: { src:'clinical-guide.html', title:'Clinical Guide', cls:'clinicalguide' }
 };
 
 function openTool(key){
