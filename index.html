@@ -69,13 +69,13 @@
   #home{
     position:relative; z-index:1;
     max-width:760px; margin:0 auto;
-    padding:calc(64px + env(safe-area-inset-top)) 22px 60px;
+    padding:calc(36px + env(safe-area-inset-top)) 18px 40px;
     display:flex; flex-direction:column; align-items:center;
     min-height:100vh;
   }
 
   h1.wordmark{
-    margin:0 0 18px; text-align:center; font-weight:800; font-size:2.6rem;
+    margin:0 0 10px; text-align:center; font-weight:800; font-size:2.1rem;
     letter-spacing:.5px;
     background: linear-gradient(180deg, #f3e6ff 0%, #d9a9ff 55%, #b46bff 100%);
     -webkit-background-clip:text; background-clip:text; color:transparent;
@@ -86,23 +86,23 @@
   .subtitle-pill{
     display:inline-flex; align-items:center; gap:8px;
     background:none;
-    color:#cfe0ff; font-weight:700; font-size:.95rem;
-    padding:10px 22px; border-radius:999px;
+    color:#cfe0ff; font-weight:700; font-size:.82rem;
+    padding:8px 18px; border-radius:999px;
     box-shadow:none;
-    margin-bottom:36px;
+    margin-bottom:18px;
   }
 
   .cards{
-    width:100%; display:flex; gap:16px; flex-wrap:wrap;
-    justify-content:center; align-items:stretch;
+    width:100%; display:grid; grid-template-columns:repeat(2, 1fr); gap:10px;
+    align-items:stretch;
   }
 
   .cat-card{
-    flex:1 1 200px; max-width:230px; min-height:230px;
+    min-height:150px;
     background:linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.05));
     border:1px solid rgba(255,255,255,.18);
-    border-radius:22px; padding:18px 14px 22px;
-    display:flex; flex-direction:column; align-items:center;
+    border-radius:18px; padding:14px 10px 14px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center; cursor:pointer; user-select:none;
     -webkit-tap-highlight-color:transparent;
     transition:transform .15s ease, box-shadow .15s ease;
@@ -112,10 +112,10 @@
   .cat-card:hover{ box-shadow:0 14px 30px rgba(0,0,0,.28); transform:translateY(-2px); }
 
   .cat-pill{
-    display:inline-block; font-weight:800; font-size:1.05rem;
-    padding:10px 22px; border-radius:999px; color:#fff;
-    box-shadow:0 6px 16px rgba(0,0,0,.28);
-    margin-bottom:18px; white-space:nowrap;
+    display:inline-flex; align-items:center; gap:6px; font-weight:800; font-size:.86rem;
+    padding:6px 14px; border-radius:999px; color:#fff;
+    box-shadow:0 4px 12px rgba(0,0,0,.28);
+    margin-bottom:8px; white-space:nowrap;
   }
   .cat-card.anesthcal .cat-pill{ background:linear-gradient(120deg, var(--card-purple), #5c1f80); }
   .cat-card.drugs .cat-pill{ background:linear-gradient(120deg, var(--card-anjan), #201060); }
@@ -123,13 +123,14 @@
   .cat-card.airway .cat-pill{ background:linear-gradient(120deg, var(--card-teal), #0B5A63); }
   .cat-card.fluid .cat-pill{ background:linear-gradient(120deg, var(--card-blue), #1c3f9e); }
 
-  .cat-card .cat-icon{ font-size:2.1rem; margin-bottom:10px; }
-  .cat-card .cat-desc{ font-size:.86rem; line-height:1.6; color:#efe6ff; font-weight:500; }
-  .cat-card .cat-desc b{ display:block; font-weight:700; color:#fff; margin-bottom:2px; }
+  .cat-pill .cat-icon-inline{ font-size:1rem; line-height:1; }
+
+  .cat-card .cat-desc{ font-size:.72rem; line-height:1.45; color:#efe6ff; font-weight:500; }
+  .cat-card .cat-desc b{ display:block; font-weight:700; color:#fff; margin-bottom:1px; font-size:.78rem; }
 
   footer.home-footer{
-    position:relative; z-index:1; text-align:center; font-size:.72rem;
-    color:#d9c2f0; opacity:.7; padding:26px 20px 10px; max-width:600px; line-height:1.7;
+    position:relative; z-index:1; text-align:center; font-size:.68rem;
+    color:#d9c2f0; opacity:.7; padding:18px 20px 10px; max-width:600px; line-height:1.6;
   }
 
   /* ============ TOOL VIEW ============ */
@@ -161,8 +162,14 @@
   .toolbar.fluid{ background:linear-gradient(120deg, #123072, #2f6fe0); }
 
   @media (max-width:480px){
-    h1.wordmark{ font-size:2.1rem; }
-    .cat-card{ flex:1 1 45%; min-height:200px; }
+    h1.wordmark{ font-size:1.85rem; }
+    .cat-card{ min-height:135px; padding:12px 8px; }
+    .cat-pill{ font-size:.8rem; padding:6px 12px; }
+    .cat-card .cat-desc{ font-size:.68rem; }
+  }
+  @media (max-width:360px){
+    .cards{ gap:8px; }
+    .cat-card{ min-height:126px; border-radius:15px; }
   }
 </style>
 </head>
@@ -178,32 +185,27 @@
 
   <div class="cards">
     <div class="cat-card anesthcal" onclick="openTool('anesthcal')">
-      <div class="cat-pill">Anesth Cal</div>
-      <div class="cat-icon">💜</div>
+      <div class="cat-pill"><span class="cat-icon-inline">💜</span>Anesth Cal</div>
       <div class="cat-desc"><b>Program</b>ช่วยคำนวณยา<br>ตามน้ำหนักผู้ป่วย</div>
     </div>
 
     <div class="cat-card drugs" onclick="openTool('drugs')">
-      <div class="cat-pill">ยา</div>
-      <div class="cat-icon">💉</div>
+      <div class="cat-pill"><span class="cat-icon-inline">💉</span>ยา</div>
       <div class="cat-desc"><b>ยาทางวิสัญญี</b>ที่ใช้ทางวิสัญญี<br>และการระงับปวด</div>
     </div>
 
     <div class="cat-card cpr" onclick="openTool('cpr')">
-      <div class="cat-pill">CPR</div>
-      <div class="cat-icon">💗</div>
+      <div class="cat-pill"><span class="cat-icon-inline">💗</span>CPR</div>
       <div class="cat-desc"><b>Guideline</b>การช่วยชีวิต<br>2025</div>
     </div>
 
     <div class="cat-card airway" onclick="openTool('airway')">
-      <div class="cat-pill">Airway Tip</div>
-      <div class="cat-icon">🫁</div>
+      <div class="cat-pill"><span class="cat-icon-inline">🫁</span>Airway Tip</div>
       <div class="cat-desc"><b>คำนวณอุปกรณ์</b>ETT, LMA, Blade<br>OPA/NPA ตามผู้ป่วย</div>
     </div>
 
     <div class="cat-card fluid" onclick="openTool('fluid')">
-      <div class="cat-pill">Fluid Tip</div>
-      <div class="cat-icon">💧</div>
+      <div class="cat-pill"><span class="cat-icon-inline">💧</span>Fluid Tip</div>
       <div class="cat-desc"><b>MABL & Fluid</b>คำนวณเลือดที่ยอมเสีย<br>และสารน้ำที่ควรได้</div>
     </div>
   </div>
