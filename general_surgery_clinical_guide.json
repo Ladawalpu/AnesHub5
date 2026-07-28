@@ -1,0 +1,1023 @@
+{
+  "category": "General Surgery",
+  "category_th": "วิสัญญีสำหรับศัลยกรรมทั่วไป",
+  "description": "Evidence-based guidance for safe anesthesia practice in general and gastrointestinal surgery.",
+  "disclaimer": "เนื้อหานี้จัดทำเพื่อการศึกษาและอ้างอิงทางคลินิก ไม่ทดแทนแนวปฏิบัติของสถาบัน (institutional protocol) หรือดุลยพินิจทางคลินิกของผู้ให้การระงับความรู้สึก ควรปรับใช้ตามบริบทผู้ป่วยแต่ละรายและทบทวนตาม guideline ฉบับล่าสุดเสมอ",
+  "procedures": [
+    {
+      "id": "lap_cholecystectomy",
+      "name": "Laparoscopic Cholecystectomy",
+      "overview": {
+        "definition": "การผ่าตัดถุงน้ำดีออกผ่านกล้อง เป็นหัตถการ general surgery ที่พบบ่อยที่สุด ทำผ่าน pneumoperitoneum",
+        "indications": [
+          "Symptomatic cholelithiasis",
+          "Acute cholecystitis",
+          "Biliary colic recurrent",
+          "Gallbladder polyp ที่มีข้อบ่งชี้ผ่าตัด"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, LFT, coag ตามความเหมาะสม"
+        ],
+        "imaging": [
+          "Ultrasound abdomen (confirm diagnosis)"
+        ],
+        "consult": [
+          "General surgery"
+        ],
+        "optimization": [
+          "ประเมิน cardiopulmonary reserve สำหรับ tolerate pneumoperitoneum",
+          "ในรายที่เป็น acute cholecystitis ประเมิน sepsis status"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "ไม่จำเป็นทั่วไปในหัตถการมาตรฐาน",
+        "cvp": "ไม่จำเป็น",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "Standard ETT with GA",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Standard IV induction, opioid, muscle relaxant",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อนเริ่ม pneumoperitoneum"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA - TIVA มีข้อดีลด PONV ซึ่งพบบ่อยในหัตถการนี้",
+        "muscle_relaxant": "Adequate paralysis ช่วยให้ pneumoperitoneum ที่ pressure ต่ำเพียงพอสำหรับ surgical view",
+        "analgesia": "Multimodal: opioid + local infiltration ที่ port site + NSAIDs/acetaminophen",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O ช่วยรักษา FRC ระหว่าง pneumoperitoneum",
+        "fio2": "titrate SpO2",
+        "recruitment": "หลัง pneumoperitoneum release"
+      },
+      "fluid_management": {
+        "goal_directed": "Standard maintenance fluid",
+        "blood": "ไม่จำเป็นทั่วไป",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "pneumoperitoneum": "CO2 insufflation เพิ่ม intra-abdominal pressure (มักตั้งเป้า 12-15 mmHg) ส่งผลต่อ ventilation (ลด compliance), hemodynamic (เพิ่ม afterload, ลด venous return), และ CO2 absorption",
+        "ponv_prevention": "PONV พบบ่อยมากในหัตถการนี้ - ใช้ multimodal antiemetic prophylaxis (dexamethasone, ondansetron) และพิจารณา TIVA",
+        "shoulder_pain": "Residual CO2 หลังผ่าตัดทำให้เกิด referred shoulder pain จาก diaphragmatic irritation - แจ้งผู้ป่วยล่วงหน้า",
+        "conversion_to_open": "เตรียมพร้อมสำหรับ conversion เป็น open cholecystectomy ในรายที่มี difficult anatomy/bleeding"
+      },
+      "complications": [
+        "PONV (พบบ่อยมาก)",
+        "CO2 embolism (rare)",
+        "Bile duct injury",
+        "Bleeding",
+        "Subcutaneous emphysema",
+        "Referred shoulder pain"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็น - day surgery/short stay ส่วนใหญ่",
+        "extubation": "ในห้องผ่าตัด",
+        "pain": "Multimodal analgesia - local infiltration + NSAIDs/acetaminophen มักเพียงพอ",
+        "complication_watch": [
+          "PONV",
+          "Bile leak signs",
+          "Bleeding"
+        ]
+      },
+      "clinical_pearls": [
+        "TIVA ร่วมกับ multimodal antiemetic prophylaxis ช่วยลด PONV ได้อย่างมีนัยสำคัญในหัตถการนี้ซึ่งมีอุบัติการณ์ PONV สูง",
+        "Low-pressure pneumoperitoneum (≤12 mmHg) ร่วมกับ adequate muscle relaxation ช่วยลด hemodynamic effect และ postoperative pain โดยไม่กระทบ surgical view",
+        "Referred shoulder pain จาก residual CO2 เป็นเรื่องปกติที่ควรแจ้งผู้ป่วยล่วงหน้าเพื่อลดความกังวล"
+      ],
+      "references": [
+        "SAGES Guideline for Laparoscopic Cholecystectomy",
+        "ERAS Society Guideline",
+        "ASA Practice Guideline for PONV"
+      ]
+    },
+    {
+      "id": "lap_appendectomy",
+      "name": "Laparoscopic Appendectomy",
+      "overview": {
+        "definition": "การผ่าตัดไส้ติ่งออกผ่านกล้อง มักเป็นหัตถการฉุกเฉินสำหรับ acute appendicitis",
+        "indications": [
+          "Acute appendicitis"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, electrolytes ในรายที่มี prolonged vomiting/dehydration"
+        ],
+        "imaging": [
+          "Ultrasound/CT abdomen (confirm diagnosis)"
+        ],
+        "consult": [
+          "General surgery"
+        ],
+        "optimization": [
+          "Correct dehydration ก่อนผ่าตัด",
+          "ประเมิน sepsis status ในรายที่มี perforation/peritonitis"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "พิจารณาในรายที่มี sepsis/perforated appendicitis",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "RSI - ผู้ป่วยฉุกเฉินมักถือเป็น full stomach",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Standard RSI - propofol/etomidate, succinylcholine/rocuronium",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อนเริ่ม pneumoperitoneum - ระวังในรายที่มี sepsis/dehydration"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA",
+        "muscle_relaxant": "Adequate paralysis",
+        "analgesia": "Multimodal: opioid + local infiltration + NSAIDs/acetaminophen",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "หลัง pneumoperitoneum release"
+      },
+      "fluid_management": {
+        "goal_directed": "Correct dehydration ระหว่างผ่าตัด - มักมี fluid deficit จาก vomiting/poor intake",
+        "blood": "ไม่จำเป็นทั่วไป",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "full_stomach": "Emergency case ถือเป็น full stomach เสมอ - RSI มาตรฐาน",
+        "sepsis_management": "ในรายที่มี perforated appendicitis/peritonitis ต้อง resuscitate ตาม sepsis protocol ควบคู่กับการเตรียมผ่าตัด",
+        "pneumoperitoneum": "เช่นเดียวกับ laparoscopic surgery อื่น - ผลต่อ ventilation/hemodynamic",
+        "antibiotic_timing": "มั่นใจว่าให้ prophylactic/therapeutic antibiotic ตามเวลาที่เหมาะสมก่อนลงมีด"
+      },
+      "complications": [
+        "PONV",
+        "Surgical site infection",
+        "Intra-abdominal abscess (โดยเฉพาะ perforated case)",
+        "Conversion เป็น open surgery"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นส่วนใหญ่ ยกเว้นมี severe sepsis",
+        "extubation": "ในห้องผ่าตัด",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Signs ของ sepsis/abscess",
+          "PONV"
+        ]
+      },
+      "clinical_pearls": [
+        "ผู้ป่วย acute appendicitis ฉุกเฉินทุกรายถือเป็น full stomach - RSI เป็นมาตรฐานแม้จะ NPO มาระยะหนึ่งแล้วก็ตาม เนื่องจาก delayed gastric emptying จาก pain/inflammation",
+        "Correct dehydration และเริ่ม antibiotic ให้ทันเวลาก่อนผ่าตัดมีผลต่อ outcome อย่างมีนัยสำคัญ",
+        "Perforated appendicitis เพิ่มความเสี่ยง postoperative complication อย่างมาก - ควรสื่อสารกับทีมศัลยแพทย์เรื่องระดับความรุนแรงที่พบระหว่างผ่าตัด"
+      ],
+      "references": [
+        "SAGES Guideline for Appendectomy",
+        "WSES Guideline for Acute Appendicitis",
+        "Surviving Sepsis Campaign Guideline"
+      ]
+    },
+    {
+      "id": "colectomy",
+      "name": "Colectomy",
+      "overview": {
+        "definition": "การผ่าตัดตัดลำไส้ใหญ่บางส่วนหรือทั้งหมดออก อาจทำผ่าน laparoscopic หรือ open approach สำหรับ malignancy, IBD, หรือ diverticular disease",
+        "indications": [
+          "Colorectal cancer",
+          "Inflammatory bowel disease refractory to medical therapy",
+          "Diverticulitis complicated",
+          "Colonic obstruction/perforation"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, electrolytes, albumin/nutritional status, type & screen"
+        ],
+        "imaging": [
+          "CT abdomen/pelvis, colonoscopy findings"
+        ],
+        "consult": [
+          "Colorectal surgery, oncology หากเป็น malignancy"
+        ],
+        "optimization": [
+          "ERAS protocol: carbohydrate loading, avoid prolonged fasting, minimize mechanical bowel prep เมื่อเหมาะสม",
+          "Optimize nutritional status ในรายที่มี malnutrition"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "พิจารณาในหัตถการใหญ่หรือผู้ป่วยมี comorbidity มาก",
+        "cvp": "พิจารณาในหัตถการใหญ่",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "Standard ETT with GA, RSI หากมี obstruction/emergency",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Standard IV induction",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรตามมาตรฐาน"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA ตาม ERAS protocol",
+        "muscle_relaxant": "Adequate paralysis สำหรับ surgical condition",
+        "analgesia": "Multimodal ตาม ERAS: epidural/TAP block + opioid-sparing approach",
+        "temperature": "Active warming เข้มงวด - hypothermia แย่ surgical site infection risk"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Goal-directed fluid therapy ตาม ERAS protocol - หลีกเลี่ยงทั้ง hypovolemia (anastomotic ischemia) และ overload (ileus, anastomotic edema)",
+        "blood": "เตรียมตาม estimated blood loss",
+        "transfusion": "Restrictive threshold ตามความเหมาะสม"
+      },
+      "special_consideration": {
+        "eras_protocol": "ERAS (Enhanced Recovery After Surgery) protocol: multimodal analgesia, goal-directed fluid, early mobilization, early feeding, avoid unnecessary drain/NG tube",
+        "anastomotic_perfusion": "รักษา adequate perfusion pressure และหลีกเลี่ยง excessive vasoconstrictor เพื่อความอยู่รอดของ anastomosis",
+        "laparoscopic_vs_open": "หากทำ laparoscopic ต้องพิจารณาผลของ pneumoperitoneum เช่นเดียวกับหัตถการ laparoscopic อื่น",
+        "epidural_consideration": "Thoracic epidural analgesia เป็นส่วนสำคัญของ ERAS protocol - ช่วยลด opioid use, ileus duration, และ pulmonary complication"
+      },
+      "complications": [
+        "Anastomotic leak",
+        "Ileus",
+        "Surgical site infection",
+        "Bleeding",
+        "Bowel obstruction (ระยะยาว)"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นส่วนใหญ่ในรายที่ไม่ซับซ้อน - ward with ERAS pathway เพียงพอ",
+        "extubation": "ในห้องผ่าตัด",
+        "pain": "Multimodal ตาม ERAS: epidural/TAP block + minimize opioid",
+        "complication_watch": [
+          "Anastomotic leak signs (fever, tachycardia, abdominal pain)",
+          "Ileus",
+          "Wound infection"
+        ]
+      },
+      "clinical_pearls": [
+        "ERAS protocol ลด length of stay และ complication ได้อย่างมีนัยสำคัญใน colorectal surgery - goal-directed fluid therapy และ multimodal analgesia เป็นองค์ประกอบสำคัญ",
+        "การรักษา adequate perfusion โดยไม่ excessive vasoconstrictor มีความสำคัญต่อ anastomotic healing - หลีกเลี่ยง aggressive vasopressor เมื่อเป็นไปได้",
+        "Opioid-sparing multimodal analgesia (regional technique + NSAIDs/acetaminophen) ช่วยลด postoperative ileus ซึ่งเป็นปัจจัยสำคัญที่ทำให้ length of stay ยาวนานขึ้น"
+      ],
+      "references": [
+        "ERAS Society Guideline for Colorectal Surgery",
+        "ASCRS Practice Parameters",
+        "ESA/ESPCOP Guideline"
+      ]
+    },
+    {
+      "id": "gastrectomy",
+      "name": "Gastrectomy",
+      "overview": {
+        "definition": "การผ่าตัดตัดกระเพาะอาหารบางส่วนหรือทั้งหมดออก ส่วนใหญ่สำหรับ gastric cancer",
+        "indications": [
+          "Gastric cancer (resectable stage)",
+          "Severe peptic ulcer disease ที่ไม่ตอบสนองต่อการรักษา",
+          "GIST ขนาดใหญ่"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, albumin/nutritional markers, type & screen"
+        ],
+        "imaging": [
+          "CT abdomen, endoscopy findings, PET-CT (staging)"
+        ],
+        "consult": [
+          "Oncology, nutrition (มักมี malnutrition จาก gastric outlet obstruction/dysphagia)"
+        ],
+        "optimization": [
+          "Nutritional optimization ก่อนผ่าตัด",
+          "Correct anemia ในรายที่มี chronic GI bleeding"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "พิจารณาในหัตถการใหญ่ (total gastrectomy) หรือผู้ป่วยมี comorbidity มาก",
+        "cvp": "พิจารณาในหัตถการใหญ่",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "Standard ETT with GA, RSI หากมี obstruction/full stomach จาก gastric outlet obstruction",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Standard IV induction, RSI ในรายที่มี gastric outlet obstruction",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรตามมาตรฐาน"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA",
+        "muscle_relaxant": "Adequate paralysis",
+        "analgesia": "Multimodal ตาม ERAS: thoracic epidural + opioid-sparing approach",
+        "temperature": "Active warming เข้มงวด - หัตถการใช้เวลานาน"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Goal-directed fluid therapy - หลีกเลี่ยง overload ที่กระทบ anastomotic healing",
+        "blood": "เตรียม PRC ตามความซับซ้อนของหัตถการ (total gastrectomy มักเสียเลือดมากกว่า)",
+        "transfusion": "ตาม estimated blood loss"
+      },
+      "special_consideration": {
+        "gastric_outlet_obstruction": "ผู้ป่วยที่มี gastric outlet obstruction ถือเป็น full stomach แม้ NPO นาน - พิจารณา NG suction ก่อน induction และ RSI",
+        "total_vs_subtotal": "Total gastrectomy มี complexity และ blood loss มากกว่า subtotal - วางแผน monitoring และ blood product ให้เหมาะสม",
+        "nutritional_status": "ผู้ป่วยมักมี malnutrition ที่กระทบ drug pharmacokinetics และ wound healing - พิจารณาปรับ drug dosing",
+        "eras_gastric": "ERAS protocol ปรับใช้ได้เช่นเดียวกับ colorectal surgery - epidural analgesia, goal-directed fluid, early feeding"
+      },
+      "complications": [
+        "Anastomotic leak",
+        "Duodenal stump leak",
+        "Dumping syndrome (ระยะยาว)",
+        "Bleeding",
+        "Pulmonary complication"
+      ],
+      "postoperative_care": {
+        "icu": "พิจารณาในหัตถการใหญ่หรือผู้ป่วยมี comorbidity มาก",
+        "extubation": "ในห้องผ่าตัดหากเป็นไปได้",
+        "pain": "Multimodal + epidural analgesia",
+        "complication_watch": [
+          "Anastomotic/stump leak signs",
+          "Nutritional status",
+          "Pulmonary complication"
+        ]
+      },
+      "clinical_pearls": [
+        "ผู้ป่วย gastric outlet obstruction ถือเป็น full stomach เสมอแม้ NPO มานาน เนื่องจาก delayed gastric emptying - พิจารณา NG decompression ก่อน induction",
+        "Total gastrectomy มีความซับซ้อนและ blood loss มากกว่า subtotal gastrectomy อย่างมีนัยสำคัญ - เตรียม monitoring และ resource ให้เหมาะสม",
+        "Nutritional optimization ก่อนผ่าตัดมีผลต่อ postoperative outcome อย่างมีนัยสำคัญในผู้ป่วยกลุ่มนี้ที่มักมี baseline malnutrition"
+      ],
+      "references": [
+        "ERAS Society Guideline for Gastrectomy",
+        "NCCN Guideline for Gastric Cancer",
+        "ESA Guideline"
+      ]
+    },
+    {
+      "id": "esophagectomy_general",
+      "name": "Esophagectomy (General Surgery Perspective)",
+      "overview": {
+        "definition": "การผ่าตัดตัดหลอดอาหารออก - ดูรายละเอียดเชิงลึกเรื่อง one-lung ventilation และ thoracic phase ในหมวด Thoracic Anesthesia; ที่นี่เน้นมุมมอง abdominal/general surgery phase",
+        "indications": [
+          "Esophageal cancer",
+          "Severe benign stricture/achalasia",
+          "Caustic injury with stricture"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, albumin/nutritional markers, type & crossmatch"
+        ],
+        "imaging": [
+          "CT chest/abdomen, PET-CT, PFT"
+        ],
+        "consult": [
+          "Oncology, nutrition, cardiology, thoracic/general surgery ร่วมกัน (มักเป็น combined team)"
+        ],
+        "optimization": [
+          "Nutritional optimization ก่อนผ่าตัดตาม ERAS protocol",
+          "Prehabilitation ในรายที่มีเวลาเตรียมตัว"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line จำเป็น - หัตถการยาวหลาย compartment (chest-abdomen ± neck)",
+        "cvp": "แนะนำ",
+        "pa_catheter": "พิจารณาในรายที่มี cardiac comorbidity",
+        "tee": "พิจารณาในรายที่มีความเสี่ยง hemodynamic instability",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Lung isolation จำเป็นสำหรับ thoracic phase (ดูรายละเอียดในหมวด Thoracic)",
+        "equipment": [
+          "DLT",
+          "Fiberoptic bronchoscope"
+        ],
+        "backup": "Single lumen ETT สำหรับ abdominal-only phase"
+      },
+      "induction": {
+        "drug": "RSI พิจารณาหากมี obstruction/aspiration risk",
+        "dose": "Standard induction ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อนหัตถการที่ใช้เวลานาน"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile ต่ำหรือ TIVA",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Thoracic epidural analgesia แนะนำอย่างยิ่งตาม ERAS protocol",
+        "temperature": "Active warming สำคัญมาก - หัตถการยาวหลาย compartment"
+      },
+      "ventilation": {
+        "tv": "4-6 mL/kg PBW ระหว่าง OLV (thoracic phase), 6-8 mL/kg PBW ในช่วง abdominal phase",
+        "peep": "5-10 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ระหว่างเปลี่ยน phase"
+      },
+      "fluid_management": {
+        "goal_directed": "Goal-directed fluid therapy ตาม ERAS protocol - สมดุลระหว่าง gastric conduit perfusion และหลีกเลี่ยง overload",
+        "blood": "เตรียม PRC ตามความซับซ้อน",
+        "transfusion": "Restrictive strategy ตามความเหมาะสม"
+      },
+      "special_consideration": {
+        "multi_compartment": "หัตถการอาจต้องเปลี่ยนท่าหลายครั้ง (supine abdominal phase → lateral thoracic phase → อาจกลับ supine สำหรับ neck anastomosis ใน McKeown approach)",
+        "conduit_perfusion": "รักษา adequate perfusion pressure สำหรับ gastric conduit ที่สร้างจากกระเพาะในช่วง abdominal phase",
+        "eras_esophagectomy": "ปฏิบัติตาม ERAS protocol ตลอดทั้งหัตถการ - ดูรายละเอียดเพิ่มเติมในหมวด Thoracic Anesthesia",
+        "cross_reference": "สำหรับรายละเอียด one-lung ventilation, hypoxemia management ระหว่าง thoracic phase ดูหัวข้อ Esophagectomy ในหมวด Thoracic Anesthesia"
+      },
+      "complications": [
+        "Anastomotic leak",
+        "Gastric conduit ischemia/necrosis",
+        "Chylothorax",
+        "Recurrent laryngeal nerve injury",
+        "Pulmonary complication"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring แนะนำ",
+        "extubation": "ในห้องผ่าตัดหากเป็นไปได้ตาม ERAS protocol",
+        "pain": "Thoracic epidural + multimodal analgesia",
+        "complication_watch": [
+          "Anastomotic leak signs",
+          "Conduit perfusion",
+          "Respiratory failure"
+        ]
+      },
+      "clinical_pearls": [
+        "Esophagectomy เป็นหัตถการที่ต้องการความร่วมมือระหว่างทีม thoracic และ general/GI surgery - การวางแผน anesthetic technique ต้องครอบคลุมทั้งสอง phase",
+        "ดูรายละเอียดเชิงลึกเรื่อง one-lung ventilation, DLT management, และ hypoxemia algorithm ในหมวด Thoracic Anesthesia",
+        "ERAS protocol (goal-directed fluid + thoracic epidural + early feeding) มีบทบาทสำคัญในการลด pulmonary complication และ length of stay"
+      ],
+      "references": [
+        "ERAS Society Guideline for Esophagectomy",
+        "NCCN Guideline for Esophageal Cancer",
+        "ESA/ISPCOP OLV Guideline"
+      ]
+    },
+    {
+      "id": "hepatectomy",
+      "name": "Hepatectomy (Liver Resection)",
+      "overview": {
+        "definition": "การผ่าตัดตัดตับบางส่วนออก สำหรับ primary/metastatic liver tumor หรือ living donor liver transplant procurement",
+        "indications": [
+          "Hepatocellular carcinoma",
+          "Liver metastasis (โดยเฉพาะจาก colorectal cancer)",
+          "Benign liver tumor ที่มีข้อบ่งชี้ผ่าตัด",
+          "Living donor hepatectomy"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, comprehensive coag panel, LFT, albumin, type & crossmatch"
+        ],
+        "imaging": [
+          "CT/MRI liver (volumetry, vascular anatomy), assessment of remnant liver volume"
+        ],
+        "consult": [
+          "Hepatobiliary surgery, hepatology หากมี underlying liver disease"
+        ],
+        "optimization": [
+          "ประเมิน baseline liver function (Child-Pugh score หากมี cirrhosis)",
+          "ประเมิน remnant liver volume เพียงพอหรือไม่ก่อนผ่าตัดขนาดใหญ่"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Urine output"
+        ],
+        "ibp": "Arterial line จำเป็น - หัตถการมี blood loss potential สูงและต้องการ low CVP strategy",
+        "cvp": "แนะนำอย่างยิ่ง - ใช้ guide low CVP technique เพื่อลด blood loss ระหว่าง parenchymal transection",
+        "pa_catheter": "พิจารณาในรายที่มี cardiac comorbidity",
+        "tee": "พิจารณาโดยเฉพาะเพื่อตรวจจับ air embolism ระหว่าง hepatic vein manipulation",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Standard ETT with GA",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Standard IV induction ปรับตาม hepatic function",
+        "dose": "ปรับ dose ยาที่ผ่าน hepatic metabolism ในรายที่มี underlying liver disease",
+        "hemodynamic_goal": "เสถียรก่อนเริ่มหัตถการ"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA",
+        "muscle_relaxant": "Non-depolarizing infusion - cisatracurium พิจารณาในรายที่มี hepatic dysfunction",
+        "analgesia": "Multimodal - epidural พิจารณาในรายที่ coagulation ปกติ, ระวังในรายที่คาดว่า postop coagulopathy จาก extensive resection",
+        "temperature": "Active warming เข้มงวด"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Low CVP technique (มักตั้งเป้า CVP <5 mmHg) ระหว่าง parenchymal transection เพื่อลด hepatic venous bleeding - เพิ่ม fluid หลัง transection เสร็จ",
+        "blood": "เตรียม PRC พร้อมใช้ - cell salvager พิจารณา (ข้อควรระวังในรายที่เป็น malignancy)",
+        "transfusion": "ตาม estimated blood loss ซึ่งอาจมากในหัตถการ major hepatectomy"
+      },
+      "special_consideration": {
+        "low_cvp_technique": "รักษา CVP ต่ำ (restrictive fluid, head-down avoidance, อาจใช้ vasodilator) ระหว่าง parenchymal transection เพื่อลด hepatic venous pressure และ blood loss อย่างมีนัยสำคัญ",
+        "air_embolism_risk": "ความเสี่ยง air embolism เพิ่มขึ้นระหว่าง low CVP technique เนื่องจาก negative pressure ใน hepatic vein - monitor ด้วย TEE/precordial doppler หากมี",
+        "post_resection_coagulopathy": "Remnant liver อาจมี transient coagulopathy หลัง major resection - monitor coag และเตรียม FFP/vitamin K พร้อม",
+        "remnant_liver_function": "ประเมิน remnant liver volume/function ก่อนผ่าตัดสำคัญมากเพื่อป้องกัน post-hepatectomy liver failure"
+      },
+      "complications": [
+        "Massive hemorrhage",
+        "Air embolism",
+        "Post-hepatectomy liver failure",
+        "Bile leak",
+        "Coagulopathy",
+        "Ascites"
+      ],
+      "postoperative_care": {
+        "icu": "พิจารณาตามขนาดหัตถการและ baseline liver function - major hepatectomy มักต้องการ ICU monitoring",
+        "extubation": "ในห้องผ่าตัดหากเป็นไปได้",
+        "pain": "Multimodal analgesia - ระมัดระวัง drug ที่ผ่าน hepatic metabolism",
+        "complication_watch": [
+          "Liver function trend",
+          "Coagulopathy",
+          "Signs ของ liver failure",
+          "Bile leak"
+        ]
+      },
+      "clinical_pearls": [
+        "Low CVP technique เป็นกลยุทธ์สำคัญที่สุดในการลด blood loss ระหว่าง hepatic parenchymal transection - แต่ต้องสมดุลกับความเสี่ยง air embolism และ renal perfusion",
+        "การประเมิน remnant liver volume ก่อนผ่าตัดสำคัญมากในการป้องกัน post-hepatectomy liver failure ซึ่งเป็นภาวะแทรกซ้อนที่รุนแรงที่สุด",
+        "Cell salvage ในหัตถการ hepatectomy สำหรับ malignancy ยังเป็นที่ถกเถียง - ควรพิจารณาตาม institutional protocol และใช้ leukocyte depletion filter หากใช้"
+      ],
+      "references": [
+        "IHPBA Consensus Statement",
+        "ERAS Society Guideline for Liver Surgery",
+        "ASA Practice Guideline"
+      ]
+    },
+    {
+      "id": "pancreatectomy",
+      "name": "Pancreatectomy (Whipple/Distal)",
+      "overview": {
+        "definition": "การผ่าตัดตัดตับอ่อนบางส่วนออก เช่น pancreaticoduodenectomy (Whipple procedure) หรือ distal pancreatectomy สำหรับ pancreatic tumor",
+        "indications": [
+          "Pancreatic head cancer (Whipple procedure)",
+          "Distal pancreatic tumor",
+          "Chronic pancreatitis รุนแรง",
+          "IPMN with high-risk feature"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, LFT, glucose (ประเมิน endocrine function), albumin/nutritional status, type & crossmatch"
+        ],
+        "imaging": [
+          "CT/MRI pancreas (staging, vascular involvement), ERCP/biliary stent status หากมี obstructive jaundice"
+        ],
+        "consult": [
+          "Hepatobiliary/pancreatic surgery, endocrine หากมี diabetes จาก pancreatic dysfunction"
+        ],
+        "optimization": [
+          "Correct coagulopathy จาก obstructive jaundice (vitamin K)",
+          "Nutritional optimization",
+          "Control glucose หากมี pancreatogenic diabetes"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Glucose monitoring บ่อย"
+        ],
+        "ibp": "Arterial line จำเป็น - หัตถการยาวและซับซ้อน มี major vessel proximity (portal vein, SMA/SMV)",
+        "cvp": "แนะนำ",
+        "pa_catheter": "พิจารณาในรายที่มี cardiac comorbidity",
+        "tee": "พิจารณาในรายที่มีความเสี่ยง major vascular involvement",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Standard ETT with GA",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Standard IV induction",
+        "dose": "ปรับตามผู้ป่วย - ระวังในรายที่มี obstructive jaundice (altered drug metabolism)",
+        "hemodynamic_goal": "เสถียรก่อนหัตถการที่ใช้เวลานาน (Whipple มักใช้เวลา 4-8 ชม.)"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA",
+        "muscle_relaxant": "Maintain paralysis ตลอด",
+        "analgesia": "Multimodal ตาม ERAS: thoracic epidural + opioid-sparing approach",
+        "temperature": "Active warming เข้มงวด - หัตถการยาวมาก"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Goal-directed fluid therapy ตาม ERAS - สมดุลระหว่างหลีกเลี่ยง hypoperfusion ของ anastomosis และหลีกเลี่ยง overload",
+        "blood": "เตรียม PRC พร้อมใช้ - ความเสี่ยง major vessel involvement/bleeding โดยเฉพาะช่วง SMA/portal vein dissection",
+        "transfusion": "ตาม estimated blood loss ซึ่งอาจสูงในรายที่มี vascular involvement"
+      },
+      "special_consideration": {
+        "vascular_proximity": "Whipple procedure มีความเสี่ยง major vessel injury (portal vein, SMV, SMA) ระหว่าง dissection - เตรียมพร้อมรับมือ sudden massive hemorrhage",
+        "glucose_management": "Monitor glucose อย่างใกล้ชิดตลอดหัตถการ - pancreatic manipulation อาจกระทบ insulin/glucagon release ชั่วคราว",
+        "eras_pancreatectomy": "ERAS protocol ปรับใช้ได้: epidural analgesia, goal-directed fluid, early feeding แม้จะเป็นหัตถการที่ซับซ้อน",
+        "obstructive_jaundice_coagulopathy": "ผู้ป่วยที่มี obstructive jaundice อาจมี vitamin K-dependent coagulopathy - correct ก่อนผ่าตัด"
+      },
+      "complications": [
+        "Major vessel injury/massive hemorrhage",
+        "Pancreatic fistula",
+        "Delayed gastric emptying",
+        "Anastomotic leak (multiple anastomoses ใน Whipple)",
+        "Post-pancreatectomy hemorrhage (delayed)"
+      ],
+      "postoperative_care": {
+        "icu": "พิจารณาในรายที่มีหัตถการซับซ้อนมากหรือมี significant blood loss",
+        "extubation": "ในห้องผ่าตัดหากเป็นไปได้",
+        "pain": "Thoracic epidural + multimodal analgesia",
+        "complication_watch": [
+          "Signs ของ pancreatic fistula",
+          "Delayed hemorrhage",
+          "Glucose control",
+          "Anastomotic leak"
+        ]
+      },
+      "clinical_pearls": [
+        "Whipple procedure มีความเสี่ยง major vessel injury สูงเนื่องจาก proximity กับ portal vein/SMV/SMA - เตรียม large-bore access และเลือดพร้อมใช้เสมอ",
+        "Delayed post-pancreatectomy hemorrhage เป็นภาวะแทรกซ้อนที่อันตรายที่อาจเกิดขึ้นหลายวันหลังผ่าตัด มักสัมพันธ์กับ pancreatic fistula ที่กัดกร่อนหลอดเลือดใกล้เคียง",
+        "Glucose monitoring บ่อยสำคัญมากเนื่องจาก pancreatic manipulation ระหว่างผ่าตัดอาจกระทบ endocrine function ชั่วคราว"
+      ],
+      "references": [
+        "ERAS Society Guideline for Pancreatic Surgery",
+        "IHPBA Guideline",
+        "ISGPS Consensus Definitions"
+      ]
+    },
+    {
+      "id": "bariatric_surgery",
+      "name": "Bariatric Surgery",
+      "overview": {
+        "definition": "การผ่าตัดลดน้ำหนักในผู้ป่วย morbid obesity เช่น sleeve gastrectomy, Roux-en-Y gastric bypass ทำผ่าน laparoscopic approach เป็นส่วนใหญ่",
+        "indications": [
+          "BMI ≥40 kg/m² หรือ ≥35 kg/m² ร่วมกับ obesity-related comorbidity (diabetes, hypertension, OSA)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, comprehensive metabolic panel, HbA1c, liver function",
+          "Nutritional markers (iron, B12, vitamin D)"
+        ],
+        "imaging": [
+          "Echocardiogram หากสงสัย cardiac dysfunction/pulmonary hypertension"
+        ],
+        "consult": [
+          "Bariatric surgery, endocrine, cardiology, sleep medicine (STOP-BANG screening สำหรับ OSA)"
+        ],
+        "optimization": [
+          "Screen และ optimize OSA ก่อนผ่าตัด (CPAP therapy หากมีข้อบ่งชี้)",
+          "Optimize glucose control",
+          "Weight loss program ก่อนผ่าตัดตามที่สถาบันกำหนด"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Blood pressure cuff ขนาดเหมาะสมกับแขนผู้ป่วย"
+        ],
+        "ibp": "พิจารณาในรายที่มี significant cardiopulmonary comorbidity หรือ difficult NIBP measurement",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "แนะนำ - ช่วย titrate anesthetic depth แม่นยำในผู้ป่วยที่ pharmacokinetics เปลี่ยนแปลงจาก obesity",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "ประเมิน difficult airway อย่างละเอียด - obesity เพิ่มความเสี่ยง difficult mask ventilation/intubation, จัด ramped position (ear-to-sternal notch alignment) ก่อน induction เสมอ",
+        "equipment": [
+          "Video laryngoscope (แนะนำเป็น first-line ไม่ใช่แค่ backup)",
+          "อุปกรณ์ขนาดใหญ่พิเศษ (large blade, ETT หลายขนาด)"
+        ],
+        "backup": "Difficult airway cart, awake fiberoptic intubation เป็นทางเลือกในรายที่คาดว่า very difficult airway"
+      },
+      "induction": {
+        "drug": "Propofol titrate ตาม lean body weight, succinylcholine ตาม total body weight, non-depolarizing agent ตาม ideal/lean body weight",
+        "dose": "Dosing weight แตกต่างกันตามยาแต่ละชนิด - lean body weight สำหรับยาส่วนใหญ่, total body weight สำหรับ succinylcholine/some induction agent",
+        "hemodynamic_goal": "Pre-oxygenation อย่างเต็มที่ในท่า ramped/head-up ก่อน induction เนื่องจาก FRC ลดลงมากทำให้ desaturate เร็ว"
+      },
+      "maintenance": {
+        "volatile_tiva": "Desflurane/sevoflurane (low solubility) หรือ TIVA มีข้อดีในการฟื้นตัวเร็วกว่าในผู้ป่วย obesity",
+        "muscle_relaxant": "Dosing ตาม ideal/lean body weight, sugammadex แนะนำสำหรับ reversal เนื่องจากมีประสิทธิภาพดีกว่า neostigmine ในผู้ป่วย obesity",
+        "analgesia": "Multimodal opioid-sparing approach เป็นสำคัญมาก (NSAIDs, acetaminophen, ketamine, local infiltration) เนื่องจากผู้ป่วยมักมี OSA ที่เพิ่มความเสี่ยง opioid-induced respiratory depression",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg based on ideal body weight (ไม่ใช่ total body weight)",
+        "peep": "8-10 cmH2O หรือสูงกว่า - ช่วยรักษา FRC ที่ลดลงมากในผู้ป่วย obesity",
+        "fio2": "titrate - อาจต้องการสูงกว่าปกติเนื่องจาก reduced FRC/V-Q mismatch",
+        "recruitment": "แนะนำเป็นระยะ - atelectasis พบบ่อยมากในผู้ป่วย obesity"
+      },
+      "fluid_management": {
+        "goal_directed": "คำนวณ fluid ตาม ideal/adjusted body weight ไม่ใช่ total body weight",
+        "blood": "ไม่จำเป็นทั่วไปในหัตถการมาตรฐาน",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "difficult_airway_obesity": "Ramped position (จัดให้ ear อยู่ระดับเดียวกับ sternal notch) ช่วยเพิ่มโอกาสสำเร็จของ laryngoscopy อย่างมีนัยสำคัญในผู้ป่วย obesity",
+        "dosing_weight": "การเลือก dosing weight (total, ideal, lean, adjusted body weight) แตกต่างกันตามยาแต่ละชนิด - ต้องเข้าใจ pharmacokinetic principle เฉพาะของแต่ละยา",
+        "osa_management": "ผู้ป่วยที่มี OSA (screened ด้วย STOP-BANG) มีความเสี่ยง postoperative respiratory complication สูง - opioid-sparing analgesia และ careful monitoring สำคัญมาก",
+        "venous_thromboembolism_prophylaxis": "ผู้ป่วย bariatric surgery มีความเสี่ยง VTE สูง - early mobilization, mechanical prophylaxis, pharmacologic prophylaxis ตาม protocol"
+      },
+      "complications": [
+        "Difficult airway/failed intubation",
+        "Postoperative respiratory depression (โดยเฉพาะในผู้ป่วย OSA)",
+        "Anastomotic/staple line leak",
+        "Venous thromboembolism",
+        "Rhabdomyolysis (จาก positioning นาน)"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นส่วนใหญ่ - PACU with extended monitoring ในรายที่มี severe OSA",
+        "extubation": "เมื่อตื่นเต็มที่และ reversal สมบูรณ์ - จัดท่า head-up/semi-sitting ก่อน extubate",
+        "pain": "Multimodal opioid-sparing analgesia เป็นหัวใจสำคัญ",
+        "complication_watch": [
+          "Respiratory status ใกล้ชิด (โดยเฉพาะ OSA)",
+          "Signs ของ leak (tachycardia อาจเป็นสัญญาณแรกที่พบ)",
+          "Signs ของ VTE"
+        ]
+      },
+      "clinical_pearls": [
+        "Ramped position ก่อน induction เป็นมาตรฐานสำคัญที่ช่วยเพิ่มโอกาสสำเร็จของการ intubate และยืดเวลา safe apnea period ในผู้ป่วย obesity",
+        "Tachycardia ที่ไม่มีสาเหตุอื่นชัดเจนหลัง bariatric surgery ควรนึกถึง anastomotic/staple line leak เป็นอันดับแรกเสมอ แม้จะยังไม่มีอาการอื่นชัดเจน",
+        "Opioid-sparing multimodal analgesia สำคัญอย่างยิ่งในผู้ป่วยกลุ่มนี้เนื่องจากอุบัติการณ์ OSA สูงเพิ่มความเสี่ยง postoperative respiratory depression จาก opioid"
+      ],
+      "references": [
+        "ASA Practice Guideline for Perioperative Management of Obesity",
+        "SOBA UK Guideline",
+        "ASMBS Guideline for Bariatric Surgery"
+      ]
+    },
+    {
+      "id": "hernia_repair",
+      "name": "Hernia Repair (Inguinal/Ventral)",
+      "overview": {
+        "definition": "การผ่าตัดซ่อมไส้เลื่อน อาจเป็น inguinal, umbilical, ventral/incisional hernia ทำได้ทั้ง open และ laparoscopic approach",
+        "indications": [
+          "Symptomatic hernia",
+          "Incarcerated/strangulated hernia (ฉุกเฉิน)",
+          "Large ventral hernia"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag ตามความเหมาะสม"
+        ],
+        "imaging": [
+          "CT abdomen ในรายที่มี complex/large ventral hernia"
+        ],
+        "consult": [
+          "General surgery"
+        ],
+        "optimization": [
+          "ในรายที่เป็น incarcerated/strangulated hernia ประเมิน bowel ischemia/obstruction status"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หาก GA), temperature"
+        ],
+        "ibp": "ไม่จำเป็นทั่วไปในหัตถการมาตรฐาน",
+        "cvp": "ไม่จำเป็น",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "Local anesthesia with sedation, regional (spinal), หรือ GA ตามความซับซ้อนของหัตถการและความชอบของผู้ป่วย/ศัลยแพทย์; RSI หากเป็น emergency incarcerated hernia",
+        "equipment": [
+          "Video laryngoscope หากทำ GA"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "ตามเทคนิคที่เลือก - local/regional/GA",
+        "dose": "ปรับตามผู้ป่วยและเทคนิค",
+        "hemodynamic_goal": "เสถียรตามมาตรฐาน"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA หากทำ GA",
+        "muscle_relaxant": "ตามความจำเป็น (laparoscopic approach ต้องการ adequate paralysis)",
+        "analgesia": "Local infiltration/field block + multimodal systemic analgesia - หัตถการมักเจ็บไม่มาก",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (หาก GA)",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Standard maintenance fluid",
+        "blood": "ไม่จำเป็นทั่วไป",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "incarcerated_hernia_emergency": "Incarcerated/strangulated hernia เป็นภาวะฉุกเฉินที่ต้องพิจารณา bowel viability - RSI เนื่องจากถือเป็น full stomach และมักมี bowel obstruction ร่วมด้วย",
+        "day_surgery_consideration": "หัตถการมาตรฐานส่วนใหญ่ทำแบบ day surgery - เลือกเทคนิคที่ฟื้นตัวเร็วและ PONV ต่ำ",
+        "large_ventral_hernia_consideration": "Large ventral/incisional hernia อาจมี loss of domain ที่กระทบ respiratory mechanics หลังผ่าตัด (abdominal compartment syndrome risk) - พิจารณา staged approach ในรายที่ขนาดใหญ่มาก",
+        "regional_technique_option": "TAP block หรือ local field block ช่วยลด opioid requirement ได้ดีในหัตถการนี้"
+      },
+      "complications": [
+        "Bowel ischemia (ในรายที่เป็น strangulated hernia)",
+        "Bleeding",
+        "Surgical site infection",
+        "Recurrence (ระยะยาว)",
+        "Abdominal compartment syndrome (large ventral hernia)"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็น - day surgery/short stay ส่วนใหญ่",
+        "extubation": "ในห้องผ่าตัดหากทำ GA",
+        "pain": "Multimodal - local/field block + NSAIDs/acetaminophen มักเพียงพอ",
+        "complication_watch": [
+          "Signs ของ bowel ischemia (ในรายฉุกเฉิน)",
+          "Wound complication",
+          "Urinary retention (โดยเฉพาะหลัง spinal anesthesia)"
+        ]
+      },
+      "clinical_pearls": [
+        "Incarcerated/strangulated hernia เป็นภาวะฉุกเฉินที่ต้องประเมิน bowel viability อย่างรวดเร็ว - ถือเป็น full stomach เสมอเนื่องจากมักมี associated bowel obstruction",
+        "หัตถการ elective hernia repair ส่วนใหญ่เหมาะกับ day surgery pathway - การเลือกเทคนิคที่ฟื้นตัวเร็วและมี PONV ต่ำสำคัญต่อความสำเร็จของ ambulatory surgery",
+        "Large ventral/incisional hernia ที่มี loss of domain อาจทำให้เกิด abdominal compartment syndrome หลังผ่าตัดจากการดันอวัยวะกลับเข้าช่องท้องที่เล็กลง - ต้องเฝ้าระวัง respiratory status หลังผ่าตัด"
+      ],
+      "references": [
+        "HerniaSurge Group International Guideline",
+        "SAGES Guideline for Ventral Hernia",
+        "ASA Practice Guideline for Ambulatory Anesthesia"
+      ]
+    },
+    {
+      "id": "emergency_laparotomy",
+      "name": "Emergency Laparotomy",
+      "overview": {
+        "definition": "การผ่าตัดเปิดช่องท้องฉุกเฉินสำหรับภาวะวิกฤตทางศัลยกรรม เช่น perforated viscus, bowel obstruction, mesenteric ischemia, intra-abdominal sepsis",
+        "indications": [
+          "Perforated peptic ulcer/bowel",
+          "Bowel obstruction with ischemia/perforation risk",
+          "Mesenteric ischemia",
+          "Intra-abdominal sepsis/abscess",
+          "Post-operative complication requiring re-exploration"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, electrolytes, lactate, ABG, type & crossmatch"
+        ],
+        "imaging": [
+          "CT abdomen (หากเสถียรพอ) - ไม่ควรชะลอการผ่าตัดในรายไม่เสถียร"
+        ],
+        "consult": [
+          "General surgery emergency, ICU/critical care ร่วมประเมิน risk stratification (NELA/P-POSSUM score)"
+        ],
+        "optimization": [
+          "Resuscitate ควบคู่กับการเตรียมผ่าตัด - 'time to theatre' สำคัญมากต่อ outcome โดยเฉพาะใน sepsis/ischemia"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Urine output"
+        ],
+        "ibp": "Arterial line แนะนำอย่างยิ่งในผู้ป่วยที่ไม่เสถียร - serial ABG/lactate เป็น marker สำคัญของ resuscitation adequacy",
+        "cvp": "แนะนำในรายที่ต้องการ vasoactive support",
+        "pa_catheter": "พิจารณาในรายที่มี cardiac comorbidity รุนแรง",
+        "tee": "พิจารณาในรายที่มี unclear cardiac status/severe shock",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "RSI เสมอ - ผู้ป่วย emergency laparotomy ถือเป็น full stomach ทุกราย",
+        "equipment": [
+          "Video laryngoscope",
+          "Suction พร้อมใช้เต็มที่ (aspiration risk สูงจาก bowel obstruction/ileus)"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Etomidate/ketamine ในรายที่ shock, dose ต่ำ, succinylcholine/rocuronium สำหรับ RSI",
+        "dose": "ลด dose ตามระดับ physiological compromise (มักมี high NELA risk score)",
+        "hemodynamic_goal": "เตรียม vasopressor พร้อมก่อน induction - ผู้ป่วยกลุ่มนี้มี high mortality risk และมักมี significant hemodynamic instability"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ต่ำตาม hemodynamic tolerance",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Opioid titrate ระมัดระวังตาม hemodynamic status",
+        "temperature": "Active warming เข้มงวด - ป้องกัน lethal triad"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (lung protective หากมี ARDS/sepsis-related lung injury)",
+        "peep": "ปรับตาม lung compliance/abdominal distension",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Aggressive resuscitation ตาม sepsis/shock protocol - goal-directed therapy ด้วย dynamic parameter (SVV, passive leg raise) เมื่อเป็นไปได้",
+        "blood": "เตรียม PRC ตามความจำเป็น โดยเฉพาะในรายที่มี mesenteric ischemia/major hemorrhage risk",
+        "transfusion": "ตาม estimated blood loss และ hemodynamic response"
+      },
+      "special_consideration": {
+        "risk_stratification": "ใช้ risk scoring tool (NELA, P-POSSUM) เพื่อประเมิน mortality risk และวางแผน level of care/ICU bed availability ล่วงหน้า",
+        "sepsis_source_control": "Emergency laparotomy มักเป็นส่วนหนึ่งของ source control ใน sepsis management - เวลาในการควบคุม source มีผลต่อ mortality อย่างมีนัยสำคัญ (Surviving Sepsis Campaign)",
+        "senior_involvement": "ผู้ป่วยกลุ่มนี้มี mortality สูง - แนะนำให้มี senior anesthesiologist และ surgeon ร่วมดูแลตาม NELA standard",
+        "postop_icu_planning": "วางแผน ICU bed ล่วงหน้าก่อนผ่าตัดในผู้ป่วยที่มี high risk score - หลีกเลี่ยงความล่าช้าในการส่งต่อ ICU หลังผ่าตัด"
+      },
+      "complications": [
+        "Sepsis/septic shock",
+        "Coagulopathy",
+        "Acute kidney injury",
+        "Multi-organ failure",
+        "Anastomotic leak",
+        "Abdominal compartment syndrome",
+        "Mortality สูงกว่า elective surgery อย่างมีนัยสำคัญ"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring แนะนำอย่างยิ่งในรายที่มี high risk score",
+        "extubation": "ล่าช้าตามความเสถียรและความรุนแรงของ underlying pathology",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Ongoing sepsis signs",
+          "Renal function",
+          "Coagulopathy",
+          "Anastomotic complication"
+        ]
+      },
+      "clinical_pearls": [
+        "Emergency laparotomy มี mortality สูงกว่า elective abdominal surgery อย่างมาก - การใช้ risk scoring tool (NELA, P-POSSUM) ช่วย stratify risk และวางแผนการดูแลที่เหมาะสมตั้งแต่ต้น",
+        "Time to source control มีผลต่อ mortality อย่างมีนัยสำคัญในผู้ป่วย intra-abdominal sepsis - ควรลดความล่าช้าในการนำผู้ป่วยเข้าห้องผ่าตัดให้มากที่สุดเท่าที่ปลอดภัย",
+        "แนะนำให้มี senior anesthesiologist และ surgeon ร่วมดูแลผู้ป่วย high-risk emergency laparotomy ตาม national standard (เช่น NELA ในสหราชอาณาจักร) เนื่องจากมีผลต่อ outcome ที่ดีขึ้น"
+      ],
+      "references": [
+        "NELA (National Emergency Laparotomy Audit) Guideline",
+        "Surviving Sepsis Campaign Guideline",
+        "ASA/ESA Guideline for Emergency Surgery"
+      ]
+    }
+  ]
+}

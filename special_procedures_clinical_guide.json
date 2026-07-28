@@ -1,0 +1,830 @@
+{
+  "category": "Special Procedures",
+  "category_th": "วิสัญญีสำหรับหัตถการพิเศษ",
+  "description": "Evidence-based guidance for safe anesthesia practice in specialized surgical and non-operating room procedures.",
+  "disclaimer": "เนื้อหานี้จัดทำเพื่อการศึกษาและอ้างอิงทางคลินิก ไม่ทดแทนแนวปฏิบัติของสถาบัน (institutional protocol) หรือดุลยพินิจทางคลินิกของผู้ให้การระงับความรู้สึก ควรปรับใช้ตามบริบทผู้ป่วยแต่ละรายและทบทวนตาม guideline ฉบับล่าสุดเสมอ",
+  "procedures": [
+    {
+      "id": "robotic_surgery",
+      "name": "Robotic Surgery",
+      "overview": {
+        "definition": "การผ่าตัดผ่านหุ่นยนต์ช่วยผ่าตัด (เช่น da Vinci system) สำหรับหัตถการต่างๆ เช่น prostatectomy, hysterectomy, colectomy ซึ่งมีข้อพิจารณาเฉพาะเรื่อง positioning และ pneumoperitoneum",
+        "indications": [
+          "Robotic prostatectomy",
+          "Robotic hysterectomy",
+          "Robotic colorectal surgery",
+          "Robotic cardiac/thoracic surgery"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & screen ตามความซับซ้อน"
+        ],
+        "imaging": [
+          "ตามหัตถการเฉพาะ"
+        ],
+        "consult": [
+          "Surgical team เฉพาะทาง"
+        ],
+        "optimization": [
+          "ประเมิน cardiopulmonary reserve - สำคัญมากเนื่องจากต้อง tolerate steep positioning + pneumoperitoneum เป็นเวลานาน",
+          "ประเมิน glaucoma/intraocular pressure risk ในรายที่ต้อง steep Trendelenburg นาน"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Airway pressure monitoring ใกล้ชิด (เปลี่ยนแปลงมากตาม position/pneumoperitoneum)"
+        ],
+        "ibp": "แนะนำในหัตถการที่ใช้เวลานานหรือ steep positioning เพื่อ monitor hemodynamic change อย่างใกล้ชิด",
+        "cvp": "พิจารณาตามความซับซ้อนของหัตถการ",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็นทั่วไป ยกเว้น robotic cardiac surgery",
+        "bis": "แนะนำเนื่องจากหัตถการมักใช้เวลานาน",
+        "nirs": "พิจารณาในรายที่มีความเสี่ยง cerebral perfusion จาก steep positioning นาน"
+      },
+      "airway": {
+        "plan": "ETT มาตรฐาน - เมื่อ robot docked แล้วไม่สามารถเข้าถึง airway ได้ง่าย ต้อง secure ETT อย่างมั่นคงที่สุด",
+        "equipment": [
+          "ETT พร้อม secure ด้วย tape/tie ที่แน่นหนา",
+          "Reinforced/armored ETT อาจพิจารณาป้องกันการหักงอจาก head positioning"
+        ],
+        "backup": "Difficult airway cart พร้อมก่อน induction - เมื่อ robot docked การเข้าถึงศีรษะผู้ป่วยฉุกเฉินทำได้ยากมาก"
+      },
+      "induction": {
+        "drug": "Standard IV induction",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อนจัดท่าและเริ่ม pneumoperitoneum"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA ตามความเหมาะสม",
+        "muscle_relaxant": "Deep neuromuscular blockade มักต้องการเพื่อให้ surgical space เพียงพอและป้องกันการขยับตัวที่อาจเป็นอันตรายขณะ robotic arm ทำงาน",
+        "analgesia": "Multimodal - opioid + regional/local เมื่อเหมาะสม",
+        "temperature": "Active warming - หัตถการมักใช้เวลานาน"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW ปรับลดลงหากจำเป็นเนื่องจาก elevated intra-abdominal pressure และ steep positioning ลด lung compliance",
+        "peep": "5-10 cmH2O ช่วยรักษา FRC ในภาวะ pneumoperitoneum + Trendelenburg",
+        "fio2": "titrate ตาม SpO2 ซึ่งอาจท้าทายมากขึ้นจาก reduced lung compliance",
+        "recruitment": "แนะนำเป็นระยะระหว่างและหลัง pneumoperitoneum release"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative fluid โดยเฉพาะช่วงต้นหัตถการ - steep Trendelenburg เพิ่ม venous return/cerebral/facial edema, ระวัง fluid overload",
+        "blood": "เตรียมตามความซับซ้อนของหัตถการ",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "steep_trendelenburg": "Steep Trendelenburg position (มักใช้ใน pelvic robotic surgery) ร่วมกับ pneumoperitoneum ทำให้เกิด significant physiologic change: เพิ่ม ICP, IOP, cerebral venous pressure, ลด lung compliance และ FRC",
+        "pneumoperitoneum_effect": "CO2 pneumoperitoneum เพิ่ม intra-abdominal pressure ส่งผลต่อ ventilation (ลด compliance), hemodynamic (เพิ่ม afterload, อาจลด venous return จาก IVC compression), และ CO2 absorption (hypercarbia)",
+        "limited_access": "เมื่อ robot docked แล้วการเข้าถึงผู้ป่วยฉุกเฉิน (โดยเฉพาะศีรษะ) ทำได้ยากมาก - ต้อง secure ทุกอย่างให้มั่นคงและมี emergency undocking protocol ชัดเจนก่อนเริ่ม",
+        "eye_protection": "ป้องกันดวงตาอย่างเข้มงวด (tape ปิดตา, gel eye pad) เนื่องจาก facial/periorbital edema จาก prolonged steep Trendelenburg เพิ่มความเสี่ยง corneal injury/postoperative visual loss"
+      },
+      "complications": [
+        "Facial/airway edema (โดยเฉพาะหลัง prolonged steep Trendelenburg - อาจทำให้ extubation ล่าช้า)",
+        "Postoperative visual loss/corneal abrasion",
+        "CO2 embolism (rare)",
+        "Compartment syndrome (extremity, จาก prolonged positioning)",
+        "Subcutaneous emphysema",
+        "Nerve injury จาก positioning"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นส่วนใหญ่ - PACU มาตรฐานเพียงพอ ยกเว้นหัตถการใหญ่/ใช้เวลานานมาก",
+        "extubation": "ประเมิน airway edema ก่อน extubate (cuff leak test) โดยเฉพาะหลัง prolonged steep Trendelenburg - พิจารณา delayed extubation หากสงสัย significant edema",
+        "pain": "Multimodal analgesia - โดยรวมมักปวดน้อยกว่า open surgery",
+        "complication_watch": [
+          "Airway edema",
+          "Visual changes",
+          "Positioning-related nerve injury",
+          "Shoulder pain จาก residual CO2 (referred diaphragmatic irritation)"
+        ]
+      },
+      "clinical_pearls": [
+        "เมื่อ robot docked แล้ว การเข้าถึงผู้ป่วยฉุกเฉินทำได้ยากมาก - ต้องตรวจสอบ ETT security, IV line, และ eye protection อย่างละเอียดก่อนเริ่ม docking ทุกครั้ง",
+        "Prolonged steep Trendelenburg (>4-6 ชม.) เพิ่มความเสี่ยง airway/facial edema อย่างมีนัยสำคัญ - ควรพิจารณา leak test ก่อน extubate เสมอในหัตถการยาว",
+        "การสื่อสารกับทีมศัลยแพทย์เรื่อง emergency undocking protocol ต้องชัดเจนตั้งแต่ก่อนเริ่มหัตถการ เพื่อเตรียมพร้อมหากเกิดภาวะฉุกเฉินที่ต้องเข้าถึงผู้ป่วยทันที"
+      ],
+      "references": [
+        "ASA Practice Advisory for Robotic Surgery Anesthesia",
+        "SAGES Guideline for Robotic Surgery",
+        "ESA Guideline for Pneumoperitoneum Management"
+      ]
+    },
+    {
+      "id": "liver_transplant",
+      "name": "Liver Transplantation",
+      "overview": {
+        "definition": "การผ่าตัดเปลี่ยนตับสำหรับผู้ป่วย end-stage liver disease ที่มีความซับซ้อนสูงและแบ่งเป็น 3 phase หลัก: pre-anhepatic, anhepatic, และ neohepatic (post-reperfusion)",
+        "indications": [
+          "End-stage liver disease (cirrhosis จากสาเหตุต่างๆ)",
+          "Acute liver failure",
+          "Hepatocellular carcinoma within transplant criteria"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, comprehensive coag panel/fibrinogen, comprehensive metabolic panel, ABG, ammonia",
+          "MELD score calculation"
+        ],
+        "imaging": [
+          "Echocardiogram (screen portopulmonary hypertension, cirrhotic cardiomyopathy)",
+          "CT/Doppler ultrasound (vascular anatomy)"
+        ],
+        "consult": [
+          "Hepatology, transplant team multidisciplinary, cardiology หากสงสัย cardiac involvement"
+        ],
+        "optimization": [
+          "มักเป็นเคสฉุกเฉินเมื่อมี organ offer - full stomach precaution เสมอ",
+          "ประเมิน severity ของ coagulopathy, ascites, hepatic encephalopathy, portopulmonary hypertension ก่อนผ่าตัด"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Urine output"
+        ],
+        "ibp": "Arterial line จำเป็นเสมอ - หัตถการยาวมาก hemodynamic fluctuation รุนแรงโดยเฉพาะช่วง reperfusion",
+        "cvp": "แนะนำ - large-bore central access หลายเส้นสำหรับ massive transfusion",
+        "pa_catheter": "แนะนำอย่างยิ่งหรือ alternative cardiac output monitoring - ช่วยประเมิน hemodynamic ระหว่าง 3 phase ที่แตกต่างกันมาก",
+        "tee": "แนะนำอย่างยิ่ง - ประเมิน volume status, cardiac function, ตรวจจับ air/thrombus embolism ระหว่าง reperfusion",
+        "bis": "แนะนำ",
+        "nirs": "พิจารณาในบางสถาบัน"
+      },
+      "airway": {
+        "plan": "RSI (full stomach precaution เสมอในเคสฉุกเฉิน) - ระวัง ascites เพิ่ม aspiration risk",
+        "equipment": [
+          "Video laryngoscope",
+          "Rapid infuser/level 1 device"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Etomidate/propofol titrate ช้าๆ, high-dose opioid, rocuronium (ปรับ dose ตาม volume of distribution ที่เปลี่ยนแปลงจาก ascites)",
+        "dose": "ปรับตาม hepatic dysfunction ที่อาจกระทบ drug metabolism และ protein binding",
+        "hemodynamic_goal": "ผู้ป่วย cirrhosis มักมี hyperdynamic circulation (low SVR, high cardiac output) ที่ต้องเข้าใจ baseline physiology ก่อน"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA ตาม hemodynamic stability",
+        "muscle_relaxant": "Non-depolarizing infusion ปรับ dose ตาม volume of distribution",
+        "analgesia": "Opioid-based",
+        "temperature": "Active warming เข้มงวดที่สุด - anhepatic phase และ massive transfusion เพิ่มความเสี่ยง hypothermia รุนแรง"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW ปรับลดหากมี large ascites/elevated intra-abdominal pressure",
+        "peep": "5-10 cmH2O",
+        "fio2": "titrate - อาจท้าทายในรายที่มี hepatopulmonary syndrome",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Complex - ต้องปรับกลยุทธ์ตาม 3 phase, low CVP strategy ช่วงก่อน anhepatic phase อาจช่วยลด blood loss ระหว่าง dissection",
+        "blood": "Massive transfusion protocol พร้อมใช้เสมอ - cell salvager แนะนำอย่างยิ่ง",
+        "transfusion": "Aggressive component therapy guide ด้วย TEG/ROTEM หากมี - coagulopathy พื้นฐานจาก liver disease ทำให้การประเมินซับซ้อนกว่าปกติ"
+      },
+      "special_consideration": {
+        "three_phases": "Pre-anhepatic (dissection, blood loss มาก), Anhepatic (liver removed, no hepatic function, coagulopathy แย่ลง, hypocalcemia จาก citrate), Neohepatic/reperfusion (graft reperfusion - hemodynamic instability รุนแรงที่สุด)",
+        "reperfusion_syndrome": "Post-reperfusion syndrome: sudden hypotension, bradycardia, arrhythmia จาก cold/acidic/hyperkalemic effluent จาก graft - เตรียม calcium, bicarbonate, epinephrine พร้อมใช้ทันทีก่อน reperfusion",
+        "coagulopathy_monitoring": "TEG/ROTEM ช่วย guide component therapy ได้แม่นยำกว่า standard coag test เนื่องจาก baseline coagulopathy ซับซ้อนจาก liver disease",
+        "renal_protection": "หลีกเลี่ยง nephrotoxic factor เนื่องจาก hepatorenal syndrome พบร่วมได้บ่อยและ renal function หลังผ่าตัดสำคัญต่อ outcome"
+      },
+      "complications": [
+        "Post-reperfusion syndrome (severe hypotension/arrhythmia/cardiac arrest)",
+        "Massive hemorrhage/coagulopathy",
+        "Hyperkalemia/hypocalcemia จาก massive transfusion",
+        "Primary graft non-function",
+        "Hepatic artery/portal vein thrombosis",
+        "Acute kidney injury"
+      ],
+      "postoperative_care": {
+        "icu": "ICU with transplant-trained team, immunosuppression protocol",
+        "extubation": "ตาม graft function และความเสถียร - อาจล่าช้าในรายที่มี complication",
+        "pain": "Multimodal analgesia ปรับตาม hepatic/renal function",
+        "complication_watch": [
+          "Graft function (LFT trend)",
+          "Coagulopathy",
+          "Vascular complication (Doppler ultrasound)",
+          "Rejection signs"
+        ]
+      },
+      "clinical_pearls": [
+        "Post-reperfusion syndrome เป็นช่วงวิกฤตที่สุดของหัตถการ - ต้องเตรียม calcium chloride, bicarbonate, epinephrine พร้อมใช้ทันทีก่อน unclamp graft vessels เสมอ",
+        "Cirrhotic patient มักมี hyperdynamic circulation พื้นฐาน (low SVR, high CO) - เข้าใจ baseline physiology นี้ช่วยตีความ hemodynamic change ระหว่างผ่าตัดได้ถูกต้อง",
+        "TEG/ROTEM มีประโยชน์อย่างมากใน liver transplant เนื่องจาก baseline coagulopathy จาก liver disease ทำให้ standard coag test ตีความยากและอาจนำไปสู่ over-transfusion หากอาศัย standard test เพียงอย่างเดียว"
+      ],
+      "references": [
+        "ILTS Guideline for Liver Transplant Anesthesia",
+        "SATA Consensus Statement",
+        "AASLD Practice Guideline"
+      ]
+    },
+    {
+      "id": "kidney_transplant",
+      "name": "Kidney Transplantation",
+      "overview": {
+        "definition": "การผ่าตัดเปลี่ยนไตสำหรับผู้ป่วย end-stage renal disease จาก living หรือ deceased donor",
+        "indications": [
+          "End-stage renal disease requiring renal replacement therapy",
+          "Pre-emptive transplant ในผู้ป่วยที่ยังไม่ต้อง dialysis"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, comprehensive metabolic panel, potassium (สำคัญมาก), type & crossmatch"
+        ],
+        "imaging": [
+          "Echocardiogram (ผู้ป่วย ESRD มักมี cardiac comorbidity สูง)"
+        ],
+        "consult": [
+          "Nephrology, cardiology (CAD พบบ่อยมากในผู้ป่วย ESRD)"
+        ],
+        "optimization": [
+          "Dialysis ก่อนผ่าตัดหากมีข้อบ่งชี้ (hyperkalemia, fluid overload) - ต้องประสานเวลากับ dialysis unit",
+          "ตรวจสอบ potassium ล่าสุดก่อนเข้าห้องผ่าตัดเสมอ"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG (สำคัญมาก - เฝ้าระวัง hyperkalemia change), SpO2, EtCO2, temperature",
+          "Urine output (จาก native kidney และหลัง graft reperfusion)"
+        ],
+        "ibp": "Arterial line พิจารณาในรายที่มี cardiac comorbidity สูงหรือ hemodynamic instability",
+        "cvp": "แนะนำ - ช่วย guide fluid management เพื่อให้ adequate graft perfusion pressure",
+        "pa_catheter": "พิจารณาในรายที่มี significant cardiac dysfunction",
+        "tee": "พิจารณาในรายที่มีความเสี่ยง cardiac สูง",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "ประเมิน airway ระมัดระวัง - ผู้ป่วย ESRD อาจมี fluid overload ที่กระทบ airway",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "หลีกเลี่ยง succinylcholine หาก potassium สูง, standard induction agent ปรับตาม cardiac status",
+        "dose": "ปรับตาม renal clearance ของยา (หลีกเลี่ยง/ลด dose ยาที่ขับออกทางไตเป็นหลัก), rocuronium/cisatracurium เป็นตัวเลือกที่ดี (cisatracurium ไม่ขึ้นกับ renal clearance)",
+        "hemodynamic_goal": "รักษา adequate MAP เพื่อให้ graft perfusion เพียงพอทันทีหลัง reperfusion"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA - เลือกยาที่ไม่พึ่ง renal excretion เป็นหลัก",
+        "muscle_relaxant": "Cisatracurium เป็นทางเลือกที่ดี (Hofmann elimination ไม่ขึ้นกับ renal function)",
+        "analgesia": "Opioid ปรับ dose ตาม renal clearance (หลีกเลี่ยง morphine ที่มี active metabolite สะสมในไตวาย, fentanyl เป็นทางเลือกที่ปลอดภัยกว่า)",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Liberal fluid strategy (ตรงข้ามกับหลาย procedure อื่น) - maintain adequate CVP/MAP เพื่อให้ graft perfusion ดีทันทีหลัง reperfusion ซึ่งสัมพันธ์กับ immediate graft function",
+        "blood": "เตรียมตามความจำเป็น",
+        "transfusion": "ตาม estimated blood loss - ระวัง sensitization ในผู้ป่วยที่อาจต้อง retransplant ในอนาคต (ใช้ leukoreduced blood)"
+      },
+      "special_consideration": {
+        "potassium_management": "ตรวจสอบ potassium ก่อนและระหว่างผ่าตัดอย่างใกล้ชิด - หลีกเลี่ยง succinylcholine หาก K+ สูง, เตรียมพร้อมจัดการ hyperkalemia (calcium, insulin-glucose, bicarbonate)",
+        "graft_perfusion": "Liberal fluid + maintain adequate MAP (มักตั้งเป้า >80-90 mmHg) ช่วงก่อนและหลัง graft reperfusion เพื่อเพิ่มโอกาส immediate graft function",
+        "drug_selection_renal": "เลือกยาที่ไม่พึ่ง renal clearance เป็นหลักเมื่อเป็นไปได้ (cisatracurium, fentanyl) เพื่อลดความเสี่ยง prolonged drug effect",
+        "immunosuppression": "เริ่ม induction immunosuppression ตาม protocol ระหว่างผ่าตัด"
+      },
+      "complications": [
+        "Hyperkalemia",
+        "Delayed graft function",
+        "Hyperacute rejection",
+        "Fluid overload/pulmonary edema",
+        "Bleeding",
+        "Vascular thrombosis"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นเสมอ - step-down/ward monitoring เพียงพอในรายที่ไม่ซับซ้อน",
+        "extubation": "ในห้องผ่าตัดส่วนใหญ่",
+        "pain": "Multimodal analgesia หลีกเลี่ยง NSAIDs (nephrotoxic ต่อ graft)",
+        "complication_watch": [
+          "Urine output (delayed graft function)",
+          "Potassium",
+          "Fluid status",
+          "Signs ของ rejection"
+        ]
+      },
+      "clinical_pearls": [
+        "ตรงข้ามกับหัตถการอื่นๆ ส่วนใหญ่ kidney transplant ต้องการ liberal fluid strategy เพื่อ optimize graft perfusion pressure ทันทีหลัง reperfusion",
+        "หลีกเลี่ยง NSAIDs หลังผ่าตัดเสมอเนื่องจาก nephrotoxic effect อาจกระทบ graft function โดยตรง",
+        "Cisatracurium เป็นตัวเลือกที่ดีสำหรับ muscle relaxant เนื่องจาก elimination ผ่าน Hofmann degradation ไม่ขึ้นกับ renal function ทำให้ predictable แม้ก่อนหรือหลัง graft function เต็มที่"
+      ],
+      "references": [
+        "AST Consensus Statement on Kidney Transplant Anesthesia",
+        "KDIGO Guideline",
+        "BTS/RA Guideline for Renal Transplant"
+      ]
+    },
+    {
+      "id": "interventional_radiology",
+      "name": "Interventional Radiology (IR) Procedures",
+      "overview": {
+        "definition": "หัตถการทางรังสีร่วมรักษาที่ต้องการวิสัญญี เช่น embolization, TACE, biliary drainage, vascular intervention ซึ่งมักทำใน remote location นอกห้องผ่าตัดมาตรฐาน",
+        "indications": [
+          "Tumor embolization (TACE, uterine fibroid embolization)",
+          "GI/vascular bleeding embolization",
+          "Biliary/nephrostomy drainage",
+          "Complex vascular intervention"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, renal function (contrast nephropathy risk)"
+        ],
+        "imaging": [
+          "Prior imaging relevant ต่อหัตถการ"
+        ],
+        "consult": [
+          "Interventional radiology team"
+        ],
+        "optimization": [
+          "ประเมิน contrast allergy history",
+          "Hydration ก่อนหัตถการในรายที่มี renal risk"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หาก GA/deep sedation)"
+        ],
+        "ibp": "พิจารณาตามความซับซ้อนและความเสี่ยงของหัตถการ (เช่น เสี่ยง massive bleeding)",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "พิจารณาหากใช้ GA/deep sedation",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Conscious sedation, MAC, หรือ GA ตามความซับซ้อนและตำแหน่งหัตถการ - ต้องพิจารณา remote location ที่อาจเข้าถึง airway ยากกว่า OR มาตรฐาน",
+        "equipment": [
+          "Standard airway equipment ครบเทียบเท่า OR"
+        ],
+        "backup": "พร้อม convert เป็น GA และมี emergency airway cart แม้ใน remote location"
+      },
+      "induction": {
+        "drug": "Propofol/dexmedetomidine สำหรับ sedation หรือ standard GA induction",
+        "dose": "Individualized",
+        "hemodynamic_goal": "เสถียรตามความเสี่ยงของหัตถการ (เช่น หัตถการที่เสี่ยง sudden hemorrhage ต้อง monitor ใกล้ชิดเป็นพิเศษ)"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA มักนิยมใน remote location เนื่องจากไม่ต้องพึ่ง anesthesia machine เต็มรูปแบบเสมอไป",
+        "muscle_relaxant": "ตามความจำเป็น",
+        "analgesia": "ปรับตามความเจ็บปวดของหัตถการ (embolization มักปวดมากกว่า diagnostic procedure)",
+        "temperature": "Warming blanket - remote location มักควบคุมอุณหภูมิห้องได้ไม่ดีเท่า OR"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (หาก GA)",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative, ระวัง contrast-induced nephropathy - hydration ตามความเหมาะสม",
+        "blood": "เตรียมพร้อมตามความเสี่ยงของหัตถการ",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "remote_location_safety": "Non-OR anesthesia location ต้องมีมาตรฐานความปลอดภัยเทียบเท่า OR: full monitoring, emergency equipment, backup power, การเข้าถึงผู้ป่วยที่เพียงพอ",
+        "contrast_reaction": "เตรียมพร้อมรับมือ contrast allergy/anaphylaxis - มี epinephrine และ resuscitation equipment พร้อมเสมอ",
+        "embolization_pain": "หัตถการ embolization (เช่น TACE, UFE) มักทำให้เกิด post-embolization syndrome (pain, fever, nausea) - เตรียม multimodal analgesia",
+        "bleeding_risk_procedures": "หัตถการที่ทำเพื่อควบคุม active bleeding ต้องเตรียมพร้อมรับมือ ongoing/worsening hemorrhage ระหว่างหัตถการ"
+      },
+      "complications": [
+        "Contrast-induced nephropathy",
+        "Contrast allergy/anaphylaxis",
+        "Post-embolization syndrome",
+        "Vessel perforation/non-target embolization",
+        "Radiation exposure (ทีมงาน)",
+        "Access site complication"
+      ],
+      "postoperative_care": {
+        "icu": "ตามความซับซ้อนของหัตถการและสภาพผู้ป่วย",
+        "extubation": "Immediate หากทำ GA",
+        "pain": "Multimodal analgesia โดยเฉพาะหลัง embolization procedure",
+        "complication_watch": [
+          "Access site bleeding",
+          "Post-embolization syndrome",
+          "Renal function"
+        ]
+      },
+      "clinical_pearls": [
+        "Non-OR anesthesia location ต้องมีมาตรฐานความปลอดภัยและอุปกรณ์เทียบเท่า OR เสมอ - ไม่ควรลดมาตรฐานเพียงเพราะอยู่นอกห้องผ่าตัดมาตรฐาน",
+        "TIVA เป็นเทคนิคที่นิยมใน IR suite เนื่องจากความสะดวกในการทำงานร่วมกับทีม radiology โดยไม่ต้องพึ่ง anesthesia machine เต็มรูปแบบเสมอไป",
+        "หัตถการที่มีเป้าหมายควบคุม active bleeding (เช่น GI bleeding embolization) ต้องเตรียมพร้อมรับมือ ongoing hemorrhage และ hemodynamic instability ระหว่างหัตถการเสมอ"
+      ],
+      "references": [
+        "ASA Practice Advisory for Non-OR Anesthesia",
+        "CIRSE Standards of Practice",
+        "SIR Guideline"
+      ]
+    },
+    {
+      "id": "ercp",
+      "name": "ERCP (Endoscopic Retrograde Cholangiopancreatography)",
+      "overview": {
+        "definition": "หัตถการส่องกล้องเข้าไปในทางเดินน้ำดีและตับอ่อนผ่าน duodenum สำหรับวินิจฉัยและรักษาโรคทางเดินน้ำดี/ตับอ่อน มักทำในท่า prone หรือ semi-prone",
+        "indications": [
+          "Choledocholithiasis",
+          "Biliary/pancreatic duct stricture",
+          "Biliary stent placement",
+          "Sphincterotomy"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, LFT"
+        ],
+        "imaging": [
+          "Prior imaging (ultrasound, MRCP) ตามความเหมาะสม"
+        ],
+        "consult": [
+          "Gastroenterology"
+        ],
+        "optimization": [
+          "NPO status ตาม guideline",
+          "ประเมิน sepsis/cholangitis status ในรายที่ทำแบบเร่งด่วน"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หาก GA)"
+        ],
+        "ibp": "พิจารณาในรายที่ไม่เสถียรหรือมี cholangitis/sepsis",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณาหากใช้ GA/deep sedation",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "GA with ETT มักเลือกใช้เนื่องจากท่า prone/semi-prone และ shared airway กับ endoscope - deep sedation ทางเลือกในบางสถาบันสำหรับรายที่ไม่ซับซ้อน",
+        "equipment": [
+          "ETT",
+          "Video laryngoscope",
+          "Suction พร้อม (aspiration risk จาก endoscope/insufflation)"
+        ],
+        "backup": "Difficult airway cart - ตำแหน่ง prone ทำให้ emergency airway access ยากขึ้น"
+      },
+      "induction": {
+        "drug": "Standard IV induction ก่อนจัดท่า prone/semi-prone",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อนจัดท่าซึ่งอาจทำได้ยากกว่าท่า supine ปกติ"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ตามความเหมาะสม",
+        "muscle_relaxant": "ตามเทคนิคที่ใช้",
+        "analgesia": "Opioid ระดับปานกลาง - หัตถการมักไม่เจ็บมากยกเว้นช่วง duct cannulation",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Standard maintenance fluid",
+        "blood": "ไม่จำเป็นทั่วไป",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "shared_airway": "Endoscope อยู่ใน oropharynx ร่วมกับ airway device - ต้องประสานงานกับ endoscopist อย่างใกล้ชิดเรื่องตำแหน่งอุปกรณ์",
+        "prone_positioning": "ท่า prone/semi-prone ทำให้ airway access ยากขึ้นหากเกิดปัญหาฉุกเฉิน - ต้องมั่นใจว่า ETT secure ดีก่อนเริ่มหัตถการ",
+        "post_ercp_pancreatitis": "เฝ้าระวัง post-ERCP pancreatitis ซึ่งเป็นภาวะแทรกซ้อนที่พบได้บ่อยที่สุด",
+        "cholangitis_case": "ในรายที่ทำ ERCP เนื่องจาก cholangitis เร่งด่วน ผู้ป่วยอาจมี sepsis/hemodynamic instability ที่ต้อง resuscitate ควบคู่กัน"
+      },
+      "complications": [
+        "Post-ERCP pancreatitis",
+        "Aspiration",
+        "Perforation",
+        "Bleeding (หลัง sphincterotomy)",
+        "Airway complication จาก shared airway/prone position"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นส่วนใหญ่ - PACU มาตรฐานเพียงพอ ยกเว้นมี complication หรือ sepsis",
+        "extubation": "ในห้องผ่าตัดหลังหัตถการเสร็จและกลับสู่ท่า supine",
+        "pain": "Minimal-moderate analgesia requirement",
+        "complication_watch": [
+          "Signs ของ pancreatitis (abdominal pain)",
+          "Signs ของ perforation",
+          "Bleeding"
+        ]
+      },
+      "clinical_pearls": [
+        "GA with ETT เป็นที่นิยมมากกว่า deep sedation สำหรับ ERCP เนื่องจากท่า prone/semi-prone และความเสี่ยง aspiration จากการ insufflation ของทางเดินอาหาร",
+        "ต้อง secure ETT อย่างมั่นคงเป็นพิเศษก่อนพลิกผู้ป่วยเป็นท่า prone/semi-prone เนื่องจากการเข้าถึง airway ฉุกเฉินทำได้ยากกว่าท่า supine มาก",
+        "Post-ERCP pancreatitis เป็นภาวะแทรกซ้อนที่พบบ่อยที่สุด - ควรแจ้งทีม PACU ให้เฝ้าระวังอาการปวดท้องหลังหัตถการ"
+      ],
+      "references": [
+        "ASGE Guideline for ERCP Sedation",
+        "ASA Practice Advisory for Non-OR Anesthesia",
+        "ESGE Guideline"
+      ]
+    },
+    {
+      "id": "endoscopy",
+      "name": "Endoscopy (Upper/Lower GI, Advanced Endoscopic Procedures)",
+      "overview": {
+        "definition": "หัตถการส่องกล้องทางเดินอาหาร (EGD, colonoscopy, EUS) ที่ต้องการ sedation/anesthesia ตั้งแต่ระดับ minimal sedation ถึง GA ตามความซับซ้อน",
+        "indications": [
+          "Diagnostic/therapeutic upper GI endoscopy",
+          "Colonoscopy",
+          "Endoscopic ultrasound (EUS)",
+          "Advanced procedure เช่น POEM, ESD"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "ตามความจำเป็นของผู้ป่วยเฉพาะราย - ส่วนใหญ่ไม่ต้องการ extensive workup"
+        ],
+        "imaging": [
+          "ไม่จำเป็นทั่วไปสำหรับ standard endoscopy"
+        ],
+        "consult": [
+          "Gastroenterology"
+        ],
+        "optimization": [
+          "NPO status ตาม guideline",
+          "ประเมิน airway/aspiration risk (obesity, GERD, gastroparesis)"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หากใช้ capnography ผ่าน nasal cannula/GA)"
+        ],
+        "ibp": "ไม่จำเป็นทั่วไปในหัตถการมาตรฐาน",
+        "cvp": "ไม่จำเป็น",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณาหากใช้ deep sedation/GA",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "ส่วนใหญ่ทำแบบ MAC/deep sedation โดยไม่ intubate สำหรับ standard EGD/colonoscopy; GA with ETT พิจารณาในรายที่มี aspiration risk สูงหรือหัตถการซับซ้อน/ใช้เวลานาน (POEM, ESD)",
+        "equipment": [
+          "Nasal cannula with capnography",
+          "Standard airway equipment พร้อม conversion เป็น GA"
+        ],
+        "backup": "พร้อม intervene ทันทีหากเกิด airway obstruction/desaturation ระหว่าง sedation"
+      },
+      "induction": {
+        "drug": "Propofol-based sedation (มักผสม opioid) เป็นมาตรฐานส่วนใหญ่, standard GA induction ในรายที่ต้อง intubate",
+        "dose": "Titrate ตามระดับ sedation ที่ต้องการและการตอบสนองของผู้ป่วย",
+        "hemodynamic_goal": "เสถียรตลอดหัตถการ ระวัง respiratory depression จาก propofol/opioid combination"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA (propofol infusion) เป็นมาตรฐานสำหรับ deep sedation, volatile หากทำ GA",
+        "muscle_relaxant": "ไม่จำเป็นในหัตถการ sedation มาตรฐาน, ใช้หากทำ GA with ETT",
+        "analgesia": "Minimal - ส่วนใหญ่ไม่เจ็บมาก",
+        "temperature": "ไม่จำเป็นเฉพาะเจาะจงในหัตถการสั้น"
+      },
+      "ventilation": {
+        "tv": "Spontaneous ventilation ส่วนใหญ่ใน sedation case, 6-8 mL/kg หากทำ GA",
+        "peep": "N/A ในกรณี spontaneous ventilation",
+        "fio2": "Supplemental oxygen ผ่าน nasal cannula",
+        "recruitment": "N/A ทั่วไป"
+      },
+      "fluid_management": {
+        "goal_directed": "Minimal - IV maintenance เท่านั้น",
+        "blood": "ไม่จำเป็นทั่วไป",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "shared_airway_gi": "Airway เป็น shared space กับ endoscope - ต้องเฝ้าระวัง airway obstruction/laryngospasm อย่างใกล้ชิดระหว่าง deep sedation",
+        "advanced_procedure_risk": "หัตถการซับซ้อน (POEM, ESD, EUS-guided intervention) ใช้เวลานานกว่าและมีความเสี่ยงสูงกว่า standard endoscopy - พิจารณา GA with ETT มากกว่า sedation",
+        "obesity_gerd_consideration": "ผู้ป่วย obesity/GERD/gastroparesis มี aspiration risk สูงกว่า - พิจารณา GA with ETT แทน deep sedation",
+        "co2_insufflation": "การใช้ CO2 insufflation (แทน air) ลดความเสี่ยง distension-related discomfort และ post-procedure bloating"
+      },
+      "complications": [
+        "Aspiration",
+        "Airway obstruction/laryngospasm ระหว่าง deep sedation",
+        "Perforation (หัตถการ therapeutic)",
+        "Bleeding",
+        "Cardiopulmonary event จาก over-sedation"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นส่วนใหญ่",
+        "extubation": "Immediate หากทำ GA, ฟื้นตัวจาก sedation ตามมาตรฐาน PACU",
+        "pain": "Minimal analgesia requirement",
+        "complication_watch": [
+          "Signs ของ perforation (severe abdominal pain)",
+          "Bleeding",
+          "Respiratory status หลัง sedation"
+        ]
+      },
+      "clinical_pearls": [
+        "ผู้ป่วยที่มี obesity, severe GERD, หรือ gastroparesis ควรพิจารณา GA with ETT แทน deep sedation เนื่องจาก aspiration risk สูงกว่าประชากรทั่วไป",
+        "Airway เป็น shared space กับ endoscopist ระหว่างหัตถการ - การสื่อสารที่ดีระหว่างทีมช่วยลดความเสี่ยง airway complication",
+        "หัตถการ advanced endoscopy ที่ใช้เวลานาน (POEM, ESD) ควรพิจารณา GA with ETT มากกว่า sedation เพียงอย่างเดียวเนื่องจากความเสี่ยงและระยะเวลาที่มากกว่า standard endoscopy"
+      ],
+      "references": [
+        "ASGE Guideline for Endoscopic Sedation",
+        "ASA Practice Advisory for Non-OR Anesthesia",
+        "ESGE-ESGENA Guideline"
+      ]
+    },
+    {
+      "id": "mri_anesthesia",
+      "name": "MRI Anesthesia",
+      "overview": {
+        "definition": "การให้ยาระงับความรู้สึกหรือ sedation สำหรับผู้ป่วยที่ต้องทำ MRI ในกรณีที่ไม่สามารถอยู่นิ่งได้ (เด็ก, ผู้ป่วยไม่ร่วมมือ, claustrophobia) โดยมีข้อพิจารณาด้านความปลอดภัยเฉพาะจาก magnetic field",
+        "indications": [
+          "เด็กเล็กที่ไม่สามารถอยู่นิ่งได้",
+          "ผู้ป่วยที่มี claustrophobia รุนแรง",
+          "ผู้ป่วยที่มี cognitive impairment/ไม่ร่วมมือ",
+          "ผู้ป่วยวิกฤตที่ต้องทำ MRI (ต้องการ full monitoring)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "ตามความจำเป็นเฉพาะราย"
+        ],
+        "imaging": [
+          "N/A - MRI คือหัตถการเอง"
+        ],
+        "consult": [
+          "Radiology, ทีมที่ดูแลผู้ป่วยเดิม"
+        ],
+        "optimization": [
+          "MRI safety screening อย่างละเอียด - ตรวจสอบ implant/device ที่ไม่ compatible กับ magnetic field (pacemaker รุ่นเก่า, cochlear implant, certain aneurysm clip, metal foreign body)"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature - ต้องใช้ MRI-compatible/MRI-conditional monitoring equipment เท่านั้น"
+        ],
+        "ibp": "พิจารณาในผู้ป่วยวิกฤตที่ต้องการ MRI-compatible arterial line system",
+        "cvp": "พิจารณาตามความจำเป็น",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณาหากมี MRI-compatible BIS system",
+        "nirs": "พิจารณาในบางสถาบัน"
+      },
+      "airway": {
+        "plan": "LMA/deep sedation สำหรับหัตถการที่ไม่ซับซ้อน, ETT ในรายที่มี aspiration risk หรือต้องการ full airway control",
+        "equipment": [
+          "MRI-compatible/MRI-conditional airway equipment และ anesthesia machine เท่านั้น",
+          "Long circuit tubing เนื่องจากผู้ป่วยอยู่ห่างจาก anesthesia workstation ใน magnet room"
+        ],
+        "backup": "แผนอพยพผู้ป่วยออกจาก magnet room ฉุกเฉินต้องชัดเจน - ไม่สามารถนำอุปกรณ์ ferromagnetic เข้าไปได้"
+      },
+      "induction": {
+        "drug": "มักทำ induction นอกห้อง MRI (ใน induction room) แล้วเคลื่อนย้ายเข้าไป หรือ induction ในห้อง MRI ด้วยอุปกรณ์ MRI-compatible",
+        "dose": "Standard dosing ตามอายุ/น้ำหนัก",
+        "hemodynamic_goal": "เสถียรก่อนเคลื่อนย้ายเข้า-ออก magnet room"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA มักนิยมมากกว่าเนื่องจากไม่ต้องพึ่ง MRI-compatible vaporizer ที่ซับซ้อนกว่า และควบคุมได้ง่ายในสภาพแวดล้อมที่เข้าถึงผู้ป่วยยาก",
+        "muscle_relaxant": "ตามความจำเป็น",
+        "analgesia": "Minimal - หัตถการ MRI เองไม่เจ็บ",
+        "temperature": "ระวัง - MRI scanner อาจทำให้เกิดความร้อนสะสมจาก RF energy โดยเฉพาะในผู้ป่วยที่มี metal implant"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW หากทำ GA with ETT",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Minimal - maintenance fluid เท่านั้น",
+        "blood": "ไม่จำเป็นทั่วไป",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "mri_safety_screening": "ต้องทำ MRI safety screening อย่างละเอียดสำหรับทั้งผู้ป่วยและอุปกรณ์ทุกชิ้นก่อนเข้า magnet room - ไม่มีข้อยกเว้น",
+        "remote_patient_access": "ผู้ป่วยอยู่ในตำแหน่งที่เข้าถึงยากมากระหว่าง scanning (อยู่ใน bore ของเครื่อง) - การจัดการฉุกเฉินต้องดึงเตียงออกจาก magnet ก่อนเสมอ",
+        "noise_projectile_risk": "เตรียมป้องกันเสียงดังจากเครื่อง (ear protection) และเข้าใจ projectile risk ของวัตถุ ferromagnetic ที่ห้ามนำเข้าห้องเด็ดขาด",
+        "equipment_compatibility": "อุปกรณ์ทุกชิ้น (ปั๊ม infusion, monitor, anesthesia machine) ต้องเป็น MRI-conditional/compatible เท่านั้น - อุปกรณ์มาตรฐานทั่วไปเป็นอันตรายร้ายแรง"
+      },
+      "complications": [
+        "Projectile injury จากวัตถุ ferromagnetic",
+        "Burn จาก RF-induced heating (โดยเฉพาะบริเวณที่มี loop ของสายไฟ/electrode)",
+        "Airway/circuit disconnection ที่ตรวจจับยากในสภาพแวดล้อมที่เข้าถึงจำกัด",
+        "Standard sedation/GA complication"
+      ],
+      "postoperative_care": {
+        "icu": "ตามสภาพผู้ป่วยเดิม - ส่วนใหญ่ไม่จำเป็น",
+        "extubation": "หลังเคลื่อนย้ายออกจาก magnet room กลับสู่ recovery area มาตรฐาน",
+        "pain": "ไม่จำเป็นทั่วไป",
+        "complication_watch": [
+          "Skin burn ที่ตำแหน่ง electrode/lead",
+          "Standard sedation recovery monitoring"
+        ]
+      },
+      "clinical_pearls": [
+        "MRI safety screening ต้องทำอย่างเข้มงวดกับอุปกรณ์ทุกชิ้นที่จะเข้า magnet room ไม่ใช่แค่ตัวผู้ป่วยเท่านั้น - แม้อุปกรณ์ resuscitation มาตรฐานก็เป็นอันตรายหากไม่ใช่ MRI-compatible",
+        "TIVA เป็นเทคนิคที่นิยมสำหรับ MRI anesthesia เนื่องจากลดความซับซ้อนของอุปกรณ์ที่ต้องเป็น MRI-compatible และควบคุมได้ง่ายในสภาพแวดล้อมที่เข้าถึงผู้ป่วยจำกัด",
+        "การจัดวาง ECG lead/cable ต้องหลีกเลี่ยงการเกิด loop เนื่องจากเสี่ยง RF-induced burn ที่ผิวหนังบริเวณนั้น"
+      ],
+      "references": [
+        "ASA Practice Advisory for MRI Anesthesia",
+        "ACR Manual on MR Safety",
+        "SPA Consensus Statement for Pediatric MRI Sedation"
+      ]
+    },
+    {
+      "id": "ect",
+      "name": "Electroconvulsive Therapy (ECT)",
+      "overview": {
+        "definition": "การรักษาทางจิตเวชด้วยการกระตุ้นไฟฟ้าให้เกิด therapeutic seizure ภายใต้ short-acting general anesthesia ร่วมกับ muscle relaxant",
+        "indications": [
+          "Severe major depressive disorder (โดยเฉพาะ treatment-resistant หรือมี psychotic feature/suicidal risk สูง)",
+          "Catatonia",
+          "Severe mania",
+          "Certain psychotic disorder"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "ตามความจำเป็นเฉพาะราย - ผู้ป่วยส่วนใหญ่ทำหลายครั้งต่อเนื่อง (course of treatment)"
+        ],
+        "imaging": [
+          "Echocardiogram/cardiac evaluation ในรายที่มี cardiac risk factor (ECT เพิ่ม cardiac workload ชั่วคราวช่วง seizure)"
+        ],
+        "consult": [
+          "Psychiatry, cardiology หากมี cardiac comorbidity, neurology หากมีประวัติ intracranial pathology"
+        ],
+        "optimization": [
+          "ประเมิน cardiac risk อย่างละเอียดในรายที่มี cardiac disease เนื่องจากทำหลายครั้งต่อเนื่อง (มักสัปดาห์ละ 2-3 ครั้ง x 6-12 ครั้ง)",
+          "ทบทวนยาที่ผู้ป่วยรับประทาน - บาง psychiatric medication มีผลต่อ seizure threshold"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, NIBP, EEG (monitor seizure activity/duration)"
+        ],
+        "ibp": "ไม่จำเป็นทั่วไปในหัตถการมาตรฐาน",
+        "cvp": "ไม่จำเป็น",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณาในบางสถาบัน",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Bag-mask ventilation ระหว่างช่วงสั้นๆ ของ anesthesia - ไม่ intubate ในหัตถการมาตรฐาน (หัตถการใช้เวลาสั้นมาก)",
+        "equipment": [
+          "Bag-mask ventilation equipment",
+          "Bite block (ป้องกันการกัดลิ้น/ฟันระหว่าง seizure)"
+        ],
+        "backup": "Difficult airway cart พร้อมเช่นเดียวกับ anesthesia ทั่วไป"
+      },
+      "induction": {
+        "drug": "Short-acting induction agent (methohexital/propofol/etomidate ตามความเหมาะสม), succinylcholine dose ต่ำ (0.5-1 mg/kg) สำหรับ muscle relaxation เพื่อลดความเสี่ยง fracture/injury จาก motor seizure",
+        "dose": "Titrate ให้เพียงพอสำหรับ brief unconsciousness แต่ไม่กด seizure threshold มากเกินไป (propofol/methohexital ลด seizure duration ได้หากให้มากเกินจำเป็น)",
+        "hemodynamic_goal": "เตรียมพร้อมรับมือ hemodynamic surge ช่วงสั้นๆ ระหว่าง seizure (initial parasympathetic then sympathetic surge)"
+      },
+      "maintenance": {
+        "volatile_tiva": "ไม่มี maintenance phase - หัตถการสั้นมาก (bolus induction เท่านั้น)",
+        "muscle_relaxant": "Succinylcholine dose ต่ำเป็นมาตรฐาน (rocuronium + sugammadex เป็นทางเลือกในรายที่มีข้อห้าม succinylcholine)",
+        "analgesia": "ไม่จำเป็น - หัตถการไม่เจ็บ",
+        "temperature": "ไม่จำเป็นเฉพาะเจาะจง"
+      },
+      "ventilation": {
+        "tv": "Bag-mask ventilation ด้วย 100% oxygen ก่อนและหลัง seizure - hyperventilation เล็กน้อยก่อนกระตุ้นช่วยเพิ่ม seizure quality",
+        "peep": "N/A",
+        "fio2": "100% ตลอดช่วง periprocedural",
+        "recruitment": "N/A"
+      },
+      "fluid_management": {
+        "goal_directed": "Minimal - ไม่จำเป็นเฉพาะเจาะจง",
+        "blood": "ไม่จำเป็น",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "hemodynamic_response": "ECT กระตุ้น biphasic autonomic response: initial parasympathetic surge (bradycardia ชั่วคราว) ตามด้วย sympathetic surge (tachycardia, hypertension) - มักไม่ต้องการการรักษาเนื่องจากหายเองเร็ว ยกเว้นในรายที่มี cardiac risk สูง",
+        "seizure_threshold_drugs": "เลือก induction agent ที่ไม่กด seizure threshold มากเกินไป - propofol/benzodiazepine ลด seizure duration ได้หากใช้ dose สูง methohexital มักเป็นที่นิยมเนื่องจากผลกระทบต่อ seizure น้อยกว่า",
+        "muscle_relaxation_purpose": "จุดประสงค์ของ muscle relaxant คือลดความรุนแรงของ motor seizure เพื่อป้องกัน fracture/dislocation ไม่ใช่เพื่อ facilitate intubation (ไม่ intubate ในหัตถการมาตรฐาน)",
+        "repeated_treatment_course": "ผู้ป่วยมักต้องทำ ECT ซ้ำหลายครั้งต่อเนื่อง (course of treatment) - ต้องประเมินความเหมาะสมและ cardiac status ก่อนแต่ละครั้งหรือตามความถี่ที่เหมาะสม"
+      },
+      "complications": [
+        "Prolonged seizure (status epilepticus)",
+        "Cardiac arrhythmia ระหว่าง autonomic surge",
+        "Dental/oral injury (หากไม่ใช้ bite block เหมาะสม)",
+        "Musculoskeletal injury (fracture ในรายที่ muscle relaxation ไม่เพียงพอ)",
+        "Post-ictal confusion/agitation",
+        "Aspiration"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็น - PACU มาตรฐานเพียงพอ หัตถการฟื้นตัวเร็ว",
+        "extubation": "N/A - ไม่ได้ intubate ในหัตถการมาตรฐาน",
+        "pain": "Minimal - อาจมี headache/myalgia เล็กน้อยหลังหัตถการ",
+        "complication_watch": [
+          "Post-ictal confusion",
+          "Cardiac status หลัง autonomic surge",
+          "Cognitive/memory effect (ระยะยาวจาก course of treatment)"
+        ]
+      },
+      "clinical_pearls": [
+        "การเลือก induction agent ต้องคำนึงถึงผลต่อ seizure threshold - propofol/benzodiazepine dose สูงอาจลด seizure quality/duration ซึ่งกระทบประสิทธิภาพการรักษาทางจิตเวช",
+        "Biphasic autonomic response (bradycardia ตามด้วย tachycardia/hypertension) เป็นปกติของ ECT - การเตรียม anticholinergic (atropine/glycopyrrolate) อาจพิจารณาในผู้ป่วยที่มีประวัติ bradycardia รุนแรง",
+        "แม้เป็นหัตถการสั้นและทำซ้ำบ่อย แต่ต้องประเมิน cardiac risk อย่างรอบคอบในแต่ละ course of treatment เนื่องจากผู้ป่วยจิตเวชบางรายมี underlying cardiac comorbidity ที่ต้องเฝ้าระวังสะสม"
+      ],
+      "references": [
+        "APA Task Force Report on ECT",
+        "RCPsych Guideline for ECT",
+        "ASA Practice Advisory for ECT Anesthesia"
+      ]
+    }
+  ]
+}

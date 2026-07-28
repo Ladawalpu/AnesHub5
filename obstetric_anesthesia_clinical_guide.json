@@ -1,0 +1,733 @@
+{
+  "category": "Obstetric Anesthesia",
+  "category_th": "วิสัญญีสำหรับสูติศาสตร์",
+  "description": "Evidence-based guidance for safe anesthesia practice in obstetric anesthesia and management of obstetric emergencies.",
+  "disclaimer": "เนื้อหานี้จัดทำเพื่อการศึกษาและอ้างอิงทางคลินิก ไม่ทดแทนแนวปฏิบัติของสถาบัน (institutional protocol) หรือดุลยพินิจทางคลินิกของผู้ให้การระงับความรู้สึก ควรปรับใช้ตามบริบทผู้ป่วยแต่ละรายและทบทวนตาม guideline ฉบับล่าสุดเสมอ",
+  "procedures": [
+    {
+      "id": "cesarean_section",
+      "name": "Cesarean Section",
+      "overview": {
+        "definition": "การผ่าตัดคลอดบุตรผ่านหน้าท้อง อาจเป็น elective หรือ emergency ทำได้ทั้ง regional (spinal, epidural, CSE) หรือ general anesthesia",
+        "indications": [
+          "Elective repeat cesarean",
+          "Failure to progress/CPD",
+          "Fetal distress",
+          "Malpresentation",
+          "Placenta previa",
+          "Maternal request"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & screen (crossmatch หากมีความเสี่ยง hemorrhage)"
+        ],
+        "imaging": [
+          "Ultrasound (placental location, fetal position)"
+        ],
+        "consult": [
+          "Obstetrics",
+          "Anesthesia pre-assessment ในรายที่มีความเสี่ยงสูง"
+        ],
+        "optimization": [
+          "ประเมิน airway ด้วยความระมัดระวังเป็นพิเศษ - pregnancy เพิ่มความเสี่ยง difficult airway",
+          "NPO status/aspiration prophylaxis (H2 blocker, non-particulate antacid)",
+          "ประเมิน urgency category (Category 1-4) เพื่อกำหนดเทคนิคที่เหมาะสม"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, NIBP, temperature",
+          "Left uterine displacement เสมอ (ป้องกัน aortocaval compression)"
+        ],
+        "ibp": "พิจารณาในรายที่มี severe preeclampsia หรือ cardiac disease",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็นทั่วไป ยกเว้นมี cardiac disease รุนแรง",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "หากใช้ GA: RSI เสมอ (pregnant patient ถือเป็น full stomach ทุกราย) พร้อม cricoid pressure ตาม institutional protocol",
+        "equipment": [
+          "Video laryngoscope พร้อมใช้เสมอในห้องคลอด - pregnancy เพิ่มอุบัติการณ์ difficult/failed intubation หลายเท่า",
+          "Difficult airway cart"
+        ],
+        "backup": "Failed intubation drill พร้อมใช้ - LMA เป็นทางเลือกฉุกเฉิน, wake patient up หากทำได้ในสถานการณ์ไม่ฉุกเฉินถึงชีวิต"
+      },
+      "induction": {
+        "drug": "Regional มักเป็นทางเลือกแรก (spinal ด้วย hyperbaric bupivacaine + opioid); หาก GA: propofol/ketamine, succinylcholine หรือ rocuronium สำหรับ RSI",
+        "dose": "Spinal: bupivacaine 0.5% hyperbaric 1.6-2.0 mL + fentanyl 15-25 mcg + morphine 100-150 mcg (ปรับตามส่วนสูง/น้ำหนัก)",
+        "hemodynamic_goal": "ป้องกัน/รักษา post-spinal hypotension อย่างรวดเร็วด้วย vasopressor (phenylephrine เป็น first-line) เพื่อรักษา uteroplacental perfusion"
+      },
+      "maintenance": {
+        "volatile_tiva": "หาก GA: volatile agent ขนาดต่ำหลังคลอดทารก (ก่อนคลอดใช้ agent ขนาดน้อยที่สุดที่เพียงพอเพื่อลด fetal depression), เพิ่ม dose หลังคลอด",
+        "muscle_relaxant": "ตามเทคนิคที่ใช้",
+        "analgesia": "Regional: intrathecal/epidural opioid ให้ analgesia ยาวนาน; GA: opioid หลังคลอดทารก",
+        "temperature": "Warming blanket, warm IV fluid"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (หาก GA)",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Co-load หรือ pre-load ด้วย crystalloid/colloid ช่วยลด post-spinal hypotension",
+        "blood": "Type & screen มาตรฐาน, crossmatch ในรายเสี่ยงสูง",
+        "transfusion": "ตาม estimated blood loss - เตรียมพร้อมเสมอเนื่องจาก PPH เป็นภาวะแทรกซ้อนที่พบได้บ่อย"
+      },
+      "special_consideration": {
+        "aortocaval_compression": "จัด left uterine displacement (15-30 องศา) เสมอตั้งแต่ก่อนเริ่มหัตถการเพื่อป้องกัน supine hypotensive syndrome",
+        "spinal_hypotension": "Post-spinal hypotension พบได้บ่อยมาก - ใช้ phenylephrine infusion/bolus prophylactically หรือ reactively ตาม protocol",
+        "difficult_airway_pregnancy": "Physiologic change ของการตั้งครรภ์ (airway edema, reduced FRC, increased oxygen consumption) ทำให้ difficult airway และ rapid desaturation พบบ่อยกว่าประชากรทั่วไปมาก",
+        "uterotonic": "ให้ oxytocin ทันทีหลังคลอดทารกตามมาตรฐานเพื่อป้องกัน uterine atony/PPH"
+      },
+      "complications": [
+        "Post-spinal hypotension",
+        "High/total spinal block",
+        "Failed intubation",
+        "Postpartum hemorrhage",
+        "Local anesthetic systemic toxicity (LAST)",
+        "Uterine atony"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นส่วนใหญ่ - postpartum ward monitoring มาตรฐานเพียงพอ",
+        "extubation": "ในห้องผ่าตัดหากทำ GA",
+        "pain": "Multimodal: neuraxial opioid + NSAIDs/acetaminophen + PCA ในรายที่จำเป็น",
+        "complication_watch": [
+          "Uterine atony/bleeding",
+          "Post-dural puncture headache (หากใช้ spinal/epidural)",
+          "Respiratory depression จาก neuraxial opioid"
+        ]
+      },
+      "clinical_pearls": [
+        "ทุกผู้ป่วยตั้งครรภ์ถือเป็น full stomach และมีความเสี่ยง difficult airway สูงกว่าประชากรทั่วไป - เตรียม video laryngoscope และ failed intubation drill พร้อมเสมอ",
+        "Phenylephrine เป็น first-line vasopressor สำหรับ post-spinal hypotension เนื่องจากมีผลต่อ fetal acid-base status ดีกว่า ephedrine ในการศึกษาส่วนใหญ่",
+        "Left uterine displacement ต้องทำเสมอตั้งแต่ก่อนเริ่มหัตถการ ไม่ใช่แค่เมื่อเกิด hypotension แล้ว"
+      ],
+      "references": [
+        "ASA Practice Guidelines for Obstetric Anesthesia",
+        "OAA/AAGBI Guideline",
+        "NAP4 Report on Airway Management"
+      ]
+    },
+    {
+      "id": "placenta_accreta",
+      "name": "Placenta Accreta Spectrum",
+      "overview": {
+        "definition": "ภาวะรกฝังตัวผิดปกติลึกเข้าไปในผนังมดลูก (accreta, increta, percreta) มีความเสี่ยง massive hemorrhage สูงมากขณะคลอด/ผ่าตัด",
+        "indications": [
+          "Confirmed/suspected placenta accreta spectrum จาก antenatal imaging (มักวางแผน scheduled delivery ที่ครบทีมพร้อม)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, fibrinogen, type & crossmatch (PRC 4-6 unit ขึ้นไป), massive transfusion protocol activation พร้อม"
+        ],
+        "imaging": [
+          "Ultrasound/MRI (ประเมิน depth of invasion, involvement ของ bladder/adjacent organ)"
+        ],
+        "consult": [
+          "Multidisciplinary team: MFM, urology, interventional radiology, cardiac/vascular surgery ตามความซับซ้อน"
+        ],
+        "optimization": [
+          "วางแผน delivery ที่สถาบันที่มีความพร้อมสูงสุด (blood bank, ICU, multidisciplinary team)",
+          "พิจารณา ureteral stent placement ก่อนผ่าตัดในรายที่สงสัย bladder invasion"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หาก GA), temperature",
+          "Urine output"
+        ],
+        "ibp": "Arterial line จำเป็นเกือบทุกราย - ควบคุม hemodynamic และ ABG อย่างใกล้ชิด",
+        "cvp": "แนะนำ - large bore central access สำหรับ massive transfusion",
+        "pa_catheter": "พิจารณาในรายที่มี cardiac comorbidity",
+        "tee": "พิจารณาในรายที่มีความเสี่ยง hemodynamic collapse สูงมาก",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "GA มักเลือกในรายที่คาดว่าจะมี massive hemorrhage (แม้เริ่มด้วย regional ก็ต้องพร้อม convert เป็น GA ทันที) - RSI เสมอ",
+        "equipment": [
+          "Video laryngoscope",
+          "Rapid infuser/level 1 device พร้อมใช้"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "หาก regional: combined spinal-epidural อาจเลือกในรายที่คาดว่าใช้เวลาไม่นานมาก, GA: standard RSI",
+        "dose": "ปรับตามเทคนิคที่เลือก",
+        "hemodynamic_goal": "เตรียมพร้อมรับมือ massive hemorrhage ตั้งแต่ต้น - เปิด large-bore IV access หลายเส้นก่อนเริ่มหัตถการเสมอ"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ตาม hemodynamic stability - หลีกเลี่ยง volatile ขนาดสูงที่ทำให้ uterine atony",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Opioid-based",
+        "temperature": "Active warming เข้มงวด - massive transfusion เพิ่มความเสี่ยง hypothermia/coagulopathy"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Massive transfusion protocol พร้อมใช้ตั้งแต่ต้นหัตถการ - ratio PRC:FFP:platelet ตาม institutional MTP",
+        "blood": "เตรียม PRC จำนวนมาก (มักเตรียม 4-10 unit ขึ้นไปตามความรุนแรง), cell salvager แนะนำอย่างยิ่ง",
+        "transfusion": "Aggressive proactive replacement มากกว่า reactive - เริ่ม MTP เร็วเมื่อมีสัญญาณ significant bleeding"
+      },
+      "special_consideration": {
+        "hysterectomy_planning": "หัตถการมักวางแผนเป็น planned cesarean hysterectomy (ไม่พยายามลอกรกออก) เพื่อลด massive hemorrhage",
+        "interventional_radiology": "บางสถาบันใช้ prophylactic balloon catheter/embolization ใน internal iliac หรือ aorta เพื่อลด blood loss",
+        "team_communication": "การสื่อสารระหว่างทีมสูติแพทย์-วิสัญญี-blood bank ต้องชัดเจนตั้งแต่ต้น เนื่องจากอัตราการเสียเลือดอาจรวดเร็วมาก",
+        "coagulopathy_monitoring": "Monitor coagulation แบบ point-of-care (TEG/ROTEM หากมี) เพื่อ guide component therapy อย่างแม่นยำ"
+      },
+      "complications": [
+        "Massive hemorrhage/hemorrhagic shock",
+        "Coagulopathy/DIC",
+        "Bladder/ureteral injury",
+        "Need for hysterectomy",
+        "Cardiac arrest จาก massive hemorrhage",
+        "Amniotic fluid embolism"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring แนะนำอย่างยิ่งในรายที่มี significant blood loss",
+        "extubation": "ขึ้นกับความเสถียรของผู้ป่วยและปริมาณ blood loss",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Ongoing bleeding",
+          "Coagulopathy",
+          "Renal function (จาก hypotension/massive transfusion)"
+        ]
+      },
+      "clinical_pearls": [
+        "การวางแผนล่วงหน้าและทีม multidisciplinary เป็นปัจจัยสำคัญที่สุดในการลด mortality/morbidity ของ placenta accreta spectrum",
+        "เปิด large-bore IV access หลายเส้นก่อนเริ่มหัตถการเสมอ แม้ในรายที่ดูเหมือนจะไม่ซับซ้อนมาก เนื่องจาก blood loss อาจเกิดขึ้นอย่างรวดเร็วโดยไม่คาดคิด",
+        "Cell salvage เป็นเครื่องมือสำคัญในการลด allogeneic transfusion ในหัตถการที่คาดว่าจะมี major blood loss"
+      ],
+      "references": [
+        "SMFM Consensus Statement on Placenta Accreta Spectrum",
+        "RCOG Green-top Guideline",
+        "ACOG Practice Bulletin"
+      ]
+    },
+    {
+      "id": "pph",
+      "name": "PPH (Postpartum Hemorrhage)",
+      "overview": {
+        "definition": "ภาวะเลือดออกหลังคลอดปริมาณมาก (>500 mL vaginal delivery, >1000 mL cesarean delivery) หรือมี hemodynamic instability - เป็นสาเหตุการเสียชีวิตของมารดาที่พบบ่อยที่สุดทั่วโลก",
+        "indications": [
+          "Uterine atony (สาเหตุที่พบบ่อยที่สุด)",
+          "Retained placenta",
+          "Genital tract trauma/laceration",
+          "Coagulopathy",
+          "Uterine rupture/inversion"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag/fibrinogen, type & crossmatch เร่งด่วน",
+          "Point-of-care testing (TEG/ROTEM หากมี)"
+        ],
+        "imaging": [
+          "Bedside ultrasound (ประเมิน retained products, uterine tone)"
+        ],
+        "consult": [
+          "Obstetrics urgent, blood bank activation"
+        ],
+        "optimization": [
+          "เป็นภาวะฉุกเฉิน - resuscitate ควบคู่กับการวินิจฉัยสาเหตุพร้อมกัน ('4T': Tone, Trauma, Tissue, Thrombin)"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, NIBP (เปลี่ยนเป็น IBP ทันทีหากไม่เสถียร), temperature"
+        ],
+        "ibp": "Arterial line ทันทีที่ทำได้หากมี ongoing significant bleeding",
+        "cvp": "พิจารณาในรายที่ต้องการ vasoactive support",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "หากต้อง GA ฉุกเฉิน: RSI เสมอ - ผู้ป่วยมักอยู่ในภาวะ hypovolemic ต้องระมัดระวัง induction dose",
+        "equipment": [
+          "Video laryngoscope",
+          "Rapid infuser"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "ลด dose induction agent อย่างมากในผู้ป่วย hypovolemic shock (etomidate/ketamine พิจารณา), succinylcholine/rocuronium สำหรับ RSI",
+        "dose": "Titrate ลดลงตามระดับ hemodynamic instability",
+        "hemodynamic_goal": "Permissive hypotension อาจพิจารณาชั่วคราวจนกว่าจะควบคุม source of bleeding ได้ (damage control approach) ควบคู่กับ resuscitation เข้มข้น"
+      },
+      "maintenance": {
+        "volatile_tiva": "หลีกเลี่ยง volatile agent ขนาดสูงที่ทำให้ uterine atony แย่ลง - ใช้ TIVA หรือ volatile ต่ำที่สุดที่เพียงพอ",
+        "muscle_relaxant": "ตามความจำเป็น",
+        "analgesia": "Opioid ปรับตาม hemodynamic status",
+        "temperature": "Active warming เข้มงวด - ป้องกัน hypothermia-coagulopathy-acidosis triad"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Massive transfusion protocol activation เมื่อมีข้อบ่งชี้ - balanced ratio PRC:FFP:platelet",
+        "blood": "PRC เร่งด่วน, cell salvage หากมีพร้อมใช้และไม่มีข้อห้าม",
+        "transfusion": "Early aggressive transfusion ลด mortality - อย่ารอจนกว่า lab result กลับมาหากมี clinical evidence ของ significant hemorrhage"
+      },
+      "special_consideration": {
+        "uterotonic_cascade": "ใช้ uterotonic drug เป็นขั้นบันได: oxytocin → methylergonovine (ระวังในผู้ป่วย hypertension) → carboprost (ระวังในผู้ป่วย asthma) → misoprostol",
+        "tranexamic_acid": "ให้ tranexamic acid เร็วที่สุดเมื่อวินิจฉัย PPH (ภายใน 3 ชม.) ตามหลักฐาน WOMAN trial ลด mortality จาก bleeding",
+        "surgical_escalation": "เตรียมพร้อมสำหรับ surgical intervention ขั้นบันได: uterine massage/bimanual compression → balloon tamponade → uterine artery embolization → B-Lynch suture → hysterectomy",
+        "damage_control_resuscitation": "หลักการ damage control resuscitation: minimize crystalloid, early blood product ในอัตราส่วนสมดุล, permissive hypotension จนกว่าจะควบคุม source ได้"
+      },
+      "complications": [
+        "Hemorrhagic shock",
+        "DIC/coagulopathy",
+        "Acute kidney injury",
+        "Sheehan syndrome (pituitary infarction)",
+        "Cardiac arrest",
+        "Hysterectomy (loss of fertility)"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring แนะนำในรายที่มี significant blood loss หรือ hemodynamic instability",
+        "extubation": "ขึ้นกับความเสถียรของผู้ป่วย",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Ongoing bleeding",
+          "Coagulopathy",
+          "Renal function",
+          "Signs ของ Sheehan syndrome (ระยะยาว)"
+        ]
+      },
+      "clinical_pearls": [
+        "Tranexamic acid ควรให้เร็วที่สุดเมื่อวินิจฉัย PPH (ภายใน 3 ชม.แรก) เนื่องจากประสิทธิภาพลดลงอย่างมากหากให้ล่าช้า",
+        "กรอบคิด '4T' (Tone-Trauma-Tissue-Thrombin) ช่วยวินิจฉัยสาเหตุของ PPH อย่างเป็นระบบ - uterine atony (Tone) เป็นสาเหตุที่พบบ่อยที่สุด",
+        "หลีกเลี่ยง volatile anesthetic ขนาดสูงในผู้ป่วยที่มี uterine atony เนื่องจากยิ่งทำให้มดลูกหดตัวได้แย่ลง"
+      ],
+      "references": [
+        "WHO Guideline for PPH Management",
+        "ACOG Practice Bulletin on PPH",
+        "WOMAN Trial",
+        "RCOG Green-top Guideline"
+      ]
+    },
+    {
+      "id": "eclampsia",
+      "name": "Eclampsia / Severe Preeclampsia",
+      "overview": {
+        "definition": "ภาวะชักในผู้ป่วยครรภ์เป็นพิษ (eclampsia) หรือ severe preeclampsia ที่มี BP สูงรุนแรงร่วมกับ end-organ dysfunction - เป็น hypertensive emergency ในการตั้งครรภ์",
+        "indications": [
+          "Severe preeclampsia (BP ≥160/110 ร่วมกับ proteinuria/end-organ involvement)",
+          "Eclamptic seizure",
+          "ต้อง deliver ฉุกเฉินในรายที่ควบคุมอาการไม่ได้"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC (platelet), coag, liver enzyme, renal function, uric acid",
+          "Urine protein"
+        ],
+        "imaging": [
+          "ไม่จำเป็นเฉพาะเจาะจง ยกเว้นสงสัย complication (เช่น CT brain หากมี neurological deficit)"
+        ],
+        "consult": [
+          "Obstetrics/MFM urgent, neurology หากมี atypical seizure"
+        ],
+        "optimization": [
+          "Magnesium sulfate สำหรับ seizure prophylaxis/treatment - ให้ก่อนและต่อเนื่องระหว่างผ่าตัด",
+          "Control BP ด้วย labetalol/hydralazine/nifedipine ก่อนหัตถการ"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, NIBP (บ่อย), temperature",
+          "Deep tendon reflex (monitor magnesium toxicity)",
+          "Urine output ใกล้ชิด"
+        ],
+        "ibp": "Arterial line แนะนำอย่างยิ่งในรายที่มี severe hypertension หรือต้องผ่าตัดฉุกเฉิน",
+        "cvp": "พิจารณาในรายที่มี pulmonary edema หรือ oliguria รุนแรง",
+        "pa_catheter": "ไม่จำเป็นทั่วไปในปัจจุบัน",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "ระวังเป็นพิเศษ - severe preeclampsia มักมี airway edema รุนแรงกว่าปกติ เพิ่มความเสี่ยง difficult intubation อย่างมาก",
+        "equipment": [
+          "Video laryngoscope",
+          "ETT ขนาดเล็กกว่าปกติพร้อมใช้ (airway edema)"
+        ],
+        "backup": "Difficult airway cart พร้อมใช้เสมอ"
+      },
+      "induction": {
+        "drug": "หาก GA จำเป็น: blunt hemodynamic response ต่อ laryngoscopy อย่างเข้มงวด (opioid, lidocaine, esmolol/labetalol ก่อน induction)",
+        "dose": "ปรับ dose ระมัดระวัง - magnesium sulfate เสริมฤทธิ์ muscle relaxant ทำให้ prolonged neuromuscular blockade",
+        "hemodynamic_goal": "ควบคุม BP อย่างเข้มงวดตลอด - หลีกเลี่ยง hypertensive surge (เสี่ยง intracranial hemorrhage) ระหว่าง induction/laryngoscopy"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA ปรับตาม hemodynamic control",
+        "muscle_relaxant": "ลด dose เนื่องจาก magnesium sulfate เสริมฤทธิ์ neuromuscular blockade อย่างมาก - monitor TOF ใกล้ชิด",
+        "analgesia": "Regional (spinal/epidural) เป็นทางเลือกที่ดีหาก platelet count เพียงพอ (มักต้อง >70,000-100,000/μL ตาม institutional threshold) และไม่มี coagulopathy",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate ระวัง pulmonary edema",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative fluid management - severe preeclampsia มีความเสี่ยง pulmonary edema สูงจาก capillary leak และ low oncotic pressure",
+        "blood": "เตรียมตาม platelet count และความเสี่ยง coagulopathy",
+        "transfusion": "Platelet transfusion หากจำเป็นสำหรับ regional technique หรือมี active bleeding"
+      },
+      "special_consideration": {
+        "magnesium_sulfate": "MgSO4 เป็นยาหลักสำหรับป้องกัน/รักษา eclamptic seizure - monitor toxicity (loss of deep tendon reflex, respiratory depression, cardiac arrest ที่ระดับสูงมาก) มี calcium gluconate พร้อมเป็น antidote",
+        "platelet_threshold_regional": "ประเมิน platelet count และ trend ก่อนตัดสินใจทำ regional technique - HELLP syndrome อาจทำให้ platelet ลดลงอย่างรวดเร็ว",
+        "bp_control_priority": "ควบคุม severe hypertension (≥160/110) ก่อนดำเนินการใดๆ เพื่อลดความเสี่ยง stroke ซึ่งเป็นสาเหตุการเสียชีวิตหลักในกลุ่มนี้",
+        "seizure_management": "หากเกิด eclamptic seizure ระหว่างดูแล: airway protection, MgSO4 bolus, benzodiazepine หากไม่ตอบสนอง, เตรียม delivery ฉุกเฉิน"
+      },
+      "complications": [
+        "Eclamptic seizure",
+        "Intracranial hemorrhage",
+        "Pulmonary edema",
+        "HELLP syndrome",
+        "Placental abruption",
+        "Magnesium toxicity",
+        "Acute kidney injury"
+      ],
+      "postoperative_care": {
+        "icu": "ICU/high-dependency monitoring แนะนำในรายรุนแรง - preeclampsia อาจแย่ลงในช่วง 48-72 ชม.แรกหลังคลอด",
+        "extubation": "ระมัดระวัง airway edema ก่อน extubate",
+        "pain": "Multimodal analgesia ระมัดระวัง NSAIDs ในรายที่มี renal impairment/thrombocytopenia",
+        "complication_watch": [
+          "Postpartum eclampsia (สามารถเกิดได้ถึง 6 สัปดาห์หลังคลอด)",
+          "Pulmonary edema",
+          "BP control ต่อเนื่อง"
+        ]
+      },
+      "clinical_pearls": [
+        "Magnesium sulfate เสริมฤทธิ์ non-depolarizing muscle relaxant อย่างมีนัยสำคัญ - ลด dose และ monitor TOF อย่างใกล้ชิดเพื่อป้องกัน prolonged blockade",
+        "Airway edema ใน severe preeclampsia ทำให้ความเสี่ยง difficult intubation สูงกว่าผู้ป่วยตั้งครรภ์ทั่วไปอีก - เตรียม ETT ขนาดเล็กกว่าที่คำนวณปกติ",
+        "Eclampsia สามารถเกิดขึ้นได้ทั้งก่อน ระหว่าง และหลังคลอด (postpartum eclampsia) - ต้องเฝ้าระวังต่อเนื่องแม้คลอดแล้ว"
+      ],
+      "references": [
+        "ACOG Practice Bulletin on Preeclampsia",
+        "ISSHP Guideline",
+        "SOGC Guideline for Hypertensive Disorders of Pregnancy"
+      ]
+    },
+    {
+      "id": "hellp",
+      "name": "HELLP Syndrome",
+      "overview": {
+        "definition": "กลุ่มอาการ Hemolysis, Elevated Liver enzymes, Low Platelet count ที่เป็น severe variant ของ preeclampsia มีความเสี่ยงต่อทั้งมารดาและทารกสูง",
+        "indications": [
+          "Confirmed HELLP syndrome - มักต้อง deliver เร่งด่วนไม่ว่าอายุครรภ์เท่าใด"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC with platelet (trend สำคัญมาก), LFT, LDH, peripheral smear (schistocytes), coag/fibrinogen, type & crossmatch"
+        ],
+        "imaging": [
+          "Liver ultrasound หากสงสัย hepatic hematoma/rupture (right upper quadrant pain รุนแรง)"
+        ],
+        "consult": [
+          "MFM, hepatology หากสงสัย hepatic complication, hematology หากมี severe thrombocytopenia"
+        ],
+        "optimization": [
+          "Corticosteroid พิจารณาในบางสถาบัน (ยังเป็นที่ถกเถียงเรื่องประโยชน์ต่อ maternal outcome)",
+          "Platelet transfusion ก่อนหัตถการหากจำเป็น",
+          "MgSO4 สำหรับ seizure prophylaxis เช่นเดียวกับ preeclampsia"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, NIBP, temperature",
+          "Urine output"
+        ],
+        "ibp": "Arterial line แนะนำในรายที่ severe หรือต้องผ่าตัดฉุกเฉิน",
+        "cvp": "พิจารณาในรายที่มี significant fluid shift",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "Regional technique พิจารณาได้เฉพาะเมื่อ platelet count เพียงพอและไม่มี coagulopathy - หากไม่แน่ใจให้เลือก GA",
+        "equipment": [
+          "Video laryngoscope",
+          "Difficult airway cart"
+        ],
+        "backup": "พร้อม convert เป็น GA ฉุกเฉิน"
+      },
+      "induction": {
+        "drug": "GA มักจำเป็นในรายที่มี severe thrombocytopenia (<70,000-100,000/μL ตาม institutional threshold) - standard induction ปรับ blunt hemodynamic response",
+        "dose": "ปรับตาม hepatic function ที่อาจผิดปกติ (กระทบ drug metabolism บางชนิด)",
+        "hemodynamic_goal": "ควบคุม BP อย่างเข้มงวดเช่นเดียวกับ severe preeclampsia"
+      },
+      "maintenance": {
+        "volatile_tiva": "ตามความเหมาะสม",
+        "muscle_relaxant": "ลด dose หากใช้ MgSO4 ร่วมด้วย (เสริมฤทธิ์)",
+        "analgesia": "Opioid-based หากไม่สามารถทำ regional ได้, ระมัดระวัง NSAIDs (renal/platelet effect)",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative fluid - ระวัง capillary leak และ pulmonary edema",
+        "blood": "เตรียม PRC, platelet, FFP พร้อมใช้เสมอ - risk of coagulopathy/hemorrhage สูง",
+        "transfusion": "Platelet transfusion ตาม threshold ก่อนหัตถการ (มักที่ <20,000-50,000/μL หรือก่อนหัตถการ invasive)"
+      },
+      "special_consideration": {
+        "platelet_threshold_regional_hellp": "ตัดสินใจเรื่อง regional technique ต้องพิจารณาทั้งค่า platelet ปัจจุบันและ trend (ลดลงเร็วหรือคงที่) ร่วมกับ coagulation status",
+        "hepatic_rupture_risk": "เฝ้าระวัง hepatic hematoma/rupture ในรายที่มี severe right upper quadrant pain - เป็นภาวะฉุกเฉินที่อาจถึงชีวิต ต้องหลีกเลี่ยง abdominal trauma/pressure",
+        "dic_risk": "HELLP syndrome มีความเสี่ยง DIC สูง - monitor coagulation อย่างใกล้ชิดตลอดช่วงรอบคลอด",
+        "postpartum_course": "อาการมักแย่ลงก่อนดีขึ้นในช่วง 24-48 ชม.แรกหลังคลอด - ต้องเฝ้าระวังต่อเนื่อง"
+      },
+      "complications": [
+        "DIC",
+        "Hepatic hematoma/rupture",
+        "Acute kidney injury",
+        "Pulmonary edema",
+        "Eclamptic seizure",
+        "Placental abruption",
+        "Postpartum hemorrhage (จาก thrombocytopenia)"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring แนะนำอย่างยิ่งเนื่องจากความเสี่ยงสูงต่อ multi-organ complication",
+        "extubation": "ตามความเสถียร",
+        "pain": "Multimodal analgesia ระมัดระวัง NSAIDs",
+        "complication_watch": [
+          "Platelet trend",
+          "Liver function",
+          "Signs ของ hepatic rupture",
+          "DIC development"
+        ]
+      },
+      "clinical_pearls": [
+        "HELLP syndrome อาการมักแย่ลงก่อนดีขึ้นในช่วง 24-48 ชม.แรกหลังคลอด - การคลอดไม่ได้แปลว่าอาการจะดีขึ้นทันที ต้องเฝ้าระวังต่อเนื่อง",
+        "Severe right upper quadrant pain ใน HELLP syndrome ต้องคิดถึง hepatic hematoma/rupture เสมอ - หลีกเลี่ยงการกดหน้าท้องแรงและเตรียมพร้อมสำหรับ surgical/radiologic intervention ฉุกเฉิน",
+        "Platelet trend สำคัญกว่าค่าเดี่ยว - platelet ที่ลดลงอย่างรวดเร็วบ่งชี้ active process ที่อาจต้องเปลี่ยนแผนการดมยาอย่างเร่งด่วน"
+      ],
+      "references": [
+        "ACOG Practice Bulletin on HELLP",
+        "ISSHP Guideline",
+        "SMFM Consult Series on HELLP Syndrome"
+      ]
+    },
+    {
+      "id": "uterine_rupture",
+      "name": "Uterine Rupture",
+      "overview": {
+        "definition": "ภาวะมดลูกฉีกขาดระหว่างการตั้งครรภ์/คลอด เป็น obstetric emergency ที่อาจนำไปสู่ massive hemorrhage และ fetal compromise รุนแรง มักสัมพันธ์กับ prior cesarean scar (TOLAC/VBAC)",
+        "indications": [
+          "สงสัย uterine rupture จาก sudden fetal heart rate abnormality, severe abdominal pain, loss of fetal station, vaginal bleeding, maternal tachycardia/hypotension"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch เร่งด่วน (มักต้อง emergency crossmatch/O-negative blood ระหว่างรอ)"
+        ],
+        "imaging": [
+          "ไม่มีเวลาสำหรับ imaging เพิ่มเติมในสถานการณ์ฉุกเฉินจริง - วินิจฉัยทางคลินิก"
+        ],
+        "consult": [
+          "Obstetrics emergency - หัตถการนี้เป็น category 1 emergency ต้องคลอดภายใน 30 นาที (decision to delivery time)"
+        ],
+        "optimization": [
+          "ไม่มีเวลาสำหรับ optimization - ต้อง proceed ทันทีพร้อม resuscitation ควบคู่กัน"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, NIBP, temperature"
+        ],
+        "ibp": "ใส่ arterial line หลัง induction หรือระหว่างรอผลลัพธ์ - ไม่ควรทำให้การผ่าตัดล่าช้า",
+        "cvp": "พิจารณาหลัง delivery หากมี ongoing massive hemorrhage",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "GA with RSI มักจำเป็นเนื่องจากความเร่งด่วนสูงสุด (category 1 emergency) - ไม่มีเวลาสำหรับ regional technique ในกรณีฉุกเฉินจริง",
+        "equipment": [
+          "Video laryngoscope",
+          "Suction, rapid infuser พร้อม"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Rapid induction ด้วย standard RSI agent - ปรับ dose ตามระดับ hemodynamic instability",
+        "dose": "ลด dose หากมี hypovolemic shock signs",
+        "hemodynamic_goal": "Balance ระหว่างความเร็ว (fetal urgency) และความปลอดภัย (maternal hemodynamic) - ไม่ชะลอการผ่าตัดเพื่อรอ full workup"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile ต่ำหรือ TIVA - หลีกเลี่ยง uterine relaxation ที่แย่ลง",
+        "muscle_relaxant": "Standard dose",
+        "analgesia": "Opioid หลังคลอดทารก",
+        "temperature": "Active warming เข้มงวด - เตรียมรับ massive transfusion"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Massive transfusion protocol พร้อมเปิดใช้ทันทีที่วินิจฉัย",
+        "blood": "O-negative/type-specific blood ระหว่างรอ crossmatch สมบูรณ์",
+        "transfusion": "Aggressive proactive replacement"
+      },
+      "special_consideration": {
+        "decision_to_delivery": "เป้าหมาย decision-to-delivery time ภายใน 30 นาทีสำหรับ category 1 emergency - ทีมต้องทำงานเร็วที่สุดโดยไม่ลดความปลอดภัย",
+        "hysterectomy_risk": "อาจต้อง hysterectomy หาก rupture รุนแรงและไม่สามารถซ่อมได้ - เตรียมพร้อมทั้งด้าน consent และ resource",
+        "concurrent_resuscitation": "การ resuscitate มารดาต้องทำควบคู่ไปกับการเตรียมผ่าตัดโดยไม่ชะลอกันและกัน",
+        "vbac_risk_factor": "ผู้ป่วยที่พยายาม VBAC/TOLAC มีความเสี่ยง uterine rupture สูงกว่าปกติ - ทีมต้องเตรียมพร้อมสำหรับสถานการณ์นี้เสมอเมื่อดูแลผู้ป่วยกลุ่มนี้"
+      },
+      "complications": [
+        "Massive hemorrhage/hemorrhagic shock",
+        "Fetal death/severe hypoxic injury",
+        "Hysterectomy",
+        "Bladder injury (หากรอยฉีกขาดลามไป)",
+        "Maternal cardiac arrest"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring แนะนำในรายที่มี significant hemorrhage",
+        "extubation": "ตามความเสถียร",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Ongoing bleeding",
+          "Coagulopathy",
+          "Future pregnancy counseling (ระยะยาว)"
+        ]
+      },
+      "clinical_pearls": [
+        "Uterine rupture เป็นหนึ่งใน true obstetric anesthesia emergency ที่ต้องการความเร็วสูงสุด - decision-to-delivery time เป้าหมาย 30 นาที",
+        "GA with RSI เกือบทุกครั้งเป็นทางเลือกเดียวในสถานการณ์ฉุกเฉินจริง เนื่องจาก regional technique ใช้เวลานานเกินไป",
+        "ทีมที่ดูแลผู้ป่วย TOLAC/VBAC ต้องเตรียมความพร้อมสำหรับ emergency cesarean ตลอดเวลาเนื่องจาก uterine rupture อาจเกิดขึ้นอย่างรวดเร็วโดยไม่มีสัญญาณเตือนชัดเจนเสมอไป"
+      ],
+      "references": [
+        "ACOG Practice Bulletin on VBAC",
+        "RCOG Green-top Guideline",
+        "SMFM Guideline on Uterine Rupture"
+      ]
+    },
+    {
+      "id": "amniotic_fluid_embolism",
+      "name": "Amniotic Fluid Embolism (AFE)",
+      "overview": {
+        "definition": "ภาวะฉุกเฉินรุนแรงที่น้ำคร่ำเข้าสู่ระบบไหลเวียนเลือดมารดา ทำให้เกิด cardiovascular collapse, respiratory failure และ DIC อย่างฉับพลัน มี mortality สูงมาก",
+        "indications": [
+          "Sudden cardiovascular collapse, hypoxia, coagulopathy ระหว่างหรือหลังคลอดโดยไม่มีสาเหตุอื่นอธิบายได้ - เป็นการวินิจฉัยทางคลินิก (diagnosis of exclusion)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "ไม่มีเวลาสำหรับ preoperative workup - เป็นภาวะฉุกเฉินที่ต้อง resuscitate ทันที",
+          "ส่ง CBC, coag/fibrinogen, ABG ระหว่าง resuscitation"
+        ],
+        "imaging": [
+          "Bedside echocardiogram หากทำได้ (ประเมิน RV strain/failure) โดยไม่ชะลอ resuscitation"
+        ],
+        "consult": [
+          "Multidisciplinary emergency response ทันที: obstetrics, anesthesia, ICU, hematology"
+        ],
+        "optimization": [
+          "ไม่มีเวลา optimization - เป็น cardiac arrest/peri-arrest scenario ที่ต้อง advanced life support ทันที"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, NIBP/IBP, temperature - full ACLS monitoring"
+        ],
+        "ibp": "ใส่ arterial line โดยเร็วที่สุดเท่าที่ทำได้โดยไม่ขัดขวาง resuscitation",
+        "cvp": "แนะนำหลัง stabilize เบื้องต้นสำหรับ vasoactive drug administration",
+        "pa_catheter": "ไม่แนะนำในช่วง acute resuscitation",
+        "tee": "มีประโยชน์มากหากทำได้ - ประเมิน RV function/failure ซึ่งเป็นกลไกหลักของ AFE",
+        "bis": "ไม่ใช่ priority ในสถานการณ์ฉุกเฉิน",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "Secure airway ทันทีหาก respiratory failure/cardiac arrest - RSI หรือ emergency intubation ตาม ACLS algorithm",
+        "equipment": [
+          "Full resuscitation cart/crash cart",
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart, ECMO team activation ในสถาบันที่มีความพร้อม"
+      },
+      "induction": {
+        "drug": "หากยังไม่ arrest: minimal induction agent เพื่อ secure airway โดยเร็วที่สุด",
+        "dose": "ลด dose อย่างมากในผู้ป่วย cardiovascular collapse",
+        "hemodynamic_goal": "ACLS-guided resuscitation - หากมี cardiac arrest ให้ perimortem cesarean delivery ทันทีภายใน 5 นาทีหากยังไม่คลอด (เพื่อช่วยทั้งมารดาและทารก)"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หากมี hemodynamic instability - volatile agent อาจทำให้ myocardial depression แย่ลง",
+        "muscle_relaxant": "ตามความจำเป็นสำหรับ airway management",
+        "analgesia": "ตามความเหมาะสมหลัง stabilize",
+        "temperature": "Standard warming, targeted temperature management หากมี post-arrest care"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (ปรับ lung protective หากมี ARDS จาก AFE)",
+        "peep": "ปรับตาม oxygenation/lung compliance",
+        "fio2": "100% ระหว่าง resuscitation แล้วปรับลด",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Careful fluid resuscitation - หลีกเลี่ยง fluid overload ที่แย่ RV failure ซึ่งเป็นกลไกหลักของ AFE",
+        "blood": "Massive transfusion protocol พร้อมใช้ - DIC พบร่วมได้บ่อยและรุนแรง",
+        "transfusion": "Aggressive component therapy ตาม coagulopathy - cryoprecipitate/fibrinogen concentrate สำคัญเนื่องจาก hypofibrinogenemia พบบ่อยใน AFE"
+      },
+      "special_consideration": {
+        "rv_failure_mechanism": "กลไกหลักของ AFE คือ acute pulmonary vasoconstriction/RV failure - inotrope/pulmonary vasodilator (epinephrine, milrinone, inhaled nitric oxide) อาจจำเป็น",
+        "perimortem_delivery": "หากเกิด cardiac arrest ก่อนคลอด ให้ perimortem cesarean delivery ภายใน 5 นาทีหลัง arrest หากยังไม่คลอด - ช่วยเพิ่มโอกาสรอดชีวิตทั้งมารดาและ facilitate resuscitation (ลด aortocaval compression)",
+        "dic_management": "DIC มักรุนแรงและเกิดเร็วมากใน AFE - เตรียม massive transfusion พร้อม cryoprecipitate/fibrinogen ตั้งแต่ต้น",
+        "ecmo_consideration": "พิจารณา ECMO ในสถาบันที่มีความพร้อมสำหรับรายที่ refractory cardiogenic shock"
+      },
+      "complications": [
+        "Cardiac arrest",
+        "RV failure/cardiogenic shock",
+        "ARDS/respiratory failure",
+        "DIC รุนแรง",
+        "Massive hemorrhage",
+        "Maternal death (mortality สูงแม้ได้รับการรักษาที่เหมาะสม)",
+        "Fetal hypoxic injury"
+      ],
+      "postoperative_care": {
+        "icu": "ICU care เสมอ - มักต้องการ multi-organ support ต่อเนื่อง",
+        "extubation": "ล่าช้าตามความรุนแรงของ respiratory/cardiac failure",
+        "pain": "ตามความเหมาะสมหลัง stabilize",
+        "complication_watch": [
+          "RV function",
+          "Coagulopathy/DIC trend",
+          "Neurological outcome (หากมี cardiac arrest)",
+          "Multi-organ dysfunction"
+        ]
+      },
+      "clinical_pearls": [
+        "AFE เป็น diagnosis of exclusion ที่ต้องนึกถึงเมื่อเกิด sudden cardiovascular collapse ร่วมกับ hypoxia และ coagulopathy โดยไม่มีสาเหตุอื่นอธิบายได้ระหว่างหรือหลังคลอด",
+        "หากเกิด cardiac arrest ก่อนคลอด perimortem cesarean delivery ภายใน 5 นาทีเป็นส่วนสำคัญของ resuscitation ไม่ใช่แค่เพื่อทารกเท่านั้น แต่ช่วยให้ resuscitation มารดามีประสิทธิภาพขึ้นด้วย (ลด aortocaval compression)",
+        "RV failure เป็นกลไกหลักของ hemodynamic collapse ใน AFE - การจัดการเน้นที่ support RV function มากกว่าแค่ volume resuscitation ซึ่งอาจทำให้ RV failure แย่ลง"
+      ],
+      "references": [
+        "AFE Foundation Registry Consensus Statement",
+        "SMFM Consult Series on AFE",
+        "ACOG Practice Advisory"
+      ]
+    }
+  ]
+}

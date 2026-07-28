@@ -1,0 +1,718 @@
+{
+  "category": "Trauma & Emergency Anesthesia",
+  "category_th": "วิสัญญีสำหรับผู้ป่วยอุบัติเหตุและภาวะฉุกเฉิน",
+  "description": "Evidence-based guidance for safe anesthesia practice in trauma and time-critical surgical emergencies.",
+  "disclaimer": "เนื้อหานี้จัดทำเพื่อการศึกษาและอ้างอิงทางคลินิก ไม่ทดแทนแนวปฏิบัติของสถาบัน (institutional protocol) หรือดุลยพินิจทางคลินิกของผู้ให้การระงับความรู้สึก ควรปรับใช้ตามบริบทผู้ป่วยแต่ละรายและทบทวนตาม guideline ฉบับล่าสุดเสมอ",
+  "procedures": [
+    {
+      "id": "polytrauma",
+      "name": "Polytrauma (Multiple Injuries)",
+      "overview": {
+        "definition": "ผู้ป่วยที่มีการบาดเจ็บหลายระบบพร้อมกัน (multi-system injury) ต้องการการดูแลแบบ integrated trauma team approach",
+        "indications": [
+          "Multi-system trauma จาก motor vehicle collision, fall from height, blunt/penetrating combined injury"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch (activate MTP หากจำเป็น), lactate, ABG, glucose"
+        ],
+        "imaging": [
+          "FAST scan, CT whole body (หากเสถียรพอ), CXR, pelvis X-ray"
+        ],
+        "consult": [
+          "Trauma surgery, multiple specialty ตามความจำเป็น (neurosurgery, orthopedics, cardiothoracic)"
+        ],
+        "optimization": [
+          "Primary/secondary survey ตาม ATLS protocol ควบคู่กับ resuscitation - ไม่ชะลอการผ่าตัดในรายที่ไม่เสถียร"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature (สำคัญมาก - hypothermia แย่ผลลัพธ์)"
+        ],
+        "ibp": "Arterial line จำเป็นแทบทุกราย - beat-to-beat BP และ serial ABG/lactate",
+        "cvp": "แนะนำสำหรับ large-bore access และ vasoactive drug",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "พิจารณาหากสงสัย cardiac injury/tamponade",
+        "bis": "พิจารณา",
+        "nirs": "พิจารณาในบางสถาบัน"
+      },
+      "airway": {
+        "plan": "RSI เสมอ - ถือเป็น full stomach และมักมี cervical spine precaution (manual in-line stabilization)",
+        "equipment": [
+          "Video laryngoscope",
+          "Suction พร้อมใช้เต็มที่ (aspiration risk สูง)",
+          "Surgical airway kit พร้อม"
+        ],
+        "backup": "Difficult airway cart, cricothyroidotomy kit พร้อมใช้เสมอในผู้ป่วย trauma"
+      },
+      "induction": {
+        "drug": "Ketamine หรือ etomidate สำหรับ hemodynamically unstable patient, succinylcholine/rocuronium สำหรับ RSI",
+        "dose": "ลด dose อย่างมากตามระดับ shock (มักลดลง 50-75% ของ standard dose)",
+        "hemodynamic_goal": "หลีกเลี่ยง further hemodynamic collapse ระหว่าง induction - เตรียม vasopressor พร้อมใช้ก่อนเริ่ม induction เสมอ"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile ต่ำหรือ TIVA ตาม hemodynamic tolerance",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Opioid titrate ระมัดระวังตาม hemodynamic status",
+        "temperature": "Active warming เข้มงวดที่สุด - ป้องกัน lethal triad (hypothermia-coagulopathy-acidosis)"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (ปรับ lung protective หากมี chest injury/ARDS)",
+        "peep": "ปรับตาม lung injury",
+        "fio2": "titrate",
+        "recruitment": "ระมัดระวังในรายที่มี pneumothorax risk (ตรวจ chest tube ก่อนเสมอ)"
+      },
+      "fluid_management": {
+        "goal_directed": "Damage control resuscitation - minimize crystalloid, early balanced blood product ratio",
+        "blood": "Massive transfusion protocol พร้อมใช้ตั้งแต่ต้น",
+        "transfusion": "PRC:FFP:platelet ในอัตราส่วนสมดุล (มักใกล้เคียง 1:1:1) ตาม institutional MTP"
+      },
+      "special_consideration": {
+        "lethal_triad": "ป้องกัน/แก้ไข lethal triad (hypothermia, coagulopathy, acidosis) อย่างเข้มงวด - เป็นหัวใจสำคัญของการดูแล trauma resuscitation",
+        "cervical_spine": "Maintain manual in-line stabilization ระหว่าง airway management จนกว่าจะ clear C-spine",
+        "permissive_hypotension": "พิจารณา permissive hypotension (SBP 80-90 mmHg) ในรายที่ยังไม่ควบคุม hemorrhage ได้ ยกเว้นในรายที่มี TBI ร่วมด้วย (ต้องการ CPP เพียงพอ)",
+        "tranexamic_acid": "ให้ tranexamic acid ภายใน 3 ชม.แรกหลังบาดเจ็บตามหลักฐาน CRASH-2 trial"
+      },
+      "complications": [
+        "Hemorrhagic shock",
+        "Coagulopathy/DIC",
+        "Hypothermia",
+        "ARDS",
+        "Compartment syndrome (abdominal/extremity)",
+        "Multi-organ failure",
+        "Fat embolism syndrome"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring เสมอ",
+        "extubation": "ล่าช้าตามความรุนแรงของการบาดเจ็บและความเสถียร",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Compartment syndrome",
+          "Ongoing bleeding",
+          "ARDS",
+          "Sepsis"
+        ]
+      },
+      "clinical_pearls": [
+        "Lethal triad (hypothermia-coagulopathy-acidosis) เป็นวงจรอุบาทว์ที่ทำให้ผู้ป่วย trauma เสียชีวิต - การป้องกันตั้งแต่ต้นสำคัญกว่าการรักษาเมื่อเกิดขึ้นแล้ว",
+        "Permissive hypotension ช่วยลด ongoing bleeding ก่อนควบคุม source ได้ แต่ต้องหลีกเลี่ยงในผู้ป่วยที่มี concurrent traumatic brain injury ที่ต้องการ adequate CPP",
+        "Tranexamic acid ควรให้เร็วที่สุดภายใน 3 ชม.แรก เนื่องจากประสิทธิภาพลดลงอย่างมากหลังจากนั้น และอาจเป็นอันตรายหากให้ล่าช้า"
+      ],
+      "references": [
+        "ATLS Guideline",
+        "European Guideline on Management of Major Bleeding and Coagulopathy following Trauma",
+        "CRASH-2 Trial"
+      ]
+    },
+    {
+      "id": "ruptured_aaa",
+      "name": "Ruptured Abdominal Aortic Aneurysm (AAA)",
+      "overview": {
+        "definition": "ภาวะหลอดเลือดแดงใหญ่ในช่องท้องโป่งพองแตก เป็น surgical emergency ที่มี mortality สูงมากหากไม่ได้รับการผ่าตัดทันที",
+        "indications": [
+          "Ruptured AAA ที่วินิจฉัยจาก clinical triad (hypotension, abdominal/back pain, pulsatile mass) หรือ CT confirmation"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch massive transfusion protocol (เร่งด่วนที่สุด)"
+        ],
+        "imaging": [
+          "CT angiogram หากผู้ป่วยเสถียรพอสำหรับการทำ (มักทำในรายที่ diagnosis ไม่ชัดเจน) - หากไม่เสถียรให้ไปห้องผ่าตัดทันทีโดยไม่รอ imaging เพิ่มเติม"
+        ],
+        "consult": [
+          "Vascular surgery emergency"
+        ],
+        "optimization": [
+          "ไม่มีเวลาสำหรับ optimization - ต้อง proceed ทันทีพร้อม resuscitation ควบคู่กัน"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line ก่อน induction หากเป็นไปได้ (ไม่ควรทำให้การผ่าตัดล่าช้า) - จำเป็นสำหรับ beat-to-beat monitoring",
+        "cvp": "แนะนำสำหรับ large-bore access และ vasoactive drug",
+        "pa_catheter": "ไม่จำเป็นทั่วไปในสถานการณ์ฉุกเฉิน",
+        "tee": "พิจารณาหลัง stabilize เบื้องต้น",
+        "bis": "ไม่ใช่ priority",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "RSI - ผู้ป่วยมักมี full stomach และ hemodynamically unstable",
+        "equipment": [
+          "Video laryngoscope",
+          "Rapid infuser/level 1 device"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Etomidate/ketamine dose ต่ำมาก, succinylcholine/rocuronium",
+        "dose": "ลดลงมากตามระดับ shock",
+        "hemodynamic_goal": "หัวใจสำคัญที่สุด: หลีกเลี่ยง induction จนกว่าศัลยแพทย์พร้อม prep/drape เสร็จ - การ induction มักทำให้ tamponade effect ของ retroperitoneal hematoma หายไปทันทีจาก muscle relaxation ทำให้เกิด catastrophic hemorrhage"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ต่ำมาก",
+        "muscle_relaxant": "Standard dose หลัง induction",
+        "analgesia": "Opioid titrate ระมัดระวัง",
+        "temperature": "Active warming เข้มงวดที่สุด"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Permissive hypotension จนกว่าจะได้ aortic cross-clamp - หลีกเลี่ยง aggressive fluid resuscitation ก่อน clamp ที่อาจทำให้ hematoma tamponade หลุดและเสียเลือดมากขึ้น",
+        "blood": "Massive transfusion protocol พร้อมเปิดใช้ทันที - cell salvager แนะนำอย่างยิ่ง",
+        "transfusion": "Aggressive proactive replacement ทันทีที่ cross-clamp สำเร็จ"
+      },
+      "special_consideration": {
+        "induction_timing": "จับเวลา induction ให้ตรงกับช่วงที่ทีมศัลยแพทย์พร้อม prep/drape และพร้อมลงมีดทันที - 'prep and drape awake, induce when ready to cut'",
+        "permissive_hypotension_preclamp": "รักษา permissive hypotension (SBP ~80-90 mmHg) ก่อน aortic cross-clamp - retroperitoneal hematoma มี tamponade effect ที่ช่วยจำกัด bleeding ซึ่งอาจเสียไปหาก BP สูงขึ้นกะทันหันหรือ muscle relaxation ทำให้ abdominal wall tension หายไป",
+        "clamp_unclamp_hemodynamics": "เตรียมรับมือ hemodynamic change รุนแรงทั้งขณะ cross-clamp (afterload เพิ่มฉับพลัน) และ unclamp (reperfusion, acidosis, hypotension)",
+        "coagulopathy": "เตรียมรับมือ coagulopathy รุนแรงจาก massive hemorrhage/transfusion/hypothermia"
+      },
+      "complications": [
+        "Cardiovascular collapse ทันทีหลัง induction (จาก loss of tamponade effect)",
+        "Massive hemorrhage",
+        "Coagulopathy",
+        "Acute kidney injury",
+        "Bowel/spinal cord ischemia (cross-clamp related)",
+        "Reperfusion injury หลัง unclamp"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring เสมอ",
+        "extubation": "ล่าช้าตามความเสถียร",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Renal function",
+          "Coagulopathy",
+          "Abdominal compartment syndrome",
+          "Bowel ischemia"
+        ]
+      },
+      "clinical_pearls": [
+        "หลักการสำคัญที่สุดคือ 'prep and drape awake' - เตรียมผู้ป่วยและทีมศัลยแพทย์พร้อมลงมีดก่อนที่จะทำ induction เนื่องจาก induction มักทำให้เกิด catastrophic hypotension จาก loss of compensatory vasoconstriction/tamponade effect",
+        "Permissive hypotension ก่อน cross-clamp ช่วยรักษา tamponade effect ของ retroperitoneal hematoma - aggressive fluid resuscitation ก่อน clamp อาจเป็นอันตรายมากกว่าประโยชน์",
+        "Aortic unclamping ทำให้เกิด sudden hypotension จาก reperfusion และ washout ของ metabolic byproduct - ต้องเตรียม volume และ vasopressor พร้อมก่อน unclamp เสมอ"
+      ],
+      "references": [
+        "ESVS Guideline on Abdominal Aorto-Iliac Artery Aneurysm",
+        "SVS Practice Guideline for AAA",
+        "European Trauma Guideline"
+      ]
+    },
+    {
+      "id": "ruptured_ectopic",
+      "name": "Ruptured Ectopic Pregnancy",
+      "overview": {
+        "definition": "ภาวะการตั้งครรภ์นอกมดลูกแตก ทำให้เกิด intra-abdominal hemorrhage เฉียบพลัน เป็น gynecologic surgical emergency ที่พบบ่อย",
+        "indications": [
+          "Confirmed/suspected ruptured ectopic pregnancy with hemodynamic instability - ต้องผ่าตัดฉุกเฉิน"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, type & crossmatch เร่งด่วน, beta-hCG (ยืนยัน diagnosis หากยังไม่ทราบ)"
+        ],
+        "imaging": [
+          "Bedside ultrasound/FAST (free fluid in pelvis/abdomen) - ไม่ควรชะลอการผ่าตัดเพื่อรอ imaging เพิ่มเติมในรายที่ไม่เสถียร"
+        ],
+        "consult": [
+          "Gynecology emergency"
+        ],
+        "optimization": [
+          "ในผู้ป่วยที่ hemodynamically unstable ควรไปห้องผ่าตัดทันทีพร้อม resuscitation ควบคู่กัน ไม่รอผล lab ครบ"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, NIBP (เปลี่ยนเป็น IBP หากไม่เสถียร), temperature"
+        ],
+        "ibp": "พิจารณาในรายที่ hemodynamically unstable อย่างมาก",
+        "cvp": "ไม่จำเป็นทั่วไปในหัตถการที่ควบคุม bleeding ได้เร็ว",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "RSI เสมอ - ผู้ป่วยถือเป็น full stomach และมักมี hemodynamic instability",
+        "equipment": [
+          "Video laryngoscope",
+          "Suction พร้อม"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Etomidate/ketamine ในรายที่ shock, standard RSI relaxant",
+        "dose": "ลด dose ตามระดับ hypovolemic shock",
+        "hemodynamic_goal": "เตรียม vasopressor และเลือดพร้อมก่อน induction เนื่องจากผู้ป่วยอาจ decompensate อย่างรวดเร็วเมื่อ vasoconstriction compensation หายไปจาก anesthetic agent"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile ต่ำหรือ TIVA ตาม hemodynamic stability",
+        "muscle_relaxant": "Standard dose",
+        "analgesia": "Opioid titrate ตาม hemodynamic status",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Rapid crystalloid/blood resuscitation - หัตถการมักสั้นและควบคุม source ได้เร็วหลังลงมีด",
+        "blood": "เตรียม PRC พร้อมใช้ (O-negative หากยังไม่มี crossmatch), cell salvage อาจพิจารณาในบางสถาบัน",
+        "transfusion": "ตาม estimated blood loss และ hemodynamic response"
+      },
+      "special_consideration": {
+        "rapid_source_control": "หัตถการมักเป็นแบบสั้นและเมื่อลงมีดควบคุม source of bleeding ได้แล้วอาการมักดีขึ้นอย่างรวดเร็ว - จุดวิกฤตที่สุดคือช่วง induction ก่อนควบคุม source",
+        "young_healthy_compensation": "ผู้ป่วยมักเป็นหญิงอายุน้อยแข็งแรงที่มี compensatory mechanism ดี - อาจดู vital sign คงที่ได้นานก่อน decompensate อย่างฉับพลัน (compensated shock)",
+        "cell_salvage_consideration": "พิจารณา cell salvage ในหัตถการที่มี significant hemoperitoneum แม้จะมี relative contraindication concern เรื่อง trophoblastic tissue contamination ในบางสถาบัน"
+      },
+      "complications": [
+        "Hemorrhagic shock",
+        "Sudden cardiovascular collapse ระหว่าง induction",
+        "Massive hemoperitoneum",
+        "Coagulopathy (ในรายที่เสียเลือดมาก)"
+      ],
+      "postoperative_care": {
+        "icu": "ส่วนใหญ่ไม่จำเป็น - PACU monitoring เพียงพอหากควบคุม bleeding ได้ดี",
+        "extubation": "ในห้องผ่าตัดหากเสถียร",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Ongoing bleeding",
+          "Hemodynamic stability"
+        ]
+      },
+      "clinical_pearls": [
+        "ผู้ป่วยอายุน้อยแข็งแรงสามารถ compensate ภาวะ hemorrhagic shock ได้ดีจนกระทั่ง decompensate อย่างฉับพลัน - vital sign ที่ดูคงที่ไม่ควรทำให้ประมาทความรุนแรงของ hemoperitoneum",
+        "จุดวิกฤตที่สุดของเคสนี้คือช่วง induction ก่อนที่ศัลยแพทย์จะควบคุม source of bleeding ได้ - เตรียมเลือดและ vasopressor พร้อมก่อนเริ่ม induction เสมอ",
+        "หากตรวจพบ significant hemoperitoneum จาก FAST scan ในผู้ป่วยที่มีประวัติเข้าได้กับ ectopic pregnancy ควรดำเนินการผ่าตัดอย่างรวดเร็วโดยไม่รอผล lab/imaging ครบทุกอย่าง"
+      ],
+      "references": [
+        "ACOG Practice Bulletin on Ectopic Pregnancy",
+        "RCOG Green-top Guideline",
+        "ASA Practice Guideline for Obstetric Anesthesia"
+      ]
+    },
+    {
+      "id": "massive_hemorrhage",
+      "name": "Massive Hemorrhage (General Approach)",
+      "overview": {
+        "definition": "หลักการทั่วไปในการจัดการภาวะเลือดออกปริมาณมาก (มักนิยาม >1 blood volume ใน 24 ชม. หรือ >150 mL/min) ไม่ว่าจากสาเหตุใด ต้องการ systematic massive transfusion protocol",
+        "indications": [
+          "Trauma hemorrhage",
+          "Surgical hemorrhage",
+          "GI hemorrhage requiring surgery",
+          "Obstetric hemorrhage",
+          "Vascular catastrophe"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag/fibrinogen, type & crossmatch, point-of-care testing (TEG/ROTEM หากมี), ABG/lactate"
+        ],
+        "imaging": [
+          "ตามสาเหตุของ hemorrhage - ไม่ควรชะลอการรักษาเพื่อรอ imaging ในรายวิกฤต"
+        ],
+        "consult": [
+          "Surgical team ที่เกี่ยวข้อง, blood bank activation ทันที"
+        ],
+        "optimization": [
+          "Activate massive transfusion protocol (MTP) ทันทีที่มีข้อบ่งชี้ - ไม่รอจน lab result กลับมา"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Serial ABG/lactate/hemoglobin"
+        ],
+        "ibp": "Arterial line จำเป็น - beat-to-beat monitoring และ serial blood sampling",
+        "cvp": "แนะนำ - large-bore central access",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "พิจารณาในรายที่มี cardiac involvement/unclear source",
+        "bis": "พิจารณา",
+        "nirs": "พิจารณาในบางสถาบัน"
+      },
+      "airway": {
+        "plan": "RSI ในผู้ป่วยที่ไม่เสถียร/full stomach",
+        "equipment": [
+          "Video laryngoscope",
+          "Rapid infuser/level 1 device",
+          "Large-bore IV access (14-16G x2 ขึ้นไป)"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Ketamine/etomidate ในรายที่ shock, dose ต่ำ",
+        "dose": "ลด dose ตามระดับ hemodynamic instability",
+        "hemodynamic_goal": "เตรียม vasopressor และ blood product พร้อมก่อน induction เสมอ"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ต่ำ",
+        "muscle_relaxant": "Standard dose",
+        "analgesia": "Opioid titrate ระมัดระวัง",
+        "temperature": "Active warming เข้มงวดที่สุด - rapid infuser พร้อม fluid warmer เสมอ"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Damage control resuscitation - minimize crystalloid, early blood product",
+        "blood": "Massive transfusion protocol: PRC:FFP:platelet ratio balanced (มักใกล้เคียง 1:1:1), cryoprecipitate/fibrinogen concentrate เมื่อ fibrinogen <150-200 mg/dL",
+        "transfusion": "Point-of-care testing (TEG/ROTEM) guide component therapy ที่แม่นยำกว่าหากมีพร้อมใช้"
+      },
+      "special_consideration": {
+        "mtp_activation": "Activate MTP เร็วโดยไม่รอ lab confirmation - clinical judgment สำคัญกว่าการรอผลตรวจในสถานการณ์ฉุกเฉิน",
+        "tranexamic_acid_general": "พิจารณาให้ tranexamic acid เร็วในรายที่มี traumatic/major surgical hemorrhage",
+        "hypothermia_prevention": "ใช้ rapid infuser พร้อม fluid warmer, forced-air warming, warm operating room เพื่อป้องกัน hypothermia ซึ่งแย่ coagulopathy",
+        "calcium_monitoring": "Monitor ionized calcium อย่างใกล้ชิดระหว่าง massive transfusion - citrate ใน blood product จับ calcium ทำให้ hypocalcemia ซึ่งแย่ cardiac function และ coagulopathy"
+      },
+      "complications": [
+        "Coagulopathy/DIC",
+        "Hypothermia",
+        "Hypocalcemia",
+        "Transfusion-related acute lung injury (TRALI)",
+        "Transfusion-associated circulatory overload (TACO)",
+        "Hyperkalemia (จาก massive PRC transfusion)",
+        "Acute kidney injury"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring เสมอในรายที่ต้อง massive transfusion",
+        "extubation": "ล่าช้าตามความเสถียร",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Coagulopathy trend",
+          "Electrolyte abnormality",
+          "Signs ของ TRALI/TACO",
+          "Renal function"
+        ]
+      },
+      "clinical_pearls": [
+        "Point-of-care viscoelastic testing (TEG/ROTEM) ช่วย guide component therapy ได้แม่นยำกว่าการใช้ standard coagulation test เพียงอย่างเดียว โดยเฉพาะในการตัดสินใจให้ cryoprecipitate/fibrinogen",
+        "Hypocalcemia จาก citrate toxicity ระหว่าง massive transfusion เป็นสิ่งที่มักถูกมองข้าม - ควร monitor และ correct ionized calcium อย่างสม่ำเสมอ",
+        "การป้องกัน lethal triad (hypothermia-coagulopathy-acidosis) เป็นหลักการที่ใช้ได้กับ massive hemorrhage ทุกสาเหตุ ไม่จำกัดเฉพาะ trauma"
+      ],
+      "references": [
+        "European Guideline on Major Bleeding and Coagulopathy",
+        "AABB Massive Transfusion Guideline",
+        "ATLS Guideline"
+      ]
+    },
+    {
+      "id": "penetrating_trauma",
+      "name": "Penetrating Trauma (Gunshot/Stab Wound)",
+      "overview": {
+        "definition": "การบาดเจ็บจากวัตถุทะลุทะลวงเข้าสู่ร่างกาย (gunshot wound, stab wound) ที่อาจก่อให้เกิด injury ต่ออวัยวะสำคัญและ major vessel",
+        "indications": [
+          "Penetrating injury ที่มีข้อบ่งชี้ผ่าตัดฉุกเฉิน (hemodynamic instability, peritonitis, evisceration, vascular injury)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch เร่งด่วน"
+        ],
+        "imaging": [
+          "FAST scan, CXR (pneumothorax/hemothorax), CT หากเสถียรพอ"
+        ],
+        "consult": [
+          "Trauma surgery emergency"
+        ],
+        "optimization": [
+          "ในรายไม่เสถียร ('hard signs' ของ vascular/organ injury) ให้ไปห้องผ่าตัดทันทีโดยไม่รอ imaging เพิ่มเติม"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line จำเป็นเกือบทุกราย",
+        "cvp": "แนะนำสำหรับ large-bore access",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "พิจารณาหากสงสัย cardiac injury (penetrating chest trauma ใกล้ precordium)",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "RSI - ระวังเป็นพิเศษหากมี penetrating neck injury ที่อาจทำให้ airway anatomy ผิดปกติหรือมี expanding hematoma",
+        "equipment": [
+          "Video laryngoscope",
+          "Surgical airway kit พร้อมใช้เสมอในรายที่มี neck/facial injury"
+        ],
+        "backup": "Awake intubation หรือ surgical airway เป็นทางเลือกในรายที่มี distorted airway anatomy"
+      },
+      "induction": {
+        "drug": "Ketamine/etomidate dose ต่ำในรายที่ shock",
+        "dose": "ลดลงตามระดับ hemodynamic instability",
+        "hemodynamic_goal": "เช่นเดียวกับ trauma อื่น - เตรียมพร้อมรับมือ decompensation อย่างรวดเร็วหลัง induction"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ต่ำ",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Opioid titrate ระมัดระวัง",
+        "temperature": "Active warming เข้มงวด"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "ระวังในรายที่มี pneumothorax ที่ยังไม่ได้ drain - ตรวจสอบ chest tube ก่อนเสมอ",
+        "fio2": "titrate",
+        "recruitment": "ระมัดระวังในรายที่มี lung injury"
+      },
+      "fluid_management": {
+        "goal_directed": "Damage control resuscitation, permissive hypotension จนควบคุม source ได้",
+        "blood": "Massive transfusion protocol พร้อมใช้",
+        "transfusion": "Balanced ratio ตาม MTP"
+      },
+      "special_consideration": {
+        "cardiac_tamponade": "Penetrating chest injury ใกล้ precordium ('box' area) ต้องนึกถึง cardiac tamponade เสมอ - Beck's triad (hypotension, JVD, muffled heart sound) อาจไม่ครบทุกอาการ",
+        "pneumothorax_hemothorax": "ตรวจสอบและจัดการ pneumothorax/hemothorax ก่อนเริ่ม positive pressure ventilation เนื่องจากอาจทำให้เกิด tension pneumothorax ฉับพลัน",
+        "vascular_injury": "Penetrating injury ใกล้ major vessel มีความเสี่ยง exsanguination รวดเร็ว - เตรียม massive transfusion และ rapid infuser พร้อมเสมอ",
+        "spinal_cord_injury": "ประเมิน neurological deficit จาก penetrating spine injury หากมี"
+      },
+      "complications": [
+        "Cardiac tamponade",
+        "Tension pneumothorax",
+        "Massive hemorrhage/exsanguination",
+        "Hollow viscus injury/peritonitis",
+        "Spinal cord injury",
+        "Retained foreign body"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring เสมอในรายที่มี significant injury",
+        "extubation": "ตามความเสถียร",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Ongoing bleeding",
+          "Delayed organ injury presentation",
+          "Infection/peritonitis"
+        ]
+      },
+      "clinical_pearls": [
+        "Penetrating injury ในบริเวณ 'cardiac box' (ระหว่าง nipple line, sternal border, และ costal margin) ต้องนึกถึง cardiac injury/tamponade เสมอแม้ vital sign จะยังดูคงที่",
+        "ตรวจสอบ chest tube/pneumothorax status ก่อนเริ่ม positive pressure ventilation ในผู้ป่วย chest trauma เพื่อป้องกัน tension pneumothorax ที่อาจเกิดขึ้นอย่างฉับพลันและรุนแรง",
+        "หากมี hard signs ของ vascular injury (pulsatile bleeding, expanding hematoma, absent pulse) ควรไปห้องผ่าตัดทันทีโดยไม่ชะลอเพื่อทำ imaging เพิ่มเติม"
+      ],
+      "references": [
+        "ATLS Guideline",
+        "EAST Practice Management Guideline for Penetrating Trauma",
+        "Western Trauma Association Guideline"
+      ]
+    },
+    {
+      "id": "burns",
+      "name": "Burns (Major Burn Injury)",
+      "overview": {
+        "definition": "การดูแลวิสัญญีสำหรับผู้ป่วยที่มีบาดแผลไฟไหม้น้ำร้อนลวกรุนแรง (major burn - มักนิยาม >20% TBSA) ทั้งสำหรับ acute resuscitation phase และ debridement/grafting surgery",
+        "indications": [
+          "Escharotomy ฉุกเฉิน",
+          "Burn wound debridement",
+          "Skin grafting",
+          "Inhalation injury requiring airway management"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, electrolytes, coag, carboxyhemoglobin (หากสงสัย inhalation injury/smoke exposure), type & crossmatch"
+        ],
+        "imaging": [
+          "CXR หากสงสัย inhalation injury",
+          "Bronchoscopy หากสงสัย airway injury"
+        ],
+        "consult": [
+          "Burn surgery, ต้องประเมิน %TBSA และ depth of burn อย่างละเอียด"
+        ],
+        "optimization": [
+          "Parkland formula guide initial fluid resuscitation ในช่วง 24 ชม.แรก",
+          "ประเมินและจัดการ airway inhalation injury ก่อนเกิด airway edema รุนแรง (early intubation)"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2 (อาจไม่แม่นยำหากมี carboxyhemoglobin สูง - ใช้ co-oximetry), EtCO2, temperature (สำคัญมาก)"
+        ],
+        "ibp": "Arterial line แนะนำอย่างยิ่งในหัตถการใหญ่/ผู้ป่วยวิกฤต - อาจต้องใส่ผ่าน burned skin หากไม่มีทางเลือกอื่น",
+        "cvp": "แนะนำในรายวิกฤตสำหรับ fluid management และ vasoactive drug - อาจต้องใส่ผ่าน burned area",
+        "pa_catheter": "พิจารณาในรายที่มี complex fluid management",
+        "tee": "พิจารณาในรายวิกฤตที่มี cardiac dysfunction",
+        "bis": "พิจารณาเนื่องจาก burn patient มักต้องการ anesthetic dose สูงกว่าปกติ"
+      },
+      "airway": {
+        "plan": "Early intubation หากสงสัย inhalation injury (facial burn, singed nasal hair, carbonaceous sputum, hoarseness) - airway edema พัฒนาอย่างรวดเร็วทำให้ intubation ยากขึ้นเรื่อยๆ",
+        "equipment": [
+          "ETT ขนาดเล็กกว่าที่คำนวณปกติเผื่อ airway edema",
+          "Video laryngoscope",
+          "Difficult airway equipment"
+        ],
+        "backup": "Surgical airway kit พร้อมใช้เสมอในรายที่มี severe facial/airway burn"
+      },
+      "induction": {
+        "drug": "Ketamine เป็นตัวเลือกที่ดีในผู้ป่วย burn เนื่องจากรักษา hemodynamic ได้ดีและมี analgesic property, หลีกเลี่ยง succinylcholine หลัง 24-48 ชม.แรกของการบาดเจ็บ",
+        "dose": "ปรับตาม hemodynamic status และ % TBSA",
+        "hemodynamic_goal": "เสถียรตามระดับความรุนแรงของ burn shock"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA - burn patient มักต้องการ anesthetic dose สูงกว่าปกติจาก hypermetabolic state",
+        "muscle_relaxant": "หลีกเลี่ยง succinylcholine ตั้งแต่ 24-48 ชม.หลังบาดเจ็บจนถึงประมาณ 1-2 ปี (เสี่ยง life-threatening hyperkalemia จาก extrajunctional acetylcholine receptor proliferation); non-depolarizing agent ต้องการ dose สูงกว่าปกติเนื่องจาก receptor upregulation ทำให้เกิด resistance",
+        "analgesia": "Opioid requirement สูงมากจาก hypermetabolic state และ tolerance ที่พัฒนาเร็ว - multimodal analgesia สำคัญ",
+        "temperature": "Active warming เข้มงวดที่สุด - burn patient สูญเสียความร้อนอย่างมากจาก exposed skin, ต้องรักษาอุณหภูมิห้องผ่าตัดให้อุ่นกว่าปกติมาก (28-32°C)"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (ปรับ lung protective หากมี inhalation injury/ARDS)",
+        "peep": "ปรับตาม lung compliance",
+        "fio2": "100% หากสงสัย carbon monoxide poisoning (เร่ง CO elimination), ปรับลดตามความจำเป็น",
+        "recruitment": "ตามความจำเป็นในรายที่มี inhalation injury/ARDS"
+      },
+      "fluid_management": {
+        "goal_directed": "Parkland formula (4 mL/kg/%TBSA) guide initial 24 ชม. แต่ควร titrate ตาม urine output จริงมากกว่ายึดสูตรตายตัว, ในหัตถการ debridement/grafting ต้องคำนวณ blood loss เพิ่มเติมจาก formula",
+        "blood": "เตรียม PRC มาก - blood loss จาก burn excision/debridement มักมากกว่าที่คาดการณ์",
+        "transfusion": "ตาม estimated blood loss ซึ่งมักประมาณ 1 unit ต่อ 1% TBSA ที่ excise"
+      },
+      "special_consideration": {
+        "fluid": "Over-resuscitation ('fluid creep') เป็นปัญหาที่พบบ่อยพอๆ กับ under-resuscitation - titrate ตาม urine output (0.5-1 mL/kg/hr) เป็นหลักมากกว่ายึดสูตรอย่างเดียว",
+        "temperature_burns": "Burn patient เสี่ยง hypothermia รุนแรงมากจาก exposed skin และ heat loss - ต้องอุ่นห้องผ่าตัดและใช้ warming device ทุกชนิดที่มี",
+        "drug_burns": "Non-depolarizing muscle relaxant resistance พัฒนาภายในไม่กี่วันหลังบาดเจ็บและต้องการ dose สูงขึ้นมาก (2-5 เท่า), succinylcholine ห้ามใช้หลัง 24-48 ชม.",
+        "blood_burns": "คำนวณ expected blood loss จากพื้นที่ excision - มักประมาณ 1 unit PRC ต่อ 1% TBSA excised",
+        "pain_burns": "Opioid tolerance พัฒนาเร็วมากจาก repeated dressing change/debridement - ต้องการ dose สูงขึ้นเรื่อยๆ, ketamine เป็นตัวช่วยเสริมที่ดีสำหรับลด opioid requirement"
+      },
+      "complications": [
+        "Airway obstruction จาก progressive edema",
+        "Hyperkalemic cardiac arrest (จาก succinylcholine)",
+        "Massive blood loss ระหว่าง excision",
+        "Hypothermia",
+        "Compartment syndrome (ต้อง escharotomy)",
+        "Sepsis",
+        "ARDS"
+      ],
+      "postoperative_care": {
+        "icu": "Burn ICU สำหรับ major burn เสมอ",
+        "extubation": "ตามความพร้อมของ airway edema status",
+        "pain": "Multimodal analgesia - opioid dose สูง + adjuvant (ketamine, gabapentinoid)",
+        "complication_watch": [
+          "Airway status",
+          "Infection/sepsis",
+          "Compartment syndrome",
+          "Nutritional status"
+        ]
+      },
+      "clinical_pearls": [
+        "ห้ามใช้ succinylcholine ในผู้ป่วย burn ตั้งแต่ 24-48 ชม.หลังบาดเจ็บไปจนถึงประมาณ 1-2 ปี เนื่องจากเสี่ยง life-threatening hyperkalemia จาก extrajunctional receptor proliferation",
+        "Non-depolarizing muscle relaxant ต้องการ dose สูงขึ้นมาก (2-5 เท่าของปกติ) ในผู้ป่วย burn จาก receptor upregulation - เป็นข้อยกเว้นสำคัญที่ต่างจาก general population",
+        "Early intubation สำคัญมากในรายที่สงสัย inhalation injury เนื่องจาก airway edema พัฒนาอย่างรวดเร็วและอาจทำให้ intubation เป็นไปไม่ได้หากรอช้าเกินไป"
+      ],
+      "references": [
+        "ABA Advanced Burn Life Support Guideline",
+        "ISBI Practice Guideline for Burn Care",
+        "ASA Practice Advisory for Burn Anesthesia"
+      ]
+    },
+    {
+      "id": "damage_control_surgery",
+      "name": "Damage Control Surgery",
+      "overview": {
+        "definition": "แนวคิดการผ่าตัดแบบจำกัดขอบเขต (abbreviated surgery) เพื่อควบคุม hemorrhage และ contamination ในผู้ป่วยวิกฤตที่ physiologically exhausted โดยเลื่อนการซ่อมแซมที่ definitive ไปทำในภายหลังเมื่อผู้ป่วยเสถียรขึ้น",
+        "indications": [
+          "ผู้ป่วยที่มี lethal triad (hypothermia <35°C, pH <7.2, coagulopathy) หรือมีแนวโน้มจะเข้าสู่ภาวะนี้ระหว่างผ่าตัด",
+          "Massive intra-abdominal/pelvic hemorrhage ที่ควบคุมยาก"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag/fibrinogen, ABG/lactate (ประเมิน physiological reserve), type & crossmatch massive transfusion"
+        ],
+        "imaging": [
+          "ตามความเหมาะสม - มักไม่มีเวลาสำหรับ extensive imaging"
+        ],
+        "consult": [
+          "Trauma/surgical team - การตัดสินใจทำ damage control เป็น team decision ที่ต้องสื่อสารชัดเจน"
+        ],
+        "optimization": [
+          "ไม่มีเวลาสำหรับ optimization ก่อนหัตถการแรก - เป้าหมายคือควบคุม bleeding/contamination ให้เร็วที่สุด"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature (monitor อย่างใกล้ชิดที่สุด - core temperature)"
+        ],
+        "ibp": "Arterial line จำเป็น - serial ABG/lactate เป็นตัวชี้วัดสำคัญของ physiological status",
+        "cvp": "แนะนำสำหรับ large-bore access",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "พิจารณาในรายที่มี cardiac dysfunction",
+        "bis": "พิจารณา",
+        "nirs": "พิจารณาในบางสถาบัน"
+      },
+      "airway": {
+        "plan": "RSI - ผู้ป่วยกลุ่มนี้มักไม่เสถียรและ full stomach",
+        "equipment": [
+          "Video laryngoscope",
+          "Rapid infuser"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Ketamine/etomidate dose ต่ำมาก",
+        "dose": "ลดลงมากตามระดับ physiological compromise",
+        "hemodynamic_goal": "เตรียมพร้อมรับมือ severe hemodynamic instability ตลอดหัตถการ"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ต่ำมาก ปรับตาม hemodynamic tolerance",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Opioid titrate ระมัดระวังที่สุด",
+        "temperature": "Active warming สูงสุดเท่าที่ทำได้ - ใช้ทุกมาตรการที่มี (warm room, fluid warmer, forced-air warming, warm irrigation)"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "ปรับตาม lung status",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Damage control resuscitation อย่างเข้มงวด - minimize crystalloid volume, prioritize blood product early",
+        "blood": "Massive transfusion protocol ต่อเนื่อง balanced ratio",
+        "transfusion": "Aggressive component therapy guide ด้วย point-of-care testing หากมี"
+      },
+      "special_consideration": {
+        "abbreviated_surgery_concept": "เป้าหมายของการผ่าตัดคือควบคุม hemorrhage (packing, temporary vascular control) และ contamination (staple off bowel โดยไม่ anastomosis) ให้เร็วที่สุด ไม่ทำ definitive repair ในครั้งแรก",
+        "physiological_endpoint": "การตัดสินใจยุติหัตถการแรกและไป ICU ขึ้นกับ physiological parameter (temperature, pH, coagulation) ไม่ใช่ anatomical completeness",
+        "temporary_abdominal_closure": "ใช้ temporary abdominal closure (vacuum-assisted closure) แทนการปิดหน้าท้องแบบสมบูรณ์ เพื่อป้องกัน abdominal compartment syndrome และเตรียมสำหรับ re-look surgery",
+        "icu_resuscitation_phase": "หลังหัตถการแรก ผู้ป่วยไป ICU เพื่อ correct lethal triad อย่างเต็มที่ก่อนกลับมาผ่าตัด definitive repair ใน 24-48 ชม.ถัดไป (second-look surgery)"
+      },
+      "complications": [
+        "Abdominal compartment syndrome",
+        "Ongoing coagulopathy",
+        "Multi-organ failure",
+        "Sepsis จาก contamination",
+        "Enterocutaneous fistula (ระยะยาว)",
+        "Failure to achieve hemostasis ต้อง re-explore ฉุกเฉิน"
+      ],
+      "postoperative_care": {
+        "icu": "ICU เสมอเพื่อ aggressive resuscitation แก้ lethal triad ก่อน definitive surgery",
+        "extubation": "ล่าช้าเสมอ - ผู้ป่วยยังคง sedated/ventilated ระหว่างรอ re-look surgery",
+        "pain": "Continuous sedation/analgesia",
+        "complication_watch": [
+          "Abdominal compartment syndrome",
+          "Ongoing bleeding requiring re-exploration",
+          "Physiological parameter trend (temp/pH/coag) เพื่อกำหนดเวลา definitive surgery"
+        ]
+      },
+      "clinical_pearls": [
+        "หลักการ damage control คือ 'control the physiology, not perfect the anatomy' - การผ่าตัดแรกมีเป้าหมายเพียงควบคุม bleeding/contamination ไม่ใช่ทำ definitive repair",
+        "การตัดสินใจว่าเมื่อไรควรหยุดผ่าตัดและไป ICU ควรพิจารณาจาก physiological parameter (temperature <35°C, pH <7.2, coagulopathy) มากกว่าความอยากทำให้เสร็จสมบูรณ์ทางกายวิภาค",
+        "การสื่อสารระหว่างวิสัญญีและศัลยแพทย์เรื่อง physiological status ของผู้ป่วยอย่างต่อเนื่องเป็นหัวใจสำคัญของการตัดสินใจ damage control ที่เหมาะสมและทันเวลา"
+      ],
+      "references": [
+        "Western Trauma Association Guideline on Damage Control",
+        "EAST Practice Management Guideline",
+        "ATLS Guideline"
+      ]
+    }
+  ]
+}

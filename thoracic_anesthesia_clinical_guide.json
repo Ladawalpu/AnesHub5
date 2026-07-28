@@ -1,0 +1,739 @@
+{
+  "category": "Thoracic Anesthesia",
+  "category_th": "วิสัญญีสำหรับศัลยกรรมทรวงอก",
+  "description": "Evidence-based guidance for safe anesthesia practice in thoracic surgery, with emphasis on lung isolation and one-lung ventilation.",
+  "disclaimer": "เนื้อหานี้จัดทำเพื่อการศึกษาและอ้างอิงทางคลินิก ไม่ทดแทนแนวปฏิบัติของสถาบัน (institutional protocol) หรือดุลยพินิจทางคลินิกของผู้ให้การระงับความรู้สึก ควรปรับใช้ตามบริบทผู้ป่วยแต่ละรายและทบทวนตาม guideline ฉบับล่าสุดเสมอ",
+  "procedures": [
+    {
+      "id": "vats",
+      "name": "VATS (Video-Assisted Thoracoscopic Surgery)",
+      "overview": {
+        "definition": "การผ่าตัดทรวงอกผ่านกล้องแผลเล็ก (1-4 ports) สำหรับ wedge resection, lobectomy, pleural procedures โดยไม่เปิดซี่โครง",
+        "indications": [
+          "Pulmonary nodule biopsy/resection",
+          "Lobectomy สำหรับ early-stage lung cancer",
+          "Pleural effusion/empyema drainage",
+          "Spontaneous pneumothorax with bullectomy/pleurodesis",
+          "Mediastinal biopsy"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & screen",
+          "ABG (baseline)"
+        ],
+        "imaging": [
+          "CT chest",
+          "Pulmonary function test (FEV1, DLCO)",
+          "V/Q scan หากพิจารณา lobectomy/pneumonectomy"
+        ],
+        "consult": [
+          "Pulmonology สำหรับ risk stratification",
+          "Cardiology หากมี cardiac comorbidity"
+        ],
+        "optimization": [
+          "Smoking cessation counseling",
+          "Optimize bronchospasm/COPD ก่อนผ่าตัด",
+          "ประเมิน predicted postoperative FEV1"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line แนะนำเนื่องจากต้อง monitor ABG บ่อยระหว่าง OLV",
+        "cvp": "ไม่จำเป็นส่วนใหญ่ ยกเว้น major resection",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "พิจารณาโดยเฉพาะเมื่อใช้ TIVA",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Lung isolation จำเป็น - เลือกใช้ double-lumen tube (DLT) หรือ bronchial blocker ตามความเหมาะสมของผู้ป่วยและหัตถการ",
+        "equipment": [
+          "DLT (ซ้าย/ขวาตามข้างที่ผ่าตัด)",
+          "Bronchial blocker",
+          "Fiberoptic bronchoscope สำหรับยืนยันตำแหน่งเสมอ"
+        ],
+        "backup": "Universal adapter สำหรับเปลี่ยนเป็น single lumen ETT หากมี difficult airway หรือ emergency conversion เป็น thoracotomy"
+      },
+      "induction": {
+        "drug": "Propofol, opioid (fentanyl/remifentanil), non-depolarizing muscle relaxant",
+        "dose": "Standard induction dose ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "รักษาเสถียรภาพก่อนใส่ DLT ซึ่งต้องการ depth of anesthesia ที่เพียงพอเพื่อลด airway reactivity"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile agent ระดับต่ำหรือ TIVA - propofol มีข้อดีลด hypoxic pulmonary vasoconstriction inhibition เมื่อเทียบกับ volatile ขนาดสูง",
+        "muscle_relaxant": "Maintain paralysis ตลอดหัตถการเพื่อป้องกันการเคลื่อนไหวขณะใช้กล้อง",
+        "analgesia": "Multimodal: opioid infusion + intercostal nerve block/paravertebral block/erector spinae block",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "One-lung ventilation: 4-6 mL/kg PBW (ของปอดที่ยังระบายอากาศ) - ใช้ protective lung ventilation เสมอ",
+        "peep": "5-10 cmH2O ในปอดที่ระบายอากาศ",
+        "fio2": "เริ่มที่ FiO2 สูง (60-100%) ระหว่าง OLV แล้วปรับลดตาม SpO2",
+        "recruitment": "Recruitment maneuver ก่อนกลับสู่ two-lung ventilation และเมื่อ SpO2 ลดลง"
+      },
+      "fluid_management": {
+        "goal_directed": "Restrictive fluid strategy - จำกัด crystalloid เพื่อลดความเสี่ยง post-pneumonectomy/lobectomy pulmonary edema",
+        "blood": "เตรียมตาม estimated blood loss",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "one_lung_ventilation": "ยืนยันตำแหน่ง DLT/bronchial blocker ด้วย fiberoptic bronchoscopy ทุกครั้งหลังใส่และหลังจัดท่า lateral decubitus",
+        "hypoxemia": "หาก SpO2 ลดต่ำระหว่าง OLV: เพิ่ม FiO2, ตรวจตำแหน่งท่อซ้ำ, ใช้ CPAP กับปอดข้างที่ไม่ระบายอากาศ, PEEP ปอดข้างที่ระบายอากาศ, หรือแจ้งศัลยแพทย์ intermittent re-inflation",
+        "peep": "ปรับ PEEP อย่างระมัดระวังเพื่อสมดุลระหว่าง atelectasis prevention และ hemodynamic effect",
+        "recruitment": "ทำ recruitment maneuver เป็นระยะระหว่างและหลัง OLV เพื่อลด atelectasis"
+      },
+      "complications": [
+        "Hypoxemia ระหว่าง OLV",
+        "Hypercapnia",
+        "DLT malposition",
+        "Conversion เป็น open thoracotomy ฉุกเฉิน",
+        "Bronchospasm",
+        "Air leak/pneumothorax หลังผ่าตัด"
+      ],
+      "postoperative_care": {
+        "icu": "ส่วนใหญ่ recovery ที่ PACU, ICU สำหรับ major resection หรือมี comorbidity มาก",
+        "extubation": "Extubate ในห้องผ่าตัดส่วนใหญ่หลังยืนยัน adequate reversal และ lung expansion",
+        "pain": "Multimodal: regional block (paravertebral/erector spinae) + opioid + NSAIDs/acetaminophen ลด pulmonary complication จาก inadequate analgesia",
+        "complication_watch": [
+          "Air leak",
+          "Subcutaneous emphysema",
+          "Respiratory failure",
+          "Arrhythmia (โดยเฉพาะ AF หลัง lung resection)"
+        ]
+      },
+      "clinical_pearls": [
+        "Fiberoptic bronchoscopy ยืนยันตำแหน่ง DLT เป็นมาตรฐาน ไม่ใช่แค่ auscultation เนื่องจาก malposition พบได้บ่อยโดยเฉพาะหลังพลิกตัว",
+        "Hypoxic pulmonary vasoconstriction (HPV) เป็นกลไกป้องกันสำคัญระหว่าง OLV - volatile agent ขนาดสูงและ vasodilator ยับยั้ง HPV ทำให้ shunt เพิ่มขึ้น",
+        "Restrictive fluid strategy สำคัญมากใน lung resection surgery เพื่อลดความเสี่ยง post-resection pulmonary edema"
+      ],
+      "references": [
+        "ERAS Society Guideline for Thoracic Surgery",
+        "PROCESS/PROTHOR Trial Recommendations",
+        "ESA/ISPCOP Guidelines for OLV"
+      ]
+    },
+    {
+      "id": "thoracotomy",
+      "name": "Thoracotomy (Open)",
+      "overview": {
+        "definition": "การผ่าตัดเปิดทรวงอกแบบดั้งเดิมผ่านการแยกซี่โครง สำหรับหัตถการที่ซับซ้อนหรือไม่เหมาะกับ VATS",
+        "indications": [
+          "Complex lung resection",
+          "Chest wall involvement",
+          "Large tumor ที่ไม่เหมาะกับ minimally invasive approach",
+          "Emergency conversion จาก VATS",
+          "Trauma"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch"
+        ],
+        "imaging": [
+          "CT chest, pulmonary function test"
+        ],
+        "consult": [
+          "Pulmonology, cardiology ตามความจำเป็น"
+        ],
+        "optimization": [
+          "Optimize pulmonary status",
+          "วางแผน postoperative analgesia (thoracotomy pain รุนแรงกว่า VATS มาก)"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line - แนะนำอย่างยิ่งเนื่องจากมี blood loss และ hemodynamic instability มากกว่า VATS",
+        "cvp": "พิจารณาในหัตถการใหญ่ (pneumonectomy, extensive resection)",
+        "pa_catheter": "พิจารณาในผู้ป่วย pulmonary hypertension หรือ pneumonectomy",
+        "tee": "พิจารณาในกรณีมี cardiac involvement",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Lung isolation ด้วย DLT หรือ bronchial blocker",
+        "equipment": [
+          "DLT",
+          "Fiberoptic bronchoscope"
+        ],
+        "backup": "Single lumen ETT พร้อมใช้"
+      },
+      "induction": {
+        "drug": "Standard induction agent + opioid + muscle relaxant",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "รักษาเสถียรภาพก่อนจัดท่า lateral decubitus"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA",
+        "muscle_relaxant": "Maintain paralysis ตลอด",
+        "analgesia": "Thoracic epidural analgesia (gold standard) หรือ paravertebral block ร่วมกับ multimodal systemic analgesia",
+        "temperature": "Active warming - สำคัญเนื่องจากเปิดโพรงทรวงอกทำให้เสียความร้อนมาก"
+      },
+      "ventilation": {
+        "tv": "4-6 mL/kg PBW ระหว่าง OLV",
+        "peep": "5-10 cmH2O",
+        "fio2": "ปรับตาม SpO2",
+        "recruitment": "หลัง OLV และก่อนปิดแผล"
+      },
+      "fluid_management": {
+        "goal_directed": "Restrictive strategy โดยเฉพาะใน pneumonectomy",
+        "blood": "เตรียม PRC เนื่องจาก blood loss มากกว่า VATS",
+        "transfusion": "ตาม estimated blood loss"
+      },
+      "special_consideration": {
+        "one_lung_ventilation": "จำเป็นตลอดช่วง resection",
+        "hypoxemia": "จัดการเช่นเดียวกับ VATS แต่ต้องพิจารณา surgical exposure ด้วย",
+        "epidural": "Thoracic epidural ควรใส่ก่อนผ่าตัดเพื่อ pre-emptive analgesia และลด postoperative pulmonary complication",
+        "positioning": "Lateral decubitus position - ระวัง brachial plexus injury, eye/ear pressure injury"
+      },
+      "complications": [
+        "Post-thoracotomy pain syndrome",
+        "Bleeding",
+        "Bronchopleural fistula",
+        "Empyema",
+        "Respiratory failure",
+        "Arrhythmia"
+      ],
+      "postoperative_care": {
+        "icu": "พิจารณาตามความซับซ้อนของหัตถการและ comorbidity",
+        "extubation": "ส่วนใหญ่ extubate ในห้องผ่าตัด เว้นแต่มีข้อบ่งชี้ delayed extubation",
+        "pain": "Thoracic epidural infusion ต่อเนื่อง + multimodal analgesia เป็นหัวใจสำคัญของการลด pulmonary complication",
+        "complication_watch": [
+          "Chest tube output/air leak",
+          "Respiratory distress",
+          "Arrhythmia"
+        ]
+      },
+      "clinical_pearls": [
+        "Post-thoracotomy pain รุนแรงกว่า VATS อย่างมาก เนื่องจาก rib retraction/intercostal nerve injury - thoracic epidural เป็นมาตรฐานทองคำ",
+        "Inadequate analgesia นำไปสู่ splinting, atelectasis, และ pneumonia - การควบคุมปวดที่ดีลด pulmonary complication ได้ชัดเจน",
+        "ระวัง contralateral lung compromise ระหว่าง lateral decubitus positioning"
+      ],
+      "references": [
+        "ERAS Society Guideline for Thoracic Surgery",
+        "PROSPECT Guideline for Thoracotomy Pain",
+        "ESA/ISPCOP Guidelines for OLV"
+      ]
+    },
+    {
+      "id": "lobectomy",
+      "name": "Lobectomy",
+      "overview": {
+        "definition": "การผ่าตัดตัดปอดกลีบใดกลีบหนึ่งออก มักทำในผู้ป่วย lung cancer ระยะต้น อาจทำผ่าน VATS หรือ open thoracotomy",
+        "indications": [
+          "Stage I-II NSCLC",
+          "Localized infection/bronchiectasis ที่ไม่ตอบสนองต่อยา",
+          "Benign tumor ขนาดใหญ่"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & screen"
+        ],
+        "imaging": [
+          "CT chest, PET-CT (staging)",
+          "PFT รวม FEV1, DLCO",
+          "Predicted postoperative FEV1 (ppoFEV1)"
+        ],
+        "consult": [
+          "Pulmonology สำหรับ functional assessment",
+          "Oncology หากเป็น malignancy"
+        ],
+        "optimization": [
+          "Smoking cessation",
+          "Pulmonary rehabilitation ในผู้ป่วยความเสี่ยงสูง",
+          "Bronchodilator optimization"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line แนะนำ",
+        "cvp": "พิจารณาตามความซับซ้อน",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "Lung isolation ด้วย DLT (ข้างตรงข้ามกับ lobe ที่ผ่าตัด) หรือ bronchial blocker",
+        "equipment": [
+          "DLT",
+          "Fiberoptic bronchoscope"
+        ],
+        "backup": "Single lumen ETT"
+      },
+      "induction": {
+        "drug": "Standard IV induction",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อนใส่ DLT และจัดท่า"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile ต่ำ หรือ TIVA",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Regional technique (paravertebral/epidural/erector spinae) + multimodal systemic",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "4-6 mL/kg PBW ระหว่าง OLV",
+        "peep": "5-10 cmH2O",
+        "fio2": "titrate SpO2",
+        "recruitment": "หลัง OLV"
+      },
+      "fluid_management": {
+        "goal_directed": "Restrictive strategy",
+        "blood": "เตรียมตาม estimated blood loss",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "one_lung_ventilation": "จำเป็นตลอด lobe resection",
+        "hypoxemia": "จัดการมาตรฐานตาม algorithm OLV hypoxemia",
+        "air_leak": "ประเมิน air leak หลัง lobe resection ก่อนปิดแผล"
+      },
+      "complications": [
+        "Prolonged air leak",
+        "Atrial fibrillation (พบบ่อยหลัง lung resection)",
+        "Pneumonia",
+        "Bronchopleural fistula",
+        "Respiratory failure"
+      ],
+      "postoperative_care": {
+        "icu": "PACU ส่วนใหญ่, ICU ในผู้ป่วยความเสี่ยงสูง",
+        "extubation": "ในห้องผ่าตัด",
+        "pain": "Multimodal + regional analgesia สำคัญมากต่อการหายใจลึกและไอมีประสิทธิภาพ",
+        "complication_watch": [
+          "Air leak",
+          "Arrhythmia (AF)",
+          "Sputum retention/pneumonia"
+        ]
+      },
+      "clinical_pearls": [
+        "ppoFEV1 <40% predicted เพิ่มความเสี่ยง postoperative pulmonary complication อย่างมีนัยสำคัญ",
+        "Postoperative AF พบได้ถึง 10-20% หลัง lung resection - ควร monitor rhythm ใกล้ชิดใน 48-72 ชม.แรก",
+        "Incentive spirometry และ early mobilization ลด pulmonary complication ได้อย่างมีนัยสำคัญ"
+      ],
+      "references": [
+        "ACCP Guideline for Lung Cancer Surgery",
+        "ERAS Society Thoracic Guideline",
+        "BTS Guideline for Lung Resection"
+      ]
+    },
+    {
+      "id": "pneumonectomy",
+      "name": "Pneumonectomy",
+      "overview": {
+        "definition": "การผ่าตัดตัดปอดข้างใดข้างหนึ่งออกทั้งหมด เป็นหัตถการที่มีความเสี่ยงสูงสุดในกลุ่ม lung resection",
+        "indications": [
+          "Central lung tumor ที่ไม่สามารถทำ lobectomy ได้",
+          "Extensive lung destruction (TB, bronchiectasis)",
+          "Trauma รุนแรง"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch"
+        ],
+        "imaging": [
+          "CT chest, PET-CT",
+          "PFT + DLCO + V/Q scan (predicted postpneumonectomy FEV1 สำคัญมาก)",
+          "Cardiopulmonary exercise test (CPET) ในรายที่ borderline"
+        ],
+        "consult": [
+          "Pulmonology, cardiology - ประเมิน functional reserve อย่างละเอียด"
+        ],
+        "optimization": [
+          "ต้องมั่นใจว่า cardiopulmonary reserve เพียงพอก่อนผ่าตัด เนื่องจากเป็น irreversible procedure"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line จำเป็น",
+        "cvp": "แนะนำ - ช่วย monitor volume status อย่างใกล้ชิด (ป้องกัน post-pneumonectomy pulmonary edema)",
+        "pa_catheter": "พิจารณาในผู้ป่วย pulmonary hypertension",
+        "tee": "พิจารณาหากมี cardiac involvement",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Lung isolation จำเป็น - DLT ด้านตรงข้ามกับปอดที่จะตัดออก",
+        "equipment": [
+          "DLT",
+          "Fiberoptic bronchoscope"
+        ],
+        "backup": "Single lumen ETT"
+      },
+      "induction": {
+        "drug": "Standard IV induction",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อนเริ่ม OLV เนื่องจากผู้ป่วยมักมี pulmonary reserve จำกัด"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile ต่ำหรือ TIVA",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Thoracic epidural แนะนำอย่างยิ่ง",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "4-6 mL/kg PBW - ใช้ protective ventilation อย่างเคร่งครัดเนื่องจากปอดข้างเดียวต้องรับภาระทั้งหมดหลังผ่าตัด",
+        "peep": "5-10 cmH2O",
+        "fio2": "ปรับตาม SpO2",
+        "recruitment": "ระมัดระวัง - จำกัด peak pressure เพื่อลดความเสี่ยง contralateral lung injury"
+      },
+      "fluid_management": {
+        "goal_directed": "Very restrictive fluid strategy - หัวใจสำคัญของการป้องกัน post-pneumonectomy pulmonary edema (PPE) ซึ่งมี mortality สูง",
+        "blood": "เตรียม PRC พร้อม",
+        "transfusion": "Restrictive threshold"
+      },
+      "special_consideration": {
+        "one_lung_ventilation": "OLV ตลอดหัตถการโดยใช้ปอดข้างเดียว - ไม่มี lung สำรองหากเกิดปัญหา",
+        "fluid_restriction": "จำกัดของเหลวอย่างเข้มงวด (มักไม่เกิน 20 mL/kg ใน 24 ชม.แรก) เพื่อลดความเสี่ยง PPE ซึ่งมี mortality สูงถึง 50%",
+        "post_pneumonectomy_space": "ต้องเข้าใจ physiology ของ post-pneumonectomy space management หลังผ่าตัด"
+      },
+      "complications": [
+        "Post-pneumonectomy pulmonary edema (PPE) - severe complication, high mortality",
+        "Bronchopleural fistula",
+        "Cardiac herniation",
+        "Right heart failure (โดยเฉพาะ right pneumonectomy)",
+        "Arrhythmia",
+        "Massive hemorrhage"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring ใกล้ชิดเสมอ",
+        "extubation": "ในห้องผ่าตัดหากเป็นไปได้ - หลีกเลี่ยง positive pressure ventilation prolonged",
+        "pain": "Thoracic epidural + multimodal analgesia",
+        "complication_watch": [
+          "Signs ของ pulmonary edema",
+          "Mediastinal shift",
+          "Right heart failure",
+          "Arrhythmia"
+        ]
+      },
+      "clinical_pearls": [
+        "Post-pneumonectomy pulmonary edema เป็นภาวะแทรกซ้อนที่อันตรายที่สุด - การจำกัดของเหลวอย่างเข้มงวดเป็นกลยุทธ์ป้องกันหลัก",
+        "Right pneumonectomy มีความเสี่ยงสูงกว่า left pneumonectomy เนื่องจาก right lung มีสัดส่วน pulmonary vascular bed มากกว่า",
+        "Cardiac herniation เป็นภาวะฉุกเฉินที่พบได้หลัง intrapericardial pneumonectomy - แสดงอาการ sudden hypotension"
+      ],
+      "references": [
+        "ACCP Guideline for Lung Cancer Surgery",
+        "ERS/ESTS Guideline on Functional Evaluation",
+        "ESA/ISPCOP OLV Guideline"
+      ]
+    },
+    {
+      "id": "mediastinal_tumor",
+      "name": "Mediastinal Tumor Resection",
+      "overview": {
+        "definition": "การผ่าตัดเนื้องอกในช่องกลางทรวงอก (anterior, middle, posterior mediastinum) เช่น thymoma, lymphoma, germ cell tumor, neurogenic tumor",
+        "indications": [
+          "Symptomatic mediastinal mass",
+          "Suspected malignancy requiring resection/biopsy",
+          "Large anterior mediastinal mass ที่มีความเสี่ยงต่อ airway/vascular compression"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch"
+        ],
+        "imaging": [
+          "CT chest with contrast (ประเมิน airway/vascular compression)",
+          "Echocardiogram หากสงสัย cardiac compression",
+          "Flow-volume loop (ประเมิน tracheal compression ทั้ง supine และ upright)"
+        ],
+        "consult": [
+          "Cardiothoracic surgery, oncology"
+        ],
+        "optimization": [
+          "ประเมิน degree ของ airway/vascular compression อย่างละเอียดที่สุดก่อนวางแผน anesthetic technique - สำคัญที่สุดในกลุ่มนี้"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line ก่อน induction ในรายที่มีความเสี่ยง cardiovascular collapse",
+        "cvp": "พิจารณาในรายที่มี SVC compression (อาจต้องใส่ IV ที่ lower extremity)",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "พิจารณาในรายที่มี cardiac compression risk",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "ประเมิน airway compression อย่างละเอียดก่อนเสมอ - พิจารณา awake fiberoptic intubation หรือคง spontaneous ventilation ระหว่าง induction ในรายที่มีความเสี่ยงสูง",
+        "equipment": [
+          "Rigid bronchoscope พร้อมใช้ในรายเสี่ยงสูง",
+          "ETT ยาวพิเศษที่สามารถผ่านจุด compression ได้"
+        ],
+        "backup": "ทีม ECMO/cardiopulmonary bypass standby ในรายที่มีความเสี่ยง airway/vascular collapse รุนแรง (เปลี่ยนท่าเป็น lateral/prone อาจช่วยได้)"
+      },
+      "induction": {
+        "drug": "พิจารณา inhalation induction คง spontaneous ventilation ในรายเสี่ยงสูง แทนการใช้ muscle relaxant ทันที",
+        "dose": "Individualized ตามระดับความเสี่ยง",
+        "hemodynamic_goal": "หลีกเลี่ยงการสูญเสีย spontaneous ventilation/negative intrathoracic pressure ก่อนยืนยันว่าควบคุม airway ได้ในรายที่มี large anterior mediastinal mass"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile inhalation มักเลือกเพื่อคง spontaneous ventilation ได้ในรายเสี่ยง",
+        "muscle_relaxant": "หลีกเลี่ยงหรือใช้อย่างระมัดระวังมากในรายที่มี significant airway/vascular compression จนกว่าจะมั่นใจว่าควบคุม airway ได้",
+        "analgesia": "Opioid-based ± regional",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW เมื่อควบคุม airway ได้แล้ว",
+        "peep": "ตามความจำเป็น",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Standard GDT",
+        "blood": "เตรียมตามความซับซ้อน",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "positional_change": "เปลี่ยนท่าผู้ป่วย (lateral, semi-prone) เป็นกลยุทธ์ฉุกเฉินสำคัญหากเกิด complete airway/vascular obstruction ระหว่าง induction",
+        "cardiovascular_collapse": "Superior vena cava syndrome หรือ cardiac compression อาจทำให้เกิด sudden cardiovascular collapse - เตรียมทีมและอุปกรณ์ช่วยชีวิตพร้อมเสมอ",
+        "rigid_bronchoscopy_standby": "ในรายเสี่ยงสูงมาก ควรมี rigid bronchoscope และทีมศัลยแพทย์พร้อม cardiopulmonary bypass มาตรฐาน 'awake' หรือ local anesthesia จนกว่าจะมั่นใจ"
+      },
+      "complications": [
+        "Complete airway obstruction ระหว่าง induction",
+        "Cardiovascular collapse จาก vascular/cardiac compression",
+        "SVC syndrome exacerbation",
+        "Massive hemorrhage หากมี great vessel invasion",
+        "Pneumothorax"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring ในรายเสี่ยงสูงหรือมี airway compromise",
+        "extubation": "ระมัดระวัง - ประเมิน airway patency ก่อน extubate อย่างละเอียด อาจต้อง extubate เมื่อผู้ป่วยตื่นเต็มที่",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Airway edema/obstruction",
+          "Bleeding",
+          "Recurrent laryngeal nerve injury"
+        ]
+      },
+      "clinical_pearls": [
+        "Large anterior mediastinal mass เป็นหนึ่งใน anesthetic emergency ที่อันตรายที่สุด - การสูญเสีย spontaneous ventilation อาจทำให้เกิด complete airway collapse ที่ไม่สามารถ ventilate ได้แม้ intubate สำเร็จ",
+        "Flow-volume loop ทั้ง supine และ upright ช่วยทำนายความเสี่ยง dynamic airway compression ได้ดี",
+        "ต้องมีแผนสำรอง (rigid bronchoscopy, positional change, femoral cannulation for emergency bypass) ก่อนเริ่ม induction ในรายเสี่ยงสูงเสมอ"
+      ],
+      "references": [
+        "SCA/STS Consensus on Anterior Mediastinal Mass",
+        "ASA Practice Advisory",
+        "ERS/ESTS Thymic Malignancy Guideline"
+      ]
+    },
+    {
+      "id": "thymectomy",
+      "name": "Thymectomy",
+      "overview": {
+        "definition": "การผ่าตัดต่อมไทมัสออก มักทำในผู้ป่วย myasthenia gravis หรือ thymoma อาจทำผ่าน sternotomy, VATS, หรือ robotic approach",
+        "indications": [
+          "Myasthenia gravis (โดยเฉพาะที่มี thymoma หรือ generalized MG ในผู้ป่วยอายุน้อย)",
+          "Thymoma with or without MG"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & screen",
+          "Acetylcholine receptor antibody titer"
+        ],
+        "imaging": [
+          "CT chest",
+          "Pulmonary function test - สำคัญมากในผู้ป่วย MG"
+        ],
+        "consult": [
+          "Neurology - ประเมิน MG severity และ optimize medication",
+          "ประเมิน bulbar/respiratory muscle involvement"
+        ],
+        "optimization": [
+          "Optimize pyridostigmine/immunosuppressive therapy ก่อนผ่าตัด",
+          "ประเมิน MGFA classification และ risk of postoperative respiratory failure",
+          "พิจารณา plasmapheresis/IVIG ในรายที่ควบคุมโรคไม่ดี"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Neuromuscular monitoring (train-of-four) - สำคัญเป็นพิเศษในผู้ป่วย MG"
+        ],
+        "ibp": "พิจารณาตามความซับซ้อนของหัตถการ",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "แนะนำเพื่อ titrate anesthetic depth อย่างแม่นยำ",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "ประเมิน bulbar function ก่อน; lung isolation หากทำผ่าน VATS",
+        "equipment": [
+          "DLT หากทำ VATS thymectomy",
+          "Standard ETT หากทำ sternotomy"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "ผู้ป่วย MG ไวต่อ non-depolarizing muscle relaxant มาก - ใช้ dose ต่ำกว่าปกติมากหรือหลีกเลี่ยงถ้าเป็นไปได้",
+        "dose": "ลด dose non-depolarizing agent ลง 1/2 - 1/3 ของ standard dose พร้อม monitor TOF อย่างใกล้ชิด",
+        "hemodynamic_goal": "เสถียร titrate anesthetic depth ให้เหมาะสมโดยไม่พึ่ง muscle relaxant มากเกินไป"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile agent เพียงพอสำหรับ intubating condition ได้โดยไม่ต้องใช้ relaxant มาก ในผู้ป่วย MG",
+        "muscle_relaxant": "หลีกเลี่ยงหรือใช้ dose ต่ำมาก monitor TOF อย่างเข้มงวด, หลีกเลี่ยง succinylcholine เนื่องจากผู้ป่วย MG อาจดื้อยา (resistance)",
+        "analgesia": "Opioid ระมัดระวัง - ผู้ป่วย MG ไวต่อ respiratory depression",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Standard GDT",
+        "blood": "เตรียมตามความซับซ้อน",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "myasthenia_gravis": "ผู้ป่วย MG ไวต่อ non-depolarizing muscle relaxant มาก และอาจดื้อต่อ succinylcholine - ต้อง monitor neuromuscular function อย่างใกล้ชิด",
+        "reversal": "ต้องมั่นใจว่า reverse neuromuscular blockade สมบูรณ์ก่อน extubate เนื่องจากเสี่ยง myasthenic crisis หากหายใจไม่พอ",
+        "postop_ventilation_risk": "ประเมินความเสี่ยงต้องใช้ ventilator ต่อหลังผ่าตัดโดยใช้ preoperative risk factor (duration of MG, bulbar involvement, vital capacity, pyridostigmine dose)"
+      },
+      "complications": [
+        "Myasthenic crisis (respiratory failure จาก undertreatment)",
+        "Cholinergic crisis (จาก overtreatment ด้วย anticholinesterase)",
+        "Prolonged neuromuscular blockade",
+        "Respiratory failure ต้อง reintubate"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring แนะนำในผู้ป่วย MG ความเสี่ยงสูง (โดยเฉพาะที่มี risk factor สำหรับ postoperative ventilatory support)",
+        "extubation": "ยืนยัน full recovery of neuromuscular function ก่อน extubate เสมอ",
+        "pain": "Multimodal analgesia ระมัดระวัง opioid dose",
+        "complication_watch": [
+          "Respiratory muscle weakness",
+          "Myasthenic crisis signs",
+          "Need for reintubation"
+        ]
+      },
+      "clinical_pearls": [
+        "ผู้ป่วย MG ต้องการ non-depolarizing muscle relaxant dose ต่ำกว่าปกติมาก - เริ่มจาก 10-20% ของ standard dose และ titrate ตาม TOF",
+        "แยก myasthenic crisis (ต้องการ anticholinesterase มากขึ้น) กับ cholinergic crisis (ต้องการลด anticholinesterase) ได้ยากทางคลินิก - เมื่อสงสัยให้ support ventilation และปรึกษา neurology",
+        "Sugammadex เป็นทางเลือกที่ดีสำหรับ reverse rocuronium/vecuronium ในผู้ป่วย MG เนื่องจากไม่ต้องพึ่ง acetylcholinesterase pathway"
+      ],
+      "references": [
+        "MGFA Clinical Classification",
+        "SCA/ASA Guideline for MG Anesthesia",
+        "ERS/ESTS Thymic Malignancy Guideline"
+      ]
+    },
+    {
+      "id": "esophagectomy",
+      "name": "Esophagectomy",
+      "overview": {
+        "definition": "การผ่าตัดตัดหลอดอาหารบางส่วนหรือทั้งหมดออก มักทำในผู้ป่วย esophageal cancer อาจทำผ่าน transthoracic (Ivor Lewis, McKeown) หรือ transhiatal approach",
+        "indications": [
+          "Esophageal cancer (resectable stage)",
+          "Severe benign stricture/achalasia ที่รักษาด้วยวิธีอื่นไม่ได้ผล",
+          "Caustic injury with stricture"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, albumin/nutritional markers, type & crossmatch"
+        ],
+        "imaging": [
+          "CT chest/abdomen, PET-CT (staging)",
+          "PFT",
+          "Endoscopic ultrasound"
+        ],
+        "consult": [
+          "Oncology, nutrition (มักมี malnutrition), cardiology"
+        ],
+        "optimization": [
+          "Nutritional optimization ก่อนผ่าตัด (enteral feeding หากทำได้)",
+          "Prehabilitation/pulmonary optimization ตาม ERAS protocol",
+          "Smoking cessation"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line จำเป็น - หัตถการยาว มี hemodynamic fluctuation และ blood loss",
+        "cvp": "แนะนำ - หัตถการยาวและซับซ้อน ต้องการ vasoactive support บ่อย",
+        "pa_catheter": "พิจารณาในรายที่มี cardiac comorbidity",
+        "tee": "พิจารณาในรายที่มีความเสี่ยง hemodynamic instability สูง",
+        "bis": "พิจารณา",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Lung isolation ด้วย DLT สำหรับ thoracic phase (Ivor Lewis/McKeown)",
+        "equipment": [
+          "DLT",
+          "Fiberoptic bronchoscope"
+        ],
+        "backup": "Single lumen ETT สำหรับ abdominal phase หากทำ transhiatal"
+      },
+      "induction": {
+        "drug": "RSI พิจารณาหากมี obstruction/aspiration risk (achalasia, stricture)",
+        "dose": "Standard induction ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อนเริ่มหัตถการที่มักใช้เวลานาน 4-8 ชม."
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile ต่ำหรือ TIVA",
+        "muscle_relaxant": "Maintain paralysis",
+        "analgesia": "Thoracic epidural analgesia แนะนำอย่างยิ่งตาม ERAS protocol - ลด pulmonary complication และช่วย gut perfusion/motility",
+        "temperature": "Active warming สำคัญมาก - หัตถการยาวหลาย compartment"
+      },
+      "ventilation": {
+        "tv": "4-6 mL/kg PBW ระหว่าง OLV (thoracic phase)",
+        "peep": "5-10 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "หลัง OLV และระหว่างเปลี่ยน phase"
+      },
+      "fluid_management": {
+        "goal_directed": "Goal-directed fluid therapy ตาม ERAS protocol - หลีกเลี่ยงทั้ง hypovolemia (gastric conduit ischemia) และ overload (anastomotic edema/pulmonary complication)",
+        "blood": "เตรียม PRC ตามความซับซ้อน",
+        "transfusion": "Restrictive strategy ตามความเหมาะสม"
+      },
+      "special_consideration": {
+        "one_lung_ventilation": "จำเป็นในช่วง thoracic phase",
+        "gastric_conduit_perfusion": "รักษา adequate perfusion pressure เพื่อความอยู่รอดของ gastric conduit ที่ใช้สร้าง neo-esophagus - หลีกเลี่ยง excessive vasopressor โดยเฉพาะช่วง anastomosis",
+        "multi_position": "หัตถการอาจต้องเปลี่ยนท่าหลายครั้ง (supine-lateral-supine) - วางแผน line/tube security ให้ดี",
+        "eras": "ปฏิบัติตาม ERAS protocol: goal-directed fluid, thoracic epidural, early mobilization, early feeding"
+      },
+      "complications": [
+        "Anastomotic leak",
+        "Gastric conduit ischemia/necrosis",
+        "Chylothorax (thoracic duct injury)",
+        "Recurrent laryngeal nerve injury",
+        "Pulmonary complication (pneumonia, ARDS)",
+        "Arrhythmia"
+      ],
+      "postoperative_care": {
+        "icu": "ICU monitoring แนะนำเนื่องจากหัตถการใหญ่และซับซ้อน",
+        "extubation": "ในห้องผ่าตัดหากเป็นไปได้ตาม ERAS protocol เพื่อลด ventilator-associated complication",
+        "pain": "Thoracic epidural ต่อเนื่อง + multimodal analgesia",
+        "complication_watch": [
+          "Anastomotic leak signs (fever, tachycardia, chest pain)",
+          "Respiratory failure",
+          "Conduit perfusion issues"
+        ]
+      },
+      "clinical_pearls": [
+        "การรักษา perfusion pressure ให้เพียงพอสำคัญมากต่อการอยู่รอดของ gastric conduit - หลีกเลี่ยง excessive vasoconstrictor โดยเฉพาะช่วงสร้าง anastomosis",
+        "ERAS protocol (goal-directed fluid + thoracic epidural + early feeding/mobilization) ลด pulmonary complication และ length of stay ได้อย่างมีนัยสำคัญ",
+        "หัตถการยาวหลาย compartment (chest-abdomen-neck) ต้องวางแผน positioning, line security, และ temperature management อย่างรอบคอบ"
+      ],
+      "references": [
+        "ERAS Society Guideline for Esophagectomy",
+        "ESA/ISPCOP OLV Guideline",
+        "ACS NSQIP Esophagectomy Best Practices"
+      ]
+    }
+  ]
+}

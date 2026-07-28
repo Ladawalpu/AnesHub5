@@ -1,0 +1,177 @@
+{
+  "guide_title": "Clinical Guide",
+  "guide_subtitle": "Evidence-based guidance for safe anesthesia practice",
+  "app": "AnesHub",
+  "total_categories": 8,
+  "total_procedures": 65,
+  "categories": [
+    {
+      "id": "cardiac_anesthesia",
+      "order": 1,
+      "name": "Cardiac Anesthesia",
+      "name_th": "วิสัญญีศัลยกรรมหัวใจ",
+      "description_th": "CABG, Valve Surgery, Aortic Surgery, ECMO, LVAD, Heart Transplant และหัตถการหัวใจอื่นๆ",
+      "procedure_count": 11,
+      "file": "cardiac_anesthesia_clinical_guide.json",
+      "icon": "heart-pulse",
+      "color_theme": {
+        "primary": "#DC2626",
+        "primary_dark": "#991B1B",
+        "primary_light": "#FEE2E2",
+        "accent": "#F87171",
+        "gradient": [
+          "#DC2626",
+          "#F87171"
+        ],
+        "text_on_primary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "thoracic_anesthesia",
+      "order": 2,
+      "name": "Thoracic Anesthesia",
+      "name_th": "วิสัญญีศัลยกรรมทรวงอก",
+      "description_th": "VATS, Thoracotomy, Lobectomy, Pneumonectomy, Esophagectomy และการจัดการ One-Lung Ventilation",
+      "procedure_count": 7,
+      "file": "thoracic_anesthesia_clinical_guide.json",
+      "icon": "wind",
+      "color_theme": {
+        "primary": "#0284C7",
+        "primary_dark": "#075985",
+        "primary_light": "#E0F2FE",
+        "accent": "#38BDF8",
+        "gradient": [
+          "#0284C7",
+          "#38BDF8"
+        ],
+        "text_on_primary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "neuroanesthesia",
+      "order": 3,
+      "name": "Neuroanesthesia",
+      "name_th": "วิสัญญีศัลยกรรมประสาท",
+      "description_th": "Craniotomy, Aneurysm Clipping, AVM, Spine Surgery, Awake Craniotomy, CEA, Mechanical Thrombectomy",
+      "procedure_count": 7,
+      "file": "neuroanesthesia_clinical_guide.json",
+      "icon": "brain",
+      "color_theme": {
+        "primary": "#7C3AED",
+        "primary_dark": "#5B21B6",
+        "primary_light": "#EDE9FE",
+        "accent": "#A78BFA",
+        "gradient": [
+          "#7C3AED",
+          "#A78BFA"
+        ],
+        "text_on_primary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "pediatric_neonatal",
+      "order": 4,
+      "name": "Pediatric & Neonatal",
+      "name_th": "วิสัญญีผู้ป่วยเด็กและทารกแรกเกิด",
+      "description_th": "Premature Infant, TEF, CDH, NEC, Pyloric Stenosis, Pediatric Cardiac Surgery",
+      "procedure_count": 8,
+      "file": "pediatric_neonatal_clinical_guide.json",
+      "icon": "baby",
+      "color_theme": {
+        "primary": "#0D9488",
+        "primary_dark": "#0F766E",
+        "primary_light": "#CCFBF1",
+        "accent": "#5EEAD4",
+        "gradient": [
+          "#0D9488",
+          "#5EEAD4"
+        ],
+        "text_on_primary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "obstetric_anesthesia",
+      "order": 5,
+      "name": "Obstetric Anesthesia",
+      "name_th": "วิสัญญีสูติศาสตร์",
+      "description_th": "Cesarean Section, Placenta Accreta, PPH, Eclampsia, HELLP, Uterine Rupture, AFE",
+      "procedure_count": 7,
+      "file": "obstetric_anesthesia_clinical_guide.json",
+      "icon": "heart-handshake",
+      "color_theme": {
+        "primary": "#DB2777",
+        "primary_dark": "#9D174D",
+        "primary_light": "#FCE7F3",
+        "accent": "#F472B6",
+        "gradient": [
+          "#DB2777",
+          "#F472B6"
+        ],
+        "text_on_primary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "trauma_emergency",
+      "order": 6,
+      "name": "Trauma & Emergency",
+      "name_th": "วิสัญญีอุบัติเหตุและภาวะฉุกเฉิน",
+      "description_th": "Polytrauma, Ruptured AAA, Massive Hemorrhage, Penetrating Trauma, Burns, Damage Control Surgery",
+      "procedure_count": 7,
+      "file": "trauma_emergency_clinical_guide.json",
+      "icon": "siren",
+      "color_theme": {
+        "primary": "#EA580C",
+        "primary_dark": "#9A3412",
+        "primary_light": "#FFEDD5",
+        "accent": "#FB923C",
+        "gradient": [
+          "#EA580C",
+          "#FB923C"
+        ],
+        "text_on_primary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "special_procedures",
+      "order": 7,
+      "name": "Special Procedures",
+      "name_th": "หัตถการพิเศษ",
+      "description_th": "Robotic Surgery, Liver/Kidney Transplant, Interventional Radiology, ERCP, Endoscopy, MRI, ECT",
+      "procedure_count": 8,
+      "file": "special_procedures_clinical_guide.json",
+      "icon": "sparkles",
+      "color_theme": {
+        "primary": "#4F46E5",
+        "primary_dark": "#3730A3",
+        "primary_light": "#E0E7FF",
+        "accent": "#818CF8",
+        "gradient": [
+          "#4F46E5",
+          "#818CF8"
+        ],
+        "text_on_primary": "#FFFFFF"
+      }
+    },
+    {
+      "id": "general_surgery",
+      "order": 8,
+      "name": "General Surgery",
+      "name_th": "วิสัญญีศัลยกรรมทั่วไป",
+      "description_th": "Lap Cholecystectomy, Colectomy, Gastrectomy, Hepatectomy, Pancreatectomy, Bariatric Surgery",
+      "procedure_count": 10,
+      "file": "general_surgery_clinical_guide.json",
+      "icon": "stethoscope",
+      "color_theme": {
+        "primary": "#16A34A",
+        "primary_dark": "#166534",
+        "primary_light": "#DCFCE7",
+        "accent": "#4ADE80",
+        "gradient": [
+          "#16A34A",
+          "#4ADE80"
+        ],
+        "text_on_primary": "#FFFFFF"
+      }
+    }
+  ]
+}

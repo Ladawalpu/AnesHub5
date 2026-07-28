@@ -1,0 +1,828 @@
+{
+  "category": "Pediatric & Neonatal Anesthesia",
+  "category_th": "วิสัญญีสำหรับผู้ป่วยเด็กและทารกแรกเกิด",
+  "description": "Evidence-based guidance for safe anesthesia practice in pediatric and neonatal surgery, with emphasis on physiologic vulnerability, fluid/temperature/glucose management, and weight-based dosing.",
+  "disclaimer": "เนื้อหานี้จัดทำเพื่อการศึกษาและอ้างอิงทางคลินิก ไม่ทดแทนแนวปฏิบัติของสถาบัน (institutional protocol) หรือดุลยพินิจทางคลินิกของผู้ให้การระงับความรู้สึก ควรปรับใช้ตามบริบทผู้ป่วยแต่ละรายและทบทวนตาม guideline ฉบับล่าสุดเสมอ",
+  "procedures": [
+    {
+      "id": "premature_infant",
+      "name": "Premature Infant Anesthesia (General Considerations)",
+      "overview": {
+        "definition": "หลักการดูแลวิสัญญีสำหรับทารกคลอดก่อนกำหนด (<37 สัปดาห์) ที่มีความเสี่ยงสูงต่อภาวะแทรกซ้อนจาก immature organ system",
+        "indications": [
+          "ทารกคลอดก่อนกำหนดที่ต้องผ่าตัดฉุกเฉินหรือ elective เช่น PDA ligation, hernia repair, ROP screening/laser"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, glucose, electrolytes, calcium",
+          "Coag ในรายที่มีความเสี่ยง IVH หรือ bleeding"
+        ],
+        "imaging": [
+          "CXR (ประเมิน RDS/BPD)",
+          "Cranial ultrasound (ประเมิน IVH)",
+          "Echocardiogram หากสงสัย PDA/congenital heart disease"
+        ],
+        "consult": [
+          "Neonatology",
+          "Cardiology หากมี PDA/murmur"
+        ],
+        "optimization": [
+          "ประเมิน postmenstrual age (PMA) - สำคัญต่อความเสี่ยง postoperative apnea",
+          "Optimize respiratory status ก่อนผ่าตัด (surfactant, ventilator setting)",
+          "Correct electrolyte/glucose abnormality"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2 (pre-ductal + post-ductal), EtCO2, temperature (continuous)",
+          "Blood pressure - cuff ขนาดเหมาะสม"
+        ],
+        "ibp": "พิจารณาในรายที่ไม่เสถียรหรือหัตถการใหญ่",
+        "cvp": "ไม่จำเป็นทั่วไปในหัตถการเล็ก",
+        "pa_catheter": "ไม่ใช้ในทารก",
+        "tee": "ไม่จำเป็นทั่วไป ยกเว้นหัตถการหัวใจ",
+        "bis": "ไม่นิยมใช้ในทารกเนื่องจาก algorithm ยังไม่ validate ดีในกลุ่มอายุนี้",
+        "nirs": "แนะนำในรายที่มีความเสี่ยง cerebral hypoperfusion"
+      },
+      "airway": {
+        "plan": "ประเมิน airway อย่างละเอียด - ทารกมี anatomical difference (large head, short neck, large tongue)",
+        "equipment": [
+          "ETT uncuffed หรือ microcuffed ขนาดเล็กเหมาะสมตามน้ำหนัก",
+          "Miller blade laryngoscope",
+          "Pediatric resuscitation cart พร้อมขนาดอุปกรณ์ครบ"
+        ],
+        "backup": "Difficult airway equipment ขนาดเด็ก พร้อม neonatology/ENT backup"
+      },
+      "induction": {
+        "drug": "Inhalation induction (sevoflurane) หรือ IV induction ตามสภาพผู้ป่วย, atropine premedication พิจารณาลด bradycardia จาก vagal stimulation",
+        "dose": "ปรับตามน้ำหนักตัวจริงอย่างเคร่งครัด (mg/kg) - immature hepatic/renal clearance ทำให้ drug metabolism ต่างจากเด็กโต",
+        "hemodynamic_goal": "หลีกเลี่ยง hypotension - immature autoregulation เพิ่มความเสี่ยง IVH จาก BP fluctuation"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile agent ขนาดต่ำ (MAC สูงกว่าในทารกคลอดก่อนกำหนดเล็กน้อยเมื่อเทียบ term infant สำหรับบาง agent) ระวัง myocardial depression",
+        "muscle_relaxant": "ปรับ dose ตามน้ำหนัก - immature neuromuscular junction ทำให้ sensitivity ต่างกัน",
+        "analgesia": "Opioid ระมัดระวังมาก - ทารกคลอดก่อนกำหนดไวต่อ respiratory depression มากกว่า term infant",
+        "temperature": "Active warming เข้มงวดที่สุด - hypothermia เกิดง่ายมากและมีผลเสียรุนแรง"
+      },
+      "ventilation": {
+        "tv": "4-6 mL/kg (lung protective) - lung ยังไม่พัฒนาเต็มที่โดยเฉพาะหากมี RDS/BPD",
+        "peep": "3-5 cmH2O ปรับตาม lung compliance",
+        "fio2": "Titrate อย่างระมัดระวัง - หลีกเลี่ยง hyperoxia (เสี่ยง ROP) และ hypoxia; เป้าหมาย SpO2 90-95% ในทารกคลอดก่อนกำหนด",
+        "recruitment": "ระมัดระวังเป็นพิเศษ - lung เปราะบางเสี่ยง barotrauma"
+      },
+      "fluid_management": {
+        "goal_directed": "คำนวณ maintenance fluid ตามน้ำหนักอย่างแม่นยำ (4-2-1 rule ปรับสำหรับทารก), ใช้ dextrose-containing solution เพื่อป้องกัน hypoglycemia",
+        "blood": "เตรียม PRC irradiated/CMV-negative/leukoreduced ปริมาณน้อยตามน้ำหนัก",
+        "transfusion": "Weight-based threshold (มักที่ Hb 7-10 g/dL ขึ้นกับสภาพผู้ป่วย), คำนวณ blood loss เป็น mL อย่างละเอียดเนื่องจาก total blood volume น้อยมาก"
+      },
+      "special_consideration": {
+        "fluid": "Total blood volume เพียง ~90-100 mL/kg - blood loss เพียงเล็กน้อยมีนัยสำคัญทางคลินิก",
+        "temperature": "ทารกคลอดก่อนกำหนดสูญเสียความร้อนเร็วมากจาก surface area/weight ratio สูง - ใช้ warming mattress, overhead warmer, warm fluid, humidified gas",
+        "airway_specific": "ระวัง airway edema/trauma จาก ETT ขนาดไม่เหมาะสม",
+        "drug": "Immature hepatic enzyme และ renal clearance ทำให้ drug half-life ยาวกว่าเด็กโต - titrate ช้าๆ และเฝ้าระวัง prolonged effect",
+        "glucose": "ทารกคลอดก่อนกำหนดมี glycogen store น้อย เสี่ยง hypoglycemia ง่าย - monitor glucose บ่อยและให้ dextrose infusion ต่อเนื่อง",
+        "postop_apnea_risk": "ความเสี่ยง postoperative apnea สัมพันธ์กับ postmenstrual age <60 สัปดาห์ - ต้อง monitor apnea อย่างน้อย 12-24 ชม.หลังผ่าตัดในกลุ่มเสี่ยง"
+      },
+      "complications": [
+        "Postoperative apnea",
+        "Hypothermia",
+        "Hypoglycemia",
+        "Intraventricular hemorrhage (จาก BP fluctuation)",
+        "Retinopathy of prematurity (จาก hyperoxia)",
+        "Bronchopulmonary dysplasia exacerbation"
+      ],
+      "postoperative_care": {
+        "icu": "NICU monitoring ต่อเนื่องเสมอ",
+        "extubation": "พิจารณาตามความพร้อมของระบบหายใจ - อาจต้อง postoperative ventilation ต่อในรายเสี่ยงสูง",
+        "pain": "Multimodal analgesia ระมัดระวัง opioid dose, acetaminophen ปรับตามน้ำหนัก",
+        "complication_watch": [
+          "Apnea monitoring ต่อเนื่องอย่างน้อย 12-24 ชม.",
+          "Temperature",
+          "Glucose",
+          "Respiratory status"
+        ]
+      },
+      "clinical_pearls": [
+        "กฎทั่วไป: ทารกที่มี postmenstrual age <60 สัปดาห์ต้อง monitor postoperative apnea อย่างน้อย 12-24 ชม.แม้เป็นหัตถการเล็ก",
+        "Hypoglycemia ในทารกคลอดก่อนกำหนดอาจไม่มีอาการชัดเจน - ต้อง monitor glucose อย่างสม่ำเสมอโดยไม่รอให้มีอาการ",
+        "ควบคุม SpO2 เป้าหมายให้อยู่ในช่วง 90-95% ในทารกคลอดก่อนกำหนดเพื่อลดความเสี่ยง ROP โดยไม่เกิด hypoxia"
+      ],
+      "references": [
+        "APA/AAP Guideline for Pediatric Anesthesia",
+        "SPANZA Guideline",
+        "ASA Practice Advisory for Pediatric Perioperative Care"
+      ]
+    },
+    {
+      "id": "neonate_general",
+      "name": "Neonatal Anesthesia (General/Term Infant)",
+      "overview": {
+        "definition": "หลักการดูแลวิสัญญีสำหรับทารกแรกเกิด (0-28 วัน) ที่ต้องผ่าตัด ทั้ง term และ near-term infant",
+        "indications": [
+          "Neonatal surgical emergency (bowel obstruction, abdominal wall defect)",
+          "Elective neonatal surgery (inguinal hernia)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, glucose, electrolytes, coag ตามความจำเป็น"
+        ],
+        "imaging": [
+          "CXR, abdominal X-ray ตามข้อบ่งชี้",
+          "Echocardiogram หากสงสัย congenital heart disease"
+        ],
+        "consult": [
+          "Neonatology, pediatric surgery"
+        ],
+        "optimization": [
+          "Correct dehydration/electrolyte imbalance ก่อนผ่าตัดในหัตถการที่ไม่ฉุกเฉินเร่งด่วน",
+          "Screen สำหรับ associated anomaly (VACTERL เป็นต้น)"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2 (pre/post ductal), EtCO2, temperature continuous"
+        ],
+        "ibp": "พิจารณาในหัตถการใหญ่หรือผู้ป่วยไม่เสถียร",
+        "cvp": "พิจารณาในหัตถการใหญ่",
+        "pa_catheter": "ไม่ใช้",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "ไม่นิยมใช้ในทารกแรกเกิด",
+        "nirs": "พิจารณาในหัตถการเสี่ยงสูง"
+      },
+      "airway": {
+        "plan": "ประเมิน airway อนาโตมี - ทารกแรกเกิดมี obligate nasal breather, large occiput",
+        "equipment": [
+          "ETT uncuffed/microcuffed ขนาดเหมาะสม",
+          "Miller blade"
+        ],
+        "backup": "Difficult airway equipment ขนาดเด็กเล็ก"
+      },
+      "induction": {
+        "drug": "Inhalation หรือ IV induction ตามสภาพและ IV access",
+        "dose": "Weight-based dosing อย่างเคร่งครัด",
+        "hemodynamic_goal": "รักษาเสถียรภาพ - ทารกแรกเกิดมี limited cardiac reserve (fixed stroke volume, HR-dependent cardiac output)"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile agent ขนาดต่ำ-ปานกลาง",
+        "muscle_relaxant": "ปรับ dose ตามน้ำหนัก",
+        "analgesia": "Opioid ระมัดระวัง + regional technique (caudal block) เมื่อเหมาะสม",
+        "temperature": "Active warming เข้มงวด"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg",
+        "peep": "3-5 cmH2O",
+        "fio2": "titrate หลีกเลี่ยง hyperoxia/hypoxia",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "คำนวณ maintenance fluid ตามน้ำหนัก, ใช้ dextrose-containing solution",
+        "blood": "เตรียม PRC ปริมาณน้อยตามน้ำหนัก",
+        "transfusion": "Weight-based threshold"
+      },
+      "special_consideration": {
+        "fluid": "Total blood volume ~80-90 mL/kg ใน term infant - คำนวณ maximum allowable blood loss ก่อนผ่าตัดเสมอ",
+        "temperature": "ใช้ warming device ทุกราย - hypothermia เพิ่ม risk ของ apnea, coagulopathy, delayed drug metabolism",
+        "airway": "Obligate nasal breather - ระวัง nasal obstruction",
+        "drug": "Cardiac output ของทารกแรกเกิด HR-dependent มาก - หลีกเลี่ยง bradycardia",
+        "blood": "คำนวณ maximum allowable blood loss (MABL) ก่อนผ่าตัดเพื่อวางแผน transfusion",
+        "glucose": "Monitor glucose โดยเฉพาะในทารกที่ NPO นาน หรือมี sepsis/stress"
+      },
+      "complications": [
+        "Hypothermia",
+        "Hypoglycemia",
+        "Bradycardia/hemodynamic instability",
+        "Laryngospasm",
+        "Postoperative apnea (ในรายที่มีปัจจัยเสี่ยง)"
+      ],
+      "postoperative_care": {
+        "icu": "NICU หรือ postoperative monitoring unit ตามความซับซ้อนของหัตถการ",
+        "extubation": "ตามความพร้อมของระบบหายใจ",
+        "pain": "Multimodal analgesia + regional technique",
+        "complication_watch": [
+          "Temperature",
+          "Glucose",
+          "Respiratory status",
+          "Apnea (ในรายเสี่ยง)"
+        ]
+      },
+      "clinical_pearls": [
+        "ทารกแรกเกิดมี cardiac output ที่ขึ้นกับ heart rate เป็นหลัก (limited ability เพิ่ม stroke volume) - bradycardia ส่งผลเสียต่อ cardiac output อย่างมาก",
+        "คำนวณ maximum allowable blood loss (MABL) ก่อนผ่าตัดทุกครั้งเนื่องจาก total blood volume น้อยมาก",
+        "Caudal block เป็น regional technique ที่ใช้บ่อยและปลอดภัยในทารกสำหรับหัตถการช่วงล่างของร่างกาย ช่วยลด opioid requirement"
+      ],
+      "references": [
+        "APA/AAP Guideline for Pediatric Anesthesia",
+        "SPANZA Guideline",
+        "ADARPEF Guideline"
+      ]
+    },
+    {
+      "id": "congenital_anomaly",
+      "name": "Congenital Anomaly (General Approach)",
+      "overview": {
+        "definition": "หลักการดูแลวิสัญญีทั่วไปสำหรับทารกที่มี congenital anomaly ซึ่งมักมี associated anomaly ในระบบอื่นร่วมด้วย ต้องประเมินอย่างครบถ้วนก่อนผ่าตัด",
+        "indications": [
+          "Abdominal wall defect (gastroschisis, omphalocele)",
+          "Anorectal malformation",
+          "Craniofacial anomaly",
+          "Genitourinary anomaly"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, electrolytes, glucose, coag"
+        ],
+        "imaging": [
+          "Echocardiogram (screening congenital heart disease - พบร่วมได้บ่อย)",
+          "Renal ultrasound",
+          "Spine imaging ตามความเหมาะสม"
+        ],
+        "consult": [
+          "Genetics (หากสงสัย syndrome), cardiology, pediatric surgery multidisciplinary"
+        ],
+        "optimization": [
+          "Systematic screening สำหรับ associated anomaly (เช่น VACTERL association: Vertebral, Anal, Cardiac, TEF, Renal, Limb)",
+          "Correct fluid/electrolyte imbalance ก่อนผ่าตัดไม่ฉุกเฉิน"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature continuous"
+        ],
+        "ibp": "พิจารณาตามความซับซ้อนของหัตถการ",
+        "cvp": "พิจารณาในหัตถการใหญ่",
+        "pa_catheter": "ไม่ใช้",
+        "tee": "พิจารณาหากมี associated cardiac anomaly",
+        "bis": "ไม่นิยมใช้ในทารก",
+        "nirs": "พิจารณาในรายเสี่ยงสูง"
+      },
+      "airway": {
+        "plan": "ประเมิน airway อย่างละเอียด โดยเฉพาะในกลุ่ม craniofacial anomaly (Pierre Robin, Treacher Collins) ที่มักมี difficult airway",
+        "equipment": [
+          "ETT ขนาดเหมาะสม",
+          "Video laryngoscope/fiberoptic scope สำหรับ difficult airway",
+          "LMA เป็น backup/conduit"
+        ],
+        "backup": "Difficult airway team และอุปกรณ์ครบ, ENT backup ในรายที่คาดว่า difficult airway"
+      },
+      "induction": {
+        "drug": "ปรับเทคนิคตามความเสี่ยง airway - inhalation induction คง spontaneous ventilation ในรายที่คาดว่า difficult airway",
+        "dose": "Weight-based dosing",
+        "hemodynamic_goal": "เสถียรตามสภาพผู้ป่วยและ associated anomaly"
+      },
+      "maintenance": {
+        "volatile_tiva": "ปรับตามหัตถการและสภาพผู้ป่วย",
+        "muscle_relaxant": "ระมัดระวังในรายที่มี difficult airway จนกว่าจะยืนยันควบคุม airway ได้",
+        "analgesia": "Multimodal ปรับตามอายุ/น้ำหนัก",
+        "temperature": "Active warming เข้มงวด"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg",
+        "peep": "3-5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "คำนวณตามน้ำหนักและ associated condition (เช่น third-space loss สูงใน abdominal wall defect)",
+        "blood": "เตรียมตามความซับซ้อน",
+        "transfusion": "Weight-based threshold"
+      },
+      "special_consideration": {
+        "systematic_screening": "ต้องประเมิน associated anomaly อย่างเป็นระบบก่อนผ่าตัดเสมอ เนื่องจาก congenital anomaly มักไม่ได้เกิดเดี่ยวๆ",
+        "airway": "Craniofacial anomaly มักสัมพันธ์กับ difficult airway - วางแผนล่วงหน้าเสมอ",
+        "drug": "ปรับ dose ตาม organ function ที่อาจผิดปกติร่วมด้วย (เช่น renal anomaly กระทบ drug clearance)",
+        "temperature_fluid": "ความต้องการ fluid/temperature management ขึ้นกับชนิดของ anomaly เฉพาะ"
+      },
+      "complications": [
+        "Difficult airway/failed intubation",
+        "Hemodynamic instability จาก associated cardiac anomaly",
+        "Hypothermia",
+        "Fluid/electrolyte imbalance"
+      ],
+      "postoperative_care": {
+        "icu": "NICU/PICU ตามความซับซ้อน",
+        "extubation": "ตามความพร้อมและความเสี่ยง airway",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Respiratory status",
+          "Cardiac status (หากมี associated anomaly)",
+          "Temperature/glucose"
+        ]
+      },
+      "clinical_pearls": [
+        "VACTERL association (Vertebral, Anal, Cardiac, TE fistula, Renal, Limb) เป็นกรอบคิดสำคัญในการ screen associated anomaly เมื่อพบความผิดปกติหนึ่งอย่าง",
+        "Craniofacial syndrome (Pierre Robin sequence, Treacher Collins, Goldenhar) มักมี difficult airway ที่ต้องวางแผนล่วงหน้าอย่างละเอียด",
+        "Echocardiogram ก่อนผ่าตัดควรทำในทารกที่มี major congenital anomaly แม้ไม่มีอาการทางหัวใจชัดเจน เนื่องจาก congenital heart disease พบร่วมได้บ่อย"
+      ],
+      "references": [
+        "APA Guideline for Pediatric Anesthesia",
+        "AAP Clinical Report on Congenital Anomaly Screening",
+        "SPANZA Guideline"
+      ]
+    },
+    {
+      "id": "tef",
+      "name": "TEF (Tracheoesophageal Fistula) Repair",
+      "overview": {
+        "definition": "การผ่าตัดซ่อมภาวะหลอดลม-หลอดอาหารเชื่อมต่อผิดปกติ (tracheoesophageal fistula) ร่วมกับ esophageal atresia ซึ่งเป็น neonatal surgical emergency",
+        "indications": [
+          "Esophageal atresia with/without TEF (Type C พบบ่อยที่สุด)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, electrolytes, glucose, coag"
+        ],
+        "imaging": [
+          "CXR (ตำแหน่ง NG tube coiling ยืนยัน diagnosis), echocardiogram (screen cardiac anomaly - VACTERL)",
+          "Renal ultrasound, spine imaging"
+        ],
+        "consult": [
+          "Neonatology, pediatric surgery, cardiology"
+        ],
+        "optimization": [
+          "ใส่ Replogle tube ระบาย upper pouch secretion ต่อเนื่องก่อนผ่าตัด ป้องกัน aspiration",
+          "จัดท่าศีรษะสูงลดความเสี่ยง reflux/aspiration ผ่าน distal fistula"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2 (pre/post ductal), EtCO2, temperature"
+        ],
+        "ibp": "พิจารณาในรายที่ไม่เสถียรหรือมี associated cardiac anomaly",
+        "cvp": "ไม่จำเป็นทั่วไปในหัตถการมาตรฐาน",
+        "pa_catheter": "ไม่ใช้",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "ไม่นิยมใช้ในทารก",
+        "nirs": "พิจารณาในรายเสี่ยงสูง"
+      },
+      "airway": {
+        "plan": "ท้าทายที่สุด - ต้องหลีกเลี่ยงการ ventilate ผ่าน fistula ที่ทำให้ gastric distension; awake intubation หรือ maintain spontaneous ventilation ระหว่าง induction เป็นที่นิยม",
+        "equipment": [
+          "ETT ที่วางตำแหน่งปลายให้อยู่ต่ำกว่า fistula แต่เหนือ carina (มักต้องจงใจใส่ mainstem แล้วถอยกลับ)",
+          "Fiberoptic bronchoscope ช่วยยืนยันตำแหน่ง fistula และ ETT"
+        ],
+        "backup": "Rigid bronchoscopy team standby ในรายที่ ventilate ยาก"
+      },
+      "induction": {
+        "drug": "Inhalation induction คง spontaneous ventilation เป็นเทคนิคที่นิยม เพื่อหลีกเลี่ยง positive pressure ventilation ที่ดัน air ผ่าน fistula เข้ากระเพาะ",
+        "dose": "Titrate ช้าๆ ตามน้ำหนัก",
+        "hemodynamic_goal": "เสถียรระหว่างการจัดตำแหน่ง ETT ที่ต้องใช้เวลาและความระมัดระวังสูง"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile agent ต่อเนื่องหลังควบคุม airway ได้",
+        "muscle_relaxant": "ให้หลังยืนยันตำแหน่ง ETT เหมาะสมแล้วเท่านั้น",
+        "analgesia": "Opioid ระมัดระวัง ปรับตามน้ำหนัก",
+        "temperature": "Active warming เข้มงวด"
+      },
+      "ventilation": {
+        "tv": "Low pressure, low volume ventilation เพื่อลด gas เข้า fistula ก่อนผูก fistula สำเร็จ - หลังผูก fistula แล้วจึง ventilate ตามมาตรฐาน 6-8 mL/kg",
+        "peep": "ต่ำ ระมัดระวังก่อน fistula ligation",
+        "fio2": "titrate ระมัดระวัง hyperoxia",
+        "recruitment": "หลีกเลี่ยงก่อน fistula ligation"
+      },
+      "fluid_management": {
+        "goal_directed": "คำนวณตามน้ำหนัก, ระวัง third-space loss จากหัตถการ thoracotomy",
+        "blood": "เตรียม PRC ปริมาณน้อยตามน้ำหนัก",
+        "transfusion": "Weight-based threshold"
+      },
+      "special_consideration": {
+        "fistula_ventilation": "หัวใจสำคัญของเคสนี้คือการหลีกเลี่ยงการ ventilate gas ผ่าน fistula เข้ากระเพาะซึ่งทำให้ gastric distension กด diaphragm และแย่ ventilation มากขึ้น",
+        "one_lung_ventilation_thoracotomy": "หัตถการมักทำผ่าน right thoracotomy - อาจต้องยุบปอดข้างขวาบางส่วนระหว่างผ่าตัด",
+        "airway_positioning": "ตำแหน่ง ETT ต้องอยู่ระหว่าง fistula และ carina อย่างแม่นยำ - fiberoptic bronchoscopy ช่วยยืนยัน",
+        "post_ligation_ventilation": "หลังผูก fistula สำเร็จแล้วสามารถ ventilate ด้วย positive pressure ตามปกติได้อย่างปลอดภัย"
+      },
+      "complications": [
+        "Gastric distension/perforation จาก positive pressure ก่อน fistula ligation",
+        "Hypoxia จากตำแหน่ง ETT ไม่เหมาะสม",
+        "Anastomotic leak",
+        "Recurrent fistula",
+        "Tracheomalacia"
+      ],
+      "postoperative_care": {
+        "icu": "NICU with ventilator support ต่อเนื่อง (มักไม่ extubate ทันที)",
+        "extubation": "ล่าช้าโดยทั่วไป - รอ anastomosis healing และประเมิน readiness อย่างละเอียด",
+        "pain": "Multimodal analgesia + อาจพิจารณา epidural/caudal ในบางสถาบัน",
+        "complication_watch": [
+          "Anastomotic leak signs",
+          "Respiratory status",
+          "Tracheomalacia (stridor)"
+        ]
+      },
+      "clinical_pearls": [
+        "หลีกเลี่ยง bag-mask ventilation แรงดันสูงก่อน intubation เนื่องจากดัน air เข้า fistula ทำให้ gastric distension รุนแรงและกด diaphragm",
+        "การคง spontaneous ventilation ระหว่าง induction เป็นกลยุทธ์สำคัญในการลดความเสี่ยงจากการ ventilate ผ่าน fistula",
+        "Fiberoptic bronchoscopy ก่อนหรือระหว่าง intubation ช่วยระบุตำแหน่ง fistula และวางตำแหน่ง ETT ได้แม่นยำกว่าการอาศัย landmark เพียงอย่างเดียว"
+      ],
+      "references": [
+        "APA Guideline for Pediatric Anesthesia",
+        "British Association of Paediatric Surgeons Guideline",
+        "Congenital Diaphragmatic Hernia/TEF Anesthesia Review"
+      ]
+    },
+    {
+      "id": "cdh",
+      "name": "CDH (Congenital Diaphragmatic Hernia) Repair",
+      "overview": {
+        "definition": "การผ่าตัดซ่อม diaphragmatic defect ที่ทำให้อวัยวะในช่องท้องเลื่อนเข้าช่องอก ส่งผลต่อ pulmonary hypoplasia และ pulmonary hypertension อย่างมีนัยสำคัญ",
+        "indications": [
+          "CDH ที่ stabilize แล้ว (ปัจจุบันมักผ่าตัดหลัง stabilize คลอด ไม่ใช่ immediate emergency)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "ABG (pre/post ductal), electrolytes, glucose, coag"
+        ],
+        "imaging": [
+          "CXR, echocardiogram (ประเมิน pulmonary hypertension, cardiac function, associated cardiac anomaly)"
+        ],
+        "consult": [
+          "Neonatology/NICU team, pediatric surgery, cardiology - จำเป็นต้อง stabilize ก่อนผ่าตัดเสมอ"
+        ],
+        "optimization": [
+          "Stabilize pulmonary hypertension และ oxygenation ก่อนผ่าตัด (ไม่ใช่ immediate surgical emergency)",
+          "อาจต้องใช้ HFOV, iNO, หรือ ECMO ก่อนผ่าตัดในรายรุนแรง",
+          "ผ่าตัดเมื่อ hemodynamically และ respiratory stable"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2 pre-ductal AND post-ductal (สำคัญมาก - เปรียบเทียบ differential เพื่อประเมิน right-to-left shunt), EtCO2, temperature"
+        ],
+        "ibp": "Arterial line จำเป็น - มักใช้ post-ductal umbilical artery line",
+        "cvp": "แนะนำ - umbilical venous line มักใช้",
+        "pa_catheter": "ไม่ใช้",
+        "tee": "พิจารณาประเมิน RV function/pulmonary pressure",
+        "bis": "ไม่นิยมใช้ในทารก",
+        "nirs": "แนะนำ - cerebral และ somatic NIRS ช่วยประเมิน perfusion"
+      },
+      "airway": {
+        "plan": "หลีกเลี่ยง bag-mask ventilation ก่อน intubation เด็ดขาด (ป้องกัน gas เข้าสู่ herniated bowel ทำให้ compression ปอดมากขึ้น) - intubate ทันทีตั้งแต่แรกเกิดหากทราบ diagnosis",
+        "equipment": [
+          "ETT ขนาดเหมาะสม",
+          "NG tube ระบาย gastric decompression ต่อเนื่อง"
+        ],
+        "backup": "ECMO team standby ในรายรุนแรง"
+      },
+      "induction": {
+        "drug": "หากมาผ่าตัดหลัง stabilize แล้วมักมี ETT/ventilator อยู่แล้ว - IV induction ต่อเนื่องจาก sedation เดิม",
+        "dose": "Weight-based, ระมัดระวัง myocardial depression ในผู้ป่วยที่มี pulmonary hypertension/RV dysfunction",
+        "hemodynamic_goal": "หลีกเลี่ยง factors ที่เพิ่ม pulmonary vascular resistance (hypoxia, hypercarbia, acidosis, hypothermia, pain, agitation)"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile ต่ำหรือ TIVA - ระมัดระวัง myocardial/hemodynamic depression",
+        "muscle_relaxant": "Maintain paralysis เพื่อลด oxygen consumption และเอื้อต่อ ventilator synchrony",
+        "analgesia": "Opioid infusion - ลด stress response ที่กระตุ้น pulmonary vasoconstriction",
+        "temperature": "Active warming เข้มงวด - hypothermia เพิ่ม PVR"
+      },
+      "ventilation": {
+        "tv": "Gentle ventilation (permissive hypercapnia strategy) - 4-6 mL/kg, หลีกเลี่ยง high peak pressure ที่ทำร้าย hypoplastic lung",
+        "peep": "ต่ำ-ปานกลาง ปรับตาม lung compliance ที่จำกัดมาก",
+        "fio2": "ปรับตาม pre/post-ductal SpO2 target - มักยอมรับ permissive hypercapnia/mild hypoxemia เพื่อลด lung injury",
+        "recruitment": "หลีกเลี่ยง aggressive recruitment - lung hypoplastic เปราะบางต่อ barotrauma"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative fluid - ระวัง fluid overload ที่แย่ pulmonary function",
+        "blood": "เตรียม PRC ตามน้ำหนัก",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "pulmonary_hypertension": "หัวใจสำคัญที่สุดของเคส CDH - หลีกเลี่ยงทุกปัจจัยที่เพิ่ม PVR: hypoxia, hypercarbia, acidosis, hypothermia, pain/stress, high airway pressure",
+        "pre_post_ductal_spo2": "ตรวจติดตาม pre-ductal (right hand) และ post-ductal (lower extremity) SpO2 พร้อมกันเสมอเพื่อประเมนระดับ right-to-left shunt ผ่าน PDA",
+        "gentle_ventilation": "Permissive hypercapnia strategy เป็นมาตรฐานปัจจุบัน - ยอมรับ PaCO2 สูงกว่าปกติเพื่อหลีกเลี่ยง lung injury จาก aggressive ventilation",
+        "inotrope_pulm_vasodilator": "อาจต้องใช้ inhaled nitric oxide, milrinone, หรือ inotrope สำหรับจัดการ pulmonary hypertension/RV dysfunction ระหว่างและหลังผ่าตัด"
+      },
+      "complications": [
+        "Pulmonary hypertensive crisis",
+        "Right heart failure",
+        "Pneumothorax (จาก hypoplastic contralateral lung)",
+        "Hypoxemia รุนแรง",
+        "Abdominal compartment syndrome หลังปิด defect ขนาดใหญ่"
+      ],
+      "postoperative_care": {
+        "icu": "NICU with ventilator support ต่อเนื่องเสมอ มักต้องใช้เวลานาน",
+        "extubation": "ล่าช้ามาก - รอ pulmonary status คงที่และ PVR ลดลง",
+        "pain": "Opioid infusion ต่อเนื่อง",
+        "complication_watch": [
+          "Pulmonary hypertensive crisis signs",
+          "Pneumothorax",
+          "Right heart failure"
+        ]
+      },
+      "clinical_pearls": [
+        "ห้าม bag-mask ventilation ในทารก CDH ที่ทราบ diagnosis ตั้งแต่แรกเกิด - gas เข้า herniated bowel ทำให้ pulmonary compression และ hemodynamic collapse ได้",
+        "Pre-ductal และ post-ductal SpO2 gap ที่กว้างบ่งชี้ significant right-to-left shunt ผ่าน PDA จาก elevated PVR - เป็น marker สำคัญของความรุนแรง",
+        "ปัจจุบัน CDH ไม่ใช่ surgical emergency อีกต่อไป - หลักการคือ stabilize ก่อนผ่าตัดเสมอ ('physiology before anatomy')"
+      ],
+      "references": [
+        "CDH EURO Consortium Consensus Guideline",
+        "AAP Clinical Report on CDH Management",
+        "CDH Study Group Guideline"
+      ]
+    },
+    {
+      "id": "nec",
+      "name": "NEC (Necrotizing Enterocolitis) Surgery",
+      "overview": {
+        "definition": "การผ่าตัดในทารก (ส่วนใหญ่คลอดก่อนกำหนด) ที่เป็น necrotizing enterocolitis รุนแรง เช่น bowel perforation หรือ extensive necrosis ที่ไม่ตอบสนองต่อการรักษาแบบประคับประคอง",
+        "indications": [
+          "Bowel perforation (pneumoperitoneum)",
+          "Clinical deterioration ไม่ตอบสนองต่อ medical management",
+          "Fixed dilated bowel loop persistent"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag (มักมี coagulopathy/thrombocytopenia จาก sepsis), electrolytes, glucose, lactate, blood culture"
+        ],
+        "imaging": [
+          "Abdominal X-ray (pneumatosis intestinalis, free air, portal venous gas)"
+        ],
+        "consult": [
+          "Neonatology/NICU, pediatric surgery - มักเป็นสถานการณ์วิกฤตที่ต้องผ่าตัดฉุกเฉิน"
+        ],
+        "optimization": [
+          "Resuscitate ตาม sepsis protocol ก่อนผ่าตัดเท่าที่เวลาเอื้ออำนวย - correct coagulopathy, volume resuscitation",
+          "Broad-spectrum antibiotic ตาม protocol"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line จำเป็น - ผู้ป่วยมักไม่เสถียรจาก sepsis/shock",
+        "cvp": "แนะนำ - umbilical venous line มักมีอยู่แล้ว",
+        "pa_catheter": "ไม่ใช้",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "ไม่นิยมใช้ในทารก",
+        "nirs": "พิจารณาในรายวิกฤต"
+      },
+      "airway": {
+        "plan": "ทารกมักมี ETT/ventilator อยู่แล้วจากภาวะ critically ill - RSI หากยังไม่ intubate เนื่องจาก distended abdomen เพิ่ม aspiration risk",
+        "equipment": [
+          "ETT ขนาดเหมาะสม",
+          "NG tube decompression"
+        ],
+        "backup": "Resuscitation cart พร้อม"
+      },
+      "induction": {
+        "drug": "Ketamine หรือ etomidate พิจารณาในผู้ป่วย hemodynamically unstable จาก septic shock, fentanyl",
+        "dose": "ลด dose อย่างมากในผู้ป่วย shock, titrate ระมัดระวังที่สุด",
+        "hemodynamic_goal": "หลีกเลี่ยง further cardiovascular collapse - ผู้ป่วยกลุ่มนี้มักมี minimal cardiovascular reserve จาก sepsis/shock"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA/low-dose volatile ระมัดระวัง myocardial depression",
+        "muscle_relaxant": "ตามความจำเป็น",
+        "analgesia": "Opioid infusion ระมัดระวัง dose ในผู้ป่วย unstable",
+        "temperature": "Active warming เข้มงวดที่สุด - ทารกกลุ่มนี้มักคลอดก่อนกำหนดและมี sepsis ร่วมด้วย เสี่ยง hypothermia รุนแรง"
+      },
+      "ventilation": {
+        "tv": "4-6 mL/kg lung protective",
+        "peep": "5 cmH2O ปรับตาม abdominal distension effect ต่อ compliance",
+        "fio2": "titrate ตามความจำเป็นซึ่งมักสูงจาก sepsis-related lung injury",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Aggressive volume resuscitation ตาม septic shock protocol - third-space loss มหาศาลจาก capillary leak และ bowel edema",
+        "blood": "เตรียม PRC, FFP, platelet จำนวนมาก - coagulopathy พบบ่อยมาก",
+        "transfusion": "Aggressive replacement ตาม coagulation status และ ongoing blood loss"
+      },
+      "special_consideration": {
+        "fluid": "Third-space fluid loss มหาศาลจาก capillary leak syndrome - ต้องการ volume resuscitation จำนวนมากกว่า maintenance ปกติหลายเท่า",
+        "temperature": "กลุ่มเสี่ยงสูงสุดต่อ hypothermia (prematurity + sepsis + open abdomen) - ใช้ทุกมาตรการ warming ที่มี",
+        "blood": "Coagulopathy จาก sepsis/DIC พบบ่อย - monitor coag ใกล้ชิดและ replace ตามความจำเป็น",
+        "glucose": "Sepsis ทำให้ glucose homeostasis ผิดปกติทั้ง hyper/hypoglycemia - monitor บ่อย",
+        "acidosis_management": "Metabolic acidosis จาก bowel ischemia/sepsis พบบ่อย - correct ตาม ABG"
+      },
+      "complications": [
+        "Septic shock progression",
+        "DIC/coagulopathy",
+        "Hypothermia รุนแรง",
+        "Massive fluid shift/third-spacing",
+        "Short bowel syndrome (จาก extensive resection)",
+        "Postoperative sepsis"
+      ],
+      "postoperative_care": {
+        "icu": "NICU with intensive support ต่อเนื่อง",
+        "extubation": "ล่าช้า - ผู้ป่วยกลุ่มนี้มักต้อง ventilator support ต่อเนื่องหลังผ่าตัด",
+        "pain": "Opioid infusion ต่อเนื่อง",
+        "complication_watch": [
+          "Ongoing sepsis signs",
+          "Coagulopathy",
+          "Abdominal compartment syndrome",
+          "Recurrent NEC"
+        ]
+      },
+      "clinical_pearls": [
+        "ผู้ป่วย NEC surgery มักเป็น 'triple hit' - prematurity + sepsis + major abdominal surgery ทำให้เป็นกลุ่มเสี่ยงสูงสุดในเวชปฏิบัติ neonatal anesthesia",
+        "Third-space fluid loss จาก capillary leak มหาศาล - ต้องเตรียมพร้อม aggressive volume resuscitation มากกว่าที่คาดการณ์จาก maintenance calculation ปกติ",
+        "Ketamine เป็นทางเลือกที่ดีสำหรับ induction ในผู้ป่วย septic shock เนื่องจากมี sympathomimetic effect ช่วยรักษา hemodynamic stability"
+      ],
+      "references": [
+        "AAP Clinical Report on NEC",
+        "Surviving Sepsis Campaign Pediatric Guideline",
+        "APA Guideline for Neonatal Emergency Surgery"
+      ]
+    },
+    {
+      "id": "pyloric_stenosis",
+      "name": "Pyloric Stenosis Repair (Pyloromyotomy)",
+      "overview": {
+        "definition": "การผ่าตัดตัดกล้ามเนื้อ pylorus ที่หนาตัวผิดปกติในทารกที่มี hypertrophic pyloric stenosis ทำให้เกิด non-bilious projectile vomiting",
+        "indications": [
+          "Confirmed hypertrophic pyloric stenosis (ultrasound diagnosis) - เป็น medical emergency สำหรับ electrolyte correction แต่ surgical urgency ไม่ใช่ immediate (ต้อง correct metabolic status ก่อนเสมอ)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "Electrolytes (สำคัญที่สุด - มักพบ hypochloremic hypokalemic metabolic alkalosis), venous/capillary blood gas, glucose"
+        ],
+        "imaging": [
+          "Ultrasound abdomen (ยืนยัน diagnosis - pyloric muscle thickness/length)"
+        ],
+        "consult": [
+          "Pediatric surgery, neonatology หากทารกอายุน้อยมาก"
+        ],
+        "optimization": [
+          "หัวใจสำคัญที่สุด: ต้อง correct metabolic alkalosis และ electrolyte imbalance ให้สมบูรณ์ก่อนผ่าตัดเสมอ - นี่ไม่ใช่ surgical emergency แต่เป็น medical stabilization emergency ก่อน",
+          "เกณฑ์ความพร้อมมักคือ serum HCO3 <30 mEq/L, Cl >100 mEq/L, adequate hydration"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "ไม่จำเป็นทั่วไปในหัตถการสั้นและไม่ซับซ้อน",
+        "cvp": "ไม่จำเป็น",
+        "pa_catheter": "ไม่ใช้",
+        "tee": "ไม่จำเป็น",
+        "bis": "ไม่จำเป็น",
+        "nirs": "ไม่จำเป็น"
+      },
+      "airway": {
+        "plan": "Full stomach precaution เสมอ - RSI หรือ awake/inhalation induction with cricoid pressure ตามเทคนิคที่สถาบันเลือก แม้จะ NG suction ก่อนผ่าตัดแล้วก็ตาม เนื่องจากมักมี residual gastric content",
+        "equipment": [
+          "Suction พร้อมใช้งานทันที",
+          "ETT ขนาดเหมาะสม"
+        ],
+        "backup": "Standard pediatric difficult airway backup"
+      },
+      "induction": {
+        "drug": "Empty stomach ด้วย orogastric tube suction ในหลายท่า (supine, lateral, prone) ก่อน induction เสมอ, RSI ด้วย propofol/succinylcholine หรือ rocuronium ตามเทคนิคสถาบัน",
+        "dose": "Weight-based dosing",
+        "hemodynamic_goal": "เสถียรระหว่าง induction - ผู้ป่วยมักมี mild dehydration ที่ต้อง correct ก่อนแล้ว"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile agent มาตรฐาน - หัตถการสั้น (30-45 นาที)",
+        "muscle_relaxant": "Short-acting agent เหมาะสมกับหัตถการสั้น",
+        "analgesia": "Local infiltration ที่แผล + acetaminophen, หลีกเลี่ยง opioid มากเกินไปเนื่องจากทารกกลุ่มนี้ไวต่อ respiratory depression และมักมี residual metabolic alkalosis ที่กด respiratory drive อยู่แล้ว",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg",
+        "peep": "3-5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "IV fluid ต่อเนื่องระหว่างผ่าตัด (มักเป็น D5 with electrolyte ตามที่ correct ไว้ก่อนผ่าตัด)",
+        "blood": "ไม่จำเป็นในหัตถการมาตรฐาน",
+        "transfusion": "ไม่จำเป็น"
+      },
+      "special_consideration": {
+        "metabolic_correction": "ต้อง confirm ว่า metabolic alkalosis ได้รับการ correct อย่างเพียงพอก่อนผ่าตัดเสมอ - hypochloremic hypokalemic alkalosis ที่ไม่ correct เพิ่มความเสี่ยง postoperative apnea อย่างมาก",
+        "full_stomach": "แม้ suction gastric content แล้วยังถือว่าเป็น full stomach เสมอเนื่องจาก pyloric obstruction ทำให้ gastric emptying ผิดปกติ",
+        "postop_apnea_risk_specific": "Metabolic alkalosis ที่เหลืออยู่กด central respiratory drive (CSF alkalosis) ทำให้เสี่ยง postoperative apnea แม้เป็น term infant",
+        "hypoglycemia_risk": "ทารกอาจมี ketotic hypoglycemia จาก prolonged vomiting/poor intake ก่อนผ่าตัด - monitor glucose"
+      },
+      "complications": [
+        "Postoperative apnea (จาก residual metabolic alkalosis)",
+        "Incomplete pyloromyotomy/mucosal perforation",
+        "Aspiration (หากไม่ empty stomach เพียงพอ)",
+        "Hypoglycemia"
+      ],
+      "postoperative_care": {
+        "icu": "ไม่จำเป็นส่วนใหญ่ - PACU monitoring มาตรฐานเพียงพอหาก metabolic status correct ดีแล้ว",
+        "extubation": "ในห้องผ่าตัดเมื่อตื่นเต็มที่และ reflex กลับมาสมบูรณ์",
+        "pain": "Multimodal - local infiltration + acetaminophen เพียงพอส่วนใหญ่",
+        "complication_watch": [
+          "Postoperative apnea (โดยเฉพาะหาก metabolic correction ไม่สมบูรณ์)",
+          "Vomiting/feeding tolerance"
+        ]
+      },
+      "clinical_pearls": [
+        "กฎทองของ pyloric stenosis: 'ไม่ผ่าตัดจนกว่า metabolic alkalosis จะ correct แล้ว' - นี่คือ medical emergency ก่อนที่จะเป็น surgical emergency",
+        "แม้ suction NG แล้วยังต้องถือว่าเป็น full stomach เสมอเนื่องจากกลไก pyloric obstruction",
+        "Residual metabolic alkalosis เป็นสาเหตุสำคัญของ postoperative apnea ในกลุ่มนี้ - การ correct electrolyte ให้สมบูรณ์ก่อนผ่าตัดจึงสำคัญมากกว่าความเร่งด่วนทาง surgical"
+      ],
+      "references": [
+        "APA Guideline for Pediatric Anesthesia",
+        "AAP Clinical Report on Pyloric Stenosis",
+        "SPANZA Guideline"
+      ]
+    },
+    {
+      "id": "pediatric_cardiac_surgery",
+      "name": "Pediatric Cardiac Surgery (General Principles)",
+      "overview": {
+        "definition": "หลักการดูแลวิสัญญีทั่วไปสำหรับการผ่าตัดหัวใจในเด็ก ครอบคลุมทั้ง simple lesion (ASD/VSD - ดูรายละเอียดในหมวด Cardiac Anesthesia) และ complex lesion (single ventricle physiology, transposition)",
+        "indications": [
+          "Congenital heart disease ที่ต้องผ่าตัดแก้ไข ทั้ง palliative และ corrective procedure"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC (polycythemia ในผู้ป่วย cyanotic), coag, type & crossmatch, electrolytes"
+        ],
+        "imaging": [
+          "Echocardiogram (anatomy, function, shunt), cardiac catheterization/MRI ในรายซับซ้อน"
+        ],
+        "consult": [
+          "Pediatric cardiology, cardiac surgery multidisciplinary team"
+        ],
+        "optimization": [
+          "ทำความเข้าใจ physiology เฉพาะของ lesion นั้นๆ อย่างละเอียด (single ventricle, shunt-dependent circulation)",
+          "Optimize CHF medication, nutrition status ก่อนผ่าตัด"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line ก่อน induction เกือบทุกราย",
+        "cvp": "Central line - พิจารณาตำแหน่งตาม anatomy",
+        "pa_catheter": "ไม่เหมาะในผู้ป่วย single ventricle/Fontan physiology",
+        "tee": "Essential ในหัตถการซับซ้อนส่วนใหญ่ - epicardial echo เป็นทางเลือกในทารกตัวเล็กที่ TEE probe ไม่พอดี",
+        "bis": "พิจารณาในเด็กโต",
+        "nirs": "แนะนำอย่างยิ่งโดยเฉพาะใน cyanotic heart disease และ single ventricle surgery"
+      },
+      "airway": {
+        "plan": "ปรับ ETT ขนาดตามอายุ/น้ำหนัก",
+        "equipment": [
+          "ETT ขนาดเหมาะสม",
+          "Pediatric airway equipment ครบ"
+        ],
+        "backup": "Difficult airway cart ขนาดเด็ก"
+      },
+      "induction": {
+        "drug": "ปรับตาม physiology เฉพาะ - cyanotic lesion อาจใช้ ketamine เนื่องจากไม่กระทบ PVR/SVR balance มาก",
+        "dose": "Weight-based dosing อย่างเคร่งครัด",
+        "hemodynamic_goal": "เข้าใจและรักษาสมดุล Qp:Qs ที่เหมาะสมกับ lesion เฉพาะราย - บาง lesion ต้องการ balance PVR:SVR อย่างระมัดระวัง"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA ตาม hemodynamic tolerance",
+        "muscle_relaxant": "Weight-based dosing",
+        "analgesia": "Opioid-based เป็นหลักในทารกเล็ก (high-dose opioid technique ลด stress response)",
+        "temperature": "Active warming (ยกเว้นช่วง CPB ที่ต้องการ cooling ตามแผน)"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg ปรับตาม lesion-specific physiology",
+        "peep": "ปรับตาม lesion - ต่ำใน single ventricle/Fontan เพื่อไม่ขัดขวาง pulmonary blood flow",
+        "fio2": "ปรับระมัดระวังมาก - บาง lesion (single ventricle ก่อน stage surgery) ต้องการ SpO2 target ต่ำกว่าปกติเพื่อรักษาสมดุล Qp:Qs ไม่ใช่สูงสุดเสมอ",
+        "recruitment": "ระมัดระวังผลต่อ pulmonary vascular resistance"
+      },
+      "fluid_management": {
+        "goal_directed": "ปรับตาม lesion-specific requirement",
+        "blood": "เตรียม irradiated/CMV-negative blood product ตาม institution สำหรับเด็ก",
+        "transfusion": "Weight-based threshold"
+      },
+      "special_consideration": {
+        "cpb": "CPB parameter (flow, pressure) ปรับตามน้ำหนักและอายุเด็กอย่างเคร่งครัด",
+        "heparin": "300-400 unit/kg ปรับตามน้ำหนัก",
+        "act": "Monitor ตลอด CPB",
+        "tee": "ประเมิน anatomy และผลการซ่อมอย่างละเอียด - epicardial echo เป็นทางเลือกในทารกเล็ก",
+        "shunt_dependent_lesion": "ผู้ป่วยที่มี ductal-dependent circulation ต้องได้รับ prostaglandin E1 ต่อเนื่องจนถึงห้องผ่าตัดเพื่อคง PDA patency"
+      },
+      "complications": [
+        "Low cardiac output syndrome",
+        "Arrhythmia",
+        "Bleeding/coagulopathy",
+        "Pulmonary hypertensive crisis",
+        "Cyanotic spell (ใน tetralogy of Fallot-type lesion)"
+      ],
+      "postoperative_care": {
+        "icu": "Pediatric cardiac ICU with lesion-specific monitoring protocol",
+        "extubation": "ตาม lesion-specific readiness criteria",
+        "pain": "Multimodal analgesia ปรับตามอายุ/น้ำหนัก",
+        "complication_watch": [
+          "Cardiac output adequacy",
+          "Arrhythmia",
+          "Bleeding",
+          "Lesion-specific complication"
+        ]
+      },
+      "clinical_pearls": [
+        "ทำความเข้าใจ physiology เฉพาะของแต่ละ lesion เป็นสิ่งสำคัญที่สุด - การจัดการที่เหมาะกับ lesion หนึ่งอาจเป็นอันตรายกับอีก lesion หนึ่ง (เช่น single ventricle ต้องการ balance PVR:SVR ตรงข้ามกับ biventricular repair)",
+        "ในผู้ป่วย ductal-dependent lesion ต้องให้ prostaglandin E1 ต่อเนื่องจนถึงห้องผ่าตัดเพื่อป้องกัน ductal closure ที่อาจถึงชีวิต",
+        "SpO2 target ในผู้ป่วย single ventricle physiology มักตั้งไว้ต่ำกว่าปกติ (~75-85%) เพื่อรักษาสมดุล Qp:Qs ไม่ใช่มุ่งเป้า saturation สูงสุด"
+      ],
+      "references": [
+        "Congenital Cardiac Anesthesia Society Guideline",
+        "AHA Scientific Statement on Pediatric Cardiac Anesthesia",
+        "ACC/AHA Guideline for Congenital Heart Disease"
+      ]
+    }
+  ]
+}

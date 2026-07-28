@@ -1,0 +1,731 @@
+{
+  "category": "Neuroanesthesia",
+  "category_th": "วิสัญญีสำหรับศัลยกรรมประสาท",
+  "description": "Evidence-based guidance for safe anesthesia practice in neurosurgical and neuro-interventional procedures.",
+  "disclaimer": "เนื้อหานี้จัดทำเพื่อการศึกษาและอ้างอิงทางคลินิก ไม่ทดแทนแนวปฏิบัติของสถาบัน (institutional protocol) หรือดุลยพินิจทางคลินิกของผู้ให้การระงับความรู้สึก ควรปรับใช้ตามบริบทผู้ป่วยแต่ละรายและทบทวนตาม guideline ฉบับล่าสุดเสมอ",
+  "procedures": [
+    {
+      "id": "craniotomy",
+      "name": "Craniotomy (Supratentorial Tumor)",
+      "overview": {
+        "definition": "การผ่าตัดเปิดกะโหลกศีรษะเพื่อเข้าถึงเนื้อสมองสำหรับตัดเนื้องอกหรือพยาธิสภาพในสมอง",
+        "indications": [
+          "Brain tumor (primary/metastatic)",
+          "Elevated ICP requiring decompression/resection",
+          "Symptomatic mass lesion"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, electrolytes, glucose",
+          "Type & screen"
+        ],
+        "imaging": [
+          "CT/MRI brain (mass effect, midline shift, edema)",
+          "CT angiogram หากใกล้ major vessel"
+        ],
+        "consult": [
+          "Neurology/neurosurgery",
+          "Endocrine หากมี pituitary involvement"
+        ],
+        "optimization": [
+          "ประเมินระดับ ICP และ neurological status (GCS)",
+          "Control seizure ด้วย anticonvulsant หากมีข้อบ่งชี้",
+          "Optimize steroid สำหรับลด peritumoral edema"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Urine output (สำคัญเมื่อใช้ mannitol/hypertonic saline)"
+        ],
+        "ibp": "Arterial line ก่อน induction - จำเป็นสำหรับ beat-to-beat BP monitoring และ ABG (PaCO2 สำคัญมาก)",
+        "cvp": "พิจารณาในหัตถการที่มีความเสี่ยง air embolism (sitting position) หรือ major blood loss",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็นทั่วไป ยกเว้นสงสัย air embolism",
+        "bis": "แนะนำเพื่อ titrate anesthetic depth และช่วยประเมิน burst suppression",
+        "nirs": "พิจารณาในบางสถาบัน"
+      },
+      "airway": {
+        "plan": "Smooth induction/intubation หลีกเลี่ยง coughing/straining ที่เพิ่ม ICP",
+        "equipment": [
+          "Video laryngoscope",
+          "Armored/reinforced ETT ป้องกันหักงอ"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Propofol, opioid (fentanyl/remifentanil), non-depolarizing muscle relaxant, lidocaine IV เพื่อลด response ต่อ laryngoscopy",
+        "dose": "Propofol titrate ช้าๆ, Fentanyl 2-5 mcg/kg หรือ remifentanil infusion",
+        "hemodynamic_goal": "หลีกเลี่ยง hypertension/tachycardia ขณะ laryngoscopy (เพิ่ม ICP) และหลีกเลี่ยง hypotension ที่ลด CPP"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA (propofol-remifentanil) มักนิยมเนื่องจากรบกวน cerebral autoregulation น้อยกว่า volatile ขนาดสูง; volatile <1 MAC ยอมรับได้",
+        "muscle_relaxant": "Non-depolarizing infusion เพื่อป้องกันการเคลื่อนไหว/ไอ",
+        "analgesia": "Opioid-based, scalp block ช่วยลด hemodynamic response ต่อ pin insertion",
+        "temperature": "Active warming ยกเว้นกรณีต้องการ mild hypothermia เพื่อ neuroprotection"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "Low PEEP (0-5 cmH2O) เพื่อไม่เพิ่ม intracranial venous pressure",
+        "fio2": "titrate SpO2 ≥95%",
+        "recruitment": "หลีกเลี่ยงในช่วงที่กะโหลกเปิดอยู่ (เพิ่มความเสี่ยง brain bulging)"
+      },
+      "fluid_management": {
+        "goal_directed": "Isotonic fluid (normal saline) เท่านั้น หลีกเลี่ยง dextrose/hypotonic solution ที่เพิ่ม cerebral edema",
+        "blood": "เตรียมตาม estimated blood loss",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "icp": "เป้าหมาย ICP <20-22 mmHg ควบคุมผ่านการจัด position, ventilation, osmotherapy",
+        "cpp": "รักษา cerebral perfusion pressure (CPP = MAP - ICP) ให้ ≥60 mmHg",
+        "brain_relaxation": "จัดหัวสูง 15-30 องศา, หลีกเลี่ยง jugular vein compression, PaCO2 35 mmHg, osmotherapy ตามความจำเป็น",
+        "hyperventilation": "Mild hyperventilation (PaCO2 30-35 mmHg) ใช้ชั่วคราวสำหรับ acute brain swelling เท่านั้น ไม่ใช้ prophylactic prolonged hyperventilation",
+        "mannitol": "0.25-1 g/kg IV เพื่อลด brain bulk - monitor serum osmolality (<320 mOsm/L) และ electrolyte",
+        "hypertonic_saline": "ทางเลือกแทน/เสริม mannitol โดยเฉพาะในผู้ป่วย hypovolemic หรือ renal impairment - monitor serum sodium"
+      },
+      "complications": [
+        "Elevated ICP/brain herniation",
+        "Venous air embolism (โดยเฉพาะ sitting/park-bench position)",
+        "Massive hemorrhage",
+        "Seizure",
+        "Postoperative hematoma",
+        "Cranial nerve injury"
+      ],
+      "postoperative_care": {
+        "icu": "ICU/neuro-ICU monitoring ใกล้ชิดสำหรับ neurological status",
+        "extubation": "Smooth extubation หลีกเลี่ยง coughing/bucking - แนะนำให้ neurologically assess ได้เร็วหลังผ่าตัด",
+        "pain": "Multimodal analgesia - หลีกเลี่ยง sedation มากเกินไปที่บดบัง neurological assessment",
+        "complication_watch": [
+          "GCS/pupil changes",
+          "Postoperative hematoma signs",
+          "Seizure"
+        ]
+      },
+      "clinical_pearls": [
+        "Smooth emergence สำคัญมาก - coughing/straining ระหว่าง extubation เพิ่ม ICP และเสี่ยง postoperative hematoma",
+        "TIVA เป็นที่นิยมมากกว่า volatile agent เนื่องจากรบกวน cerebral autoregulation น้อยกว่าและช่วยให้ early neurological assessment ทำได้ดีกว่า",
+        "Mannitol และ hypertonic saline มีประสิทธิภาพใกล้เคียงกันในการลด brain bulk แต่ hypertonic saline อาจดีกว่าในผู้ป่วย hypovolemic"
+      ],
+      "references": [
+        "SNACC Guideline",
+        "Brain Trauma Foundation Guideline",
+        "ESA Neuroanesthesia Guideline"
+      ]
+    },
+    {
+      "id": "aneurysm",
+      "name": "Cerebral Aneurysm Clipping",
+      "overview": {
+        "definition": "การผ่าตัดหนีบ (clip) หลอดเลือดสมองโป่งพองเพื่อป้องกันการแตกซ้ำ อาจเป็น elective หรือ emergency หลัง subarachnoid hemorrhage (SAH)",
+        "indications": [
+          "Unruptured aneurysm ขนาดใหญ่/มีความเสี่ยงแตก",
+          "Ruptured aneurysm with SAH (ต้องผ่าตัดเร่งด่วน)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, electrolytes (SIADH/cerebral salt wasting พบบ่อยหลัง SAH)",
+          "Type & crossmatch"
+        ],
+        "imaging": [
+          "CT/CTA brain, cerebral angiogram",
+          "ECG (มักพบ abnormality หลัง SAH จาก catecholamine surge)"
+        ],
+        "consult": [
+          "Neurosurgery, neurology - ประเมิน Hunt-Hess grade, Fisher grade"
+        ],
+        "optimization": [
+          "Control BP ก่อนผ่าตัด (โดยเฉพาะก่อน clip aneurysm เพื่อลดความเสี่ยง rebleeding)",
+          "Nimodipine สำหรับป้องกัน vasospasm ตาม protocol"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line ก่อน induction เสมอ - จำเป็นสำหรับควบคุม BP อย่างเข้มงวด",
+        "cvp": "แนะนำ - ช่วย monitor volume status และให้ vasoactive drug",
+        "pa_catheter": "พิจารณาในรายที่ต้องทำ hypervolemic therapy สำหรับ vasospasm",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "แนะนำโดยเฉพาะเมื่อใช้ burst suppression สำหรับ temporary clipping",
+        "nirs": "พิจารณาในบางสถาบัน"
+      },
+      "airway": {
+        "plan": "Smooth induction หลีกเลี่ยง hypertension ที่เพิ่มความเสี่ยง rebleeding",
+        "equipment": [
+          "Video laryngoscope",
+          "Armored ETT"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Propofol titrate ช้าๆ, high-dose opioid, lidocaine, non-depolarizing relaxant, esmolol/labetalol พร้อมใช้",
+        "dose": "ปรับเพื่อ blunt hemodynamic response ต่อ laryngoscopy อย่างเต็มที่",
+        "hemodynamic_goal": "ควบคุม BP อย่างเข้มงวดตลอด induction - หลีกเลี่ยง hypertensive spike (เสี่ยง rebleeding) และ hypotension (เสี่ยง cerebral ischemia)"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA มักเลือกเพื่อควบคุม hemodynamic ได้แม่นยำและเอื้อต่อ burst suppression หากจำเป็น",
+        "muscle_relaxant": "Non-depolarizing infusion",
+        "analgesia": "Opioid-based, scalp block",
+        "temperature": "Mild hypothermia (34-35°C) อาจพิจารณาในบางสถาบันสำหรับ neuroprotection แม้หลักฐานยังไม่ชัดเจน"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "Low PEEP",
+        "fio2": "titrate",
+        "recruitment": "หลีกเลี่ยงระหว่างกะโหลกเปิด"
+      },
+      "fluid_management": {
+        "goal_directed": "Euvolemia ถึง mild hypervolemia (โดยเฉพาะหลัง SAH เพื่อป้องกัน vasospasm-related ischemia)",
+        "blood": "เตรียม PRC พร้อมเสมอสำหรับ intraoperative rupture",
+        "transfusion": "ตาม estimated blood loss"
+      },
+      "special_consideration": {
+        "icp": "ควบคุม ICP ด้วยมาตรการมาตรฐาน",
+        "cpp": "รักษา CPP ให้เพียงพอ โดยเฉพาะช่วง temporary clipping ที่ลด regional perfusion",
+        "temporary_clipping": "Burst suppression ด้วย propofol/thiopental ± induced hypertension ระหว่าง temporary clipping เพื่อลด ischemic injury",
+        "intraoperative_rupture": "เตรียมพร้อมรับมือ intraoperative aneurysm rupture - induced hypotension ชั่วคราวตามคำขอศัลยแพทย์, เตรียมเลือดพร้อมใช้ทันที",
+        "brain_relaxation": "จัด position ศีรษะสูง, mannitol/hypertonic saline ตามความจำเป็นเพื่อ optimal surgical exposure"
+      },
+      "complications": [
+        "Intraoperative aneurysm rupture (massive hemorrhage)",
+        "Vasospasm/delayed cerebral ischemia",
+        "Rebleeding",
+        "Stroke",
+        "SIADH/cerebral salt wasting",
+        "Cardiac dysfunction (neurogenic stunned myocardium)"
+      ],
+      "postoperative_care": {
+        "icu": "Neuro-ICU with close neurological monitoring, vasospasm surveillance (TCD, clinical exam)",
+        "extubation": "Smooth extubation, early neurological assessment",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Vasospasm signs (delayed neurological deficit)",
+          "Electrolyte abnormality",
+          "Rebleeding",
+          "Hydrocephalus"
+        ]
+      },
+      "clinical_pearls": [
+        "ควบคุม BP อย่างเข้มงวดก่อน clip เพื่อลดความเสี่ยง rebleeding - hypertensive spike ระหว่าง laryngoscopy เป็นช่วงเสี่ยงสูงสุด",
+        "Intraoperative rupture ต้องการการสื่อสารทันทีระหว่างทีมวิสัญญีและศัลยแพทย์ - เตรียม induced hypotension และเลือดพร้อมใช้เสมอในเคสความเสี่ยงสูง",
+        "หลัง SAH ต้องแยกระหว่าง hyponatremia จาก SIADH (fluid restrict) กับ cerebral salt wasting (ต้องให้ sodium/volume replacement) เนื่องจากการรักษาตรงข้ามกัน"
+      ],
+      "references": [
+        "AHA/ASA Guideline for Aneurysmal SAH",
+        "SNACC Guideline",
+        "Neurocritical Care Society Guideline"
+      ]
+    },
+    {
+      "id": "avm",
+      "name": "AVM (Arteriovenous Malformation) Resection",
+      "overview": {
+        "definition": "การผ่าตัดตัดเอา arteriovenous malformation ในสมองออก อาจทำร่วมกับ pre-op embolization",
+        "indications": [
+          "Symptomatic AVM (seizure, hemorrhage, neurological deficit)",
+          "Ruptured AVM with hemorrhage",
+          "Unruptured AVM ที่มีความเสี่ยงสูงตาม Spetzler-Martin grading"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch"
+        ],
+        "imaging": [
+          "MRI/MRA, cerebral angiogram (ประเมัน feeding artery/draining vein)",
+          "Spetzler-Martin grading"
+        ],
+        "consult": [
+          "Neurosurgery, interventional neuroradiology (หากมี pre-op embolization)"
+        ],
+        "optimization": [
+          "ประเมินผลจาก pre-op embolization หากทำมาก่อน",
+          "Control seizure ด้วย anticonvulsant"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line ก่อน induction เสมอ",
+        "cvp": "พิจารณาในหัตถการใหญ่ที่มีความเสี่ยง major blood loss",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "แนะนำ",
+        "nirs": "พิจารณา"
+      },
+      "airway": {
+        "plan": "Smooth induction เช่นเดียวกับ craniotomy อื่น",
+        "equipment": [
+          "Video laryngoscope",
+          "Armored ETT"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Propofol, opioid, non-depolarizing relaxant",
+        "dose": "Titrate เพื่อ hemodynamic stability",
+        "hemodynamic_goal": "หลีกเลี่ยง hypertension ที่เพิ่มความเสี่ยง AVM rupture"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ต่ำ",
+        "muscle_relaxant": "Non-depolarizing infusion",
+        "analgesia": "Opioid-based, scalp block",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "Low PEEP",
+        "fio2": "titrate",
+        "recruitment": "หลีกเลี่ยงระหว่างกะโหลกเปิด"
+      },
+      "fluid_management": {
+        "goal_directed": "Isotonic fluid, euvolemia",
+        "blood": "เตรียม PRC พร้อมเสมอ - AVM มีความเสี่ยง massive hemorrhage สูง",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "icp": "ควบคุม ICP มาตรฐาน",
+        "cpp": "รักษา CPP เพียงพอ",
+        "normal_perfusion_pressure_breakthrough": "เฝ้าระวังภาวะ normal perfusion pressure breakthrough หลังตัด AVM ออก - สมองบริเวณรอบข้างที่เคย hypoperfused อาจเกิด hyperperfusion/edema/hemorrhage เมื่อ AVM ถูกตัดออก",
+        "controlled_hypotension": "อาจพิจารณา controlled hypotension ระหว่างการผ่าตัดเพื่อลด blood loss จาก high-flow feeding vessel ตามคำขอศัลยแพทย์",
+        "post_resection_bp_control": "ควบคุม BP ให้ต่ำกว่าปกติเล็กน้อยหลังตัด AVM ออกเพื่อป้องกัน breakthrough hemorrhage"
+      },
+      "complications": [
+        "Massive intraoperative hemorrhage",
+        "Normal perfusion pressure breakthrough (postop hemorrhage/edema)",
+        "Venous air embolism",
+        "Seizure",
+        "Neurological deficit"
+      ],
+      "postoperative_care": {
+        "icu": "Neuro-ICU with BP control ใกล้ชิด (มักต้องควบคุม SBP ให้ต่ำกว่าปกติในช่วงแรก)",
+        "extubation": "Smooth extubation, early neuro assessment",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Postoperative hemorrhage/edema",
+          "Seizure",
+          "Neurological deficit"
+        ]
+      },
+      "clinical_pearls": [
+        "Normal perfusion pressure breakthrough เป็นภาวะแทรกซ้อนเฉพาะของ AVM surgery - ควบคุม BP ให้ต่ำกว่าปกติหลังตัด AVM ออกเพื่อป้องกัน",
+        "AVM ขนาดใหญ่/high-flow มีความเสี่ยง massive hemorrhage สูงมาก - เตรียม large-bore IV access และเลือดพร้อมใช้เสมอ",
+        "Pre-op embolization ช่วยลด intraoperative blood loss แต่ผู้ป่วยอาจมี neurological change จากหัตถการนั้นที่ต้องประเมินก่อนผ่าตัด"
+      ],
+      "references": [
+        "AHA/ASA Guideline for AVM Management",
+        "SNACC Guideline",
+        "Spetzler-Martin Grading System"
+      ]
+    },
+    {
+      "id": "spine_surgery",
+      "name": "Spine Surgery (Major Instrumented Fusion)",
+      "overview": {
+        "definition": "การผ่าตัดกระดูกสันหลังที่ซับซ้อน เช่น multilevel fusion, scoliosis correction, spinal tumor resection ซึ่งมีความเสี่ยง blood loss มากและใช้เวลานาน",
+        "indications": [
+          "Spinal instability/deformity",
+          "Spinal stenosis with neurological compromise",
+          "Spinal tumor/metastasis",
+          "Scoliosis correction"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch"
+        ],
+        "imaging": [
+          "MRI/CT spine",
+          "PFT ในรายที่มี severe scoliosis (restrictive lung disease)"
+        ],
+        "consult": [
+          "Orthopedic/neurosurgery spine team",
+          "Pulmonology ในรายที่มี severe deformity"
+        ],
+        "optimization": [
+          "ประเมิน baseline neurological function อย่างละเอียดเพื่อเปรียบเทียบหลังผ่าตัด",
+          "วางแผน blood conservation strategy (cell salvage, tranexamic acid)"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature",
+          "Urine output"
+        ],
+        "ibp": "Arterial line จำเป็น - หัตถการยาว มี blood loss มาก และต้องการ MAP control สำหรับ spinal cord perfusion",
+        "cvp": "พิจารณาในหัตถการใหญ่/multilevel",
+        "pa_catheter": "ไม่จำเป็นทั่วไป",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "แนะนำโดยเฉพาะเมื่อใช้ TIVA เพื่อเอื้อต่อ neuromonitoring",
+        "nirs": "พิจารณาในบางสถาบัน"
+      },
+      "airway": {
+        "plan": "ระวังเป็นพิเศษหาก cervical spine instability - อาจต้อง awake fiberoptic intubation หรือ manual in-line stabilization",
+        "equipment": [
+          "Video laryngoscope/fiberoptic scope",
+          "Armored ETT"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Standard IV induction, non-depolarizing relaxant (หลีกเลี่ยง succinylcholine หากมี motor deficit ที่เสี่ยง hyperkalemia)",
+        "dose": "ปรับตามผู้ป่วย",
+        "hemodynamic_goal": "เสถียรก่อน prone positioning"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA (propofol-remifentanil) แนะนำเมื่อใช้ intraoperative neuromonitoring (MEP/SSEP) เนื่องจาก volatile agent กด evoked potential",
+        "muscle_relaxant": "หลีกเลี่ยง/จำกัดหลังใส่ท่อหากใช้ MEP monitoring (ต้องมี motor response ให้ตรวจ)",
+        "analgesia": "Multimodal - opioid + adjuvant (ketamine, dexmedetomidine) ± local infiltration",
+        "temperature": "Active warming - หัตถการยาว prone position เสี่ยง heat loss"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O ปรับตาม abdominal pressure ใน prone position",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Goal-directed therapy, cell salvage แนะนำในหัตถการที่มี expected blood loss มาก, tranexamic acid ลด blood loss",
+        "blood": "เตรียม PRC/FFP/platelet ตามขนาดหัตถการ",
+        "transfusion": "ตาม estimated blood loss และ coagulation status"
+      },
+      "special_consideration": {
+        "prone_positioning": "ระวัง eye injury (postoperative visual loss), pressure injury, brachial plexus injury, endotracheal tube dislodgement ระหว่าง positioning และผ่าตัด",
+        "neuro_monitoring": "MEP (motor evoked potential) และ SSEP (somatosensory evoked potential) ใช้ติดตาม spinal cord integrity - ต้องหลีกเลี่ยง volatile agent ขนาดสูงและ muscle relaxant ที่รบกวนสัญญาณ",
+        "map_goal": "รักษา MAP ให้เพียงพอสำหรับ spinal cord perfusion โดยเฉพาะช่วง correction/distraction (มักตั้งเป้า MAP >80 mmHg)",
+        "wake_up_test": "อาจต้องทำ intraoperative wake-up test ในบางสถาบันที่ไม่มี neuromonitoring เพื่อประเมิน motor function โดยตรง"
+      },
+      "complications": [
+        "Postoperative visual loss (ischemic optic neuropathy)",
+        "Massive hemorrhage",
+        "Spinal cord injury/neurological deficit",
+        "Venous air embolism",
+        "Pressure injury",
+        "Dural tear/CSF leak"
+      ],
+      "postoperative_care": {
+        "icu": "ICU สำหรับหัตถการใหญ่หรือมี comorbidity มาก",
+        "extubation": "ประเมิน airway edema ก่อน extubate โดยเฉพาะหลัง prone positioning ยาวนาน (cuff leak test)",
+        "pain": "Multimodal analgesia - หัตถการ spine มักปวดมาก",
+        "complication_watch": [
+          "Neurological status เทียบกับ baseline",
+          "Visual changes",
+          "Airway edema",
+          "Bleeding"
+        ]
+      },
+      "clinical_pearls": [
+        "Postoperative visual loss เป็นภาวะแทรกซ้อนที่รุนแรงของ prone spine surgery - ปัจจัยเสี่ยงคือ prolonged prone position, significant blood loss, hypotension - ลด risk ด้วยการหลีกเลี่ยง excessive head-down/eye pressure และควบคุม fluid/blood loss",
+        "TIVA เป็นที่เลือกใช้มากกว่า volatile agent เมื่อต้องการ intraoperative neuromonitoring เนื่องจาก volatile ลด amplitude ของ MEP/SSEP",
+        "Tranexamic acid ช่วยลด blood loss ใน major spine surgery ได้อย่างมีนัยสำคัญตามหลักฐานปัจจุบัน"
+      ],
+      "references": [
+        "SNACC Guideline for Neuromonitoring",
+        "ASA Practice Advisory for Perioperative Visual Loss",
+        "NASS Guideline for Spine Surgery"
+      ]
+    },
+    {
+      "id": "awake_craniotomy",
+      "name": "Awake Craniotomy",
+      "overview": {
+        "definition": "การผ่าตัดสมองโดยให้ผู้ป่วยรู้สึกตัวในช่วง cortical mapping เพื่อระบุ eloquent area (motor, speech) ป้องกันการบาดเจ็บของ functional brain tissue",
+        "indications": [
+          "Tumor ใกล้ eloquent area (motor cortex, language area)",
+          "Epilepsy surgery ที่ต้อง intraoperative mapping"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag"
+        ],
+        "imaging": [
+          "MRI brain with functional mapping (fMRI, DTI)"
+        ],
+        "consult": [
+          "Neurosurgery, neuropsychology (baseline cognitive/language assessment)"
+        ],
+        "optimization": [
+          "ประเมินความร่วมมือของผู้ป่วย (cooperation) - ข้อบ่งชี้สำคัญสำหรับความสำเร็จของหัตถการ",
+          "อธิบายขั้นตอนอย่างละเอียดก่อนผ่าตัดเพื่อลดความวิตกกังวล"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หากมี airway device), temperature"
+        ],
+        "ibp": "Arterial line แนะนำ",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "แนะนำเพื่อ titrate sedation depth ระหว่าง asleep phase",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Asleep-awake-asleep (AAA) technique หรือ monitored anesthesia care (MAC) ตลอด - ไม่ intubate ในช่วง awake mapping",
+        "equipment": [
+          "LMA/supraglottic airway สำหรับช่วง asleep phase",
+          "Scalp block equipment"
+        ],
+        "backup": "พร้อม convert เป็น GA ฉุกเฉินหากเกิด seizure ไม่หยุดหรือ airway compromise"
+      },
+      "induction": {
+        "drug": "Dexmedetomidine และ/หรือ propofol infusion สำหรับ asleep phase, scalp block ด้วย local anesthetic เป็นหัวใจสำคัญ",
+        "dose": "Titrate เพื่อให้ sedation เพียงพอในช่วง craniotomy/closure แต่ตื่นเต็มที่ในช่วง mapping",
+        "hemodynamic_goal": "เสถียรตลอดการเปลี่ยนผ่านระหว่าง asleep-awake phase"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA (propofol/dexmedetomidine ± remifentanil) - หลีกเลี่ยง volatile agent เนื่องจากรบกวน electrocorticography และ cortical mapping",
+        "muscle_relaxant": "หลีกเลี่ยงหรือใช้เฉพาะช่วง asleep phase สั้นๆ - ต้องให้ motor function กลับมาสมบูรณ์ก่อน mapping",
+        "analgesia": "Scalp block (สำคัญที่สุด - pin site, incision line) + local infiltration",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "Spontaneous ventilation ในช่วง awake phase, controlled ventilation ผ่าน LMA ในช่วง asleep phase",
+        "peep": "N/A ในช่วง spontaneous ventilation",
+        "fio2": "Supplemental oxygen ผ่าน nasal cannula/face mask ระหว่าง awake phase",
+        "recruitment": "N/A"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative isotonic fluid",
+        "blood": "เตรียมพร้อมมาตรฐาน",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "cortical_mapping": "ผู้ป่วยต้องรู้สึกตัวและร่วมมือเต็มที่ระหว่าง cortical/language mapping - ทีมต้องสื่อสารกับผู้ป่วยอย่างใกล้ชิด",
+        "intraoperative_seizure": "เตรียมพร้อมรับมือ intraoperative seizure ระหว่าง mapping - มี cold saline irrigation และ short-acting anticonvulsant (เช่น propofol bolus) พร้อมใช้",
+        "airway_management_awake": "ตำแหน่งผู้ป่วยและอุปกรณ์ต้องเอื้อให้เข้าถึง airway ได้ทันทีหากเกิดภาวะฉุกเฉินระหว่าง awake phase",
+        "patient_comfort": "จัดการความไม่สบายตัว (ปวดหลัง, ปัสสาวะคั่ง) ระหว่างหัตถการที่ใช้เวลานาน"
+      },
+      "complications": [
+        "Intraoperative seizure",
+        "Airway obstruction ระหว่าง awake phase",
+        "Patient discomfort/anxiety/agitation",
+        "Failure of technique (ต้อง convert เป็น GA)",
+        "Venous air embolism"
+      ],
+      "postoperative_care": {
+        "icu": "Neuro-ICU/PACU monitoring ตามมาตรฐาน craniotomy",
+        "extubation": "N/A ส่วนใหญ่ (ไม่ได้ intubate) หรือถอด LMA เมื่อตื่นเต็มที่",
+        "pain": "Multimodal analgesia ต่อเนื่องจาก scalp block",
+        "complication_watch": [
+          "Seizure",
+          "Neurological deficit เทียบกับ intraoperative mapping result"
+        ]
+      },
+      "clinical_pearls": [
+        "Scalp block เป็นหัวใจสำคัญของความสำเร็จ awake craniotomy - บล็อกครอบคลุม supraorbital, supratrochlear, auriculotemporal, zygomaticotemporal, greater/lesser occipital nerve",
+        "Dexmedetomidine เป็นยาที่นิยมใช้เนื่องจากให้ sedation โดยไม่กด respiratory drive มากและปลุกตื่นได้ง่าย",
+        "การคัดเลือกผู้ป่วยอย่างเหมาะสม (ความร่วมมือ, ไม่มี severe anxiety/claustrophobia) เป็นปัจจัยสำคัญต่อความสำเร็จพอๆ กับเทคนิคยาระงับความรู้สึก"
+      ],
+      "references": [
+        "SNACC Guideline for Awake Craniotomy",
+        "ASA Practice Advisory for MAC",
+        "AANS/CNS Guideline for Brain Mapping"
+      ]
+    },
+    {
+      "id": "carotid_endarterectomy",
+      "name": "Carotid Endarterectomy (CEA)",
+      "overview": {
+        "definition": "การผ่าตัดลอกคราบไขมัน/thrombus ออกจากผนังหลอดเลือดแดง carotid เพื่อป้องกัน stroke ในผู้ป่วย carotid stenosis",
+        "indications": [
+          "Symptomatic carotid stenosis ≥50-70%",
+          "Asymptomatic carotid stenosis ≥60-70% ในผู้ป่วยความเสี่ยงต่ำ"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, electrolytes"
+        ],
+        "imaging": [
+          "Carotid duplex ultrasound, CTA/MRA",
+          "Cardiac evaluation - CEA patients มักมี concurrent CAD"
+        ],
+        "consult": [
+          "Vascular surgery, cardiology, neurology"
+        ],
+        "optimization": [
+          "Continue antiplatelet/statin",
+          "Control BP - หลีกเลี่ยง perioperative hypotension/hypertension extreme"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG (ischemia monitoring), SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line จำเป็น - ควบคุม BP อย่างเข้มงวดตลอดหัตถการโดยเฉพาะช่วง cross-clamping",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็นทั่วไป",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "แนะนำ - cerebral oximetry ช่วยตรวจจับ cerebral ischemia ระหว่าง cross-clamping"
+      },
+      "airway": {
+        "plan": "GA กับ ETT หรือ regional (cervical plexus block) แล้วแต่สถาบันและผู้ป่วย - regional ช่วยให้ประเมิน neurological status ได้โดยตรงระหว่าง clamping",
+        "equipment": [
+          "Video laryngoscope หากทำ GA"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "หาก GA: standard induction ปรับให้ hemodynamic เสถียร",
+        "dose": "Titrate เพื่อหลีกเลี่ยง hypotension/hypertension extreme",
+        "hemodynamic_goal": "รักษา BP ใกล้เคียง baseline ของผู้ป่วยตลอด - ทั้ง hypotension และ hypertension มีความเสี่ยง"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA - หากใช้ regional technique ผู้ป่วยยังคงรู้สึกตัวตลอด",
+        "muscle_relaxant": "ตามเทคนิคที่เลือก",
+        "analgesia": "Cervical plexus block (deep/superficial) หรือ local infiltration + systemic analgesia",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (หาก GA)",
+        "peep": "5 cmH2O",
+        "fio2": "titrate SpO2 สูงเพียงพอ",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Standard isotonic fluid",
+        "blood": "เตรียมพร้อมมาตรฐาน",
+        "transfusion": "ไม่จำเป็นส่วนใหญ่"
+      },
+      "special_consideration": {
+        "cross_clamp_management": "ระหว่าง carotid cross-clamping ต้องรักษา BP ให้สูงกว่าปกติเล็กน้อย (high-normal) เพื่อเพิ่ม collateral perfusion ผ่าน circle of Willis",
+        "neuro_monitoring": "หาก GA: ใช้ EEG, SSEP, หรือ cerebral oximetry (NIRS) ตรวจจับ cerebral ischemia ระหว่าง clamping; หาก regional: ประเมิน neurological status โดยตรงจากผู้ป่วยที่รู้สึกตัว",
+        "shunt_decision": "ศัลยแพทย์อาจตัดสินใจใส่ carotid shunt ตามผลของ neuromonitoring หรือ stump pressure",
+        "baroreceptor_effect": "Carotid sinus manipulation ระหว่างผ่าตัดอาจทำให้เกิด bradycardia/hypotension รุนแรง - เตรียม atropine/local anesthetic infiltration ที่ carotid sinus"
+      },
+      "complications": [
+        "Perioperative stroke",
+        "Myocardial infarction (comorbid CAD พบบ่อย)",
+        "Cervical hematoma (อาจกด airway ฉุกเฉิน)",
+        "Cranial nerve injury (vagus, hypoglossal, marginal mandibular)",
+        "Hemodynamic instability จาก carotid sinus reflex",
+        "Postoperative hyperperfusion syndrome"
+      ],
+      "postoperative_care": {
+        "icu": "PACU/step-down with close BP control และ neurological monitoring",
+        "extubation": "Smooth extubation หากทำ GA, ประเมิน neurological status ทันที",
+        "pain": "Minimal-moderate analgesia",
+        "complication_watch": [
+          "Neurological deficit",
+          "Neck hematoma (อาจต้อง emergency airway management)",
+          "BP lability",
+          "Hyperperfusion syndrome (headache, seizure)"
+        ]
+      },
+      "clinical_pearls": [
+        "Regional anesthesia (cervical plexus block) ช่วยให้ประเมิน neurological status ได้แบบ real-time ระหว่าง cross-clamping ซึ่งเป็นข้อดีเหนือ GA ในแง่การตรวจจับ ischemia",
+        "Cervical hematoma หลังผ่าตัดเป็นภาวะฉุกเฉินที่อาจกด airway อย่างรวดเร็ว - ต้องพร้อมเปิดแผลระบายเลือดทันทีหากจำเป็น",
+        "Postoperative hyperperfusion syndrome พบในผู้ป่วยที่มี severe stenosis เดิม - ควบคุม BP ให้ต่ำกว่าปกติเล็กน้อยหลังผ่าตัดเพื่อป้องกัน"
+      ],
+      "references": [
+        "AHA/ASA Guideline for Carotid Stenosis",
+        "SNACC Guideline",
+        "ESVS Guideline for Carotid Disease Management"
+      ]
+    },
+    {
+      "id": "mechanical_thrombectomy",
+      "name": "Mechanical Thrombectomy (Acute Ischemic Stroke)",
+      "overview": {
+        "definition": "หัตถการเอาลิ่มเลือดออกจากหลอดเลือดสมองผ่านสายสวนในผู้ป่วย acute ischemic stroke จาก large vessel occlusion",
+        "indications": [
+          "Acute ischemic stroke จาก large vessel occlusion ภายใน therapeutic time window (มักถึง 24 ชม.ในผู้ป่วยคัดเลือกด้วย imaging)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, glucose, renal function - ต้องทำอย่างรวดเร็วที่สุดเนื่องจากเป็น time-critical emergency"
+        ],
+        "imaging": [
+          "CT/CTA brain, CT perfusion (ประเมิน salvageable tissue)"
+        ],
+        "consult": [
+          "Stroke neurology/interventional neuroradiology - ทีม stroke ตัดสินใจอย่างรวดเร็ว"
+        ],
+        "optimization": [
+          "Time is brain - ลด door-to-puncture time ให้เร็วที่สุด ไม่ควรให้การเตรียมล่าช้าหัตถการ"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หาก GA)"
+        ],
+        "ibp": "Arterial line แนะนำ - ควบคุม BP อย่างใกล้ชิดตลอดหัตถการ",
+        "cvp": "ไม่จำเป็นทั่วไป",
+        "pa_catheter": "ไม่จำเป็น",
+        "tee": "ไม่จำเป็น",
+        "bis": "พิจารณาหากใช้ GA",
+        "nirs": "ไม่จำเป็นทั่วไป"
+      },
+      "airway": {
+        "plan": "Conscious sedation หรือ GA - การเลือกยังเป็นที่ถกเถียง โดยหลักฐานล่าสุดสนับสนุนว่าทั้งสองวิธีให้ผลลัพธ์ใกล้เคียงกันหากควบคุม BP ได้ดี",
+        "equipment": [
+          "Standard airway equipment พร้อม GA conversion"
+        ],
+        "backup": "พร้อม convert เป็น GA ฉุกเฉินหากผู้ป่วยขยับตัวมากหรือ airway compromise"
+      },
+      "induction": {
+        "drug": "หาก GA: standard induction แต่ต้อง minimize hypotension ระหว่าง induction เนื่องจากกระทบ penumbra perfusion",
+        "dose": "Titrate ระมัดระวังเป็นพิเศษ",
+        "hemodynamic_goal": "หลีกเลี่ยง hypotension อย่างเด็ดขาดระหว่าง induction - แม้ transient hypotension ก็อาจทำให้ penumbra เปลี่ยนเป็น infarct core"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ต่ำ หากใช้ GA",
+        "muscle_relaxant": "ตามความจำเป็นหาก GA",
+        "analgesia": "Minimal - หัตถการมักไม่เจ็บมาก",
+        "temperature": "Avoid hyperthermia - fever แย่ผลลัพธ์ทาง neurological"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW (หาก GA)",
+        "peep": "5 cmH2O",
+        "fio2": "titrate เพื่อ avoid hypoxia และ hyperoxia",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Isotonic fluid, avoid hypotonic solution",
+        "blood": "เตรียมพร้อมกรณี hemorrhagic transformation",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "bp_management": "รักษา BP ให้อยู่ในช่วงที่เหมาะสม (มักตั้งเป้า SBP <180 mmHg ก่อน recanalization, และปรับลดหลัง successful recanalization เพื่อลดความเสี่ยง hemorrhagic transformation) - หลีกเลี่ยง hypotension อย่างเด็ดขาด",
+        "time_critical": "ทุกนาทีที่ล่าช้ามีผลต่อ neurological outcome - ทีมวิสัญญีต้องทำงานอย่างรวดเร็วโดยไม่ลดความปลอดภัย",
+        "glucose_control": "หลีกเลี่ยงทั้ง hypoglycemia และ hyperglycemia ซึ่งทั้งคู่แย่ผลลัพธ์ทาง neurological",
+        "reperfusion_injury": "เฝ้าระวัง hemorrhagic transformation หลัง successful recanalization"
+      },
+      "complications": [
+        "Hypotension-induced infarct extension",
+        "Hemorrhagic transformation",
+        "Vessel perforation/dissection",
+        "Distal embolization",
+        "Reperfusion injury/malignant edema",
+        "Groin access complication"
+      ],
+      "postoperative_care": {
+        "icu": "Neuro-ICU/stroke unit with close BP และ neurological monitoring",
+        "extubation": "Extubate ทันทีหลังหัตถการหากทำ GA และเกณฑ์เหมาะสม เพื่อประเมิน neurological status",
+        "pain": "Minimal analgesia requirement",
+        "complication_watch": [
+          "Neurological deterioration",
+          "Hemorrhagic transformation signs",
+          "BP lability"
+        ]
+      },
+      "clinical_pearls": [
+        "แม้ hypotension ช่วงสั้นๆ ระหว่าง induction ก็อาจส่งผลเสียต่อ ischemic penumbra - ต้องวางแผน induction อย่างระมัดระวังเป็นพิเศษ",
+        "การเลือกระหว่าง conscious sedation กับ GA ควรพิจารณาจาก patient cooperation, airway risk, และ institutional expertise - ทั้งสองวิธีให้ผลลัพธ์ใกล้เคียงกันหากควบคุม BP ได้ดี",
+        "Time is brain - ทุกความล่าช้าใน door-to-puncture time สัมพันธ์กับผลลัพธ์ทาง neurological ที่แย่ลง"
+      ],
+      "references": [
+        "AHA/ASA Guideline for Acute Ischemic Stroke Management",
+        "SNACC Consensus Statement on Anesthesia for Thrombectomy",
+        "SNIS Guideline"
+      ]
+    }
+  ]
+}

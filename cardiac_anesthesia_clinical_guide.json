@@ -1,0 +1,1177 @@
+{
+  "category": "Cardiac Anesthesia",
+  "category_th": "วิสัญญีสำหรับศัลยกรรมหัวใจ",
+  "description": "Evidence-based guidance for safe anesthesia practice in cardiac surgery and cardiac catheterization procedures.",
+  "disclaimer": "เนื้อหานี้จัดทำเพื่อการศึกษาและอ้างอิงทางคลินิก ไม่ทดแทนแนวปฏิบัติของสถาบัน (institutional protocol) หรือดุลยพินิจทางคลินิกของผู้ให้การระงับความรู้สึก ควรปรับใช้ตามบริบทผู้ป่วยแต่ละรายและทบทวนตาม guideline ฉบับล่าสุดเสมอ",
+  "procedures": [
+    {
+      "id": "cabg",
+      "name": "CABG (Coronary Artery Bypass Grafting)",
+      "overview": {
+        "definition": "การผ่าตัดต่อหลอดเลือดเลี่ยง (bypass) หลอดเลือดหัวใจที่ตีบ/อุดตัน โดยใช้ graft จาก saphenous vein, radial artery หรือ internal mammary artery อาจทำแบบ on-pump (ใช้ CPB) หรือ off-pump (OPCAB)",
+        "indications": [
+          "Left main disease >50%",
+          "Triple vessel disease โดยเฉพาะร่วมกับ LV dysfunction",
+          "Two-vessel disease ร่วมกับ proximal LAD",
+          "Failed PCI หรือไม่เหมาะกับ PCI",
+          "Diabetic patients with multivessel disease (SYNTAX score สูง)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coagulation profile",
+          "BUN/Cr, electrolytes",
+          "Type & crossmatch (PRC 2-4 unit)",
+          "Troponin, BNP",
+          "HbA1c ในผู้ป่วยเบาหวาน"
+        ],
+        "imaging": [
+          "Echocardiogram (EF, wall motion, valve function)",
+          "Coronary angiogram",
+          "CXR",
+          "Carotid duplex ถ้ามีความเสี่ยง stroke"
+        ],
+        "consult": [
+          "Cardiology",
+          "Nephrology หากมี renal impairment",
+          "Endocrine หากควบคุมเบาหวานไม่ดี"
+        ],
+        "optimization": [
+          "Continue beta-blocker, statin จนถึงเช้าวันผ่าตัด",
+          "หยุด antiplatelet (clopidogrel) ตาม guideline (5-7 วัน) ยกเว้น aspirin",
+          "ควบคุม glucose, correct anemia",
+          "Optimize volume status ในผู้ป่วย HF"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG 5-lead (ST-segment monitoring lead II, V5)",
+          "SpO2",
+          "EtCO2",
+          "Temperature (core + bladder)",
+          "Urine output"
+        ],
+        "ibp": "Arterial line ก่อน induction (radial หรือ femoral) เพื่อ monitor แบบ beat-to-beat และ ABG",
+        "cvp": "Central venous line (internal jugular) สำหรับ vasoactive drugs, CVP monitoring, และ PA catheter introducer",
+        "pa_catheter": "พิจารณาในผู้ป่วย EF ต่ำ, pulmonary hypertension, หรือ complex case",
+        "tee": "แนะนำเกือบทุกราย (Class I ตาม ASE/SCA guideline) เพื่อประเมิน LV/RV function, valve, wall motion, de-airing",
+        "bis": "พิจารณาในผู้ป่วยที่ใช้ high-dose opioid technique หรือเสี่ยง awareness",
+        "nirs": "Cerebral oximetry มีประโยชน์ในผู้ป่วยเสี่ยง cerebral hypoperfusion (elderly, carotid disease)"
+      },
+      "airway": {
+        "plan": "Standard RSI ไม่จำเป็น ยกเว้นมี aspiration risk; ETT single lumen มาตรฐาน",
+        "equipment": [
+          "Video laryngoscope พร้อมใช้",
+          "ETT เบอร์เหมาะสม"
+        ],
+        "backup": "Difficult airway cart พร้อมใช้ตาม institutional protocol"
+      },
+      "induction": {
+        "drug": "Etomidate หรือ propofol (ระวังในผู้ป่วย EF ต่ำ), fentanyl/sufentanil high-dose, rocuronium",
+        "dose": "Etomidate 0.2-0.3 mg/kg, Fentanyl 5-15 mcg/kg (แล้วแต่ fast-track หรือไม่), Rocuronium 0.6-1 mg/kg",
+        "hemodynamic_goal": "รักษา HR และ BP ให้ใกล้เคียง baseline ±20% หลีกเลี่ยง tachycardia และ hypotension ที่ลด coronary perfusion"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile agent (sevoflurane) มีข้อดี cardioprotection (ischemic preconditioning) หรือ TIVA ด้วย propofol infusion",
+        "muscle_relaxant": "Non-depolarizing agent infusion หรือ intermittent bolus",
+        "analgesia": "Opioid-based (fentanyl/sufentanil infusion) ± regional technique เช่น erector spinae block ในบางสถาบัน",
+        "temperature": "Active warming, เป้าหมาย normothermia ก่อนและหลัง CPB"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O (protective ventilation)",
+        "fio2": "ปรับตาม SpO2 เป้าหมาย ≥95%",
+        "recruitment": "Recruitment maneuver หลัง weaning จาก CPB หรือ prolonged apnea"
+      },
+      "fluid_management": {
+        "goal_directed": "Goal-directed fluid therapy โดยใช้ SVV, TEE หรือ CO monitoring ลด fluid overload",
+        "blood": "เตรียม PRC, FFP, platelet ตาม coagulation status",
+        "transfusion": "Restrictive strategy (Hb trigger ~7-8 g/dL) ตาม STS/SCA blood conservation guideline"
+      },
+      "special_consideration": {
+        "cpb": "Full heparinization ก่อนเข้า CPB, cardioplegia arrest (antegrade/retrograde), maintain MAP 50-70 mmHg ระหว่าง CPB",
+        "heparin": "300-400 unit/kg IV ก่อน cannulation เป้าหมาย ACT >480 วินาที",
+        "act": "Check ACT baseline และหลัง heparin 3-5 นาที, monitor ทุก 20-30 นาทีระหว่าง CPB",
+        "tee": "ประเมิน LV filling, wall motion, de-airing ก่อน weaning, ตรวจ valve function หลัง weaning",
+        "weaning_cpb": "ค่อยๆ rewarm, correct electrolyte (K+, Ca2+), เริ่ม ventilation, ประเมิน rhythm และ contractility ก่อนหยุด CPB",
+        "inotrope": "พิจารณา epinephrine, milrinone, หรือ norepinephrine ตาม hemodynamic profile หลัง weaning",
+        "protamine": "Reverse heparin ด้วย protamine (1 mg ต่อ heparin 100 unit) ให้ช้าๆ เฝ้าระวัง anaphylactoid reaction"
+      },
+      "complications": [
+        "Low cardiac output syndrome",
+        "Arrhythmia (AF พบบ่อยที่สุด post-CABG)",
+        "Bleeding/coagulopathy",
+        "Myocardial ischemia/infarction",
+        "Stroke",
+        "Acute kidney injury",
+        "Protamine reaction"
+      ],
+      "postoperative_care": {
+        "icu": "ICU handover พร้อม structured report (hemodynamic, drips, lines, blood loss, events ระหว่างผ่าตัด)",
+        "extubation": "Fast-track extubation ภายใน 6 ชม.หลังผ่าตัดหากเกณฑ์เหมาะสม (stable hemodynamic, adequate reversal, normothermia)",
+        "pain": "Multimodal analgesia: opioid + acetaminophen ± regional block, หลีกเลี่ยง NSAIDs ในช่วงแรก",
+        "complication_watch": [
+          "Bleeding/chest tube output",
+          "Arrhythmia monitoring",
+          "Tamponade signs"
+        ]
+      },
+      "clinical_pearls": [
+        "ST-segment lead II และ V5 ครอบคลุม ischemia ได้ >80% ของ territory",
+        "ระวัง hyperkalemia หลังให้ cardioplegia potassium-based",
+        "TEE ก่อน weaning ช่วยลด incidence ของ inadequate de-airing และ stroke",
+        "Off-pump CABG ลด CPB-related complication แต่ต้องการทักษะเฉพาะในการจัดการ hemodynamic ขณะ positioning heart"
+      ],
+      "references": [
+        "ASA Practice Guidelines",
+        "SCA/ASE TEE Guideline",
+        "STS Blood Conservation Guideline",
+        "AHA/ACC Guideline for CABG",
+        "ERAS Cardiac Society Guideline"
+      ]
+    },
+    {
+      "id": "valve_surgery",
+      "name": "Valve Surgery (AVR/MVR/Repair)",
+      "overview": {
+        "definition": "การผ่าตัดเปลี่ยนหรือซ่อมลิ้นหัวใจ (aortic, mitral, tricuspid) ทั้งแบบ open (CPB) และ minimally invasive",
+        "indications": [
+          "Severe symptomatic aortic stenosis/regurgitation",
+          "Severe mitral regurgitation/stenosis with symptoms or LV dysfunction",
+          "Endocarditis with valve destruction",
+          "Combined valve + CABG"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, BUN/Cr",
+          "Type & crossmatch"
+        ],
+        "imaging": [
+          "Echocardiography (valve area, gradient, regurgitant fraction, LV/RV function)",
+          "Coronary angiogram (ในผู้สูงอายุหรือมี risk factor)"
+        ],
+        "consult": [
+          "Cardiology",
+          "Infectious disease หากเป็น endocarditis"
+        ],
+        "optimization": [
+          "Treat heart failure ก่อนผ่าตัดถ้าเป็นไปได้",
+          "Antibiotic prophylaxis เฉพาะในกรณี endocarditis"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line ก่อน induction",
+        "cvp": "Central line, พิจารณา PA catheter ในผู้ป่วย severe pulmonary hypertension",
+        "pa_catheter": "พิจารณาในผู้ป่วย severe MR/MS with pulmonary hypertension",
+        "tee": "Essential - ประเมิน valve pathology ก่อนผ่าตัด, guide surgical repair, ประเมินผลหลัง repair/replacement",
+        "bis": "พิจารณาตาม technique",
+        "nirs": "พิจารณาในผู้สูงอายุ"
+      },
+      "airway": {
+        "plan": "Standard ETT",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Etomidate/propofol, high-dose opioid, rocuronium",
+        "dose": "ปรับตาม valve pathology - AS ต้องระวัง hypotension มาก, MR/AR ต้องหลีกเลี่ยง bradycardia/increased SVR",
+        "hemodynamic_goal": "AS: maintain preload, SVR, sinus rhythm, avoid tachycardia; MR: avoid increased afterload; AR: avoid bradycardia"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA ตาม hemodynamic stability",
+        "muscle_relaxant": "Non-depolarizing infusion",
+        "analgesia": "Opioid-based",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate SpO2 ≥95%",
+        "recruitment": "หลัง weaning CPB"
+      },
+      "fluid_management": {
+        "goal_directed": "GDT ระวัง volume overload โดยเฉพาะใน severe MR/MS",
+        "blood": "เตรียมตาม estimated blood loss",
+        "transfusion": "Restrictive strategy"
+      },
+      "special_consideration": {
+        "cpb": "Cardioplegia arrest, cross-clamp time สำคัญต่อ myocardial protection",
+        "heparin": "300-400 unit/kg เป้าหมาย ACT >480 วินาที",
+        "act": "Monitor q20-30 min ระหว่าง CPB",
+        "tee": "Pre-bypass: confirm diagnosis/severity; Post-bypass: ประเมินผลลัพธ์การซ่อม/เปลี่ยนลิ้น, paravalvular leak, SAM (systolic anterior motion) ใน mitral repair",
+        "weaning_cpb": "ระวัง SAM ใน mitral valve repair, ประเมิน new regurgitation หรือ stenosis",
+        "inotrope": "ตามความจำเป็น โดยเฉพาะในผู้ป่วย LV dysfunction เดิม"
+      },
+      "complications": [
+        "Paravalvular leak",
+        "SAM (mitral repair)",
+        "Heart block (ต้องใช้ pacemaker โดยเฉพาะ AVR ใกล้ conduction system)",
+        "Bleeding",
+        "Prosthetic valve dysfunction",
+        "Stroke"
+      ],
+      "postoperative_care": {
+        "icu": "Structured handover, monitor rhythm ใกล้ชิด (heart block)",
+        "extubation": "Fast-track ตามเกณฑ์",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Conduction abnormality/heart block",
+          "Bleeding",
+          "Valve dysfunction"
+        ]
+      },
+      "clinical_pearls": [
+        "ผู้ป่วย severe AS ห้าม hypotension เด็ดขาด - coronary perfusion depend on diastolic pressure",
+        "SAM หลัง mitral repair แก้ไขด้วยการเพิ่ม preload, afterload, และลด inotrope/HR",
+        "New AV block หลัง AVR พบได้บ่อยเนื่องจากใกล้ conduction tissue - เตรียม temporary pacing wire เสมอ"
+      ],
+      "references": [
+        "ACC/AHA Valvular Heart Disease Guideline",
+        "ESC/EACTS Valvular Heart Disease Guideline",
+        "SCA/ASE TEE Guideline"
+      ]
+    },
+    {
+      "id": "aortic_surgery",
+      "name": "Aortic Surgery (Dissection/Aneurysm)",
+      "overview": {
+        "definition": "การผ่าตัดซ่อมแซม thoracic aorta ในภาวะ aneurysm หรือ dissection (Type A ต้องผ่าตัดฉุกเฉิน, Type B มักรักษาด้วยยาหรือ TEVAR)",
+        "indications": [
+          "Type A aortic dissection (surgical emergency)",
+          "Ascending aortic aneurysm >5.5 cm",
+          "Symptomatic aneurysm",
+          "Complicated Type B dissection"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch massive transfusion protocol",
+          "Lactate (malperfusion)"
+        ],
+        "imaging": [
+          "CT angiogram (extent of dissection/aneurysm, branch vessel involvement)",
+          "Echocardiogram (aortic regurgitation, tamponade, LV function)"
+        ],
+        "consult": [
+          "Cardiothoracic surgery urgent",
+          "Vascular surgery หากมี malperfusion"
+        ],
+        "optimization": [
+          "Control BP/HR อย่างรวดเร็ว (beta-blocker ก่อน vasodilator) ในผู้ป่วยที่ awake",
+          "จำกัดเวลาก่อนผ่าตัดใน Type A dissection"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature (สำคัญมากสำหรับ circulatory arrest)"
+        ],
+        "ibp": "Arterial line ทั้งสองข้าง (right radial + femoral) เพื่อเปรียบเทียบระหว่าง antegrade cerebral perfusion",
+        "cvp": "Central line ขนาดใหญ่ + rapid infusion catheter สำหรับ massive transfusion",
+        "pa_catheter": "พิจารณาตาม case complexity",
+        "tee": "Essential - วินิจฉัย dissection flap, aortic regurgitation, tamponade, malperfusion",
+        "bis": "แนะนำระหว่าง deep hypothermic circulatory arrest (DHCA)",
+        "nirs": "Bilateral cerebral oximetry สำคัญมากระหว่าง circulatory arrest และ antegrade cerebral perfusion"
+      },
+      "airway": {
+        "plan": "RSI หากมี tamponade/hemodynamic instability",
+        "equipment": [
+          "Video laryngoscope",
+          "Large bore IV/rapid infuser"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Etomidate หรือ ketamine ในผู้ป่วย unstable, avoid large swings ของ BP",
+        "dose": "ปรับ titrate ช้าๆ",
+        "hemodynamic_goal": "ควบคุม SBP <120 mmHg และ dP/dt ก่อนและระหว่าง induction เพื่อลด shear stress ต่อ dissection flap"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA, ปรับตาม hemodynamic stability",
+        "muscle_relaxant": "Non-depolarizing infusion",
+        "analgesia": "Opioid-based",
+        "temperature": "Cooling สำหรับ circulatory arrest cases (DHCA ถึง 18-20°C), active rewarming ตอนจบ"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "หลัง weaning CPB"
+      },
+      "fluid_management": {
+        "goal_directed": "Massive transfusion protocol พร้อมใช้เสมอ",
+        "blood": "PRC, FFP, platelet, cryoprecipitate จำนวนมาก",
+        "transfusion": "Aggressive replacement ตาม coagulopathy, cell salvager แนะนำ"
+      },
+      "special_consideration": {
+        "cpb": "อาจต้องใช้ deep hypothermic circulatory arrest (DHCA) หรือ antegrade/retrograde cerebral perfusion สำหรับ arch surgery",
+        "heparin": "Full heparinization ตาม ACT target",
+        "act": "Monitor ตลอด CPB",
+        "tee": "ตรวจสอบตำแหน่ง true/false lumen, cannulation site, ผลลัพธ์หลังซ่อม",
+        "weaning_cpb": "Rewarming ต้องช้าและสม่ำเสมอ ป้องกัน neurologic injury"
+      },
+      "complications": [
+        "Massive hemorrhage/coagulopathy",
+        "Stroke/spinal cord ischemia",
+        "Malperfusion syndrome",
+        "Cardiac tamponade",
+        "Renal failure",
+        "Prolonged circulatory arrest injury"
+      ],
+      "postoperative_care": {
+        "icu": "ICU with neuro monitoring ใกล้ชิด",
+        "extubation": "มักล่าช้ากว่า elective cardiac surgery",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Neurologic deficit",
+          "Bleeding",
+          "Malperfusion (mesenteric, renal, limb)"
+        ]
+      },
+      "clinical_pearls": [
+        "Type A dissection เป็น surgical emergency - mortality เพิ่ม 1-2%/ชม.หากไม่ผ่าตัด",
+        "ควบคุม BP ก่อน induction ด้วย beta-blocker ก่อนเสมอ (ไม่ใช้ vasodilator เดี่ยวๆ เพราะจะกระตุ้น reflex tachycardia)",
+        "NIRS asymmetry ระหว่าง antegrade cerebral perfusion บ่งชี้ malposition ของ cannula"
+      ],
+      "references": [
+        "AHA/ACC Aortic Disease Guideline",
+        "ESC Aortic Disease Guideline",
+        "STS Aortic Surgery Guideline"
+      ]
+    },
+    {
+      "id": "asd_vsd",
+      "name": "ASD/VSD Repair",
+      "overview": {
+        "definition": "การผ่าตัดหรือปิดรูรั่วผนังกั้นหัวใจ atrial septal defect (ASD) หรือ ventricular septal defect (VSD) ทั้งใน pediatric และ adult congenital patients",
+        "indications": [
+          "Significant left-to-right shunt (Qp:Qs >1.5:1)",
+          "RV volume overload",
+          "Symptomatic patients",
+          "ASD/VSD with pulmonary hypertension ก่อนเกิด Eisenmenger"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, type & crossmatch"
+        ],
+        "imaging": [
+          "Echocardiogram (defect size, shunt direction, pulmonary pressure)",
+          "Cardiac catheterization หากสงสัย pulmonary hypertension"
+        ],
+        "consult": [
+          "Pediatric/adult cardiology",
+          "Cardiac surgery"
+        ],
+        "optimization": [
+          "ประเมิน pulmonary vascular resistance ก่อนผ่าตัด - ห้ามผ่าตัดหาก Eisenmenger syndrome เกิดขึ้นแล้ว"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line",
+        "cvp": "Central line",
+        "pa_catheter": "ไม่จำเป็นในเด็กส่วนใหญ่",
+        "tee": "Essential เพื่อยืนยัน defect closure และ residual shunt",
+        "bis": "พิจารณาในเด็กโต",
+        "nirs": "แนะนำในเด็กเล็ก"
+      },
+      "airway": {
+        "plan": "ETT ขนาดเหมาะสมตามอายุ/น้ำหนัก",
+        "equipment": [
+          "Pediatric airway equipment หากเป็นเด็ก"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Sevoflurane inhalation induction ในเด็ก หรือ IV induction ในผู้ใหญ่",
+        "dose": "ปรับตามน้ำหนัก/อายุ",
+        "hemodynamic_goal": "หลีกเลี่ยง sudden increase ใน pulmonary vascular resistance (avoid hypoxia, hypercarbia, acidosis) ในผู้ป่วยที่มี pulmonary hypertension"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile-based ในเด็กส่วนใหญ่",
+        "muscle_relaxant": "ตามน้ำหนัก",
+        "analgesia": "Opioid ปรับตามอายุ/น้ำหนัก",
+        "temperature": "ระวัง hypothermia ในเด็กเล็กเป็นพิเศษ"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg",
+        "peep": "3-5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "หลัง weaning CPB"
+      },
+      "fluid_management": {
+        "goal_directed": "ระวัง fluid overload ในเด็กเล็ก",
+        "blood": "เตรียม PRC irradiated/CMV-negative ตาม institution สำหรับเด็ก",
+        "transfusion": "ตาม weight-based threshold"
+      },
+      "special_consideration": {
+        "cpb": "CPB flow และ pressure ปรับตามน้ำหนักเด็ก",
+        "heparin": "300-400 unit/kg",
+        "act": "Monitor ตลอด CPB",
+        "tee": "ตรวจ residual shunt หลัง repair, ประเมิน valve function"
+      },
+      "complications": [
+        "Residual shunt",
+        "Heart block (โดยเฉพาะ VSD ใกล้ conduction system)",
+        "Pulmonary hypertensive crisis",
+        "Arrhythmia"
+      ],
+      "postoperative_care": {
+        "icu": "ICU handover, monitor rhythm",
+        "extubation": "ส่วนใหญ่ extubate เร็วหากไม่มี pulmonary hypertension รุนแรง",
+        "pain": "Multimodal ปรับตามอายุ",
+        "complication_watch": [
+          "Heart block",
+          "Pulmonary hypertensive crisis"
+        ]
+      },
+      "clinical_pearls": [
+        "VSD repair เสี่ยง complete heart block เนื่องจากใกล้ AV node - เตรียม pacing เสมอ",
+        "หลีกเลี่ยงปัจจัยที่เพิ่ม PVR (hypoxia, hypercarbia, acidosis, pain, cold) ในผู้ป่วยที่มี pulmonary hypertension",
+        "Sevoflurane เป็นตัวเลือกหลักสำหรับ inhalation induction ในเด็กที่ไม่มี IV access"
+      ],
+      "references": [
+        "AHA/ACC ACHD Guideline",
+        "ESC Congenital Heart Disease Guideline",
+        "Congenital Cardiac Anesthesia Society"
+      ]
+    },
+    {
+      "id": "achd",
+      "name": "Adult Congenital Heart Disease (ACHD) Surgery",
+      "overview": {
+        "definition": "การผ่าตัดหรือหัตถการในผู้ใหญ่ที่มีโรคหัวใจพิการแต่กำเนิด เช่น Tetralogy of Fallot repair (redo), Fontan circulation, transposition of great arteries",
+        "indications": [
+          "Reoperation สำหรับ residual/recurrent defect",
+          "Valve dysfunction ใน repaired congenital heart disease",
+          "Failing Fontan circulation",
+          "Arrhythmia surgery ร่วมกับ structural repair"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC (polycythemia ในผู้ป่วย cyanotic), coag, type & crossmatch"
+        ],
+        "imaging": [
+          "Echocardiogram, cardiac MRI/CT (ประเมิน anatomy ที่ซับซ้อน)",
+          "Cardiac catheterization"
+        ],
+        "consult": [
+          "ACHD cardiology specialist",
+          "Cardiac surgery ที่มีประสบการณ์ ACHD"
+        ],
+        "optimization": [
+          "ทบทวน surgical history และ anatomy อย่างละเอียด",
+          "ประเมิน functional status/exercise tolerance"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line - เลือกตำแหน่งตาม anatomy (หลีกเลี่ยงข้างที่เคยทำ shunt)",
+        "cvp": "Central line - ระวัง anatomy ผิดปกติ (persistent left SVC พบบ่อย)",
+        "pa_catheter": "มักไม่เหมาะสมในผู้ป่วย single ventricle/Fontan",
+        "tee": "Essential - ประเมิน complex anatomy",
+        "bis": "พิจารณา",
+        "nirs": "แนะนำโดยเฉพาะใน cyanotic heart disease"
+      },
+      "airway": {
+        "plan": "ประเมินตาม syndrome ที่เกี่ยวข้อง (เช่น 22q11 deletion)",
+        "equipment": [
+          "Standard + pediatric backup หากตัวเล็ก"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "ปรับตาม physiology เฉพาะราย (cyanotic vs acyanotic, single ventricle)",
+        "dose": "Individualized",
+        "hemodynamic_goal": "รักษาสมดุล Qp:Qs ในผู้ป่วย shunt lesion, maintain preload ใน Fontan physiology"
+      },
+      "maintenance": {
+        "volatile_tiva": "ตาม hemodynamic tolerance",
+        "muscle_relaxant": "ตามน้ำหนัก",
+        "analgesia": "Opioid-based ± regional",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg",
+        "peep": "Low PEEP ใน Fontan circulation เพื่อไม่ขัดขวาง passive pulmonary flow",
+        "fio2": "titrate",
+        "recruitment": "ระมัดระวังใน Fontan"
+      },
+      "fluid_management": {
+        "goal_directed": "Fontan patients ต้องการ preload ที่เพียงพอเนื่องจากไม่มี subpulmonic ventricle",
+        "blood": "เตรียมตาม complexity ของ redo sternotomy",
+        "transfusion": "ตาม coagulopathy"
+      },
+      "special_consideration": {
+        "cpb": "Redo sternotomy เสี่ยง injury ต่อ adherent structures - เตรียม femoral cannulation backup",
+        "heparin": "300-400 unit/kg",
+        "act": "Monitor ตลอด",
+        "tee": "ประเมิน complex anatomy หลัง repair"
+      },
+      "complications": [
+        "Arrhythmia (พบบ่อยมากใน ACHD)",
+        "Bleeding จาก redo sternotomy/adhesion",
+        "Right heart failure",
+        "Fontan failure/protein-losing enteropathy exacerbation"
+      ],
+      "postoperative_care": {
+        "icu": "ICU ที่มีความชำนาญ ACHD physiology",
+        "extubation": "Individualized ตาม physiology",
+        "pain": "Multimodal",
+        "complication_watch": [
+          "Arrhythmia",
+          "Low cardiac output ใน single ventricle physiology"
+        ]
+      },
+      "clinical_pearls": [
+        "ทุกเคส ACHD ต้องทบทวน prior operative report และ current anatomy อย่างละเอียดก่อนเสมอ",
+        "Fontan physiology: positive pressure ventilation ลด pulmonary blood flow - ใช้ low PEEP, short inspiratory time, early spontaneous ventilation",
+        "Redo sternotomy มีความเสี่ยง catastrophic bleeding จาก adherent great vessels - เตรียม femoral access และ blood products ก่อนเปิดหน้าอก"
+      ],
+      "references": [
+        "ACC/AHA ACHD Guideline",
+        "ESC Guideline for ACHD",
+        "Congenital Cardiac Anesthesia Society"
+      ]
+    },
+    {
+      "id": "tavi",
+      "name": "TAVI (Transcatheter Aortic Valve Implantation)",
+      "overview": {
+        "definition": "การใส่ลิ้นหัวใจ aortic เทียมผ่านสายสวน (transfemoral, transapical, หรือ transaortic) โดยไม่ต้องเปิดหน้าอก",
+        "indications": [
+          "Severe symptomatic AS ที่มีความเสี่ยงสูงหรือ prohibitive risk สำหรับ open surgery",
+          "ปัจจุบันขยายไปถึง intermediate/low-risk patients ตาม guideline ล่าสุด"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, renal function (contrast nephropathy risk)"
+        ],
+        "imaging": [
+          "CT angiogram (annulus sizing, access vessel assessment)",
+          "Echocardiogram"
+        ],
+        "consult": [
+          "Heart team (cardiology + cardiac surgery)"
+        ],
+        "optimization": [
+          "ประเมิน vascular access เพื่อเลือก approach",
+          "Hydration ก่อนหัตถการเพื่อลด contrast nephropathy"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หากใช้ GA)"
+        ],
+        "ibp": "Arterial line เสมอ",
+        "cvp": "พิจารณาตาม approach และความซับซ้อน",
+        "pa_catheter": "ไม่จำเป็นส่วนใหญ่",
+        "tee": "ใช้ในกรณี GA เพื่อ guide valve deployment; หาก conscious sedation ใช้ TTE/fluoroscopy guide แทน",
+        "bis": "แนะนำหากใช้ GA",
+        "nirs": "พิจารณาในผู้สูงอายุที่มีความเสี่ยง stroke"
+      },
+      "airway": {
+        "plan": "Conscious sedation หรือ GA แล้วแต่สถาบันและ approach; transfemoral มักทำ conscious sedation ได้",
+        "equipment": [
+          "Standard airway equipment พร้อมสำหรับ conversion ฉุกเฉิน"
+        ],
+        "backup": "พร้อม convert เป็น open surgery ฉุกเฉิน"
+      },
+      "induction": {
+        "drug": "หาก GA: etomidate/propofol titrate ช้าๆ, opioid",
+        "dose": "Individualized ในผู้สูงอายุที่เปราะบาง",
+        "hemodynamic_goal": "หลีกเลี่ยง hypotension อย่างมาก - severe AS ทนต่อการลด preload/afterload ได้น้อย"
+      },
+      "maintenance": {
+        "volatile_tiva": "Volatile หรือ TIVA แบบ light anesthesia หากทำ GA",
+        "muscle_relaxant": "ตามความจำเป็น",
+        "analgesia": "Local anesthesia ที่ access site + sedation/opioid เล็กน้อย",
+        "temperature": "Warming blanket"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg (หาก GA)",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative fluid, ระวัง contrast-induced nephropathy",
+        "blood": "เตรียม PRC ในกรณี vascular complication",
+        "transfusion": "ตามความจำเป็น"
+      },
+      "special_consideration": {
+        "cpb": "Standby CPB/cardiac surgery backup ในกรณีเกิด annular rupture หรือ tamponade",
+        "heparin": "Heparin 50-100 unit/kg เป้าหมาย ACT 250-300 วินาที",
+        "act": "Monitor ระหว่างหัตถการ",
+        "tee": "Guide valve positioning, ประเมิน paravalvular leak หลังใส่ลิ้น",
+        "pacing": "Rapid ventricular pacing (180-200/min) ระหว่าง balloon valvuloplasty และ valve deployment เพื่อลด cardiac output ชั่วคราว"
+      },
+      "complications": [
+        "Annular rupture",
+        "Coronary occlusion",
+        "Paravalvular leak",
+        "Vascular access complication/bleeding",
+        "Stroke",
+        "Complete heart block (ต้องใส่ permanent pacemaker)",
+        "Cardiac tamponade"
+      ],
+      "postoperative_care": {
+        "icu": "Monitor ใน ICU/CCU ระยะสั้น",
+        "extubation": "Immediate extubation หากทำ GA (fast-track)",
+        "pain": "Minimal analgesia requirement เนื่องจากแผลเล็ก",
+        "complication_watch": [
+          "Heart block",
+          "Vascular access site bleeding",
+          "Stroke"
+        ]
+      },
+      "clinical_pearls": [
+        "Rapid pacing ต้องเตรียมทีมพร้อมรับมือ hemodynamic collapse ชั่วคราว",
+        "Conscious sedation ช่วยให้ประเมิน neurological status ได้ทันทีหลังหัตถการ",
+        "อัตราการเกิด complete heart block สูงขึ้นใน self-expanding valve เมื่อเทียบกับ balloon-expandable valve"
+      ],
+      "references": [
+        "ACC/AHA/SCAI TAVI Guideline",
+        "ESC/EACTS Valvular Heart Disease Guideline",
+        "SCA TAVI Consensus Statement"
+      ]
+    },
+    {
+      "id": "ecmo",
+      "name": "ECMO (Extracorporeal Membrane Oxygenation) Cannulation",
+      "overview": {
+        "definition": "การใส่ ECMO เพื่อพยุงระบบไหลเวียนโลหิต (VA-ECMO) หรือระบบหายใจ (VV-ECMO) ในผู้ป่วยวิกฤต",
+        "indications": [
+          "Cardiogenic shock refractory to conventional therapy (VA-ECMO)",
+          "Severe ARDS refractory to conventional ventilation (VV-ECMO)",
+          "Post-cardiotomy shock",
+          "Bridge to transplant/VAD",
+          "E-CPR ใน refractory cardiac arrest"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, ABG, lactate",
+          "Type & crossmatch"
+        ],
+        "imaging": [
+          "Echocardiogram (ประเมิน biventricular function)",
+          "CXR"
+        ],
+        "consult": [
+          "ECMO team/cardiac surgery/intensivist ร่วมกันตัดสินใจ",
+          "Multidisciplinary team meeting"
+        ],
+        "optimization": [
+          "มักเป็นสถานการณ์ฉุกเฉิน - เวลาจำกัด",
+          "Correct coagulopathy ตามความจำเป็นก่อน cannulation"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2 (pre/post membrane), EtCO2, temperature"
+        ],
+        "ibp": "Arterial line - ข้างขวาสำหรับ monitor differential hypoxia (North-South syndrome) ใน peripheral VA-ECMO",
+        "cvp": "Central line",
+        "pa_catheter": "พิจารณาในบางกรณี",
+        "tee": "แนะนำสำหรับ cannula positioning และประเมิน cardiac function ระหว่างและหลัง cannulation",
+        "bis": "พิจารณาตามระดับความรู้สึกตัว",
+        "nirs": "แนะนำโดยเฉพาะ lower extremity NIRS เพื่อเฝ้าระวัง limb ischemia"
+      },
+      "airway": {
+        "plan": "มักต้อง intubate ก่อนอยู่แล้วในผู้ป่วยวิกฤต",
+        "equipment": [
+          "Standard + emergency airway cart"
+        ],
+        "backup": "Difficult airway management ready"
+      },
+      "induction": {
+        "drug": "หากยังไม่ intubate: etomidate/ketamine ในผู้ป่วย hemodynamically unstable",
+        "dose": "Titrate ระมัดระวังในผู้ป่วย shock",
+        "hemodynamic_goal": "หลีกเลี่ยง cardiovascular collapse ระหว่าง induction ในผู้ป่วยที่มี reserve น้อยมาก"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA มักเลือกใช้ในผู้ป่วยวิกฤต",
+        "muscle_relaxant": "ตามความจำเป็น",
+        "analgesia": "Opioid infusion + sedation",
+        "temperature": "Active warming/cooling ตามเป้าหมาย"
+      },
+      "ventilation": {
+        "tv": "Lung protective 4-6 mL/kg PBW ใน VV-ECMO (ultra-protective)",
+        "peep": "10-15 cmH2O หรือตาม lung recruitment strategy",
+        "fio2": "ลดลงเมื่อ ECMO support เพียงพอ",
+        "recruitment": "พิจารณาตาม lung compliance"
+      },
+      "fluid_management": {
+        "goal_directed": "ระวัง volume status ให้เพียงพอสำหรับ ECMO flow",
+        "blood": "เตรียม PRC, FFP, platelet จำนวนมาก",
+        "transfusion": "ตาม coagulopathy และ ECMO circuit requirement"
+      },
+      "special_consideration": {
+        "cpb": "ไม่ใช่ CPB แต่หลักการ anticoagulation คล้ายกัน",
+        "heparin": "Bolus 50-100 unit/kg ก่อน cannulation, then infusion",
+        "act": "เป้าหมาย ACT 160-200 วินาที (VA-ECMO) ปรับตาม bleeding risk",
+        "tee": "ยืนยันตำแหน่ง cannula (venous/arterial), ประเมิน LV distension",
+        "differential_hypoxia": "เฝ้าระวัง North-South syndrome ใน peripheral VA-ECMO - เลือด oxygenated ไม่ถึง upper body/coronary/cerebral circulation",
+        "lv_venting": "พิจารณา LV vent หรือ Impella ร่วมด้วยหาก LV distension รุนแรง"
+      },
+      "complications": [
+        "Limb ischemia (peripheral cannulation)",
+        "Bleeding at cannulation site",
+        "Cannula malposition",
+        "Hemolysis",
+        "LV distension/pulmonary edema",
+        "Stroke",
+        "Infection",
+        "Differential hypoxia"
+      ],
+      "postoperative_care": {
+        "icu": "ICU with ECMO-trained staff ตลอด 24 ชม.",
+        "extubation": "ขึ้นกับ underlying condition อาจต้องใช้เวลานาน",
+        "pain": "Continuous sedation/analgesia ระหว่าง ECMO support",
+        "complication_watch": [
+          "Limb perfusion",
+          "Bleeding",
+          "Circuit complications",
+          "Neurological status"
+        ]
+      },
+      "clinical_pearls": [
+        "ตรวจ distal limb perfusion (distal perfusion cannula) ทุกรายที่ทำ peripheral femoral cannulation เพื่อป้องกัน limb ischemia",
+        "Right radial arterial line สำคัญมากในการตรวจจับ differential hypoxia (North-South syndrome)",
+        "LV distension เป็นภาวะแทรกซ้อนสำคัญของ peripheral VA-ECMO ต้องเฝ้าระวังด้วย TEE"
+      ],
+      "references": [
+        "ELSO Guidelines",
+        "SCA ECMO Consensus",
+        "AHA Scientific Statement on ECMO"
+      ]
+    },
+    {
+      "id": "lvad",
+      "name": "LVAD (Left Ventricular Assist Device) Implantation",
+      "overview": {
+        "definition": "การผ่าตัดใส่เครื่องช่วยการทำงานของหัวใจห้องล่างซ้าย สำหรับ bridge-to-transplant หรือ destination therapy ในผู้ป่วย advanced heart failure",
+        "indications": [
+          "Advanced heart failure (NYHA IIIB-IV) refractory to medical therapy",
+          "Bridge to transplant",
+          "Destination therapy ในผู้ที่ไม่เหมาะ transplant"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, comprehensive metabolic panel, BNP",
+          "Type & crossmatch"
+        ],
+        "imaging": [
+          "Echocardiogram (RV function สำคัญมาก - ทำนาย RV failure หลังใส่ LVAD)",
+          "Right heart catheterization"
+        ],
+        "consult": [
+          "Heart failure cardiology, cardiac surgery, palliative care (destination therapy)"
+        ],
+        "optimization": [
+          "Optimize RV function ก่อนผ่าตัด",
+          "Correct coagulopathy/nutrition status",
+          "ประเมิน end-organ function"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line",
+        "cvp": "Central line + PA catheter (เกือบทุกราย เพื่อ monitor RV function)",
+        "pa_catheter": "แนะนำอย่างยิ่งเพื่อประเมิน pulmonary pressure และ RV performance หลังใส่ LVAD",
+        "tee": "Essential - ประเมิน RV function, tricuspid regurgitation, PFO (ต้องปิดถ้าพบ), inflow/outflow cannula positioning, de-airing",
+        "bis": "พิจารณา",
+        "nirs": "แนะนำ"
+      },
+      "airway": {
+        "plan": "Standard ETT",
+        "equipment": [
+          "Video laryngoscope"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Etomidate titrate ช้าๆ ในผู้ป่วย severe HF, high-dose opioid",
+        "dose": "ลด dose ในผู้ป่วย low cardiac output อย่างมาก",
+        "hemodynamic_goal": "หลีกเลี่ยง further myocardial depression, maintain RV preload/afterload balance"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA มักเลือกในผู้ป่วย EF ต่ำมาก",
+        "muscle_relaxant": "Non-depolarizing infusion",
+        "analgesia": "Opioid-based",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O ระวังผลต่อ RV afterload",
+        "fio2": "titrate",
+        "recruitment": "ระมัดระวังผลต่อ RV"
+      },
+      "fluid_management": {
+        "goal_directed": "ระวัง RV volume overload",
+        "blood": "เตรียม PRC, FFP, platelet มาก (redo sternotomy บ่อย)",
+        "transfusion": "ตาม coagulopathy"
+      },
+      "special_consideration": {
+        "cpb": "On-pump ส่วนใหญ่, off-pump ในบางสถาบัน",
+        "heparin": "300-400 unit/kg",
+        "act": "Monitor ตลอด CPB",
+        "tee": "ตรวจ PFO/ASD ต้องปิดก่อนหรือขณะผ่าตัด, ประเมิน RV function และ inflow cannula alignment หลังใส่เครื่อง",
+        "rv_failure": "RV failure เป็นภาวะแทรกซ้อนสำคัญที่สุด - เตรียม inhaled nitric oxide/milrinone/temporary RVAD",
+        "weaning_cpb": "ค่อยๆ เพิ่ม LVAD speed พร้อมประเมิน RV function และ septal position ด้วย TEE"
+      },
+      "complications": [
+        "Acute RV failure (พบบ่อยที่สุดและอันตรายที่สุด)",
+        "Bleeding/coagulopathy",
+        "Device malfunction/thrombosis",
+        "Stroke",
+        "Infection (driveline)",
+        "Arrhythmia"
+      ],
+      "postoperative_care": {
+        "icu": "ICU with LVAD-trained staff, monitor RV function ใกล้ชิด",
+        "extubation": "ขึ้นกับ RV function หลังผ่าตัด",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "RV failure signs (increased CVP, decreased LVAD flow, hypotension)",
+          "Bleeding",
+          "Arrhythmia"
+        ]
+      },
+      "clinical_pearls": [
+        "RV failure หลังใส่ LVAD เป็นสาเหตุการเสียชีวิตอันดับต้นๆ - ประเมิน RV function ก่อนผ่าตัดอย่างละเอียด",
+        "PFO ที่ไม่ปิดจะทำให้เกิด right-to-left shunt และ hypoxemia รุนแรงหลังเริ่ม LVAD support เนื่องจากลด LA pressure",
+        "TEE ประเมิน interventricular septal position ช่วยปรับ LVAD speed ให้เหมาะสม (septum ควรอยู่ midline)"
+      ],
+      "references": [
+        "ISHLT Guideline for MCS",
+        "SCA Consensus Statement on LVAD",
+        "AHA Scientific Statement on Mechanical Circulatory Support"
+      ]
+    },
+    {
+      "id": "heart_transplant",
+      "name": "Heart Transplantation",
+      "overview": {
+        "definition": "การผ่าตัดเปลี่ยนหัวใจสำหรับผู้ป่วย end-stage heart failure ที่ไม่ตอบสนองต่อการรักษาอื่น",
+        "indications": [
+          "End-stage heart failure refractory to medical/device therapy",
+          "Restrictive/hypertrophic cardiomyopathy ที่ไม่เหมาะกับ surgery อื่น",
+          "Complex congenital heart disease ที่ไม่สามารถซ่อมได้"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, crossmatch (virtual/actual), panel reactive antibody (PRA)",
+          "Comprehensive metabolic panel"
+        ],
+        "imaging": [
+          "Echocardiogram, right heart catheterization (pulmonary vascular resistance สำคัญมาก)"
+        ],
+        "consult": [
+          "Transplant team multidisciplinary"
+        ],
+        "optimization": [
+          "มักเป็นเคสฉุกเฉินเมื่อมี organ offer - full stomach precaution เสมอ",
+          "ประเมิน pulmonary vascular resistance - หากสูงมากเสี่ยง RV failure ของหัวใจใหม่"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2, temperature"
+        ],
+        "ibp": "Arterial line",
+        "cvp": "Central line + PA catheter",
+        "pa_catheter": "แนะนำเพื่อ monitor pulmonary pressure และ RV function ของหัวใจใหม่",
+        "tee": "Essential - ประเมนคุณภาพ graft, de-airing, biventricular function หลัง implant",
+        "bis": "พิจารณา",
+        "nirs": "แนะนำ"
+      },
+      "airway": {
+        "plan": "RSI (full stomach precaution เนื่องจากเป็นเคสฉุกเฉิน)",
+        "equipment": [
+          "Video laryngoscope",
+          "Suction พร้อม"
+        ],
+        "backup": "Difficult airway cart"
+      },
+      "induction": {
+        "drug": "Etomidate/ketamine, high-dose opioid, rapid-sequence relaxant",
+        "dose": "ปรับตาม hemodynamic reserve ที่จำกัดมาก",
+        "hemodynamic_goal": "หลีกเลี่ยง myocardial depression อย่างมากในหัวใจที่ fail อยู่แล้วก่อน CPB"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ตาม stability",
+        "muscle_relaxant": "Non-depolarizing infusion",
+        "analgesia": "Opioid-based",
+        "temperature": "Active warming"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg PBW",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "หลัง weaning CPB"
+      },
+      "fluid_management": {
+        "goal_directed": "GDT ระวัง volume overload ต่อหัวใจใหม่ (denervated heart)",
+        "blood": "เตรียม irradiated/leukoreduced blood products, PRC/FFP/platelet จำนวนมาก",
+        "transfusion": "ตาม coagulopathy"
+      },
+      "special_consideration": {
+        "cpb": "Cold ischemic time ของ graft สำคัญมาก - ต้อง minimize",
+        "heparin": "300-400 unit/kg",
+        "act": "Monitor ตลอด CPB",
+        "tee": "ประเมน anastomosis, de-airing, biventricular function",
+        "denervated_heart": "หัวใจใหม่ denervated - ไม่ตอบสนองต่อ atropine, ต้องใช้ direct-acting agent (epinephrine, isoproterenol) สำหรับ chronotropy",
+        "immunosuppression": "เริ่ม induction immunosuppression ตาม protocol (basiliximab, methylprednisolone)"
+      },
+      "complications": [
+        "Primary graft dysfunction",
+        "Right heart failure (จาก pre-existing pulmonary hypertension)",
+        "Hyperacute rejection",
+        "Bleeding (redo sternotomy บ่อย)",
+        "Arrhythmia"
+      ],
+      "postoperative_care": {
+        "icu": "ICU with transplant-trained team, immunosuppression protocol",
+        "extubation": "ตาม graft function",
+        "pain": "Multimodal analgesia",
+        "complication_watch": [
+          "Primary graft dysfunction",
+          "RV failure",
+          "Rejection signs",
+          "Infection"
+        ]
+      },
+      "clinical_pearls": [
+        "หัวใจใหม่ denervated - atropine ไม่ได้ผล ต้องใช้ isoproterenol หรือ epicardial pacing สำหรับ bradycardia",
+        "Pre-existing elevated PVR เป็นปัจจัยเสี่ยงสำคัญของ RV failure หลัง transplant - เตรียม pulmonary vasodilator (iNO, milrinone) พร้อมใช้เสมอ",
+        "Cold ischemic time ควร <4 ชั่วโมง เพื่อลด primary graft dysfunction"
+      ],
+      "references": [
+        "ISHLT Guidelines for Heart Transplantation",
+        "SCA Consensus on Transplant Anesthesia"
+      ]
+    },
+    {
+      "id": "cardiac_cath",
+      "name": "Cardiac Catheterization",
+      "overview": {
+        "definition": "หัตถการวินิจฉัยหรือรักษาผ่านสายสวนหัวใจ เช่น coronary angiogram, PCI, right heart catheterization ในผู้ป่วยเด็กหรือผู้ใหญ่ที่ต้องการ sedation/anesthesia",
+        "indications": [
+          "Diagnostic coronary/structural evaluation",
+          "PCI (percutaneous coronary intervention)",
+          "Complex structural intervention ต้องการ GA (เช่น เด็กเล็ก, ผู้ป่วยที่ไม่ร่วมมือ)"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag, renal function"
+        ],
+        "imaging": [
+          "Echocardiogram",
+          "Prior cath data"
+        ],
+        "consult": [
+          "Cardiology"
+        ],
+        "optimization": [
+          "NPO status ตาม guideline",
+          "ประเมิน contrast allergy"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG, SpO2, EtCO2 (หาก GA)"
+        ],
+        "ibp": "พิจารณาตามความซับซ้อนของหัตถการ",
+        "cvp": "ไม่จำเป็นส่วนใหญ่ (มี catheter access จาก cath lab เอง)",
+        "pa_catheter": "N/A - หัตถการเองคือการวัด pressure โดยตรง",
+        "tee": "พิจารณาในหัตถการ structural (เช่น ASD closure, paravalvular leak closure)",
+        "bis": "พิจารณาหากใช้ GA/deep sedation",
+        "nirs": "พิจารณาในเด็กเล็ก"
+      },
+      "airway": {
+        "plan": "Conscious sedation, MAC, หรือ GA ตามความซับซ้อนและอายุผู้ป่วย",
+        "equipment": [
+          "Standard airway equipment"
+        ],
+        "backup": "พร้อม convert เป็น GA หากจำเป็น"
+      },
+      "induction": {
+        "drug": "Propofol/dexmedetomidine สำหรับ sedation, หรือ standard GA induction",
+        "dose": "Individualized",
+        "hemodynamic_goal": "รักษาเสถียรภาพ hemodynamic โดยเฉพาะระหว่าง contrast injection และ balloon occlusion"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA หรือ volatile ตามหัตถการ",
+        "muscle_relaxant": "ตามความจำเป็น (มักไม่ใช้ในหัตถการสั้น)",
+        "analgesia": "Minimal - หัตถการส่วนใหญ่ไม่เจ็บมาก",
+        "temperature": "Warming blanket โดยเฉพาะเด็กเล็ก"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg (หาก GA)",
+        "peep": "5 cmH2O",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็น"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative, ระวัง contrast-induced nephropathy",
+        "blood": "เตรียมพร้อมในหัตถการที่มีความเสี่ยง perforation",
+        "transfusion": "ไม่จำเป็นส่วนใหญ่"
+      },
+      "special_consideration": {
+        "cpb": "Standby cardiac surgery backup ในหัตถการที่มีความเสี่ยงสูง (structural intervention)",
+        "heparin": "ตามหัตถการ (PCI ต้องการ ACT >250 วินาที)",
+        "act": "Monitor ในหัตถการที่ใช้ heparin",
+        "tee": "ใช้ guide ใน structural intervention"
+      },
+      "complications": [
+        "Contrast-induced nephropathy",
+        "Vascular access complication",
+        "Cardiac perforation/tamponade",
+        "Arrhythmia",
+        "Contrast allergy/anaphylaxis"
+      ],
+      "postoperative_care": {
+        "icu": "มักไม่ต้องการ ICU เว้นแต่หัตถการซับซ้อน",
+        "extubation": "Immediate หากทำ GA",
+        "pain": "Minimal analgesia requirement",
+        "complication_watch": [
+          "Access site bleeding",
+          "Contrast reaction",
+          "Arrhythmia"
+        ]
+      },
+      "clinical_pearls": [
+        "Remote location anesthesia (นอก OR) ต้องเตรียม emergency equipment/backup ให้ครบเหมือน OR เสมอ",
+        "เด็กเล็กที่ทำ cath หลายครั้ง ต้องระวัง cumulative radiation และ contrast exposure",
+        "หัตถการ structural intervention ที่ใช้ TEE guide ต้องการ GA เนื่องจากต้องใส่ TEE probe"
+      ],
+      "references": [
+        "SCAI Guideline",
+        "ASA Practice Advisory for Non-OR Anesthesia",
+        "SCA Consensus Statement"
+      ]
+    },
+    {
+      "id": "ep_study",
+      "name": "EP Study (Electrophysiology Study & Ablation)",
+      "overview": {
+        "definition": "หัตถการวินิจฉัยและรักษาภาวะหัวใจเต้นผิดจังหวะผ่านสายสวน เช่น AF ablation, VT ablation, EP study สำหรับ SVT",
+        "indications": [
+          "Symptomatic arrhythmia refractory to medical therapy",
+          "AF ablation (pulmonary vein isolation)",
+          "VT ablation ในผู้ป่วย structural heart disease",
+          "Diagnostic EP study สำหรับ unexplained syncope/arrhythmia"
+        ]
+      },
+      "preoperative_assessment": {
+        "labs": [
+          "CBC, coag (โดยเฉพาะผู้ป่วยที่ใช้ anticoagulant)"
+        ],
+        "imaging": [
+          "Echocardiogram",
+          "Cardiac CT/MRI สำหรับ mapping ใน complex ablation"
+        ],
+        "consult": [
+          "Electrophysiologist"
+        ],
+        "optimization": [
+          "จัดการ anticoagulation ตาม protocol (บางหัตถการทำต่อ uninterrupted anticoagulation)"
+        ]
+      },
+      "monitoring": {
+        "standard": [
+          "ECG multi-lead, SpO2, EtCO2"
+        ],
+        "ibp": "พิจารณาในหัตถการยาวหรือซับซ้อน (VT ablation)",
+        "cvp": "ไม่จำเป็นส่วนใหญ่",
+        "pa_catheter": "N/A",
+        "tee": "อาจใช้ก่อน AF ablation เพื่อ rule out LAA thrombus",
+        "bis": "แนะนำเนื่องจากต้อง maintain deep sedation/GA คงที่เป็นเวลานานโดยไม่กระทบต่อ arrhythmia induction",
+        "nirs": "พิจารณาในหัตถการยาว"
+      },
+      "airway": {
+        "plan": "General anesthesia กับ ETT มักเลือกสำหรับ AF ablation (ต้องการ apnea ช่วง mapping และไม่ขยับตัว) หรือ deep sedation สำหรับหัตถการอื่น",
+        "equipment": [
+          "Standard airway equipment"
+        ],
+        "backup": "พร้อม convert เป็น GA"
+      },
+      "induction": {
+        "drug": "Propofol-based TIVA มักเลือกเนื่องจากรบกวน arrhythmogenicity น้อยกว่า volatile agent",
+        "dose": "Standard induction dose",
+        "hemodynamic_goal": "คงที่เพื่อไม่รบกวนการ mapping arrhythmia"
+      },
+      "maintenance": {
+        "volatile_tiva": "TIVA (propofol ± remifentanil) นิยมมากกว่า volatile เนื่องจากผลต่อ cardiac electrophysiology น้อยกว่า และช่วยให้ arrhythmia inducible ระหว่าง mapping",
+        "muscle_relaxant": "Paralysis สำหรับ AF ablation เพื่อลดการขยับตัวขณะ high-frequency jet ventilation หรือ apnea technique",
+        "analgesia": "Opioid infusion",
+        "temperature": "Warming blanket - หัตถการมักใช้เวลานาน"
+      },
+      "ventilation": {
+        "tv": "6-8 mL/kg หรือใช้ high-frequency jet ventilation/apnea technique เพื่อลด cardiac/respiratory motion ระหว่าง mapping",
+        "peep": "ตามเทคนิคที่ใช้",
+        "fio2": "titrate",
+        "recruitment": "ตามความจำเป็นหลังหัตถการยาว"
+      },
+      "fluid_management": {
+        "goal_directed": "Conservative fluid - หัตถการมักใช้เวลานาน (3-6 ชม.) ระวัง fluid overload จาก irrigated catheter",
+        "blood": "เตรียมพร้อมกรณี tamponade",
+        "transfusion": "ไม่จำเป็นส่วนใหญ่ เว้นแต่มี complication"
+      },
+      "special_consideration": {
+        "cpb": "Standby cardiac surgery backup สำหรับ tamponade ฉุกเฉิน",
+        "heparin": "Full anticoagulation ระหว่าง left-sided ablation เป้าหมาย ACT >300 วินาที",
+        "act": "Monitor q30 min ระหว่างหัตถการ",
+        "tee": "Pre-procedure TEE เพื่อ exclude LAA thrombus ใน AF ablation",
+        "steady_state": "หลีกเลี่ยงการเปลี่ยนแปลง anesthetic depth กะทันหันเนื่องจากมีผลต่อ arrhythmia inducibility และ hemodynamic ระหว่าง mapping"
+      },
+      "complications": [
+        "Cardiac tamponade (พบได้ในทุกหัตถการที่เข้าใกล้ผนังหัวใจ)",
+        "Stroke/thromboembolism",
+        "Phrenic nerve injury",
+        "Esophageal injury (AF ablation)",
+        "Pulmonary vein stenosis",
+        "Complete heart block"
+      ],
+      "postoperative_care": {
+        "icu": "ส่วนใหญ่ไม่ต้องการ ICU เว้นแต่มี complication",
+        "extubation": "Immediate extubation หลังหัตถการ",
+        "pain": "Minimal-moderate analgesia",
+        "complication_watch": [
+          "Tamponade signs (hypotension, tachycardia)",
+          "Groin site bleeding",
+          "Neurological status"
+        ]
+      },
+      "clinical_pearls": [
+        "Propofol-based TIVA เป็นที่นิยมมากกว่า volatile agent ใน EP procedures เนื่องจากรบกวน arrhythmia substrate น้อยกว่า",
+        "Apnea technique หรือ jet ventilation ช่วยลด catheter-tissue motion ระหว่าง AF ablation ทำให้ lesion creation แม่นยำขึ้น",
+        "Sudden hypotension ระหว่างหัตถการต้องนึกถึง cardiac tamponade เป็นอันดับแรกเสมอ"
+      ],
+      "references": [
+        "HRS/EHRA/ECAS AF Ablation Consensus",
+        "SCA Consensus on EP Anesthesia",
+        "ACC/AHA/HRS Arrhythmia Guideline"
+      ]
+    }
+  ]
+}
