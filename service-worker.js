@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aneshub-cache-v8';
+const CACHE_NAME = 'aneshub-cache-v9';
 const ASSETS = [
   './index.html',
   './anesth-cal.html',
