@@ -63,6 +63,29 @@
     width:100%; font-family:var(--sans); font-size:14px; padding:7px 8px;
     border-radius:8px; border:1.3px solid var(--line); background:#F7FAFF; color:var(--ink);
   }
+
+  .cs-wrap{ position:relative; }
+  .cs-btn{
+    width:100%; text-align:left; font-family:var(--sans); font-size:12.5px; line-height:1.4;
+    padding:8px 10px; border-radius:8px; border:1.3px solid var(--line); background:#F7FAFF; color:var(--ink);
+    display:flex; align-items:center; justify-content:space-between; gap:8px; cursor:pointer;
+  }
+  .cs-btn .cs-chevron{ color:var(--ink-soft); font-size:11px; flex-shrink:0; transition:transform .15s ease; }
+  .cs-wrap.open .cs-btn .cs-chevron{ transform:rotate(180deg); }
+  .cs-list{
+    display:none; position:absolute; left:0; right:0; top:calc(100% + 4px); z-index:30;
+    background:#fff; border:1.3px solid var(--line); border-radius:10px;
+    box-shadow:0 10px 26px rgba(13,32,59,.16); overflow:hidden;
+  }
+  .cs-wrap.open .cs-list{ display:block; }
+  .cs-item{
+    padding:10px 12px; font-family:var(--sans); font-size:12.5px; line-height:1.4;
+    color:var(--ink); cursor:pointer; border-bottom:1px solid var(--line);
+  }
+  .cs-item:last-child{ border-bottom:none; }
+  .cs-item:active{ background:#EAF1FF; }
+  .cs-item.selected{ background:#EAF1FF; color:var(--teal-deep); font-weight:700; }
+
   .calcbtn{
     margin-top:10px; width:100%; padding:11px; border:none; border-radius:10px;
     background:var(--teal-deep); color:#fff; font-family:var(--sans); font-weight:700;
@@ -149,12 +172,18 @@
     </div>
     <div style="margin-top:8px;">
       <label>ชนิดการผ่าตัด (Third-space loss)</label>
-      <select id="surgeryType">
-        <option value="minor">เล็กน้อย (ผิวเผิน / laparoscopic) — 2 ml/kg/h</option>
-        <option value="moderate" selected>ปานกลาง (เปิดช่องท้องทั่วไป) — 5 ml/kg/h</option>
-        <option value="major">ใหญ่ (thoracotomy / เปิดกว้าง) — 7 ml/kg/h</option>
-        <option value="extensive">ใหญ่มาก (major abdominal/vascular) — 9 ml/kg/h</option>
-      </select>
+      <div class="cs-wrap" id="surgeryTypeWrap">
+        <button type="button" class="cs-btn" onclick="toggleSurgeryList(event)">
+          <span id="surgeryTypeLabel">ปานกลาง (เปิดช่องท้องทั่วไป) — 5 ml/kg/h</span>
+          <span class="cs-chevron">▾</span>
+        </button>
+        <div class="cs-list" id="surgeryTypeList">
+          <div class="cs-item" data-v="minor" onclick="selectSurgeryType(this)">เล็กน้อย (ผิวเผิน / laparoscopic) — 2 ml/kg/h</div>
+          <div class="cs-item selected" data-v="moderate" onclick="selectSurgeryType(this)">ปานกลาง (เปิดช่องท้องทั่วไป) — 5 ml/kg/h</div>
+          <div class="cs-item" data-v="major" onclick="selectSurgeryType(this)">ใหญ่ (thoracotomy / เปิดกว้าง) — 7 ml/kg/h</div>
+          <div class="cs-item" data-v="extensive" onclick="selectSurgeryType(this)">ใหญ่มาก (major abdominal/vascular) — 9 ml/kg/h</div>
+        </div>
+      </div>
     </div>
     <button class="calcbtn" onclick="calculate()">คำนวณ Fluid & Blood Loss</button>
   </div>
@@ -259,6 +288,23 @@ document.querySelectorAll('#ageGroupSeg button').forEach(btn=>{
   });
 });
 
+let surgeryTypeValue = 'moderate';
+function toggleSurgeryList(e){
+  e.stopPropagation();
+  document.getElementById('surgeryTypeWrap').classList.toggle('open');
+}
+function selectSurgeryType(el){
+  surgeryTypeValue = el.dataset.v;
+  document.getElementById('surgeryTypeLabel').textContent = el.textContent;
+  document.querySelectorAll('#surgeryTypeList .cs-item').forEach(i=>i.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('surgeryTypeWrap').classList.remove('open');
+}
+document.addEventListener('click', (e)=>{
+  const wrap = document.getElementById('surgeryTypeWrap');
+  if(wrap && !wrap.contains(e.target)) wrap.classList.remove('open');
+});
+
 function round(n,d=1){ return Math.round(n*Math.pow(10,d))/Math.pow(10,d); }
 
 function maintenanceRate(w){
@@ -277,7 +323,7 @@ function calculate(){
   const ht = parseFloat(document.getElementById('hctTarget').value) || 30;
   const npo = parseFloat(document.getElementById('npoHours').value) || 0;
   const dur = parseFloat(document.getElementById('duration').value) || 0;
-  const surgeryType = document.getElementById('surgeryType').value;
+  const surgeryType = surgeryTypeValue;
 
   if(w<=0 || hi<=0){ alert('กรุณาใส่น้ำหนักและ Hct เริ่มต้นอย่างน้อย'); return; }
 
