@@ -272,10 +272,32 @@ window.addEventListener('load', ()=>{
   if(TOOLS[key]) openTool(key);
 });
 
-// ---- PWA: service worker registration ----
+// ---- PWA: service worker registration + auto-update ----
 if ('serviceWorker' in navigator) {
+  let swRegistration = null;
+  let refreshing = false;
+
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+    navigator.serviceWorker.register('service-worker.js').then(reg => {
+      swRegistration = reg;
+      // เช็คทันทีว่ามีเวอร์ชันใหม่รออยู่หรือไม่
+      reg.update().catch(()=>{});
+    }).catch(()=>{});
+  });
+
+  // เมื่อ service worker ใหม่เข้าควบคุมหน้าเว็บ (หลัง skipWaiting + clients.claim)
+  // ให้ reload หน้าอัตโนมัติเพื่อดึงไฟล์ล่าสุดมาแสดงทันที
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) return;
+    refreshing = true;
+    window.location.reload();
+  });
+
+  // เช็คอัปเดตทุกครั้งที่ผู้ใช้กลับมาเปิดแอป (สลับแอปกลับมา / เปิดแอปใหม่)
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && swRegistration) {
+      swRegistration.update().catch(()=>{});
+    }
   });
 }
 </script>
