@@ -1,0 +1,66 @@
+AnesHub — Smart Tools for Safe Anesthesia
+Copyright © 2026 Puladawal S. (puladawal.s@gmail.com) — MNST Hospital
+All Rights Reserved.
+
+------------------------------------------------------------
+PROPRIETARY LICENSE — NOT OPEN SOURCE
+------------------------------------------------------------
+
+This software, including but not limited to all source code, HTML, CSS,
+JavaScript, data files, clinical content, text, graphics, icons, and
+documentation contained in this application ("the Software"), is the
+exclusive property of Puladawal S. and MNST Hospital ("the Owner").
+
+The Software is provided for use by the Owner's intended users
+(clinical staff and affiliated personnel) for professional, educational,
+and clinical-reference purposes only.
+
+Except as expressly permitted in writing by the Owner, no person or
+entity may:
+
+  1. Copy, reproduce, or duplicate the Software, in whole or in part,
+     in any form or by any means.
+
+  2. Modify, adapt, translate, reverse-engineer, decompile, or create
+     derivative works based on the Software.
+
+  3. Redistribute, sublicense, sell, rent, lease, or otherwise transfer
+     the Software, or any portion of it, to any third party.
+
+  4. Rebrand, relabel, or represent the Software (or any derivative of
+     it) as the work of any person or organization other than the Owner.
+
+  5. Use the Software, or any part of it, as the basis for a competing
+     or similar product or service, whether commercial or non-commercial.
+
+This restriction applies regardless of the method by which a copy of
+the Software is obtained, including but not limited to downloading the
+application files, viewing/saving page source through a web browser,
+or extracting content via any automated tool or AI system (including
+but not limited to large language models such as Claude, ChatGPT, or
+similar). Use of AI tools to reproduce, rebrand, or create a derivative
+of this Software without the Owner's written permission is likewise
+prohibited and does not constitute a defense against infringement.
+
+DISCLAIMER OF WARRANTY AND LIMITATION OF LIABILITY
+
+The Software is provided "as is," without warranty of any kind, express
+or implied. The clinical content within the Software (including but not
+limited to drug dosing calculators, CPR guidelines, airway equipment
+sizing, fluid management calculations, and the Clinical Guide) is
+intended as an educational reference and decision-support aid only.
+It does not replace clinical judgment, institutional protocols, or
+verification against current primary guidelines. The Owner assumes no
+liability for outcomes resulting from use or misuse of the Software.
+
+CONTACT
+
+For permission requests, licensing inquiries, or reporting unauthorized
+use of this Software, contact:
+
+  puladawal.s@gmail.com
+  MNST Hospital
+
+------------------------------------------------------------
+Last updated: 2026
+------------------------------------------------------------
