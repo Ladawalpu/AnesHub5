@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!--
+  © 2026 Puladawal S. (puladawal.s@gmail.com) — MNST Hospital. All Rights Reserved. Unauthorized copying, redistribution, or modification of this application is prohibited without written permission.
+-->
+
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pre Anes Guideline — AnesHub</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#065F46">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pre Anes Guideline">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F3FAF7;
+    --panel: #FFFFFF;
+    --ink: #0F2E22;
+    --ink-soft: #5B7C6E;
+    --em-deep: #065F46;
+    --em: #059669;
+    --accent: #10B981;
+    --amber: #E8A23D;
+    --alert: #D9534F;
+    --line: #D8EDE3;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Sarabun', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 20px 80px;}
+
+  header{
+    background: linear-gradient(160deg, var(--em-deep) 0%, #064E3B 100%);
+    color:#ECFDF5; padding:26px 20px 20px; position:relative; overflow:hidden;
+  }
+  header .inner{max-width:920px; margin:0 auto; position:relative; z-index:2;}
+  header h1{font-size:21px; margin:0 0 4px; font-weight:700; letter-spacing:.2px;}
+  header p.sub{margin:0; font-size:13px; color:#A7F3D0; font-weight:500;}
+
+  .maintabs{ display:flex; gap:6px; max-width:920px; margin:0 auto; padding:14px 20px 0; }
+  .mtab{
+    flex:1; border:none; border-radius:12px 12px 0 0; padding:11px 4px; cursor:pointer;
+    font-family:var(--sans); font-weight:700; font-size:12.5px; background:#DCF3EA; color:var(--ink-soft);
+  }
+  .mtab.active{ background:var(--panel); color:var(--em-deep); box-shadow:0 -2px 10px rgba(6,95,70,.08); }
+  .tabpanel{ display:none; }
+  .tabpanel.active{ display:block; }
+
+  section.block{margin-top:24px;}
+  .block h2{
+    font-size:16px; color:var(--em-deep); border-bottom:2px solid var(--em);
+    padding-bottom:8px; margin:0 0 16px; display:flex; align-items:center; gap:8px;
+  }
+  .block h2 .tag{
+    font-family:var(--mono); font-size:11px; background:var(--em-deep); color:#ECFDF5;
+    padding:2px 8px; border-radius:20px; font-weight:600;
+  }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(6,58,44,.04);
+  }
+  .card .name{font-size:15px; font-weight:700; color:var(--em-deep); margin-bottom:8px; display:block;}
+
+  details{margin-top:10px;}
+  summary{cursor:pointer; font-size:13.5px; font-weight:600; color:var(--em); list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"▸ ";}
+  details[open] summary:before{content:"▾ ";}
+  .infobox{font-size:13px; line-height:1.75; color:var(--ink); margin-top:8px; padding:10px 12px; background:#F0FBF6; border-radius:10px;}
+  .infobox b{color:var(--em-deep);}
+  .infobox ul, .infobox ol{margin:6px 0; padding-left:20px;}
+  .infobox li{margin-bottom:4px;}
+
+  .steps{counter-reset:stepnum;}
+  .step{
+    display:flex; gap:12px; margin-bottom:14px; padding-bottom:14px; border-bottom:1px dashed var(--line);
+  }
+  .step:last-child{border-bottom:none; margin-bottom:0; padding-bottom:0;}
+  .step .num{
+    counter-increment:stepnum; flex-shrink:0; width:28px; height:28px; border-radius:50%;
+    background:var(--em); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:13px;
+  }
+  .step .num::before{content:counter(stepnum);}
+  .step .txt{font-size:13.5px; line-height:1.7;}
+  .step .txt b{color:var(--em-deep);}
+
+  table.reftable{ width:100%; border-collapse:collapse; font-size:12px; margin-top:8px; }
+  table.reftable th, table.reftable td{ border:1px solid var(--line); padding:6px 7px; text-align:center; }
+  table.reftable th{ background:#E8F7F0; color:var(--em-deep); font-weight:700; font-size:11px; }
+  table.reftable td.rowlabel{ text-align:left; font-weight:600; background:#FAFEFC; }
+  table.reftable td.plus{ color:var(--em-deep); font-weight:800; }
+
+  .asa-table{ width:100%; border-collapse:collapse; font-size:12px; margin-top:6px; }
+  .asa-table th, .asa-table td{ border:1px solid var(--line); padding:8px; vertical-align:top; text-align:left; }
+  .asa-table th{ background:#E8F7F0; color:var(--em-deep); font-size:11.5px; }
+  .asa-table td.cls{ font-weight:800; color:var(--em-deep); white-space:nowrap; }
+  .asa-table ul{ margin:0; padding-left:16px; }
+  .asa-table li{ margin-bottom:3px; }
+
+  .fasting-table{ width:100%; border-collapse:collapse; font-size:12.5px; margin-top:8px; }
+  .fasting-table th, .fasting-table td{ border:1px solid var(--line); padding:9px 10px; text-align:left; }
+  .fasting-table th{ background:#E8F7F0; color:var(--em-deep); font-size:11.5px; }
+  .fasting-table td.hrs{ font-weight:800; color:var(--em-deep); white-space:nowrap; text-align:center; }
+
+  .criteria-list{ margin:0; padding-left:20px; font-size:13px; line-height:1.8; }
+  .criteria-list li{ margin-bottom:6px; }
+
+  .disclaimer-box{
+    font-size:11.5px; color:var(--ink-soft); background:#FDF3E7; border:1px solid #F0D9B5;
+    border-radius:10px; padding:10px 12px; margin-top:10px; line-height:1.6;
+  }
+
+  /* ---- Medication guide ---- */
+  .med-search-wrap{ position:relative; margin-bottom:14px; }
+  .med-search{
+    width:100%; font-family:var(--sans); font-size:15px; padding:12px 14px;
+    border-radius:12px; border:1.6px solid var(--line); background:#fff; color:var(--ink);
+  }
+  .med-search:focus{ outline:none; border-color:var(--em); }
+  .med-results{
+    margin-top:8px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff;
+    max-height:340px; overflow-y:auto;
+  }
+  .med-result-item{
+    padding:11px 14px; border-bottom:1px solid var(--line); cursor:pointer; font-size:13.5px;
+  }
+  .med-result-item:last-child{border-bottom:none;}
+  .med-result-item:active{ background:#EAF7F0; }
+  .med-result-item .mname{ font-weight:700; color:var(--ink); }
+  .med-result-item .mclass{ font-size:11px; color:var(--ink-soft); margin-top:2px; }
+  .med-empty{ padding:24px 14px; text-align:center; color:var(--ink-soft); font-size:13px; }
+
+  .action-badge{
+    display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:10px;
+    font-weight:800; font-size:14px; margin-bottom:12px;
+  }
+  .action-badge.continue{ background:#DCFCE7; color:#166534; }
+  .action-badge.stop{ background:#FEE2E2; color:#991B1B; }
+  .action-badge.individualize{ background:#FEF3C7; color:#92400E; }
+
+  .med-detail-card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; }
+  .med-detail-card h3{ font-size:17px; margin:0 0 3px; color:var(--em-deep); }
+  .med-detail-card .subclass{ font-size:12px; color:var(--ink-soft); margin-bottom:14px; }
+  .med-field{ margin-bottom:12px; }
+  .med-field .flabel{ font-weight:700; font-size:11.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.03em; margin-bottom:3px; }
+  .med-field .fval{ font-size:13.5px; line-height:1.65; }
+  .med-drug-chips{ display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .med-drug-chip{ font-size:11px; background:#F0FBF6; color:var(--em-deep); padding:4px 9px; border-radius:999px; font-weight:600; }
+  .med-back{
+    display:inline-flex; align-items:center; gap:6px; margin-bottom:14px;
+    background:#fff; border:1.4px solid var(--line); color:var(--em-deep);
+    font-family:var(--sans); font-weight:700; font-size:13px; padding:8px 14px;
+    border-radius:10px; cursor:pointer;
+  }
+
+  footer{
+    max-width:920px; margin:40px auto 0; padding:16px 20px; font-size:12px;
+    color:var(--ink-soft); border-top:1px solid var(--line); line-height:1.7;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <h1>📋 Pre Anes Guideline</h1>
+    <p class="sub">แนวทางประเมิน/เตรียมความพร้อมผู้ป่วยก่อนผ่าตัด และการจัดการยาต่อเนื่อง</p>
+  </div>
+</header>
+
+<div class="maintabs">
+  <button class="mtab active" id="mtabPac" onclick="showMainTab('pac')">🏥 PAC Guideline</button>
+  <button class="mtab" id="mtabLab" onclick="showMainTab('lab')">🩺 ASA & Lab</button>
+  <button class="mtab" id="mtabMed" onclick="showMainTab('med')">💊 Medication Guide</button>
+</div>
+
+<div id="tabPac" class="tabpanel active">
+<div class="wrap">
+
+  <section class="block">
+    <h2>ภาพรวมและคำจำกัดความ <span class="tag">RCAT 4/2564</span></h2>
+    <div class="card">
+      <div class="infobox">
+        <b>PAC (Pre-anesthesia clinic)</b> หมายถึง หน่วยงานที่ทำหน้าที่ประเมินและเตรียมความพร้อมผู้ป่วยและญาติก่อนการผ่าตัดหรือหัตถการ โดยบุคลากรทางวิสัญญี<br><br>
+        <b>ODS (One day surgery)</b> หมายถึง การรับผู้ป่วยเข้ามาเพื่อรับการรักษาทำหัตถการหรือผ่าตัดที่ได้มีการเตรียมการไว้ล่วงหน้า และสามารถให้กลับบ้านได้ในวันเดียวกัน หรืออยู่ในโรงพยาบาลตั้งแต่ 2 ชั่วโมง ถึงเวลาจำหน่ายออกไม่เกิน 24 ชั่วโมง<br><br>
+        <b>MIS (Minimally invasive surgery)</b> หมายถึง การผ่าตัดผ่านกล้อง เช่น laparoscopic cholecystectomy, laparoscopic colectomy, laparoscopic hysterectomy, video-assisted thoracic surgery
+      </div>
+      <div class="disclaimer-box">เอกสารนี้ไม่สามารถใช้อ้างอิงทางกฎหมายได้เนื่องจากการปฏิบัติต้องปรับตามสถานการณ์ — อ้างอิงตามประกาศราชวิทยาลัยวิสัญญีแพทย์แห่งประเทศไทย ฉบับที่ 4/2564</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>ขั้นตอนการส่งผู้ป่วยมาคลินิกประเมินก่อนผ่าตัด <span class="tag">5 ขั้นตอน</span></h2>
+    <div class="card">
+      <div class="steps">
+        <div class="step">
+          <div class="num"></div>
+          <div class="txt"><b>แพทย์เจ้าของไข้</b>รวบรวมข้อมูลเบื้องต้นจากการซักประวัติ ตรวจร่างกาย และผลส่งตรวจทางห้องปฏิบัติการ พิจารณาจากอายุ โรคและความผิดปกติต่างๆ ยาที่ผู้ป่วยได้รับ และชนิดการผ่าตัด</div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div class="txt">ส่งปรึกษา<b>คลินิกประเมินและเตรียมความพร้อมฯ (PAC)</b> เพื่อประเมิน เตรียมความพร้อม และให้คำแนะนำผู้ป่วยก่อนการระงับความรู้สึก</div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div class="txt">PAC อาจพิจารณา<b>ส่งตรวจทางห้องปฏิบัติการเพิ่มเติม</b>ในกรณีที่มีข้อบ่งชี้ เช่น coagulogram ในผู้ป่วยมีประวัติเลือดออกผิดปกติ, liver function test ในผู้ป่วยตัวเหลืองตาเหลือง</div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div class="txt">PAC อาจส่งผู้ป่วย<b>ปรึกษาแพทย์เฉพาะทางด้านอื่น</b> ในกรณีที่มีข้อบ่งชี้ เช่น ทำกิจวัตรประจำวันไม่ได้ โรคประจำตัวคุมไม่ดี ความดัน &gt;180/110 มม.ปรอท ตรวจพบเสียงฟู่หัวใจ/เสียงหายใจผิดปกติ</div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div class="txt">หากไม่มีข้อบ่งชี้เพิ่มเติม <b>ส่งผู้ป่วยกลับไปพบแพทย์เจ้าของไข้</b>เพื่อทราบผลการประเมินและนัดผ่าตัดได้เป็นลำดับถัดไป</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>แนวปฏิบัติการประเมินและเตรียมความพร้อมผู้ป่วย <span class="tag">10 หัวข้อ</span></h2>
+    <div class="card">
+      <details open>
+        <summary>1-3. ประเมินสภาพผู้ป่วยและความเสี่ยง</summary>
+        <div class="infobox">
+          <ul>
+            <li>ประเมิน functional capacity, ประวัติผ่าตัด/ระงับความรู้สึก, ปัญหา/ภาวะแทรกซ้อนในอดีต (ใส่ท่อยาก, PONV มาก), ประวัติแพ้ยา, อาหารเสริม/สมุนไพร, ดื่มเหล้า/สูบบุหรี่, ประวัติ malignant hyperthermia ในครอบครัว</li>
+            <li>ประเมินระดับความรุนแรงและภาวะแทรกซ้อนของโรคประจำตัว</li>
+            <li>ประเมินความเสี่ยงตาม <b>ASA physical status classification</b>, ความเสี่ยง OSA (STOP-BANG), โอกาสใส่ท่อช่วยหายใจยาก, ความเสี่ยง cardiovascular ตามแนวทาง ACC/AHA 2014 หรือ ESC/ESA 2014</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>4. การติดเชื้อทางหายใจส่วนต้นในเด็ก</summary>
+        <div class="infobox">เป็นปัจจัยเสี่ยงเพิ่มภาวะแทรกซ้อนทางหายใจ เช่น หลอดลมตีบเกร็ง หากต้องใส่ท่อช่วยหายใจอาจชักนำการติดเชื้อสู่ปอด ควรเลื่อนผ่าตัดที่ไม่เร่งด่วนออกไปอย่างน้อย <b>4 สัปดาห์</b></div>
+      </details>
+      <details>
+        <summary>5. การปรึกษาอายุรแพทย์/แพทย์เฉพาะทาง</summary>
+        <div class="infobox">เมื่อพบความผิดปกติจากการซักประวัติ ตรวจร่างกาย หรือผลตรวจทางห้องปฏิบัติการ เพื่อร่วมประเมินและควบคุมโรคประจำตัวให้อยู่ในระดับที่เหมาะสมก่อนผ่าตัด</div>
+      </details>
+      <details>
+        <summary>6. ปรับเปลี่ยนพฤติกรรมก่อนผ่าตัด</summary>
+        <div class="infobox">หยุดสูบบุหรี่ก่อนผ่าตัด <b>4-8 สัปดาห์</b> · หยุดดื่มสุราก่อนผ่าตัด <b>2-8 สัปดาห์</b></div>
+      </details>
+      <details>
+        <summary>7. การจัดการยาที่ผู้ป่วยใช้ — สรุปหลักการจาก RCAT</summary>
+        <div class="infobox">
+          <ul>
+            <li><b>ยาที่ควรให้จนถึงเช้าวันผ่าตัด:</b> beta-blocker, calcium channel blocker</li>
+            <li><b>ยาที่ควรงดเช้าวันผ่าตัด:</b> ยาเบาหวานกลุ่ม sulfonylurea, metformin, ACEI, ARB (ที่ทานเนื่องจากความดันโลหิตสูง), ยาขับปัสสาวะ</li>
+            <li><b>ยาต้านเกล็ดเลือด/ยาต้านการแข็งตัวของเลือด/ยาคุมจังหวะหัวใจ:</b> พิจารณาร่วมกับศัลยแพทย์/อายุรแพทย์ ถึงข้อบ่งชี้ ผลดีผลเสียของการหยุดยาและการทานยาต่อ</li>
+            <li>ยาชนิดอื่นๆ ควรปรึกษาแพทย์ผู้รักษาหรือแพทย์เฉพาะทางตามระบบที่ผู้ป่วยมีปัญหาร่วมพิจารณา</li>
+          </ul>
+          <span class="sub">ดูรายละเอียดยาแยกตามกลุ่ม/ชื่อสามัญได้ที่แท็บ 💊 Medication Guide</span>
+        </div>
+      </details>
+      <details>
+        <summary>8-10. ให้ข้อมูล เตรียมตัวก่อนผ่าตัด และบันทึกเวชระเบียน</summary>
+        <div class="infobox">ให้ข้อมูลผู้ป่วยเกี่ยวกับการระงับความรู้สึก แนะนำการปฏิบัติตัวก่อน/ระหว่าง/หลังผ่าตัด พร้อมแจกเอกสารคำแนะนำ และบันทึกข้อมูลการประเมินลงในเวชระเบียน</div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>ตารางงดน้ำงดอาหารก่อนผ่าตัด <span class="tag">Fasting Guideline</span></h2>
+    <div class="card">
+      <table class="fasting-table">
+        <thead><tr><th>ชนิดของน้ำและอาหารที่รับประทาน</th><th>ระยะเวลาก่อนการระงับความรู้สึก</th></tr></thead>
+        <tbody>
+          <tr><td><b>ของเหลวใส (clear fluids)</b><br><span style="color:var(--ink-soft); font-size:11.5px;">น้ำเปล่า, น้ำหวาน, น้ำผลไม้ไม่มีกาก</span></td><td class="hrs">2 ชม.</td></tr>
+          <tr><td><b>นมแม่ (breast milk)</b></td><td class="hrs">4 ชม.</td></tr>
+          <tr><td><b>นมผง/นมวัว/นมชนิดต่างๆ</b><br><span style="color:var(--ink-soft); font-size:11.5px;">infant formula, nonhuman milk</span></td><td class="hrs">6 ชม.</td></tr>
+          <tr><td><b>อาหารมื้อเบา (light meals)</b><br><span style="color:var(--ink-soft); font-size:11.5px;">ขนมปัง, ข้าวต้มเปล่าไม่มีเนื้อสัตว์</span></td><td class="hrs">6 ชม.</td></tr>
+          <tr><td><b>อาหารมื้อหนัก (meat/fatty solid meals)</b><br><span style="color:var(--ink-soft); font-size:11.5px;">เนื้อวัว/หมู, อาหารทอด, ไขมันสูง, ปริมาณมาก</span></td><td class="hrs">8 ชม.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>คำแนะนำการคัดเลือกผู้ป่วยที่มารับการผ่าตัดแบบ ODS</h2>
+    <div class="card">
+      <span class="name">1. ปัจจัยจากตัวผู้ป่วย</span>
+      <ul class="criteria-list">
+        <li>ASA class 1 (แข็งแรงดี ไม่มีโรคประจำตัว) หรือ ASA class 2 ที่ควบคุมได้ดีและไม่มี end organ damage (เช่น SBP&lt;180 และ DBP&lt;110 มม.ปรอท, เบาหวานคุมได้ดี)</li>
+        <li>ไม่มีความเสี่ยงสูงในการให้ยาระงับความรู้สึก ได้แก่ ใส่ท่อช่วยหายใจยาก, เสี่ยงสำลักอาหารเข้าปอด, OSA</li>
+        <li>ไม่มีประวัติแพ้ยาชา/ยาสลบ, ไม่มีประวัติ malignant hyperthermia ในครอบครัว</li>
+        <li>เด็กที่คลอดก่อนกำหนด ต้องมีอายุ postconceptual age (PCA) มากกว่า <b>60 สัปดาห์</b></li>
+      </ul>
+      <span class="name" style="margin-top:14px;">2. ปัจจัยจากการผ่าตัด</span>
+      <ul class="criteria-list">
+        <li>เป็นการผ่าตัดที่เสียเลือดน้อย</li>
+        <li>ทำให้เกิดความปวดหลังผ่าตัดระดับน้อยถึงปานกลาง และระงับปวดได้ด้วยยารับประทาน</li>
+      </ul>
+      <span class="name" style="margin-top:14px;">3. ปัจจัยด้านสังคม</span>
+      <ul class="criteria-list">
+        <li>มีญาติหรือผู้ดูแลที่บ้าน สื่อสารได้ดี เข้าใจการปฏิบัติตัวก่อน/หลังผ่าตัด</li>
+        <li>บ้านไม่ห่างไกลจากสถานพยาบาล เดินทางไปมาสะดวก มีโทรศัพท์ติดต่อในภาวะฉุกเฉิน</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>สิ่งที่ควรแนะนำผู้ป่วย ODS เพิ่มเติม</h2>
+    <div class="card">
+      <details open>
+        <summary>ช่วง 24 ชั่วโมงแรกหลังระงับความรู้สึกทั่วไป/ยากล่อมประสาท</summary>
+        <div class="infobox">ผู้ป่วยไม่ควรขับรถ ทำงานเกี่ยวกับเครื่องยนต์ ตัดสินใจเกี่ยวกับเอกสารทางกฎหมาย ดื่มสุราหรือสูบบุหรี่</div>
+      </details>
+      <details>
+        <summary>อาการผิดปกติที่ญาติควรติดต่อสถานพยาบาลทันที</summary>
+        <div class="infobox">
+          <ul>
+            <li>ปวดมากขึ้นและไม่สามารถบรรเทาด้วยยาแก้ปวดที่ได้รับ</li>
+            <li>คลื่นไส้อาเจียนมากจนกินอาหาร/ดื่มน้ำไม่ได้</li>
+            <li>ไม่สามารถถ่ายปัสสาวะได้</li>
+            <li>แผลมีเลือดออกซึมผ้าปิดแผล</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+</div>
+</div><!-- /tabPac -->
+
+<div id="tabLab" class="tabpanel">
+<div class="wrap">
+
+  <section class="block">
+    <h2>ASA Physical Status Classification</h2>
+    <div class="card">
+      <table class="asa-table">
+        <thead><tr><th style="width:16%;">ASA</th><th style="width:28%;">คำจำกัดความ</th><th>ตัวอย่าง (ผู้ใหญ่ / เด็ก / สูติกรรม)</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="cls">Class 1</td>
+            <td>ผู้ป่วยที่แข็งแรงดี ไม่มีโรคประจำตัว</td>
+            <td>Healthy, non-smoking, no/minimal alcohol · เด็กสุขภาพดี BMI percentile ปกติ</td>
+          </tr>
+          <tr>
+            <td class="cls">Class 2</td>
+            <td>มีโรคประจำตัวระดับรุนแรงน้อยและควบคุมได้ดี</td>
+            <td>Mild disease ไม่มี functional limitation, current smoker, obesity 30&lt;BMI&lt;40, DM/HTN คุมได้ดี · เด็ก: congenital cardiac disease ไม่มีอาการ, asthma ไม่กำเริบ · สูติ: ครรภ์ปกติ, gestational HTN/DM คุมได้ดี</td>
+          </tr>
+          <tr>
+            <td class="cls">Class 3</td>
+            <td>มีโรคประจำตัวระดับปานกลางถึงรุนแรง ควบคุมได้ไม่ดี</td>
+            <td>Substantive functional limitation, DM/HTN/COPD คุมไม่ดี, morbid obesity BMI≥40, ESRD ฟอกไตประจำ · เด็ก: severe OSA, insulin dependent DM, difficult airway · สูติ: preeclampsia with severe features</td>
+          </tr>
+          <tr>
+            <td class="cls">Class 4</td>
+            <td>มีโรคประจำตัวที่มีความรุนแรง</td>
+            <td>Recent MI/CVA/TIA (&lt;3 เดือน), severe EF reduction, shock/sepsis/DIC · เด็ก: symptomatic congenital cardiac abnormality, CHF, severe trauma · สูติ: preeclampsia + HELLP, peripartum cardiomyopathy EF&lt;40</td>
+          </tr>
+          <tr>
+            <td class="cls">Class 5</td>
+            <td>อาการรุนแรงมาก มีโอกาสเสียชีวิตถ้าไม่ได้รับการผ่าตัด</td>
+            <td>Ruptured aneurysm, massive trauma, intracranial bleed with mass effect · เด็ก: massive trauma, respiratory failure/arrest · สูติ: uterine rupture</td>
+          </tr>
+          <tr>
+            <td class="cls">Class 6</td>
+            <td>ผู้ป่วยภาวะสมองตายที่รอการบริจาคอวัยวะ</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="disclaimer-box">การเพิ่ม "E" หมายถึงการผ่าตัดฉุกเฉิน (Emergency) · อ้างอิง ASA House of Delegates 2014 (updated Dec 2020)</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>ACC/AHA Cardiac Risk Stratification สำหรับ Non-cardiac Surgery</h2>
+    <div class="card">
+      <details open>
+        <summary>High risk (reported cardiac risk &gt; 5%)</summary>
+        <div class="infobox">
+          <ul>
+            <li>Emergent major operation โดยเฉพาะในผู้สูงอายุ</li>
+            <li>Aortic และ major vascular surgery อื่นๆ</li>
+            <li>Peripheral vascular surgery</li>
+            <li>หัตถการที่คาดว่าใช้เวลานานร่วมกับ large fluid shift หรือ blood loss มาก</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Intermediate risk (reported cardiac risk 1-5%)</summary>
+        <div class="infobox">
+          <ul>
+            <li>Carotid endarterectomy</li>
+            <li>Head and neck surgery</li>
+            <li>Intraperitoneal และ intrathoracic surgery</li>
+            <li>Orthopedic surgery</li>
+            <li>Prostate surgery</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Low risk (reported cardiac risk &lt; 1%)</summary>
+        <div class="infobox">
+          <ul>
+            <li>Endoscopic procedure</li>
+            <li>Superficial surgery</li>
+            <li>Cataract surgery</li>
+            <li>Breast surgery</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>แนวทางการเลือกส่งตรวจทางห้องปฏิบัติการ</h2>
+    <div class="card">
+      <div class="infobox" style="margin-bottom:10px;">
+        การส่งตรวจทางห้องปฏิบัติการควรพิจารณาจาก <b>อายุ โรคและสภาวะความผิดปกติต่างๆ ของผู้ป่วย ยาที่ได้รับ และชนิดการผ่าตัด</b> — ผลตรวจภายในระยะเวลาไม่เกิน <b>6 เดือน</b> ก่อนการระงับความรู้สึกสามารถใช้ประเมินได้ หากผู้ป่วยอาการคงที่ไม่มีการเปลี่ยนแปลงทางคลินิกที่สำคัญ<br>
+        กรณีผู้ป่วยมีตั้งแต่ 2 เงื่อนไขขึ้นไป ให้ส่งตรวจตามผลรวมของทุกเงื่อนไข
+      </div>
+      <table class="reftable">
+        <thead>
+          <tr><th style="text-align:left;">เกณฑ์</th><th>CBC/plt</th><th>PT/PTT/INR</th><th>Electrolytes</th><th>BUN/Cr</th><th>Blood sugar</th><th>LFT</th><th>CXR</th><th>EKG</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="rowlabel">Low cardiac risk surgery</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td class="rowlabel">Intermediate cardiac risk surgery</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="plus">+</td></tr>
+          <tr><td class="rowlabel">High cardiac risk surgery</td><td class="plus">+</td><td class="plus">+</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="plus">+</td><td class="plus">+</td></tr>
+          <tr><td class="rowlabel">อายุ &lt; 45 ปี</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td class="rowlabel">อายุ ≥ 45 ปี</td><td>—</td><td>—</td><td class="plus">+</td><td class="plus">+</td><td class="plus">+</td><td>—</td><td class="plus">+</td><td class="plus">+</td></tr>
+          <tr><td class="rowlabel">CVS disease</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="plus">+</td><td class="plus">+</td></tr>
+          <tr><td class="rowlabel">Pulmonary disease</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="plus">+</td><td>—</td></tr>
+          <tr><td class="rowlabel">Hepatobiliary disease</td><td class="plus">+</td><td class="plus">+</td><td class="plus">+</td><td class="plus">+</td><td>—</td><td class="plus">+</td><td>—</td><td>—</td></tr>
+          <tr><td class="rowlabel">Renal disease</td><td class="plus">+</td><td>—</td><td class="plus">+</td><td class="plus">+</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td class="rowlabel">Diabetes mellitus (DM)</td><td>—</td><td>—</td><td class="plus">+</td><td class="plus">+</td><td class="plus">+</td><td>—</td><td>—</td><td class="plus">+</td></tr>
+          <tr><td class="rowlabel">Hematologic (bleeding d/o, anemia)</td><td class="plus">+</td><td class="plus">+</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td class="rowlabel">CNS disease</td><td>—</td><td>—</td><td class="plus">+</td><td class="plus">+</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="disclaimer-box">
+        ตารางนี้จัดทำจากการตีความเอกสารต้นฉบับ "คำแนะนำทางเวชปฏิบัติในการประเมินผู้ป่วยก่อนการระงับความรู้สึก (RCAT ปี พ.ศ. 2562)" ประกอบกับหลักการทางคลินิกทั่วไป เนื่องจากตารางต้นฉบับอยู่ในรูปแบบ PDF ที่การจัดวางคอลัมน์อาจคลาดเคลื่อนได้เมื่อแปลงเป็นข้อความ <b>แนะนำให้ตรวจสอบกับเอกสารต้นฉบับหรือแนวทางของสถาบันเพื่อความแม่นยำสูงสุดก่อนใช้อ้างอิงทางคลินิก</b>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>ขั้นตอนการประเมินผู้ป่วยก่อนการระงับความรู้สึก <span class="tag">RCAT 2562</span></h2>
+    <div class="card">
+      <div class="steps">
+        <div class="step"><div class="num"></div><div class="txt"><b>การซักประวัติ</b> — ทบทวนเวชระเบียน, ซักประวัติการเจ็บป่วยปัจจุบัน, ประวัติอดีต (โรคประจำตัว, การระงับความรู้สึก/ผ่าตัดเดิม, ภาวะแทรกซ้อนในครอบครัว), ประวัติการงดน้ำงดอาหาร/แพ้ยา/การใช้ยา/อาหารเสริม/การตั้งครรภ์/ดื่มเหล้า/สูบบุหรี่/สารเสพติด</div></div>
+        <div class="step"><div class="num"></div><div class="txt"><b>การตรวจร่างกาย</b> — ประเมินทางหายใจเพื่อคาดการณ์ difficult ventilation/intubation, ตรวจร่างกายตามระบบเน้นระบบหายใจ ระบบไหลเวียนเลือด และระบบที่มีอาการแสดง</div></div>
+        <div class="step"><div class="num"></div><div class="txt"><b>การส่งตรวจทางห้องปฏิบัติการ</b> — พิจารณาจากอายุ โรค ยาที่ได้รับ ชนิดการผ่าตัด ผลตรวจภายใน 6 เดือนใช้ได้หากอาการคงที่</div></div>
+        <div class="step"><div class="num"></div><div class="txt"><b>ส่งปรึกษาแพทย์เฉพาะทาง/ตรวจพิเศษ</b> ตามความเหมาะสม เพื่อลดโอกาสและความรุนแรงของภาวะแทรกซ้อน</div></div>
+        <div class="step"><div class="num"></div><div class="txt"><b>วางแผนให้การระงับความรู้สึก</b> โดยพิจารณาข้อดี/ความเสี่ยงของแต่ละวิธี ร่วมกับความต้องการของผู้ป่วย</div></div>
+        <div class="step"><div class="num"></div><div class="txt"><b>แนะนำการปฏิบัติตัว</b> และขอคำยินยอม (informed consent)</div></div>
+        <div class="step"><div class="num"></div><div class="txt"><b>บันทึกข้อมูล</b>การประเมินลงในเวชระเบียน</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div><!-- /tabLab -->
+
+<div id="tabMed" class="tabpanel">
+<div class="wrap">
+
+  <section class="block">
+    <h2>ค้นหายาที่ผู้ป่วยรับประทานต่อเนื่อง <span class="tag">190 รายการ / 16 กลุ่ม</span></h2>
+    <div class="card">
+      <div class="med-search-wrap">
+        <input type="text" class="med-search" id="medSearch" placeholder="พิมพ์ชื่อยา เช่น Metformin, Aspirin, Clopidogrel..." oninput="medFilter()">
+      </div>
+      <div id="medListView">
+        <div class="med-results" id="medResults"></div>
+      </div>
+      <div id="medDetailView" style="display:none;">
+        <button class="med-back" onclick="medBackToList()">← กลับไปค้นหา</button>
+        <div id="medDetailContent"></div>
+      </div>
+    </div>
+    <div class="disclaimer-box">
+      หมายเหตุ: การพิจารณาให้รับประทานหรือหยุดยาก่อนผ่าตัดควรเป็นไปตามคำแนะนำของวิสัญญีแพทย์ ศัลยแพทย์ และแนวทางของแต่ละโรงพยาบาล ข้อมูลนี้จัดทำในระดับ<b>กลุ่มยา (drug class)</b> ซึ่งเป็นมาตรฐานการพิจารณาทางคลินิกทั่วไป ไม่ได้ระบุชื่อการค้าเนื่องจากชื่อการค้าในประเทศไทยมีหลากหลายและเปลี่ยนแปลงได้ตามผู้ผลิต
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>หมวดยาทั้งหมด</h2>
+    <div class="card" id="medClassOverview"></div>
+  </section>
+
+</div>
+</div><!-- /tabMed -->
+
+<footer>
+  เครื่องมือนี้จัดทำเพื่อการศึกษาและเป็นแนวทางเบื้องต้น ไม่ทดแทนดุลยพินิจทางคลินิกของผู้ปฏิบัติงาน หรือแนวทางของราชวิทยาลัยวิสัญญีแพทย์แห่งประเทศไทยฉบับล่าสุด ควรตรวจสอบซ้ำกับคำสั่งแพทย์และนโยบายของหน่วยงานทุกครั้งก่อนใช้กับผู้ป่วยจริง
+</footer>
+
+<script id="med-data" type="application/json">[{"class_th": "ยาลดความดันโลหิตสูง", "class_en": "Antihypertensive", "sub": "ACE Inhibitors (ACEI)", "drugs": ["Enalapril", "Lisinopril", "Ramipril", "Perindopril", "Captopril"], "indication": "ความดันโลหิตสูง, หัวใจล้มเหลว, ป้องกันไต", "mechanism": "ยับยั้ง angiotensin-converting enzyme ลดการสร้าง angiotensin II", "side_effect": "ไอแห้ง, hyperkalemia, angioedema (พบน้อย), hypotension", "precaution": "เพิ่มความเสี่ยง refractory hypotension ระหว่างการระงับความรู้สึกทั่วไปและ neuraxial block", "action": "stop", "timing": "งดเช้าวันผ่าตัด", "note": "ตามแนวทาง RCAT — งดยาเช้าวันผ่าตัดเพื่อลดความเสี่ยง intraoperative hypotension"}, {"class_th": "ยาลดความดันโลหิตสูง", "class_en": "Antihypertensive", "sub": "Angiotensin Receptor Blockers (ARB)", "drugs": ["Losartan", "Valsartan", "Telmisartan", "Candesartan", "Irbesartan", "Olmesartan"], "indication": "ความดันโลหิตสูง, หัวใจล้มเหลว, ป้องกันไต", "mechanism": "ยับยั้งตัวรับ angiotensin II (AT1 receptor)", "side_effect": "Hyperkalemia, hypotension, dizziness", "precaution": "เพิ่มความเสี่ยง refractory hypotension ระหว่างการระงับความรู้สึกทั่วไปและ neuraxial block คล้าย ACEI", "action": "stop", "timing": "งดเช้าวันผ่าตัด", "note": "ตามแนวทาง RCAT — งดยาเช้าวันผ่าตัด"}, {"class_th": "ยาลดความดันโลหิตสูง", "class_en": "Antihypertensive", "sub": "Calcium Channel Blockers (CCB)", "drugs": ["Amlodipine", "Nifedipine", "Felodipine", "Diltiazem", "Verapamil"], "indication": "ความดันโลหิตสูง, angina, arrhythmia (diltiazem/verapamil)", "mechanism": "ยับยั้ง L-type calcium channel ที่ vascular smooth muscle/หัวใจ", "side_effect": "Peripheral edema, hypotension, bradycardia (diltiazem/verapamil), flushing", "precaution": "Verapamil/diltiazem เสริมฤทธิ์กดการนำไฟฟ้าหัวใจร่วมกับ volatile anesthetic — เฝ้าระวัง bradycardia/AV block", "action": "continue", "timing": "รับประทานต่อเนื่องจนถึงเช้าวันผ่าตัด", "note": "ตามแนวทาง RCAT — ควรให้จนถึงเช้าวันผ่าตัดเพื่อหลีกเลี่ยง rebound hypertension"}, {"class_th": "ยาลดความดันโลหิตสูง", "class_en": "Antihypertensive", "sub": "Beta Blockers", "drugs": ["Atenolol", "Metoprolol", "Bisoprolol", "Carvedilol", "Propranolol", "Nebivolol"], "indication": "ความดันโลหิตสูง, angina, arrhythmia, หัวใจล้มเหลว, post-MI", "mechanism": "ยับยั้ง beta-adrenergic receptor ลด heart rate และ myocardial contractility", "side_effect": "Bradycardia, fatigue, bronchospasm (non-selective), masking hypoglycemia symptoms", "precaution": "หยุดกะทันหันเสี่ยง rebound tachycardia/hypertension/myocardial ischemia — ต้องให้ต่อเนื่องเสมอ", "action": "continue", "timing": "รับประทานต่อเนื่องจนถึงเช้าวันผ่าตัด", "note": "ตามแนวทาง RCAT — ยาที่ควรให้จนถึงเช้าวันผ่าตัดโดยชัดเจน"}, {"class_th": "ยาลดความดันโลหิตสูง", "class_en": "Antihypertensive", "sub": "Alpha Blockers", "drugs": ["Prazosin", "Doxazosin", "Terazosin"], "indication": "ความดันโลหิตสูง, BPH", "mechanism": "ยับยั้ง alpha-1 adrenergic receptor ที่ vascular smooth muscle", "side_effect": "Orthostatic hypotension, dizziness", "precaution": "หากใช้ร่วมกับ tamsulosin/alpha-blocker อื่นสำหรับ BPH ระวัง Intraoperative Floppy Iris Syndrome (IFIS) หากผู้ป่วยต้องผ่าตัดต้อกระจก — แจ้งจักษุแพทย์ล่วงหน้า", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "ไม่จำเป็นต้องหยุดก่อนผ่าตัดทั่วไป ยกเว้นกรณีผ่าตัดตา (IFIS)"}, {"class_th": "ยาลดความดันโลหิตสูง", "class_en": "Antihypertensive", "sub": "Central Acting", "drugs": ["Methyldopa", "Clonidine"], "indication": "ความดันโลหิตสูง (โดยเฉพาะ resistant HTN, HTN ในหญิงตั้งครรภ์)", "mechanism": "กระตุ้น central alpha-2 receptor ลด sympathetic outflow", "side_effect": "Sedation, dry mouth, bradycardia", "precaution": "หยุด clonidine กะทันหันเสี่ยง rebound hypertensive crisis รุนแรง — ต้องให้ต่อเนื่องเสมอ", "action": "continue", "timing": "รับประทานต่อเนื่องจนถึงเช้าวันผ่าตัด", "note": "Clonidine withdrawal เป็นภาวะฉุกเฉินที่ป้องกันได้ด้วยการไม่หยุดยากะทันหัน"}, {"class_th": "ยาลดความดันโลหิตสูง", "class_en": "Antihypertensive", "sub": "Vasodilators", "drugs": ["Hydralazine", "Minoxidil"], "indication": "ความดันโลหิตสูงรุนแรง/ดื้อยา", "mechanism": "ขยายหลอดเลือดแดงโดยตรง (direct arterial vasodilation)", "side_effect": "Reflex tachycardia, fluid retention, headache", "precaution": "อาจเสริมฤทธิ์ hypotension ร่วมกับ anesthetic agent", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "โดยทั่วไปให้ต่อเนื่องได้ ปรับตามความดันโลหิตวันผ่าตัด"}, {"class_th": "ยาลดความดันโลหิตสูง", "class_en": "Antihypertensive", "sub": "Diuretics", "drugs": ["Hydrochlorothiazide", "Chlorthalidone", "Indapamide", "Furosemide", "Torsemide", "Bumetanide", "Spironolactone", "Eplerenone"], "indication": "ความดันโลหิตสูง, หัวใจล้มเหลว, บวม", "mechanism": "เพิ่มการขับโซเดียม/น้ำทางไต ตำแหน่งออกฤทธิ์ต่างกันตามชนิด", "side_effect": "Hypokalemia (loop/thiazide), hyperkalemia (spironolactone/eplerenone), dehydration, hypotension", "precaution": "เสี่ยง hypovolemia และ electrolyte imbalance (โดยเฉพาะ hypokalemia) ที่กระทบ cardiac rhythm ระหว่างผ่าตัด", "action": "stop", "timing": "งดเช้าวันผ่าตัด", "note": "ตามแนวทาง RCAT — งดยาขับปัสสาวะเช้าวันผ่าตัด ยกเว้นมีข้อบ่งชี้ทางหัวใจที่ต้องปรึกษาแพทย์เฉพาะทาง"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "Biguanide", "drugs": ["Metformin"], "indication": "เบาหวานชนิดที่ 2", "mechanism": "ลด hepatic glucose production, เพิ่ม insulin sensitivity", "side_effect": "GI upset, lactic acidosis (พบน้อยแต่รุนแรง โดยเฉพาะ renal impairment)", "precaution": "เสี่ยง lactic acidosis เพิ่มขึ้นหากมี renal hypoperfusion ระหว่างผ่าตัดหรือใช้ contrast media", "action": "stop", "timing": "งดเช้าวันผ่าตัด", "note": "ตามแนวทาง RCAT — งดยาเช้าวันผ่าตัด บางแนวทางแนะนำงดล่วงหน้า 24-48 ชม.ในหัตถการที่มีความเสี่ยง renal hypoperfusion สูง"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "Sulfonylureas", "drugs": ["Glibenclamide", "Gliclazide", "Glimepiride", "Glipizide"], "indication": "เบาหวานชนิดที่ 2", "mechanism": "กระตุ้นการหลั่ง insulin จาก pancreatic beta cell", "side_effect": "Hypoglycemia (เสี่ยงสูงเมื่องดอาหาร), น้ำหนักขึ้น", "precaution": "เสี่ยง hypoglycemia รุนแรงระหว่างงดอาหารก่อนผ่าตัด", "action": "stop", "timing": "งดเช้าวันผ่าตัด", "note": "ตามแนวทาง RCAT ระบุชัดเจนว่าควรงดเช้าวันผ่าตัด"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "DPP-4 inhibitors", "drugs": ["Sitagliptin", "Linagliptin", "Saxagliptin", "Vildagliptin", "Alogliptin"], "indication": "เบาหวานชนิดที่ 2", "mechanism": "ยับยั้งเอนไซม์ DPP-4 เพิ่มระดับ incretin (GLP-1/GIP)", "side_effect": "ความเสี่ยง hypoglycemia ต่ำ, ปวดข้อ (พบน้อย)", "precaution": "ความเสี่ยง hypoglycemia ต่ำเมื่อใช้เดี่ยว ปลอดภัยค่อนข้างมากช่วงงดอาหาร", "action": "individualize", "timing": "มักให้ต่อเนื่องได้ หรืองดเช้าวันผ่าตัดตามดุลยพินิจ", "note": "ความเสี่ยงต่ำ พิจารณาตามความสะดวกและแนวทางสถาบัน"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "SGLT2 inhibitors", "drugs": ["Empagliflozin", "Dapagliflozin", "Canagliflozin", "Ertugliflozin"], "indication": "เบาหวานชนิดที่ 2, หัวใจล้มเหลว, โรคไตเรื้อรัง", "mechanism": "ยับยั้งการดูดกลับกลูโคสที่ไต (SGLT2) เพิ่มการขับกลูโคสทางปัสสาวะ", "side_effect": "Genital mycotic infection, volume depletion, euglycemic diabetic ketoacidosis (euDKA)", "precaution": "เสี่ยง euglycemic DKA ในช่วงงดอาหาร/stress จากการผ่าตัด แม้ระดับน้ำตาลในเลือดปกติ — ต้องเฝ้าระวังเป็นพิเศษ", "action": "stop", "timing": "งดล่วงหน้า 3 วันก่อนผ่าตัด (Ertugliflozin งดล่วงหน้า 4 วัน)", "note": "อ้างอิง FDA/ADA guidance — เนื่องจาก half-life ยาวและความเสี่ยง euDKA ที่วินิจฉัยยากเพราะน้ำตาลอาจไม่สูงมาก"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "GLP-1 receptor agonists", "drugs": ["Semaglutide", "Liraglutide", "Dulaglutide", "Exenatide"], "indication": "เบาหวานชนิดที่ 2, ลดน้ำหนัก", "mechanism": "กระตุ้น GLP-1 receptor เพิ่มการหลั่ง insulin, ลด glucagon, ชะลอ gastric emptying", "side_effect": "คลื่นไส้, delayed gastric emptying, ความเสี่ยง aspiration", "precaution": "Delayed gastric emptying เพิ่มความเสี่ยง pulmonary aspiration ระหว่าง induction แม้ NPO ตามมาตรฐาน — พิจารณา full stomach precaution", "action": "stop", "timing": "รูปแบบฉีดรายสัปดาห์: งดล่วงหน้า 1 สัปดาห์ · รูปแบบรับประทาน/ฉีดรายวัน: งดเช้าวันผ่าตัด", "note": "อ้างอิง ASA guidance 2023 — หากยังไม่ได้งดตามเวลาแนะนำ ให้พิจารณา full stomach precaution (RSI) หรือเลื่อนผ่าตัดตามความเสี่ยง"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "Thiazolidinedione", "drugs": ["Pioglitazone"], "indication": "เบาหวานชนิดที่ 2", "mechanism": "กระตุ้น PPAR-gamma เพิ่ม insulin sensitivity", "side_effect": "Fluid retention, น้ำหนักขึ้น, เสี่ยง heart failure", "precaution": "ระวัง fluid retention ที่อาจกระทบผู้ป่วยหัวใจล้มเหลว", "action": "individualize", "timing": "มักงดเช้าวันผ่าตัดร่วมกับยาเบาหวานชนิดรับประทานอื่น", "note": "พิจารณาร่วมกับยาเบาหวานชนิดอื่นที่ผู้ป่วยใช้"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "Meglitinides", "drugs": ["Repaglinide", "Nateglinide"], "indication": "เบาหวานชนิดที่ 2 (ควบคุมระดับน้ำตาลหลังมื้ออาหาร)", "mechanism": "กระตุ้นการหลั่ง insulin แบบออกฤทธิ์เร็วและสั้น", "side_effect": "Hypoglycemia (คล้าย sulfonylurea แต่สั้นกว่า)", "precaution": "เสี่ยง hypoglycemia หากรับประทานแล้วงดอาหารตามมา", "action": "stop", "timing": "งดเช้าวันผ่าตัด", "note": "กลไกคล้าย sulfonylurea จึงจัดการเช่นเดียวกัน"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "Alpha-glucosidase inhibitors", "drugs": ["Acarbose", "Voglibose"], "indication": "เบาหวานชนิดที่ 2 (ควบคุมน้ำตาลหลังมื้ออาหาร)", "mechanism": "ยับยั้งเอนไซม์ย่อยคาร์โบไฮเดรตที่ลำไส้", "side_effect": "ท้องอืด, ท้องเสีย", "precaution": "ไม่มีประโยชน์ขณะงดอาหาร และความเสี่ยง hypoglycemia ต่ำเมื่อใช้เดี่ยว", "action": "stop", "timing": "งดเช้าวันผ่าตัด", "note": "ไม่มีประโยชน์ทางคลินิกขณะ NPO"}, {"class_th": "ยาเบาหวาน", "class_en": "Diabetes", "sub": "Insulin", "drugs": ["Regular insulin", "NPH insulin", "Lispro", "Aspart", "Glulisine", "Glargine", "Detemir", "Degludec", "Premixed insulin (70/30)"], "indication": "เบาหวานชนิดที่ 1 และ 2 ที่ควบคุมด้วยยารับประทานไม่พอ", "mechanism": "ทดแทน/เสริมฤทธิ์ insulin ทำให้กลูโคสเข้าเซลล์", "side_effect": "Hypoglycemia (ความเสี่ยงสูงสุดในกลุ่มยาเบาหวานทั้งหมด)", "precaution": "ต้องปรับขนาดตามการงดอาหารอย่างระมัดระวัง — hypoglycemia ระหว่างผ่าตัดตรวจพบยากเนื่องจากผู้ป่วยอยู่ภายใต้การระงับความรู้สึก", "action": "individualize", "timing": "Basal insulin (glargine/detemir/degludec) มักให้ต่อเนื่องที่ 50-80% ของขนาดเดิม · Short-acting/premixed งดเมื่อเริ่มงดอาหาร", "note": "ต้อง monitor glucose ใกล้ชิดระหว่างผ่าตัด ปรับตามระดับน้ำตาลจริงและแนวทางสถาบัน"}, {"class_th": "ยาลดไขมัน", "class_en": "Lipid Lowering", "sub": "Statins", "drugs": ["Atorvastatin", "Rosuvastatin", "Simvastatin", "Pravastatin", "Pitavastatin"], "indication": "ไขมันในเลือดสูง, ป้องกันโรคหัวใจและหลอดเลือด", "mechanism": "ยับยั้งเอนไซม์ HMG-CoA reductase", "side_effect": "Myalgia, hepatotoxicity (พบน้อย), rhabdomyolysis (พบน้อยมาก)", "precaution": "มีหลักฐานว่าการให้ statin ต่อเนื่องช่วยลด perioperative cardiovascular event — ไม่ควรหยุด", "action": "continue", "timing": "รับประทานต่อเนื่องตลอดช่วงรอบผ่าตัด", "note": "Cardioprotective effect — การหยุดยาอาจเพิ่มความเสี่ยง perioperative MI"}, {"class_th": "ยาลดไขมัน", "class_en": "Lipid Lowering", "sub": "Fibrates", "drugs": ["Fenofibrate", "Gemfibrozil"], "indication": "Triglyceride สูง", "mechanism": "กระตุ้น PPAR-alpha เพิ่มการสลายไขมัน", "side_effect": "Myopathy (โดยเฉพาะใช้ร่วมกับ statin), GI upset", "precaution": "ไม่มีข้อห้ามเฉพาะทางวิสัญญี", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "ไม่จำเป็นต้องหยุดก่อนผ่าตัด"}, {"class_th": "ยาลดไขมัน", "class_en": "Lipid Lowering", "sub": "Cholesterol Absorption Inhibitor", "drugs": ["Ezetimibe"], "indication": "ไขมันในเลือดสูง (ร่วมกับ statin หรือเดี่ยว)", "mechanism": "ยับยั้งการดูดซึม cholesterol ที่ลำไส้เล็ก", "side_effect": "GI upset (พบน้อย)", "precaution": "ไม่มีข้อห้ามเฉพาะทางวิสัญญี", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "ไม่จำเป็นต้องหยุดก่อนผ่าตัด"}, {"class_th": "ยาลดไขมัน", "class_en": "Lipid Lowering", "sub": "PCSK9 inhibitors", "drugs": ["Evolocumab", "Alirocumab"], "indication": "ไขมันในเลือดสูงที่ควบคุมไม่ได้ด้วยยารับประทาน", "mechanism": "ยับยั้ง PCSK9 เพิ่มการกำจัด LDL receptor", "side_effect": "ปฏิกิริยาที่ตำแหน่งฉีด, flu-like symptoms", "precaution": "เป็นยาฉีดความถี่ห่าง (ทุก 2-4 สัปดาห์) ไม่กระทบช่วงรอบผ่าตัด", "action": "continue", "timing": "ให้ตามตารางฉีดปกติ", "note": "ไม่จำเป็นต้องปรับตารางฉีดเพื่อการผ่าตัด"}, {"class_th": "ยาโรคหัวใจ", "class_en": "Cardiovascular", "sub": "Antianginal", "drugs": ["Nitroglycerin", "Isosorbide dinitrate", "Isosorbide mononitrate", "Nicorandil", "Ranolazine"], "indication": "Angina pectoris, coronary artery disease", "mechanism": "ขยายหลอดเลือดหัวใจ/ลด preload (nitrate), เปิด K-ATP channel (nicorandil)", "side_effect": "Headache, hypotension, reflex tachycardia", "precaution": "การหยุดยากะทันหันเสี่ยง myocardial ischemia — ควรให้ต่อเนื่อง", "action": "continue", "timing": "รับประทานต่อเนื่องจนถึงเช้าวันผ่าตัด", "note": "ลดความเสี่ยง perioperative ischemia"}, {"class_th": "ยาโรคหัวใจ", "class_en": "Cardiovascular", "sub": "Antiarrhythmic", "drugs": ["Amiodarone", "Flecainide", "Propafenone", "Sotalol", "Digoxin"], "indication": "Arrhythmia ต่างๆ (AF, VT เป็นต้น)", "mechanism": "ออกฤทธิ์หลากหลาย class ตาม Vaughan-Williams classification", "side_effect": "QT prolongation, thyroid dysfunction (amiodarone), bradycardia", "precaution": "Amiodarone มี drug interaction และผลต่อ thyroid/pulmonary function ระยะยาว — digoxin ต้อง monitor level/electrolyte (โดยเฉพาะ potassium) ใกล้ชิด", "action": "continue", "timing": "รับประทานต่อเนื่องจนถึงเช้าวันผ่าตัด", "note": "การหยุดยาเสี่ยง arrhythmia recurrence — ตรวจ electrolyte ก่อนผ่าตัดเสมอในผู้ป่วยที่ใช้ digoxin"}, {"class_th": "ยาโรคหัวใจ", "class_en": "Cardiovascular", "sub": "Heart Failure", "drugs": ["Sacubitril/Valsartan", "Ivabradine", "Digoxin", "Spironolactone", "Eplerenone"], "indication": "หัวใจล้มเหลว (HFrEF เป็นหลัก)", "mechanism": "Sacubitril/valsartan: ARNI (neprilysin inhibitor + ARB); Ivabradine: ยับยั้ง If channel ลด heart rate", "side_effect": "Hypotension (ARNI), bradycardia (ivabradine), hyperkalemia (spironolactone/eplerenone)", "precaution": "Sacubitril/Valsartan มีกลไกคล้าย ACEI/ARB — เสี่ยง refractory hypotension เช่นเดียวกัน", "action": "individualize", "timing": "Sacubitril/Valsartan มักงดเช้าวันผ่าตัดเช่นเดียวกับ ACEI/ARB · ยาอื่นในกลุ่มมักให้ต่อเนื่อง", "note": "ปรึกษาอายุรแพทย์โรคหัวใจในผู้ป่วย heart failure รุนแรงก่อนตัดสินใจ"}, {"class_th": "ยาต้านเกล็ดเลือด", "class_en": "Antiplatelet", "sub": "Aspirin", "drugs": ["Aspirin"], "indication": "ป้องกันโรคหัวใจและหลอดเลือด (primary/secondary prevention)", "mechanism": "ยับยั้ง COX-1 แบบถาวร (irreversible) ลดการสร้าง thromboxane A2", "side_effect": "เลือดออกง่าย, GI irritation", "precaution": "โดยทั่วไปให้ต่อเนื่องได้ในหัตถการส่วนใหญ่เนื่องจากประโยชน์ cardiovascular มากกว่าความเสี่ยงเลือดออก ยกเว้นหัตถการที่มี bleeding risk สูงมาก (เช่น intracranial, spine)", "action": "individualize", "timing": "ส่วนใหญ่ให้ต่อเนื่อง · พิจารณาหยุด 7-10 วันเฉพาะหัตถการที่มีความเสี่ยงเลือดออกสูงมาก", "note": "ปรึกษาศัลยแพทย์/แพทย์โรคหัวใจถึงข้อบ่งชี้การใช้และความเสี่ยงเฉพาะหัตถการ"}, {"class_th": "ยาต้านเกล็ดเลือด", "class_en": "Antiplatelet", "sub": "P2Y12 inhibitors", "drugs": ["Clopidogrel", "Prasugrel", "Ticagrelor"], "indication": "หลังใส่ขดลวดหลอดเลือดหัวใจ (stent), Acute coronary syndrome", "mechanism": "ยับยั้งตัวรับ P2Y12 บนเกล็ดเลือด ป้องกันการรวมตัวของเกล็ดเลือด", "side_effect": "เลือดออกง่าย", "precaution": "ห้ามหยุดยาในผู้ป่วยที่เพิ่งใส่ stent โดยไม่ปรึกษาแพทย์โรคหัวใจ (bare-metal stent <4-6 สัปดาห์, drug-eluting stent <3-6 เดือน) เสี่ยง stent thrombosis รุนแรงถึงชีวิต", "action": "stop", "timing": "Clopidogrel: หยุด 5 วัน · Ticagrelor: หยุด 3-5 วัน · Prasugrel: หยุด 7-10 วัน (ก่อนผ่าตัด)", "note": "อ้างอิง ACCP/CHEST guideline — ต้องประเมินความเสี่ยง stent thrombosis vs bleeding risk ร่วมกับแพทย์โรคหัวใจเสมอในผู้ป่วยหลังใส่ stent"}, {"class_th": "ยาต้านเกล็ดเลือด", "class_en": "Antiplatelet", "sub": "อื่นๆ", "drugs": ["Cilostazol", "Dipyridamole"], "indication": "โรคหลอดเลือดส่วนปลาย (PAD), ป้องกัน stroke ซ้ำ", "mechanism": "Cilostazol: ยับยั้ง phosphodiesterase III; Dipyridamole: ยับยั้ง adenosine uptake/PDE", "side_effect": "Headache, palpitation, เลือดออกง่าย", "precaution": "Half-life สั้นกว่า P2Y12 inhibitor — ฟื้นตัวของ platelet function เร็วกว่า", "action": "stop", "timing": "หยุดประมาณ 2 วันก่อนผ่าตัด (ตามดุลยพินิจ)", "note": "ความเสี่ยงเลือดออกต่ำกว่า P2Y12 inhibitor"}, {"class_th": "ยาต้านการแข็งตัวของเลือด", "class_en": "Anticoagulants", "sub": "Vitamin K antagonist", "drugs": ["Warfarin"], "indication": "Atrial fibrillation, mechanical heart valve, VTE prophylaxis/treatment", "mechanism": "ยับยั้งการสร้าง vitamin K-dependent clotting factor (II, VII, IX, X)", "side_effect": "เลือดออกง่าย, INR ผันผวนจากอาหาร/ยาอื่น", "precaution": "ต้องตรวจ INR ก่อนผ่าตัด เป้าหมาย INR <1.5 สำหรับหัตถการส่วนใหญ่ พิจารณา bridging ด้วย heparin/LMWH ในผู้ป่วยความเสี่ยง thromboembolism สูง (mechanical valve, recent VTE, high-risk AF)", "action": "stop", "timing": "หยุด 5 วันก่อนผ่าตัด ตรวจ INR 1-2 วันก่อนผ่าตัด", "note": "อ้างอิง CHEST/ACCP guideline — ไม่แนะนำ bridging แบบ routine ในผู้ป่วยความเสี่ยงต่ำ เนื่องจากเพิ่มเลือดออกโดยไม่ลด thromboembolic event"}, {"class_th": "ยาต้านการแข็งตัวของเลือด", "class_en": "Anticoagulants", "sub": "DOACs", "drugs": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"], "indication": "Atrial fibrillation, VTE prophylaxis/treatment", "mechanism": "ยับยั้ง Factor Xa โดยตรง (apixaban/rivaroxaban/edoxaban) หรือ thrombin โดยตรง (dabigatran)", "side_effect": "เลือดออกง่าย", "precaution": "Onset/offset เร็วกว่า warfarin มาก — ไม่ต้อง bridging ในกรณีส่วนใหญ่ ระยะเวลาหยุดยาขึ้นกับ renal function และความเสี่ยงเลือดออกของหัตถการ", "action": "stop", "timing": "หัตถการความเสี่ยงเลือดออกต่ำ: หยุด 24-48 ชม. · หัตถการความเสี่ยงสูง: หยุด 48-72 ชม. (นานขึ้นหาก renal impairment)", "note": "Dabigatran ขับออกทางไตเป็นหลัก — ต้องหยุดนานขึ้นในผู้ป่วย renal impairment"}, {"class_th": "ยาต้านการแข็งตัวของเลือด", "class_en": "Anticoagulants", "sub": "Injectable", "drugs": ["Enoxaparin", "Dalteparin", "Nadroparin", "Fondaparinux"], "indication": "VTE prophylaxis/treatment, bridging anticoagulation", "mechanism": "LMWH: ยับยั้ง Factor Xa/thrombin ผ่าน antithrombin; Fondaparinux: ยับยั้ง Factor Xa แบบจำเพาะ", "side_effect": "เลือดออกง่าย, heparin-induced thrombocytopenia (พบน้อยกว่า unfractionated heparin)", "precaution": "ขนาด prophylactic กับ therapeutic มีระยะเวลาหยุดยาต่างกันชัดเจน", "action": "stop", "timing": "LMWH ขนาด prophylactic: หยุด 12 ชม. · ขนาด therapeutic: หยุด 24 ชม. · Fondaparinux: หยุด 36-48 ชม.", "note": "ปรับตาม renal function โดยเฉพาะ fondaparinux ที่ขับออกทางไตเป็นหลัก"}, {"class_th": "ยารักษาโรคเกาต์", "class_en": "Gout", "sub": "ลดกรดยูริก", "drugs": ["Allopurinol", "Febuxostat"], "indication": "โรคเกาต์เรื้อรัง, ป้องกัน tumor lysis syndrome", "mechanism": "ยับยั้งเอนไซม์ xanthine oxidase ลดการสร้างกรดยูริก", "side_effect": "Skin rash (allopurinol hypersensitivity syndrome พบน้อยแต่รุนแรง)", "precaution": "ไม่มีข้อห้ามเฉพาะทางวิสัญญี", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "ไม่จำเป็นต้องหยุดก่อนผ่าตัด"}, {"class_th": "ยารักษาโรคเกาต์", "class_en": "Gout", "sub": "เพิ่มการขับกรดยูริก", "drugs": ["Probenecid"], "indication": "โรคเกาต์เรื้อรัง", "mechanism": "ยับยั้งการดูดกลับกรดยูริกที่ไต", "side_effect": "GI upset, nephrolithiasis", "precaution": "ไม่มีข้อห้ามเฉพาะทางวิสัญญี", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "ไม่จำเป็นต้องหยุดก่อนผ่าตัด"}, {"class_th": "ยารักษาโรคเกาต์", "class_en": "Gout", "sub": "รักษาอาการเฉียบพลัน", "drugs": ["Colchicine"], "indication": "Gout flare เฉียบพลัน", "mechanism": "ยับยั้ง microtubule polymerization ลดการอักเสบ", "side_effect": "GI upset (ท้องเสียพบบ่อย), myelosuppression (dose สูง/renal impairment)", "precaution": "ปรับขนาดตาม renal function", "action": "individualize", "timing": "พิจารณาตามอาการ มักให้ต่อเนื่องได้หากไม่มี renal impairment รุนแรง", "note": "ระวังในผู้ป่วย renal impairment"}, {"class_th": "ยารักษาโรคเกาต์", "class_en": "Gout", "sub": "NSAIDs", "drugs": ["Naproxen", "Indomethacin", "Diclofenac", "Ibuprofen", "Celecoxib", "Etoricoxib"], "indication": "ปวด/อักเสบ (gout flare, ปวดข้อ, ปวดกล้ามเนื้อ)", "mechanism": "ยับยั้ง COX-1/COX-2 (non-selective) หรือ COX-2 selective (celecoxib/etoricoxib)", "side_effect": "เลือดออกง่าย (non-selective มากกว่า), renal impairment, GI ulcer", "precaution": "Non-selective NSAIDs ยับยั้ง platelet function ชั่วคราว (reversible) — เพิ่มความเสี่ยงเลือดออกในหัตถการที่มี bleeding risk สูง หรือ neuraxial anesthesia", "action": "stop", "timing": "Non-selective NSAIDs: หยุด 3-5 วันก่อนผ่าตัด (ตามครึ่งชีวิตของยาแต่ละชนิด) · COX-2 selective: ความเสี่ยงเลือดออกต่ำกว่า มักให้ต่อเนื่องได้ในหัตถการความเสี่ยงต่ำ", "note": "พิจารณาตามความเสี่ยงเลือดออกของหัตถการและยาต้านเกล็ดเลือด/ต้านการแข็งตัวของเลือดที่ใช้ร่วม"}, {"class_th": "ยารักษาหอบหืด", "class_en": "Asthma", "sub": "Inhaled bronchodilator/steroid", "drugs": ["Salbutamol", "Terbutaline", "Formoterol", "Salmeterol", "Budesonide", "Fluticasone", "Beclomethasone", "Budesonide/Formoterol", "Fluticasone/Salmeterol", "Fluticasone/Vilanterol", "Ipratropium", "Tiotropium"], "indication": "หอบหืด, ควบคุมอาการระยะยาวและเฉียบพลัน", "mechanism": "SABA/LABA: กระตุ้น beta-2 receptor ขยายหลอดลม; ICS: ลดการอักเสบ; Anticholinergic: ยับยั้ง muscarinic receptor", "side_effect": "Tremor/tachycardia (beta agonist), oral candidiasis (ICS), dry mouth (anticholinergic)", "precaution": "ควรนำ inhaler มาโรงพยาบาลวันผ่าตัดเสมอ พร้อมใช้หากเกิด bronchospasm ระหว่างผ่าตัด", "action": "continue", "timing": "ใช้ต่อเนื่องตามปกติ รวมถึงเช้าวันผ่าตัด", "note": "การหยุดยาเสี่ยง asthma exacerbation ระหว่างผ่าตัดซึ่งอันตรายกว่าความเสี่ยงจากการใช้ยาต่อ"}, {"class_th": "ยารักษาหอบหืด", "class_en": "Asthma", "sub": "Leukotriene receptor antagonist / Oral steroid", "drugs": ["Montelukast", "Prednisolone"], "indication": "หอบหืด (ควบคุมระยะยาว / exacerbation รุนแรง)", "mechanism": "Montelukast: ยับยั้ง leukotriene receptor; Prednisolone: ลดการอักเสบแบบกว้าง", "side_effect": "Headache (montelukast), ผลข้างเคียงจาก steroid ระยะยาว (prednisolone)", "precaution": "ผู้ป่วยที่ใช้ oral steroid ต่อเนื่องอาจมี adrenal suppression — พิจารณา stress-dose steroid", "action": "continue", "timing": "ใช้ต่อเนื่อง", "note": "ดูหัวข้อ Steroid ในกลุ่มยากดภูมิคุ้มกันสำหรับการพิจารณา stress-dose"}, {"class_th": "ยารักษา COPD", "class_en": "COPD", "sub": "LAMA/LABA/Triple therapy", "drugs": ["Tiotropium", "Glycopyrronium", "Umeclidinium", "Indacaterol", "Olodaterol", "Indacaterol/Glycopyrronium", "Umeclidinium/Vilanterol", "Budesonide/Glycopyrronium/Formoterol", "Fluticasone/Umeclidinium/Vilanterol"], "indication": "COPD (ควบคุมอาการระยะยาว)", "mechanism": "LAMA: ยับยั้ง muscarinic receptor; LABA: กระตุ้น beta-2 receptor; Triple: ผสม ICS/LAMA/LABA", "side_effect": "Dry mouth, tremor, urinary retention (LAMA ขนาดสูง)", "precaution": "ควรนำ inhaler มาโรงพยาบาลวันผ่าตัดเสมอ COPD เพิ่มความเสี่ยง postoperative pulmonary complication", "action": "continue", "timing": "ใช้ต่อเนื่องตามปกติ รวมถึงเช้าวันผ่าตัด", "note": "การหยุดยาเสี่ยง COPD exacerbation รอบผ่าตัด"}, {"class_th": "ยาโรคไทรอยด์", "class_en": "Thyroid", "sub": "Hypothyroidism", "drugs": ["Levothyroxine"], "indication": "ภาวะพร่องไทรอยด์ฮอร์โมน", "mechanism": "ทดแทน thyroid hormone (T4)", "side_effect": "หากขนาดสูงเกินไป: palpitation, tremor", "precaution": "ไม่มีข้อห้ามเฉพาะทางวิสัญญี", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "ไม่จำเป็นต้องหยุดก่อนผ่าตัด แม้ NPO สามารถกินพร้อมน้ำเปล่าจิบเล็กน้อยได้"}, {"class_th": "ยาโรคไทรอยด์", "class_en": "Thyroid", "sub": "Hyperthyroidism", "drugs": ["Methimazole", "Carbimazole", "Propylthiouracil (PTU)"], "indication": "ภาวะไทรอยด์เป็นพิษ", "mechanism": "ยับยั้งการสังเคราะห์ thyroid hormone", "side_effect": "Agranulocytosis (พบน้อยแต่รุนแรง), hepatotoxicity (PTU)", "precaution": "การหยุดยาในผู้ป่วยที่ควบคุมไทรอยด์ไม่ดีเสี่ยง thyroid storm ระหว่างผ่าตัดซึ่งอันตรายถึงชีวิต", "action": "continue", "timing": "รับประทานต่อเนื่องจนถึงเช้าวันผ่าตัด", "note": "ผู้ป่วยที่ควบคุมไทรอยด์ได้ไม่ดี ควรเลื่อนผ่าตัดที่ไม่ฉุกเฉินจนกว่าจะ euthyroid"}, {"class_th": "ยารักษาต่อมลูกหมากโต", "class_en": "BPH", "sub": "Alpha Blockers (BPH)", "drugs": ["Tamsulosin", "Alfuzosin", "Doxazosin"], "indication": "ต่อมลูกหมากโต (BPH)", "mechanism": "ยับยั้ง alpha-1 adrenergic receptor ที่กล้ามเนื้อเรียบต่อมลูกหมาก/คอกระเพาะปัสสาวะ", "side_effect": "Orthostatic hypotension, retrograde ejaculation", "precaution": "Intraoperative Floppy Iris Syndrome (IFIS) — สำคัญมากหากผู้ป่วยต้องผ่าตัดต้อกระจก ต้องแจ้งจักษุแพทย์ล่วงหน้าเสมอแม้หยุดยาไปนานแล้วก็ยังมีความเสี่ยง", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "ไม่แนะนำให้หยุดยาก่อนผ่าตัดต้อกระจกเนื่องจากไม่ลดความเสี่ยง IFIS แต่ควรแจ้งทีมผ่าตัดตาทราบล่วงหน้าแทน"}, {"class_th": "ยารักษาต่อมลูกหมากโต", "class_en": "BPH", "sub": "5-alpha reductase inhibitors", "drugs": ["Finasteride", "Dutasteride"], "indication": "ต่อมลูกหมากโต (BPH), ผมร่วง (finasteride ขนาดต่ำ)", "mechanism": "ยับยั้งเอนไซม์ 5-alpha reductase ลดการสร้าง DHT", "side_effect": "Sexual dysfunction, gynecomastia (พบน้อย)", "precaution": "ไม่มีข้อห้ามเฉพาะทางวิสัญญี", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "ไม่จำเป็นต้องหยุดก่อนผ่าตัด"}, {"class_th": "ยากรดไหลย้อน/แผลในกระเพาะ", "class_en": "GERD/PUD", "sub": "PPI", "drugs": ["Omeprazole", "Pantoprazole", "Esomeprazole", "Lansoprazole", "Rabeprazole"], "indication": "กรดไหลย้อน, แผลในกระเพาะอาหาร, ป้องกัน stress ulcer", "mechanism": "ยับยั้ง H+/K+ ATPase (proton pump) ที่ gastric parietal cell", "side_effect": "ปวดศีรษะ, เพิ่มความเสี่ยง C. difficile infection (ใช้ระยะยาว)", "precaution": "ลดความเสี่ยง aspiration pneumonitis จาก gastric acid หากใช้ต่อเนื่อง — เป็นประโยชน์ต่อการระงับความรู้สึก", "action": "continue", "timing": "รับประทานต่อเนื่องรวมถึงเช้าวันผ่าตัด", "note": "การให้ต่อเนื่องเป็นประโยชน์ต่อการลด gastric acidity"}, {"class_th": "ยากรดไหลย้อน/แผลในกระเพาะ", "class_en": "GERD/PUD", "sub": "H2 blocker", "drugs": ["Famotidine"], "indication": "กรดไหลย้อน, แผลในกระเพาะอาหาร", "mechanism": "ยับยั้ง histamine H2 receptor ที่ gastric parietal cell", "side_effect": "ปวดศีรษะ (พบน้อย)", "precaution": "ลดความเสี่ยง aspiration pneumonitis เช่นเดียวกับ PPI", "action": "continue", "timing": "รับประทานต่อเนื่องรวมถึงเช้าวันผ่าตัด", "note": "อาจใช้เป็น aspiration prophylaxis เพิ่มเติมก่อนผ่าตัดฉุกเฉิน"}, {"class_th": "ยาโรคไตและเกลือแร่", "class_en": "Renal/Mineral", "sub": "Phosphate binder/Vitamin D/EPO", "drugs": ["Sodium bicarbonate", "Calcium carbonate", "Sevelamer", "Lanthanum carbonate", "Calcitriol", "Erythropoietin"], "indication": "โรคไตเรื้อรัง (แก้ metabolic acidosis, hyperphosphatemia, ป้องกัน renal osteodystrophy, anemia จากไต)", "mechanism": "ออกฤทธิ์หลากหลายตามชนิด — จับ phosphate ในทางเดินอาหาร (binder), ทดแทน vitamin D active form (calcitriol), กระตุ้นการสร้างเม็ดเลือดแดง (erythropoietin)", "side_effect": "Hypercalcemia (calcium-based binder), GI upset", "precaution": "ผู้ป่วย ESRD ต้องประสานตารางฟอกไตกับวันผ่าตัดให้เหมาะสม", "action": "individualize", "timing": "โดยทั่วไปให้ต่อเนื่อง ปรับตามตารางฟอกไตและความเห็นอายุรแพทย์โรคไต", "note": "ประสานงานกับอายุรแพทย์โรคไตในผู้ป่วย ESRD/CKD ระยะท้ายเสมอ"}, {"class_th": "ยาจิตเวช", "class_en": "Psychiatric", "sub": "Antidepressants (SSRI/SNRI)", "drugs": ["Sertraline", "Fluoxetine", "Escitalopram", "Paroxetine", "Venlafaxine", "Duloxetine"], "indication": "ซึมเศร้า, วิตกกังวล, ปวดเรื้อรัง (บางชนิด)", "mechanism": "ยับยั้งการดูดกลับ serotonin (SSRI) หรือ serotonin/norepinephrine (SNRI)", "side_effect": "เพิ่มความเสี่ยงเลือดออกเล็กน้อย (ยับยั้ง platelet serotonin uptake), serotonin syndrome หากใช้ร่วมกับยาที่มีฤทธิ์ serotonergic", "precaution": "ระวัง serotonin syndrome หากใช้ร่วมกับ tramadol, methylene blue, หรือยาอื่นที่มีฤทธิ์ serotonergic ระหว่างผ่าตัด", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "การหยุดยากะทันหันเสี่ยง discontinuation syndrome (โดยเฉพาะ paroxetine/venlafaxine)"}, {"class_th": "ยาจิตเวช", "class_en": "Psychiatric", "sub": "Antipsychotics", "drugs": ["Risperidone", "Olanzapine", "Quetiapine", "Haloperidol"], "indication": "โรคจิตเภท, อารมณ์สองขั้ว, ควบคุมอาการทางจิตอื่นๆ", "mechanism": "ยับยั้ง dopamine receptor (D2) เป็นหลัก บางชนิดยับยั้ง serotonin receptor ร่วมด้วย", "side_effect": "QT prolongation, extrapyramidal symptoms, sedation", "precaution": "ระวัง QT prolongation โดยเฉพาะเมื่อใช้ร่วมกับยาอื่นที่ยืด QT — ตรวจ ECG ก่อนผ่าตัดหากมีความเสี่ยง", "action": "continue", "timing": "รับประทานต่อเนื่อง", "note": "การหยุดยาเสี่ยงอาการทางจิตกำเริบ"}, {"class_th": "ยาจิตเวช", "class_en": "Psychiatric", "sub": "Benzodiazepines", "drugs": ["Diazepam", "Lorazepam", "Clonazepam", "Alprazolam"], "indication": "วิตกกังวล, นอนไม่หลับ, กันชัก (clonazepam)", "mechanism": "เสริมฤทธิ์ GABA-A receptor", "side_effect": "Sedation, respiratory depression (เสริมฤทธิ์กับ anesthetic agent), tolerance/dependence", "precaution": "หยุดกะทันหันเสี่ยง withdrawal seizure — ต้องให้ต่อเนื่อง และอาจต้องการ sedative/anesthetic dose สูงขึ้นจาก tolerance", "action": "continue", "timing": "รับประทานต่อเนื่องรวมถึงเช้าวันผ่าตัด", "note": "Benzodiazepine withdrawal เป็นภาวะฉุกเฉินที่ป้องกันได้ด้วยการไม่หยุดยากะทันหัน"}, {"class_th": "ยากันชัก", "class_en": "Anticonvulsant", "sub": "Anticonvulsants", "drugs": ["Phenytoin", "Carbamazepine", "Sodium valproate", "Levetiracetam", "Lamotrigine", "Topiramate"], "indication": "โรคลมชัก, ปวดเส้นประสาท (บางชนิด), mood stabilizer (valproate)", "mechanism": "ออกฤทธิ์หลากหลายกลไกยับยั้งการชักตามชนิดยา", "side_effect": "Sedation, ataxia, hepatotoxicity (valproate), drug interaction หลายชนิด (phenytoin/carbamazepine)", "precaution": "ต้องรับประทานต่อเนื่องเสมอ — การขาดยาแม้เพียงมื้อเดียวเสี่ยง seizure breakthrough ระหว่างผ่าตัด", "action": "continue", "timing": "รับประทานต่อเนื่องจนถึงเช้าวันผ่าตัด จิบน้ำเปล่าได้แม้ NPO", "note": "ตามแนวทาง RCAT ระบุชัดเจนว่ายากันชักควรรับประทานต่อเนื่องและหลีกเลี่ยงการขาดยา"}, {"class_th": "ยากดภูมิคุ้มกัน", "class_en": "Immunosuppressant", "sub": "Steroid", "drugs": ["Prednisolone", "Dexamethasone"], "indication": "โรคภูมิต้านตนเอง, กดภูมิคุ้มกันหลังปลูกถ่ายอวัยวะ, หอบหืด/COPD รุนแรง", "mechanism": "ยับยั้งการอักเสบและภูมิคุ้มกันแบบกว้าง (glucocorticoid receptor)", "side_effect": "Adrenal suppression (ใช้ระยะยาว/ขนาดสูง), hyperglycemia, poor wound healing", "precaution": "ผู้ที่ใช้ steroid ต่อเนื่อง >3 สัปดาห์หรือขนาดเทียบเท่า prednisolone >5 มก./วัน มีความเสี่ยง adrenal insufficiency ระหว่างภาวะ stress จากการผ่าตัด — พิจารณาให้ stress-dose steroid เสริม", "action": "continue", "timing": "รับประทานต่อเนื่อง ± เสริม stress-dose steroid ตามความรุนแรงของหัตถการและระยะเวลาที่ใช้ยา", "note": "ปรึกษาแพทย์ผู้รักษาถึงความจำเป็นของ stress-dose coverage เป็นรายบุคคล"}, {"class_th": "ยากดภูมิคุ้มกัน", "class_en": "Immunosuppressant", "sub": "ยากดภูมิคุ้มกันอื่นๆ", "drugs": ["Tacrolimus", "Cyclosporine", "Mycophenolate mofetil", "Azathioprine", "Methotrexate"], "indication": "ป้องกันการปฏิเสธอวัยวะปลูกถ่าย, โรคภูมิต้านตนเองรุนแรง", "mechanism": "ยับยั้ง T-cell activation (tacrolimus/cyclosporine), ยับยั้ง purine synthesis (mycophenolate/azathioprine), ยับยั้ง dihydrofolate reductase (methotrexate)", "side_effect": "Nephrotoxicity (tacrolimus/cyclosporine), myelosuppression, เพิ่มความเสี่ยงติดเชื้อ", "precaution": "ห้ามหยุดยาในผู้ป่วยปลูกถ่ายอวัยวะโดยไม่ปรึกษาทีมปลูกถ่ายเนื่องจากเสี่ยง organ rejection รุนแรง ต้อง monitor drug level (tacrolimus/cyclosporine) รอบผ่าตัด", "action": "continue", "timing": "รับประทานต่อเนื่องเสมอ ปรึกษาทีมปลูกถ่าย/รูมาโตโลจิสต์ก่อนปรับเปลี่ยนใดๆ", "note": "การหยุดยาในผู้ป่วย transplant เป็นข้อห้ามเว้นแต่มีคำสั่งจากทีมปลูกถ่ายโดยตรง"}]</script>
+<script>
+const MEDS = JSON.parse(document.getElementById('med-data').textContent);
+
+// flatten into searchable drug index
+const DRUG_INDEX = [];
+MEDS.forEach((sub, subIdx) => {
+  sub.drugs.forEach(drugName => {
+    DRUG_INDEX.push({ name: drugName, subIdx });
+  });
+});
+
+function showMainTab(name){
+  ['pac','lab','med'].forEach(t=>{
+    document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===name);
+    document.getElementById('mtab'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===name);
+  });
+  window.scrollTo(0,0);
+  if(name==='med' && !window._medInit){ medInit(); window._medInit = true; }
+}
+
+const ACTION_LABEL = { continue: '✅ ให้รับประทานต่อเนื่อง', stop: '⛔ ควรหยุดยาก่อนผ่าตัด', individualize: '⚖️ พิจารณาเป็นรายบุคคล' };
+const ACTION_CLASS = { continue: 'continue', stop: 'stop', individualize: 'individualize' };
+
+function medRenderResults(list){
+  const box = document.getElementById('medResults');
+  if(list.length===0){ box.innerHTML = '<div class="med-empty">ไม่พบชื่อยาที่ค้นหา ลองพิมพ์ชื่อสามัญ (generic name) เป็นภาษาอังกฤษ</div>'; return; }
+  box.innerHTML = list.slice(0,60).map(item => {
+    const sub = MEDS[item.subIdx];
+    return `<div class="med-result-item" onclick="medShowDetail(${item.subIdx}, '${item.name.replace(/'/g,"\\'")}')">
+      <div class="mname">${item.name}</div>
+      <div class="mclass">${sub.class_th} · ${sub.sub}</div>
+    </div>`;
+  }).join('');
+}
+
+function medFilter(){
+  const q = document.getElementById('medSearch').value.trim().toLowerCase();
+  if(q===''){ medRenderResults(DRUG_INDEX); return; }
+  const filtered = DRUG_INDEX.filter(d => d.name.toLowerCase().includes(q));
+  medRenderResults(filtered);
+}
+
+function medShowDetail(subIdx, drugName){
+  const sub = MEDS[subIdx];
+  document.getElementById('medListView').style.display = 'none';
+  document.getElementById('medDetailView').style.display = 'block';
+  const badgeClass = ACTION_CLASS[sub.action];
+  const badgeLabel = ACTION_LABEL[sub.action];
+  document.getElementById('medDetailContent').innerHTML = `
+    <div class="med-detail-card">
+      <h3>${drugName}</h3>
+      <div class="subclass">${sub.class_th} (${sub.class_en}) › ${sub.sub}</div>
+      <div class="action-badge ${badgeClass}">${badgeLabel}</div>
+      <div class="med-field">
+        <div class="flabel">แนวทางก่อนผ่าตัด</div>
+        <div class="fval"><b>${sub.timing}</b></div>
+      </div>
+      <div class="med-field">
+        <div class="flabel">ข้อบ่งใช้</div>
+        <div class="fval">${sub.indication}</div>
+      </div>
+      <div class="med-field">
+        <div class="flabel">กลไกการออกฤทธิ์</div>
+        <div class="fval">${sub.mechanism}</div>
+      </div>
+      <div class="med-field">
+        <div class="flabel">ผลข้างเคียงสำคัญ</div>
+        <div class="fval">${sub.side_effect}</div>
+      </div>
+      <div class="med-field">
+        <div class="flabel">⚠️ ข้อควรระวังทางวิสัญญี</div>
+        <div class="fval">${sub.precaution}</div>
+      </div>
+      <div class="med-field">
+        <div class="flabel">หมายเหตุ/อ้างอิง</div>
+        <div class="fval">${sub.note}</div>
+      </div>
+      <div class="med-field">
+        <div class="flabel">ยาอื่นในกลุ่มเดียวกัน</div>
+        <div class="med-drug-chips">${sub.drugs.map(d=>`<span class="med-drug-chip">${d}</span>`).join('')}</div>
+      </div>
+    </div>
+  `;
+  window.scrollTo(0,0);
+}
+
+function medBackToList(){
+  document.getElementById('medListView').style.display = 'block';
+  document.getElementById('medDetailView').style.display = 'none';
+}
+
+function medInit(){
+  medRenderResults(DRUG_INDEX);
+  // class overview
+  const classes = {};
+  MEDS.forEach((sub, idx) => {
+    if(!classes[sub.class_th]) classes[sub.class_th] = [];
+    classes[sub.class_th].push({sub: sub.sub, idx});
+  });
+  let html = '';
+  Object.keys(classes).forEach(cls => {
+    html += `<details><summary>${cls}</summary><div class="infobox"><ul>`;
+    classes[cls].forEach(s => {
+      const subObj = MEDS[s.idx];
+      html += `<li><b>${s.sub}</b> — ${subObj.drugs.join(', ')}</li>`;
+    });
+    html += `</ul></div></details>`;
+  });
+  document.getElementById('medClassOverview').innerHTML = html;
+}
+</script>
+</body>
+</html>

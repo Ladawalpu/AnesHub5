@@ -1,13 +1,13 @@
 // © 2026 Puladawal S. (puladawal.s@gmail.com) — MNST Hospital. All Rights Reserved. Unauthorized copying, redistribution, or modification of this application is prohibited without written permission.
 
-const CACHE_NAME = 'aneshub-cache-v12';
+const CACHE_NAME = 'aneshub-cache-v14';
 const ASSETS = [
   './index.html',
   './anesth-cal.html',
   './anesth-drugs.html',
   './cpr-protocol.html',
   './airway-tip.html',
-  './fluid-tip.html',
+  './pre-anes-guideline.html',
   './clinical-guide.html',
   './manifest.json',
   './icons/icon-192.png',
