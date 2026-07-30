@@ -34,12 +34,12 @@
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'Sarabun', sans-serif;
   }
-  /* Fluid tab ใช้โทนน้ำเงิน แยกจาก Airway ที่เป็นเขียวอมฟ้า — override เฉพาะภายใน #tabFluid */
+  /* Fluid tab ใช้โทนเขียว แยกจาก Airway ที่เป็นเขียวอมฟ้า — override เฉพาะภายใน #tabFluid */
   #tabFluid{
-    --teal-deep: #1C3F9E;
-    --teal: #2F6FE0;
-    --accent: #3D7DFB;
-    --line: #DCE6F9;
+    --teal-deep: #1D6704;
+    --teal: #288A05;
+    --accent: #4CAF25;
+    --line: #DCEFD1;
   }
   *{box-sizing:border-box;}
   body{
@@ -54,9 +54,9 @@
     transition: background .25s ease;
   }
   body.fluid-active header{
-    background: linear-gradient(160deg, #1C3F9E 0%, #123072 100%);
+    background: linear-gradient(160deg, #288A05 0%, #1D6704 100%);
   }
-  body.fluid-active .mtab.active{ color:#1C3F9E; }
+  body.fluid-active .mtab.active{ color:#1D6704; }
   header .inner{max-width:920px; margin:0 auto; position:relative; z-index:2;}
   header h1{font-size:22px; margin:0 0 4px; font-weight:700; letter-spacing:.2px;}
   header p.sub{margin:0; font-size:13.5px; color:#BFE8E6; font-weight:500;}
@@ -594,7 +594,26 @@ function calculate(){
 }
 
 // ---- Tab switcher ----
+function syncAirwayToFluid(){
+  document.getElementById('flSex').value = document.getElementById('sex').value;
+  document.getElementById('flAge').value = document.getElementById('age').value;
+  document.getElementById('flWeight').value = document.getElementById('weight').value;
+  document.getElementById('flHeight').value = document.getElementById('height').value;
+  flAgeGroup = ageGroup;
+  document.querySelectorAll('#flAgeGroupSeg button').forEach(b=>b.classList.toggle('active', b.dataset.v===ageGroup));
+}
+function syncFluidToAirway(){
+  document.getElementById('sex').value = document.getElementById('flSex').value;
+  document.getElementById('age').value = document.getElementById('flAge').value;
+  document.getElementById('weight').value = document.getElementById('flWeight').value;
+  document.getElementById('height').value = document.getElementById('flHeight').value;
+  ageGroup = flAgeGroup;
+  document.querySelectorAll('#ageGroupSeg button').forEach(b=>b.classList.toggle('active', b.dataset.v===flAgeGroup));
+}
+
 function showMainTab(name){
+  if(name==='fluid') syncAirwayToFluid();
+  else if(name==='airway') syncFluidToAirway();
   document.getElementById('tabAirway').classList.toggle('active', name==='airway');
   document.getElementById('tabFluid').classList.toggle('active', name==='fluid');
   document.getElementById('mtabAirway').classList.toggle('active', name==='airway');
