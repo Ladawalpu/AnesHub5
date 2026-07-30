@@ -7,13 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Airway Tip — AnesHub</title>
+<title>Airway &amp; Fluid — AnesHub</title>
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0B5A63">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Airway Tip">
+<meta name="apple-mobile-web-app-title" content="Airway & Fluid">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
 
@@ -34,6 +34,13 @@
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'Sarabun', sans-serif;
   }
+  /* Fluid tab ใช้โทนน้ำเงิน แยกจาก Airway ที่เป็นเขียวอมฟ้า — override เฉพาะภายใน #tabFluid */
+  #tabFluid{
+    --teal-deep: #1C3F9E;
+    --teal: #2F6FE0;
+    --accent: #3D7DFB;
+    --line: #DCE6F9;
+  }
   *{box-sizing:border-box;}
   body{
     margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
@@ -44,7 +51,12 @@
   header{
     background: linear-gradient(160deg, var(--teal-deep) 0%, #135C6E 100%);
     color:#EAFBFA; padding:28px 20px 22px; position:relative; overflow:hidden;
+    transition: background .25s ease;
   }
+  body.fluid-active header{
+    background: linear-gradient(160deg, #1C3F9E 0%, #123072 100%);
+  }
+  body.fluid-active .mtab.active{ color:#1C3F9E; }
   header .inner{max-width:920px; margin:0 auto; position:relative; z-index:2;}
   header h1{font-size:22px; margin:0 0 4px; font-weight:700; letter-spacing:.2px;}
   header p.sub{margin:0; font-size:13.5px; color:#BFE8E6; font-weight:500;}
@@ -154,8 +166,8 @@
 
 <header>
   <div class="inner">
-    <h1>Airway Tip — คำนวณอุปกรณ์ทางเดินหายใจ</h1>
-    <p class="sub">ขนาด/ความลึก ETT, LMA, Blade, OPA, NPA จากข้อมูลผู้ป่วย</p>
+    <h1>Airway & Fluid</h1>
+    <p class="sub">อุปกรณ์ทางเดินหายใจ (ETT/LMA/Blade/Suction/NGT) และ MABL/สารน้ำระหว่างผ่าตัด</p>
   </div>
   <svg class="wave" viewBox="0 0 900 40" preserveAspectRatio="none"><path d="M0,20 Q50,5 100,20 T200,20 T300,20 T400,20 T500,20 T600,20 T700,20 T800,20 T900,20"/></svg>
 </header>
@@ -539,20 +551,23 @@ function calculate(){
 
   // ---- Suction Catheter & Nasogastric Tube (weight-based) ----
   let suctionSize, ngtFeed, ngtDecomp;
-  if(weight<2.5){ suctionSize='5–6 Fr'; ngtFeed='5 Fr'; }
-  else if(weight<4){ suctionSize='6 Fr'; ngtFeed='6–8 Fr'; }
-  else if(weight<6){ suctionSize='6 Fr'; ngtFeed='8 Fr'; }
-  else if(weight<9){ suctionSize='8 Fr'; ngtFeed='8–10 Fr'; }
-  else if(weight<15){ suctionSize='10 Fr'; ngtFeed='10–12 Fr'; }
-  else if(weight<25){ suctionSize='10–12 Fr'; ngtFeed='12 Fr'; }
-  else if(weight<40){ suctionSize='12 Fr'; ngtFeed='12–14 Fr'; }
-  else if(weight<50){ suctionSize='12–14 Fr'; ngtFeed='14–16 Fr'; }
-  else { suctionSize='12–16 Fr'; ngtFeed='14–18 Fr'; }
+  if(weight<2.5){ suctionSize='5–6 Fr'; }
+  else if(weight<4){ suctionSize='6 Fr'; }
+  else if(weight<6){ suctionSize='6 Fr'; }
+  else if(weight<9){ suctionSize='8 Fr'; }
+  else if(weight<15){ suctionSize='10 Fr'; }
+  else if(weight<25){ suctionSize='10–12 Fr'; }
+  else if(weight<40){ suctionSize='12 Fr'; }
+  else if(weight<50){ suctionSize='12–14 Fr'; }
+  else { suctionSize='12–16 Fr'; }
 
-  if(ageGroup==='neonate' || (ageGroup==='pediatric' && age<1)){ ngtDecomp='8–10 Fr (Infant)'; }
-  else if(ageGroup==='pediatric' && age<12){ ngtDecomp='10–12 Fr (Child)'; }
-  else if(ageGroup==='pediatric'){ ngtDecomp='12–14 Fr (Adolescent)'; }
-  else { ngtDecomp='14–18 Fr (Adult)'; }
+  // NGT: feeding และ decompression ใช้ตัวแปรเดียวกัน (ageGroup + age) เสมอ
+  // เพื่อการันตีว่า decompression >= feeding ทุกกรณี (ไม่สลับ driver ระหว่างสอง field)
+  if(ageGroup==='neonate'){ ngtFeed='5–6 Fr (Newborn)'; ngtDecomp='6–8 Fr'; }
+  else if(ageGroup==='pediatric' && age<1){ ngtFeed='6–8 Fr (Infant)'; ngtDecomp='8–10 Fr'; }
+  else if(ageGroup==='pediatric' && age<12){ ngtFeed='8 Fr (Child)'; ngtDecomp='10–12 Fr'; }
+  else if(ageGroup==='pediatric'){ ngtFeed='8–10 Fr (Adolescent)'; ngtDecomp='12–14 Fr'; }
+  else { ngtFeed='8–12 Fr (Adult)'; ngtDecomp='14–18 Fr'; }
 
   document.getElementById('suctionSize').textContent = suctionSize;
   document.getElementById('suctionFromEtt').textContent = round((cuffedSize-1)*2,0) + ' Fr';
@@ -584,6 +599,7 @@ function showMainTab(name){
   document.getElementById('tabFluid').classList.toggle('active', name==='fluid');
   document.getElementById('mtabAirway').classList.toggle('active', name==='airway');
   document.getElementById('mtabFluid').classList.toggle('active', name==='fluid');
+  document.body.classList.toggle('fluid-active', name==='fluid');
   window.scrollTo(0,0);
 }
 

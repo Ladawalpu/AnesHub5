@@ -123,7 +123,7 @@
   .cat-card.anesthcal .cat-pill{ background:linear-gradient(120deg, var(--card-purple), #5c1f80); }
   .cat-card.drugs .cat-pill{ background:linear-gradient(120deg, var(--card-anjan), #201060); }
   .cat-card.cpr .cat-pill{ background:linear-gradient(120deg, var(--card-pink), #7a0c47); }
-  .cat-card.airway .cat-pill{ background:linear-gradient(120deg, var(--card-teal), #0B5A63); }
+  .cat-card.airway .cat-pill{ background:linear-gradient(120deg, #0D9488, #0891B2); }
   .cat-card.preanes .cat-pill{ background:linear-gradient(120deg, #059669, #065F46); }
   .cat-card.clinicalguide .cat-pill{ background:linear-gradient(120deg, #D97706, #92400E); }
 
@@ -168,7 +168,7 @@
   .toolbar.anesthcal{ background:linear-gradient(120deg, #3B1760, #5B268F); }
   .toolbar.drugs{ background:linear-gradient(120deg, #241468, #3a1f9e); }
   .toolbar.cpr{ background:linear-gradient(120deg, #7a0c47, #b3175f); }
-  .toolbar.airway{ background:linear-gradient(120deg, #0B5A63, #0E8A8F); }
+  .toolbar.airway{ background:linear-gradient(120deg, #0D9488, #0891B2); }
   .toolbar.preanes{ background:linear-gradient(120deg, #065F46, #059669); }
   .toolbar.clinicalguide{ background:linear-gradient(120deg, #92400E, #D97706); }
 
@@ -211,7 +211,7 @@
     </div>
 
     <div class="cat-card airway" onclick="openTool('airway')">
-      <div class="cat-pill"><span class="cat-icon-inline">🫁</span>Airway Tip</div>
+      <div class="cat-pill"><span class="cat-icon-inline">🫁</span>Airway & Fluid</div>
       <div class="cat-desc"><b>ETT/LMA/Blade + Fluid</b>คำนวณอุปกรณ์ทางเดินหายใจ<br>และ MABL/สารน้ำ</div>
     </div>
 
@@ -247,7 +247,7 @@ const TOOLS = {
   anesthcal: { src:'anesth-cal.html', title:'Anesth Cal', cls:'anesthcal' },
   drugs:     { src:'anesth-drugs.html', title:'ยาทางวิสัญญี', cls:'drugs' },
   cpr:       { src:'cpr-protocol.html', title:'CPR Guideline 2025', cls:'cpr' },
-  airway:    { src:'airway-tip.html', title:'Airway Tip', cls:'airway' },
+  airway:    { src:'airway-tip.html', title:'Airway & Fluid', cls:'airway' },
   preanes:   { src:'pre-anes-guideline.html', title:'Pre Anes Guideline', cls:'preanes' },
   clinicalguide: { src:'clinical-guide.html', title:'Clinical Guide', cls:'clinicalguide' }
 };
