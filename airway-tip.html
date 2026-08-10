@@ -244,6 +244,13 @@
     </div>
 
     <div class="card">
+      <span class="name">⚖️ Ideal Body Weight & Tidal Volume</span>
+      <div class="metric"><span class="k">Ideal Body Weight (IBW)</span><span class="v" id="ibwValue">-</span></div>
+      <div class="metric"><span class="k">Tidal Volume (Lung-protective 6-8 mL/kg)</span><span class="v" id="tvRange">-</span></div>
+      <div class="note" id="ibwNote"></div>
+    </div>
+
+    <div class="card">
       <span class="name">🩹 Suction Catheter</span>
       <div class="metric"><span class="k">ขนาดแนะนำ (ตามน้ำหนัก)</span><span class="v" id="suctionSize">-</span></div>
       <div class="metric"><span class="k">ตรวจสอบกับ ETT ที่คำนวณ<span class="sub">สูตร (ID−1)×2</span></span><span class="v" id="suctionFromEtt">-</span></div>
@@ -548,6 +555,33 @@ function calculate(){
   else { npaSize = sex==='male' ? '7.0–8.0 mm ID (32–34 Fr)' : '6.0–7.0 mm ID (28–30 Fr)'; npaLen='ปลายจมูก → ติ่งหู (~13–15 cm)'; }
   document.getElementById('npaSize').textContent = npaSize;
   document.getElementById('npaLen').textContent = npaLen;
+
+  // ---- Ideal Body Weight (IBW) & Tidal Volume ----
+  let ibwValue, tvMin, tvMax, ibwNote;
+  if(ageGroup==='adult'){
+    // Devine formula (มาตรฐานสำหรับผู้ใหญ่ ต้องใช้ส่วนสูง)
+    if(height>0){
+      const base = sex==='male' ? 50 : 45.5;
+      ibwValue = round(base + 0.9055*(height-152.4), 1);
+      if(ibwValue < 3) ibwValue = round(base,1); // กันค่าติดลบ/ผิดปกติถ้า height ต่ำผิดปกติ
+      tvMin = round(ibwValue*6, 0);
+      tvMax = round(ibwValue*8, 0);
+      ibwNote = 'สูตร Devine: ชาย 50 + 0.9055×(ส่วนสูง−152.4) cm · หญิง 45.5 + 0.9055×(ส่วนสูง−152.4) cm — ใช้ IBW แทนน้ำหนักจริงเพื่อป้องกัน over-ventilation ในผู้ป่วยน้ำหนักเกิน/อ้วน';
+    } else {
+      ibwValue = null;
+      ibwNote = 'กรุณาใส่ส่วนสูงเพื่อคำนวณ IBW (สูตร Devine ต้องใช้ส่วนสูง)';
+    }
+  } else {
+    // เด็ก/ทารกแรกเกิด: ใช้น้ำหนักตัวจริงในการคำนวณ TV ตามมาตรฐานเวชปฏิบัติเด็ก (ไม่ใช้ IBW แบบผู้ใหญ่)
+    ibwValue = null;
+    tvMin = round(weight*6, 0);
+    tvMax = round(weight*8, 0);
+    ibwNote = 'เด็ก/ทารกแรกเกิด: ใช้น้ำหนักตัวจริง (actual body weight) ในการคำนวณ Tidal Volume โดยตรง ไม่ใช้ IBW แบบผู้ใหญ่ เนื่องจากยังไม่มีสูตร IBW มาตรฐานที่ยอมรับกว้างขวางสำหรับเด็ก';
+  }
+
+  document.getElementById('ibwValue').textContent = ibwValue!==null ? (ibwValue+' kg') : 'ใช้น้ำหนักจริง ('+weight+' kg)';
+  document.getElementById('tvRange').textContent = (tvMin!==undefined && tvMax!==undefined) ? (tvMin+'–'+tvMax+' mL') : '-';
+  document.getElementById('ibwNote').textContent = ibwNote;
 
   // ---- Suction Catheter & Nasogastric Tube (weight-based) ----
   let suctionSize, ngtFeed, ngtDecomp;
