@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Anesth-cal — ตารางคำนวณยา CVT</title>
+<title>Anesth-cal — ตารางคำนวณยาทางวิสัญญี</title>
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
@@ -166,7 +166,7 @@
 
 <header>
   <div class="inner">
-    <h1>Anesth-cal — ตารางคำนวณยา CVT</h1>
+    <h1>Anesth-cal — ตารางคำนวณยาทางวิสัญญี</h1>
   </div>
   <svg class="ecg" viewBox="0 0 900 40" preserveAspectRatio="none"><path d="M0,20 L200,20 L215,5 L230,35 L245,20 L400,20 L415,10 L430,30 L445,20 L900,20"/></svg>
 </header>
@@ -275,6 +275,7 @@
     </div>
     <div class="zone"><div class="marker" id="adr-mark"></div></div>
     <div class="zonelabels"><span>0.01 β</span><span>0.03–0.15 β+α</span><span>0.15–0.3 α&gt;β</span></div>
+    <div class="note">Drip rate ทั่วไป 0.01–0.3 mcg/kg/min (มักเริ่มต้นที่ 0.03–0.1 mcg/kg/min แล้วไตเตรทตามการตอบสนอง)</div>
     <div class="note" id="adr-zone-note"></div>
     <details><summary>ข้อมูลยา</summary>
       <div class="infobox">Catecholamine ธรรมชาติ ออกฤทธิ์แบบ dose-dependent: ขนาดต่ำ (0.01–0.03 mcg/kg/min) เด่น β1 เพิ่ม contractility/HR; ขนาดกลาง (0.03–0.15) ผสม β+α; ขนาดสูง (&gt;0.15) α เด่นขึ้น เพิ่ม afterload และเสี่ยง arrhythmia (พบบ่อยช่วง 0.12–0.18) นิยมใช้เป็น first-line inotrope หลังเลิกเครื่อง CPB ที่มี low cardiac output</div>
@@ -283,7 +284,7 @@
 
   <!-- Levophed -->
   <div class="card" data-drug="levophed">
-    <div class="head"><span class="name">7. Levophed (Norepinephrine)</span></div>
+    <div class="head"><span class="name">6. Levophed (Norepinephrine)</span></div>
     <div class="row">
       <span style="font-size:13px; color:var(--ink-soft); font-weight:600;">ความเข้มข้นที่ผสม:</span>
       <div class="segrow" id="lev-conc-group">
@@ -304,13 +305,29 @@
     </details>
   </div>
 
-  <!-- Cordarone -->
-  <div class="card" data-drug="cordarone">
-    <div class="head"><span class="name">6. Cordarone (Amiodarone)</span><span class="conc">amp 3 ml (150 mg) + D5W 17 ml = 20 ml</span></div>
-    <div class="prep">⚠️ ใช้ D5W เท่านั้น (ห้ามผสม NSS) — Push 150 mg ช้า ๆ over 3–5 นาที</div>
-    <div class="note">หากต้องการ drip ต่อ อัตราตามตารางอ้างอิงของหน่วยงานอยู่ที่ประมาณ <b>240–400 ml/hr</b> ในช่วงแรกแล้วค่อยลดลง (ไม่ใช่สูตรคำนวณตาม BW โดยตรง โปรดยึดตาม protocol ของหน่วยงาน/คำสั่งแพทย์)</div>
+  <!-- Dobutamine -->
+  <div class="card" data-drug="dobutamine">
+    <div class="head"><span class="name">7. Dobutamine</span></div>
+    <div class="row">
+      <span style="font-size:13px; color:var(--ink-soft); font-weight:600;">ความเข้มข้น:</span>
+      <div class="segrow" id="dobu-conc-group">
+        <span class="segbtn active" data-v="1">1 mg/ml</span>
+        <span class="segbtn" data-v="2">2 mg/ml</span>
+        <span class="segbtn" data-v="5">5 mg/ml (BW&gt;50 kg)</span>
+      </div>
+    </div>
+    <div class="prep" id="dobu-prep">ยา vial 4 ml (50 mg) + NSS 46 ml = 50 ml</div>
+    <div class="row">
+      <input type="range" id="dobu-r" min="1" max="20" step="0.5" value="5" style="flex:1">
+      <span class="doselabel" id="dobu-d">5.0 mcg/kg/min</span>
+      <span class="result-wrap"><input type="number" class="rate-input" id="dobu-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
+    </div>
+    <div class="zone"><div class="marker" id="dobu-mark"></div></div>
+    <div class="zonelabels"><span>1–3</span><span>3–7</span><span>7–10</span><span>&gt;10</span></div>
+    <div class="note">Drip rate ทั่วไป 2.5–10 mcg/kg/min (สูงสุดถึง ~20 mcg/kg/min ในบางกรณี)</div>
+    <div class="note" id="dobu-zone-note"></div>
     <details><summary>ข้อมูลยา</summary>
-      <div class="infobox">Class III antiarrhythmic ใช้รักษา ventricular/atrial arrhythmia หลัง CPB ผลข้างเคียงเฉียบพลันที่สำคัญคือ hypotension และ bradycardia จาก vasoactive solvent ให้ push ช้าและมี pacing/inotrope พร้อมใช้</div>
+      <div class="infobox">Synthetic catecholamine เด่น β1 (เพิ่ม contractility และ HR เล็กน้อย) มีฤทธิ์ β2/α1 เล็กน้อย เป็น first-line inotrope สำหรับ low cardiac output ที่ไม่มี severe hypotension เกิด tachyphylaxis ได้เมื่อใช้ต่อเนื่องนาน และ HR มักเพิ่มขึ้นชัดเจนที่ขนาด &gt;7 mcg/kg/min</div>
     </details>
   </div>
 
@@ -328,34 +345,19 @@
     </details>
   </div>
 
-  <!-- Dobutamine -->
-  <div class="card" data-drug="dobutamine">
-    <div class="head"><span class="name">9. Dobutamine</span></div>
-    <div class="row">
-      <span style="font-size:13px; color:var(--ink-soft); font-weight:600;">ความเข้มข้น:</span>
-      <div class="segrow" id="dobu-conc-group">
-        <span class="segbtn active" data-v="1">1 mg/ml</span>
-        <span class="segbtn" data-v="2">2 mg/ml</span>
-        <span class="segbtn" data-v="5">5 mg/ml (BW&gt;50 kg)</span>
-      </div>
-    </div>
-    <div class="prep" id="dobu-prep">ยา vial 4 ml (50 mg) + NSS 46 ml = 50 ml</div>
-    <div class="row">
-      <input type="range" id="dobu-r" min="1" max="20" step="0.5" value="5" style="flex:1">
-      <span class="doselabel" id="dobu-d">5.0 mcg/kg/min</span>
-      <span class="result-wrap"><input type="number" class="rate-input" id="dobu-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
-    </div>
-    <div class="zone"><div class="marker" id="dobu-mark"></div></div>
-    <div class="zonelabels"><span>1–3</span><span>3–7</span><span>7–10</span><span>&gt;10</span></div>
-    <div class="note" id="dobu-zone-note"></div>
+  <!-- Cordarone -->
+  <div class="card" data-drug="cordarone">
+    <div class="head"><span class="name">9. Cordarone (Amiodarone)</span><span class="conc">amp 3 ml (150 mg) + D5W 17 ml = 20 ml</span></div>
+    <div class="prep">⚠️ ใช้ D5W เท่านั้น (ห้ามผสม NSS) — Push 150 mg ช้า ๆ over 3–5 นาที</div>
+    <div class="note">หากต้องการ drip แทนการ push ช้าๆ อยู่ที่ประมาณ <b>250–400 ml/hr</b> ในช่วงแรกแล้วค่อยลดลง (ไม่ใช่สูตรคำนวณตาม BW โดยตรง โปรดยึดตาม protocol ของสถาบัน/คำสั่งแพทย์)</div>
     <details><summary>ข้อมูลยา</summary>
-      <div class="infobox">Synthetic catecholamine เด่น β1 (เพิ่ม contractility และ HR เล็กน้อย) มีฤทธิ์ β2/α1 เล็กน้อย เป็น first-line inotrope สำหรับ low cardiac output ที่ไม่มี severe hypotension เกิด tachyphylaxis ได้เมื่อใช้ต่อเนื่องนาน และ HR มักเพิ่มขึ้นชัดเจนที่ขนาด &gt;7 mcg/kg/min</div>
+      <div class="infobox">Class III antiarrhythmic ใช้รักษา ventricular/atrial arrhythmia หลัง CPB ผลข้างเคียงเฉียบพลันที่สำคัญคือ hypotension และ bradycardia จาก vasoactive solvent ให้ push ช้าและมี pacing/inotrope พร้อมใช้</div>
     </details>
   </div>
 
   <!-- Primacor infusion -->
   <div class="card" data-drug="primacor">
-    <div class="head"><span class="name">10b. Primacor (Milrinone) — Maintenance</span><span class="conc">เจือจาง 1:5 → 200 mcg/ml</span></div>
+    <div class="head"><span class="name">10. Primacor (Milrinone) — Maintenance</span><span class="conc">เจือจาง 1:5 → 200 mcg/ml</span></div>
     <div class="prep">NSS ที่ผสม = ยาที่เหลือในขวด (ml) × 4</div>
     <div class="row">
       <input type="range" id="prim-r" min="0.1" max="0.75" step="0.025" value="0.375" style="flex:1">
@@ -370,7 +372,7 @@
 
   <!-- Transamin infusion -->
   <div class="card" data-drug="transamin-inf">
-    <div class="head"><span class="name">11b. Transamin — Maintenance</span><span class="conc">เจือจาง → 10 mg/ml</span></div>
+    <div class="head"><span class="name">11. Transamin — Maintenance</span><span class="conc">เจือจาง → 10 mg/ml</span></div>
     <div class="prep">amp 5 ml (250 mg) + NSS 20 ml</div>
     <div class="row">
       <span class="doselabel">1 mg/kg/hr</span>
@@ -385,11 +387,11 @@
   <div class="card" data-drug="precedex">
     <div class="head"><span class="name">12. Precedex (Dexmedetomidine)</span><span class="conc">amp 100 mcg (1 ml) + NSS 24 ml = 4 mcg/ml</span></div>
     <div class="row">
-      <input type="range" id="prec-r" min="0.2" max="1.0" step="0.05" value="0.4" style="flex:1">
+      <input type="range" id="prec-r" min="0.10" max="1.0" step="0.05" value="0.4" style="flex:1">
       <span class="doselabel" id="prec-d">0.40 mcg/kg/hr</span>
       <span class="result-wrap"><input type="number" class="rate-input" id="prec-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
     </div>
-    <div class="note">Maintenance ทั่วไป 0.2–0.7 (สูงสุดถึง ~1.4) mcg/kg/hr — ในผู้ป่วย CVT มักเริ่มด้วย maintenance โดยไม่ให้ loading dose เพื่อหลีกเลี่ยง bradycardia/hypotension</div>
+    <div class="note">Maintenance ทั่วไป 0.2–0.7 (สูงสุดถึง ~1.4) mcg/kg/hr — ในผู้ป่วยหลังผ่าตัดหัวใจ มักเริ่มด้วย maintenance โดยไม่ให้ loading dose เพื่อหลีกเลี่ยง bradycardia/hypotension</div>
     <details><summary>ข้อมูลยา</summary>
       <div class="infobox">Selective α2-agonist ให้ sedation/analgesia โดยไม่กด respiratory drive มาก เหมาะกับการ sedate ผู้ป่วยหลังผ่าตัดหัวใจที่ต้องการ wean เร็ว ผลข้างเคียงหลักคือ bradycardia และ hypotension โดยเฉพาะเมื่อให้ loading dose เร็ว จึงมักข้าม loading ในผู้ป่วยกลุ่มนี้</div>
     </details>
@@ -398,7 +400,7 @@
 </section>
 
 <footer>
-  โปรแกรมนี้สร้างจากตารางคำนวณยา CVT ของหน่วยงาน (ไฟล์ต้นฉบับ) เพื่อใช้เป็นเครื่องมือช่วยคำนวณเบื้องต้นเท่านั้น
+  โปรแกรมนี้ใช้เป็นเครื่องมือช่วยคำนวณยาทางวิสัญญีเบื้องต้นเท่านั้น
   ค่าที่คำนวณได้ต้องตรวจสอบซ้ำกับคำสั่งแพทย์ ขนาดยาที่เจือจางจริง และนโยบายของหน่วยงานทุกครั้งก่อนให้ยาแก่ผู้ป่วยจริง
   ช่วง dose บางรายการอ้างอิงจากค่าทางเภสัชวิทยาโดยทั่วไป อาจแตกต่างจาก protocol เฉพาะของแต่ละสถาบัน
 </footer>
