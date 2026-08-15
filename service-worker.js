@@ -1,6 +1,6 @@
 // © 2026 Puladawal S. (puladawal.s@gmail.com) — MNST Hospital. All Rights Reserved. Unauthorized copying, redistribution, or modification of this application is prohibited without written permission.
 
-const CACHE_NAME = 'aneshub-cache-v29';
+const CACHE_NAME = 'aneshub-cache-v30';
 const ASSETS = [
   './index.html',
   './anesth-cal.html',
@@ -12,7 +12,17 @@ const ASSETS = [
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
-  './icons/apple-touch-icon.png'
+  './icons/apple-touch-icon.png',
+  './images/ekg/normal.jpg',
+  './images/ekg/bradycardia.jpg',
+  './images/ekg/tachycardia.jpg',
+  './images/ekg/af.jpg',
+  './images/ekg/flutter.jpg',
+  './images/ekg/pvc.jpg',
+  './images/ekg/svt.jpg',
+  './images/ekg/vt.jpg',
+  './images/ekg/vf.jpg',
+  './images/ekg/asystole.jpg'
 ];
 
 self.addEventListener('install', (event) => {
