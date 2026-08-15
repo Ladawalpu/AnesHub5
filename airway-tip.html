@@ -47,10 +47,6 @@
     --teal: #4F46E5;
     --accent: #6366F1;
     --line: #E3E3FA;
-    --abg-acid: #B84A3E; --abg-acid-bg:#F7E7E4;
-    --abg-alk: #3F5AA0;  --abg-alk-bg:#E6E9F5;
-    --abg-ok: #3F7A55;   --abg-ok-bg:#E4EFE6;
-    --abg-warn: #A6752B; --abg-warn-bg:#F5EBDA;
   }
   *{box-sizing:border-box;}
   body{
@@ -175,64 +171,6 @@
   .cs-item:last-child{ border-bottom:none; }
   .cs-item:active{ background:#EAF7F7; }
   .cs-item.selected{ background:#EAF7F7; color:var(--teal-deep); font-weight:700; }
-
-  /* ---- ABG-specific elements ---- */
-  .abg-summary-banner{
-    background:var(--teal-deep); color:#fff; border-radius:14px; padding:16px 18px; margin-bottom:14px;
-  }
-  .abg-summary-banner .n{
-    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#C7C6F7; margin-bottom:6px;
-  }
-  .abg-summary-banner .head{ font-size:18px; font-weight:800; line-height:1.35; }
-
-  .abg-gauge-wrap{ padding:4px 2px 2px; }
-  .abg-gauge-track{
-    position:relative; height:30px; border-radius:8px; overflow:hidden; margin-top:20px;
-    background:linear-gradient(to right,
-      var(--abg-acid) 0%, var(--abg-acid) 33%,
-      var(--abg-ok) 33%, var(--abg-ok) 46%,
-      var(--abg-alk) 46%, var(--abg-alk) 100%);
-  }
-  .abg-gauge-marker{ position:absolute; top:-6px; width:2px; height:42px; background:var(--ink); }
-  .abg-gauge-marker::after{
-    content:attr(data-val); position:absolute; top:-20px; left:50%; transform:translateX(-50%);
-    font-family:var(--mono); font-size:12px; font-weight:700; white-space:nowrap; color:var(--ink);
-  }
-  .abg-gauge-labels{
-    display:flex; justify-content:space-between; font-size:10.5px; color:var(--ink-soft);
-    font-family:var(--mono); margin-top:6px;
-  }
-
-  .abg-step{
-    border-left:4px solid var(--line); padding:10px 14px; margin-bottom:10px; border-radius:0 8px 8px 0;
-    background:#FAFCFB;
-  }
-  .abg-step.acid{ border-color:var(--abg-acid); background:var(--abg-acid-bg); }
-  .abg-step.alk{ border-color:var(--abg-alk); background:var(--abg-alk-bg); }
-  .abg-step.ok{ border-color:var(--abg-ok); background:var(--abg-ok-bg); }
-  .abg-step.warn{ border-color:var(--abg-warn); background:var(--abg-warn-bg); }
-  .abg-step .n{
-    font-family:var(--mono); font-size:11px; color:var(--ink-soft); letter-spacing:.06em;
-    text-transform:uppercase; margin-bottom:3px;
-  }
-  .abg-step .head{ font-weight:700; font-size:14.5px; margin-bottom:3px; color:var(--ink); }
-  .abg-step .detail{ font-size:13px; color:var(--ink-soft); line-height:1.6; }
-
-  .abg-badge{
-    display:inline-block; font-family:var(--mono); font-size:11px; font-weight:700;
-    padding:2px 9px; border-radius:20px; margin-right:6px; color:#fff;
-  }
-  .abg-badge.acid{ background:var(--abg-acid); }
-  .abg-badge.alk{ background:var(--abg-alk); }
-  .abg-badge.ok{ background:var(--abg-ok); }
-  .abg-badge.warn{ background:var(--abg-warn); }
-
-  .abg-samplebtn{
-    flex:1; background:#fff; border:1.4px solid rgba(255,255,255,.55); color:#fff;
-    font-family:var(--sans); font-weight:700; font-size:12.5px; padding:9px 6px; border-radius:9px; cursor:pointer;
-    background:rgba(255,255,255,.14);
-  }
-  .abg-samplebtn:active{ background:rgba(255,255,255,.28); }
 </style>
 </head>
 <body>
@@ -527,49 +465,108 @@
 
 <div id="tabAbg" class="tabpanel">
 
-<div class="pbar">
-  <div class="inner">
-    <div class="grid">
-      <div><label>pH</label><input type="number" step="0.01" id="abgPh" placeholder="7.35–7.45"></div>
-      <div><label>PaCO₂ (mmHg)</label><input type="number" step="0.1" id="abgPaco2" placeholder="35–45"></div>
-      <div><label>HCO₃⁻ (mEq/L)</label><input type="number" step="0.1" id="abgHco3" placeholder="22–26"></div>
-      <div><label>PaO₂ (mmHg)</label><input type="number" step="0.1" id="abgPao2" placeholder="80–100"></div>
-    </div>
-    <div class="grid2" style="margin-top:8px;">
-      <div><label>FiO₂ (%)<span class="sub" style="display:inline;">ถ้ามี</span></label><input type="number" step="1" id="abgFio2" placeholder="21"></div>
-      <div><label>Lactate (mmol/L)<span class="sub" style="display:inline;">ถ้ามี</span></label><input type="number" step="0.1" id="abgLactate" placeholder="< 2"></div>
-    </div>
-    <div class="grid2" style="margin-top:8px;">
-      <div><label>Na⁺ (mEq/L)<span class="sub" style="display:inline;">ถ้ามี</span></label><input type="number" step="0.1" id="abgNa" placeholder="135–145"></div>
-      <div><label>Cl⁻ (mEq/L)<span class="sub" style="display:inline;">ถ้ามี</span></label><input type="number" step="0.1" id="abgCl" placeholder="98–106"></div>
-    </div>
-    <div style="margin-top:10px;">
-      <label>ถ้าเป็น respiratory disorder — คาดว่าเป็นแบบ</label>
-      <div class="seg" id="abgChronicitySeg">
-        <button type="button" data-v="acute" class="active">Acute</button>
-        <button type="button" data-v="chronic">Chronic</button>
+<div class="wrap" style="padding-top:20px;">
+
+  <section class="block">
+    <h2>หลักการวิเคราะห์ Blood Gas <span class="tag">แนวทางทั่วไป</span></h2>
+    <div class="card">
+      <div class="infobox" style="font-size:13px; line-height:1.75; color:var(--ink); padding:10px 12px; background:#F3F3FD; border-radius:10px;">
+        เนื้อหานี้เป็น<b>ความรู้ทั่วไป</b>สำหรับหลักการวิเคราะห์และแนวทางแก้ไข ไม่ใช่เครื่องคำนวณอัตโนมัติ เนื่องจาก<b>ค่า reference range ปกติของแต่ละห้องปฏิบัติการ/สถาบันอาจแตกต่างกันเล็กน้อย</b> ควรยึดตามค่าอ้างอิงของห้อง lab ที่ใช้งานจริงเสมอ ค่าที่แสดงในหน้านี้เป็นเพียงช่วงอ้างอิงสากลที่ใช้กันทั่วไปเพื่อประกอบการเรียนรู้เท่านั้น
       </div>
     </div>
-    <button class="calcbtn" onclick="abgAnalyze()">วิเคราะห์ผล ABG</button>
-    <div style="display:flex; gap:8px; margin-top:8px;">
-      <button class="abg-samplebtn" onclick="abgLoadCase(1)">ตัวอย่าง Case 1</button>
-      <button class="abg-samplebtn" onclick="abgLoadCase(2)">ตัวอย่าง Case 2</button>
+
+    <div class="card">
+      <details open>
+        <summary>ขั้นตอนที่ 1-4: หา Primary Disorder</summary>
+        <div class="infobox">
+          <ol style="margin:0; padding-left:20px;">
+            <li style="margin-bottom:8px;"><b>ดู pH ก่อนเสมอ</b> — Acidemia (pH ต่ำ) / Alkalemia (pH สูง) / อยู่ในช่วงปกติ (อาจมี fully compensated disorder ซ่อนอยู่)</li>
+            <li style="margin-bottom:8px;"><b>ดู PaCO₂</b> — สูงกว่าปกติ = respiratory acidosis component, ต่ำกว่าปกติ = respiratory alkalosis component</li>
+            <li style="margin-bottom:8px;"><b>ดู HCO₃⁻</b> — ต่ำกว่าปกติ = metabolic acidosis component, สูงกว่าปกติ = metabolic alkalosis component</li>
+            <li><b>จับคู่ทิศทาง</b> — ตัวแปร (PaCO₂ หรือ HCO₃⁻) ที่เปลี่ยนแปลง<b>ไปทางเดียวกับ pH</b> คือ primary disorder ส่วนอีกตัวที่เปลี่ยนสวนทางคือกลไก compensation หากทั้งสองตัวเปลี่ยนไปคนละทิศกับที่ควรชดเชย ให้นึกถึง <b>mixed acid-base disorder</b></li>
+          </ol>
+        </div>
+      </details>
+      <details>
+        <summary>ขั้นตอนที่ 5: ประเมิน Compensation (สูตรคาดคะเน)</summary>
+        <div class="infobox">
+          <ul style="margin:0; padding-left:18px;">
+            <li style="margin-bottom:8px;"><b>Metabolic acidosis</b> — Winter's formula: expected PaCO₂ ≈ 1.5 × HCO₃⁻ + 8 (±2)</li>
+            <li style="margin-bottom:8px;"><b>Metabolic alkalosis</b> — expected PaCO₂ ≈ 0.7 × HCO₃⁻ + 20 (±5)</li>
+            <li style="margin-bottom:8px;"><b>Acute respiratory acidosis</b> — expected HCO₃⁻ ≈ 24 + 0.1 × (PaCO₂−40)</li>
+            <li style="margin-bottom:8px;"><b>Chronic respiratory acidosis</b> — expected HCO₃⁻ ≈ 24 + 0.35 × (PaCO₂−40)</li>
+            <li style="margin-bottom:8px;"><b>Acute respiratory alkalosis</b> — expected HCO₃⁻ ≈ 24 − 0.2 × (40−PaCO₂)</li>
+            <li><b>Chronic respiratory alkalosis</b> — expected HCO₃⁻ ≈ 24 − 0.4 × (40−PaCO₂)</li>
+          </ul>
+          <div style="margin-top:10px;">ถ้าค่าจริงอยู่ในช่วงที่คาดคะเน → compensation เหมาะสมตามสรีรวิทยา · ถ้าอยู่นอกช่วง → นึกถึง mixed disorder ที่มีกระบวนการอื่นซ้อนอยู่</div>
+        </div>
+      </details>
+      <details>
+        <summary>Anion Gap</summary>
+        <div class="infobox">
+          สูตร: <b>AG = Na⁺ − (Cl⁻ + HCO₃⁻)</b> ค่าปกติโดยทั่วไปประมาณ 8-12 mEq/L (แตกต่างกันได้ตามวิธีตรวจของแต่ละห้อง lab)<br><br>
+          <b>High AG</b> (มัก &gt;12): lactic acidosis, ketoacidosis, renal failure, toxic alcohols/สารพิษ (มักช่วยจำด้วย mnemonic เช่น MUDPILES)<br>
+          <b>Normal AG</b>: diarrhea, renal tubular acidosis, การสูญเสีย bicarbonate ทางอื่น
+        </div>
+      </details>
+      <details>
+        <summary>การประเมิน Oxygenation</summary>
+        <div class="infobox">
+          <b>P/F ratio</b> (PaO₂ / FiO₂) ช่วยประเมินความรุนแรงของ oxygenation impairment โดยทั่วไป (อ้างอิงแนวคิด Berlin ARDS criteria):
+          <ul style="margin:6px 0 0; padding-left:18px;">
+            <li>P/F ≥ 300 — ปกติ/เล็กน้อย</li>
+            <li>P/F 200-300 — mild impairment</li>
+            <li>P/F 100-200 — moderate impairment</li>
+            <li>P/F &lt; 100 — severe impairment</li>
+          </ul>
+          <div style="margin-top:8px;">A-a gradient ช่วยแยกว่า hypoxemia มาจาก hypoventilation ล้วนๆ (A-a gradient ปกติ) หรือมีปัญหา V/Q mismatch, shunt, diffusion defect ร่วมด้วย (A-a gradient กว้างขึ้น)</div>
+        </div>
+      </details>
     </div>
-  </div>
-</div>
-
-<div class="wrap">
-
-  <section class="block" id="abgResultsSection" style="display:none;">
-    <div id="abgResults"></div>
   </section>
 
   <section class="block">
-    <h2>วิธีวิเคราะห์ <span class="tag">6 ขั้นตอน</span></h2>
+    <h2>แนวทางการแก้ไข <span class="tag">Correction</span></h2>
     <div class="card">
-      <div class="infobox" style="font-size:13px; line-height:1.75; color:var(--ink); padding:10px 12px; background:#F3F3FD; border-radius:10px;">
-        กรอกค่า arterial blood gas แล้วระบบจะไล่วิเคราะห์ตามลำดับ: <b>pH → PaCO₂ → HCO₃⁻ → หา primary disorder → ประเมิน compensation → ประเมิน oxygenation</b> พร้อมคำนวณ anion gap (ถ้ากรอก Na⁺/Cl⁻) และ P/F ratio (ถ้ากรอก FiO₂) ให้อัตโนมัติ
-      </div>
+      <details open>
+        <summary>Respiratory Acidosis</summary>
+        <div class="infobox">
+          แก้ที่ <b>ventilation</b> เป็นหลัก: เพิ่ม minute ventilation (เพิ่ม RR หรือ TV ตามความเหมาะสม), ตรวจสอบตำแหน่ง ETT/circuit ว่าไม่มี obstruction หรือ hypoventilation จากสาเหตุอื่น, แก้ไข bronchospasm หากมี, ปรับ ventilator setting ให้เหมาะสมกับผู้ป่วย<br><br>
+          ⚠️ ในผู้ป่วย <b>chronic respiratory acidosis</b> (เช่น COPD) ระวังการแก้ไข PaCO₂ ให้กลับปกติเร็วเกินไป เพราะไตชดเชยด้วย HCO₃⁻ สูงไว้นานแล้ว การลด PaCO₂ ฉับพลันอาจทำให้เกิด <b>post-hypercapnic alkalosis</b>
+        </div>
+      </details>
+      <details>
+        <summary>Respiratory Alkalosis</summary>
+        <div class="infobox">
+          หาสาเหตุของ hyperventilation แล้วแก้ที่ต้นเหตุ: ปวด, วิตกกังวล, ไข้, pulmonary embolism, hypoxemia ที่กระตุ้นการหายใจ, หรือ ventilator setting ที่ตั้ง minute ventilation สูงเกินไป — หากเกิดจาก ventilator ให้ปรับลด RR หรือ TV ลง
+        </div>
+      </details>
+      <details>
+        <summary>Metabolic Acidosis — High Anion Gap</summary>
+        <div class="infobox">
+          แก้ที่สาเหตุเป็นหลัก: lactic acidosis → improve tissue perfusion/oxygenation, DKA → insulin + fluid replacement, renal failure → dialysis, toxin/alcohol → antidote เฉพาะหรือ hemodialysis<br><br>
+          Bicarbonate therapy พิจารณาเฉพาะกรณีรุนแรงมาก (pH ต่ำมากจนกระทบ cardiovascular function) และยังเป็นประเด็นที่มีความเห็นแตกต่างทางวิชาการ ไม่ใช้เป็น routine
+        </div>
+      </details>
+      <details>
+        <summary>Metabolic Acidosis — Normal Anion Gap</summary>
+        <div class="infobox">
+          แก้ที่สาเหตุ: diarrhea → fluid/electrolyte replacement, renal tubular acidosis → bicarbonate replacement ตามชนิดของ RTA
+        </div>
+      </details>
+      <details>
+        <summary>Metabolic Alkalosis</summary>
+        <div class="infobox">
+          แก้ไข volume depletion ด้วย NSS (chloride-responsive type พบบ่อยที่สุด), correct hypokalemia และ hypochloremia ร่วมด้วย, ลดหรือหยุดสาเหตุกระตุ้นถ้าเป็นไปได้ (diuretic, NG suction ต่อเนื่อง)<br><br>
+          แยก <b>chloride-responsive</b> (urine Cl⁻ ต่ำ ตอบสนองต่อ NSS) กับ <b>chloride-resistant</b> (urine Cl⁻ สูง เช่น hyperaldosteronism ต้องแก้ที่สาเหตุฮอร์โมน ไม่ใช่แค่ให้ NSS)
+        </div>
+      </details>
+      <details>
+        <summary>Hypoxemia</summary>
+        <div class="infobox">
+          เพิ่ม FiO₂, พิจารณา PEEP/recruitment maneuver ตามความเหมาะสม, หาและแก้ไขสาเหตุเฉพาะ (V/Q mismatch, shunt, diffusion defect, hypoventilation) — ใช้ A-a gradient ช่วยแยกกลุ่มสาเหตุเบื้องต้น
+        </div>
+      </details>
     </div>
   </section>
 
@@ -886,247 +883,6 @@ function calculateFluid(){
 
   document.getElementById('flResultsSection').style.display = 'block';
   document.getElementById('flResultsSection').scrollIntoView({behavior:'smooth', block:'start'});
-}
-
-// ---- ABG Analyzer (merged) ----
-let abgChronicity = 'acute';
-document.querySelectorAll('#abgChronicitySeg button').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('#abgChronicitySeg button').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    abgChronicity = btn.dataset.v;
-  });
-});
-
-function abgLoadCase(n){
-  if(n===1){
-    document.getElementById('abgPh').value=7.25;
-    document.getElementById('abgPaco2').value=55;
-    document.getElementById('abgHco3').value=24;
-    document.getElementById('abgPao2').value=75;
-    document.getElementById('abgFio2').value=21;
-    document.getElementById('abgLactate').value='';
-    document.getElementById('abgNa').value='';
-    document.getElementById('abgCl').value='';
-  } else {
-    document.getElementById('abgPh').value=7.28;
-    document.getElementById('abgPaco2').value=30;
-    document.getElementById('abgHco3').value=14;
-    document.getElementById('abgPao2').value=90;
-    document.getElementById('abgFio2').value=21;
-    document.getElementById('abgLactate').value=5;
-    document.getElementById('abgNa').value='';
-    document.getElementById('abgCl').value='';
-  }
-  abgAnalyze();
-}
-
-function abgBadge(cls,text){ return '<span class="abg-badge '+cls+'">'+text+'</span>'; }
-
-function abgStep(n,title,badgeText,detailHTML,cls){
-  return `<div class="abg-step ${cls}">
-    <div class="n">Step ${n}</div>
-    <div class="head">${title}</div>
-    <div class="detail">${detailHTML}</div>
-  </div>`;
-}
-
-function abgAnalyze(){
-  const ph = parseFloat(document.getElementById('abgPh').value);
-  const paco2 = parseFloat(document.getElementById('abgPaco2').value);
-  const hco3 = parseFloat(document.getElementById('abgHco3').value);
-  const pao2 = parseFloat(document.getElementById('abgPao2').value);
-  const fio2pct = parseFloat(document.getElementById('abgFio2').value);
-  const lactate = parseFloat(document.getElementById('abgLactate').value);
-  const na = parseFloat(document.getElementById('abgNa').value);
-  const cl = parseFloat(document.getElementById('abgCl').value);
-  const chronic = abgChronicity === 'chronic';
-
-  if(isNaN(ph) || isNaN(paco2) || isNaN(hco3)){
-    alert('กรุณากรอกอย่างน้อย pH, PaCO₂ และ HCO₃⁻');
-    return;
-  }
-
-  let steps = '';
-
-  // Step 1: pH
-  let phStatus, phCls, phLabel;
-  if(ph < 7.35){ phStatus='acidosis'; phCls='acid'; phLabel='Acidemia'; }
-  else if(ph > 7.45){ phStatus='alkalosis'; phCls='alk'; phLabel='Alkalemia'; }
-  else { phStatus='normal'; phCls='ok'; phLabel='pH ปกติ'; }
-
-  steps += abgStep('1','pH', phLabel, abgBadge(phCls,phLabel)+ 'pH = '+ph+' — '+(phStatus==='normal'? 'อยู่ในช่วงปกติ (7.35–7.45) แต่ยังต้องดูต่อว่ามี compensation ซ่อนอยู่หรือไม่' : (phStatus==='acidosis'?'เลือดเป็นกรด':'เลือดเป็นด่าง')), phCls);
-
-  // Step 2: PaCO2
-  let co2Dir;
-  if(paco2 > 45) co2Dir='acid';
-  else if(paco2 < 35) co2Dir='alk';
-  else co2Dir='normal';
-  const co2Label = co2Dir==='acid' ? 'Respiratory acidosis component' : co2Dir==='alk' ? 'Respiratory alkalosis component' : 'PaCO₂ ปกติ';
-  steps += abgStep('2','PaCO₂ (Respiratory)', co2Label, abgBadge(co2Dir==='normal'?'ok':co2Dir,co2Label)+'PaCO₂ = '+paco2+' mmHg', co2Dir==='normal'?'ok':co2Dir);
-
-  // Step 3: HCO3
-  let hco3Dir;
-  if(hco3 < 22) hco3Dir='acid';
-  else if(hco3 > 26) hco3Dir='alk';
-  else hco3Dir='normal';
-  const hco3Label = hco3Dir==='acid' ? 'Metabolic acidosis component' : hco3Dir==='alk' ? 'Metabolic alkalosis component' : 'HCO₃⁻ ปกติ';
-  steps += abgStep('3','HCO₃⁻ (Metabolic)', hco3Label, abgBadge(hco3Dir==='normal'?'ok':hco3Dir,hco3Label)+'HCO₃⁻ = '+hco3+' mEq/L', hco3Dir==='normal'?'ok':hco3Dir);
-
-  // Step 4: Primary disorder
-  let primary = [];
-  let primaryText = '';
-  if(phStatus==='acidosis'){
-    if(co2Dir==='acid') primary.push('respiratory acidosis');
-    if(hco3Dir==='acid') primary.push('metabolic acidosis');
-  } else if(phStatus==='alkalosis'){
-    if(co2Dir==='alk') primary.push('respiratory alkalosis');
-    if(hco3Dir==='alk') primary.push('metabolic alkalosis');
-  } else {
-    if(co2Dir!=='normal' || hco3Dir!=='normal'){
-      if(co2Dir==='acid') primary.push('respiratory acidosis (compensated)');
-      if(co2Dir==='alk') primary.push('respiratory alkalosis (compensated)');
-      if(hco3Dir==='acid') primary.push('metabolic acidosis (compensated)');
-      if(hco3Dir==='alk') primary.push('metabolic alkalosis (compensated)');
-    }
-  }
-
-  let primCls = 'warn';
-  if(primary.length===0){
-    primaryText = 'ไม่พบ acid–base disorder ที่ชัดเจน (pH, PaCO₂, HCO₃⁻ อยู่ในช่วงปกติทั้งหมด)';
-    primCls = 'ok';
-  } else if(primary.length===1){
-    primaryText = 'Primary disorder: <b>'+primary[0]+'</b>';
-    primCls = primary[0].includes('acidosis') ? 'acid' : 'alk';
-  } else {
-    primaryText = 'พบความผิดปกติมากกว่า 1 ระบบพร้อมกัน: <b>'+primary.join(' + ')+'</b> — เข้าได้กับ <b>mixed acid–base disorder</b> ให้ระวังเป็นพิเศษ';
-    primCls = 'warn';
-  }
-  steps += abgStep('4','Primary disorder', primary.length>1?'Mixed disorder':(primary[0]||'ไม่พบความผิดปกติ'), primaryText, primCls);
-
-  // Step 5: Compensation
-  let compHTML = '';
-  let compCls = 'ok';
-  if(primary.length===1 && !primary[0].includes('compensated')){
-    const p = primary[0];
-    let expectedLow, expectedHigh, actual, actualLabel, formula;
-    if(p==='metabolic acidosis'){
-      const expected = 1.5*hco3 + 8;
-      expectedLow = expected-2; expectedHigh = expected+2;
-      actual = paco2; actualLabel='PaCO₂';
-      formula = "Winter's formula: expected PaCO₂ = 1.5 × HCO₃⁻ + 8 (±2) = "+expected.toFixed(1)+' mmHg';
-    } else if(p==='metabolic alkalosis'){
-      const expected = 0.7*hco3 + 20;
-      expectedLow = expected-5; expectedHigh = expected+5;
-      actual = paco2; actualLabel='PaCO₂';
-      formula = 'expected PaCO₂ ≈ 0.7 × HCO₃⁻ + 20 (±5) = '+expected.toFixed(1)+' mmHg';
-    } else if(p==='respiratory acidosis'){
-      const rate = chronic ? 0.35 : 0.1;
-      const expected = 24 + rate*(paco2-40);
-      expectedLow = expected-1.5; expectedHigh = expected+1.5;
-      actual = hco3; actualLabel='HCO₃⁻';
-      formula = (chronic?'Chronic':'Acute')+' respiratory acidosis: expected HCO₃⁻ ≈ 24 + '+rate+' × (PaCO₂−40) = '+expected.toFixed(1)+' mEq/L';
-    } else if(p==='respiratory alkalosis'){
-      const rate = chronic ? 0.4 : 0.2;
-      const expected = 24 - rate*(40-paco2);
-      expectedLow = expected-1.5; expectedHigh = expected+1.5;
-      actual = hco3; actualLabel='HCO₃⁻';
-      formula = (chronic?'Chronic':'Acute')+' respiratory alkalosis: expected HCO₃⁻ ≈ 24 − '+rate+' × (40−PaCO₂) = '+expected.toFixed(1)+' mEq/L';
-    }
-    let verdict, verdictCls;
-    if(actual >= expectedLow && actual <= expectedHigh){
-      verdict = 'ค่า '+actualLabel+' จริง ('+actual+') อยู่ในช่วงที่คาดว่าจะชดเชยได้พอดี → เข้าได้กับ compensation ตามสรีรวิทยาปกติ, ไม่มีหลักฐานของความผิดปกติแทรกซ้อน';
-      verdictCls = 'ok';
-    } else if(actual < expectedLow){
-      verdict = 'ค่า '+actualLabel+' จริง ('+actual+') ต่ำกว่าช่วงคาด ('+expectedLow.toFixed(1)+'–'+expectedHigh.toFixed(1)+') → อาจมี <b>additional process ที่ดึง '+actualLabel+' ลง</b> ซ้อนอยู่ (เช่น concurrent alkalosis) — เข้าข่าย mixed disorder';
-      verdictCls = 'warn';
-    } else {
-      verdict = 'ค่า '+actualLabel+' จริง ('+actual+') สูงกว่าช่วงคาด ('+expectedLow.toFixed(1)+'–'+expectedHigh.toFixed(1)+') → อาจมี <b>additional process ที่ดัน '+actualLabel+' ขึ้น</b> ซ้อนอยู่ (เช่น concurrent acidosis) — เข้าข่าย mixed disorder';
-      verdictCls = 'warn';
-    }
-    compCls = verdictCls;
-    compHTML = formula + '<br><br>' + verdict;
-  } else if(primary.length>1){
-    compHTML = 'เมื่อพบความผิดปกติหลักมากกว่า 1 ระบบพร้อมกัน การประเมิน compensation ด้วยสูตรมาตรฐานจะตีความยากและมักไม่แม่นยำ — แนะนำอ่านร่วมกับ anion gap, lactate และบริบททางคลินิกเป็นหลัก';
-    compCls = 'warn';
-  } else if(primary.length===1 && primary[0].includes('compensated')){
-    compHTML = 'pH อยู่ในช่วงปกติแต่ PaCO₂/HCO₃⁻ ผิดปกติ เข้าได้กับ <b>fully compensated '+primary[0].replace(' (compensated)','')+'</b> — ควรยืนยันว่าทิศทางการเปลี่ยนแปลงของทั้งสองค่าสอดคล้องกัน (ไม่ใช่ mixed disorder ที่บังเอิญหักล้าง pH กัน)';
-    compCls = 'warn';
-  } else {
-    compHTML = 'ไม่มีความผิดปกติหลักให้ประเมิน compensation';
-  }
-  steps += abgStep('5','Compensation', primary.length===1 && !primary[0].includes('compensated') ? 'ประเมินด้วยสูตร compensation' : 'ประเมินเชิงคุณภาพ', compHTML, compCls);
-
-  // Step 6: Anion gap
-  if(hco3Dir==='acid'){
-    if(!isNaN(na) && !isNaN(cl)){
-      const ag = na - (cl + hco3);
-      const agCls = ag>12 ? 'acid':'ok';
-      const agLabel = ag>12 ? 'High Anion Gap Metabolic Acidosis':'Normal Anion Gap Metabolic Acidosis';
-      let causes = ag>12 ? 'สาเหตุที่พบบ่อย: lactic acidosis, ketoacidosis, renal failure, toxic alcohols/สารพิษ' : 'สาเหตุที่พบบ่อย: diarrhea, renal tubular acidosis, การสูญเสีย bicarbonate';
-      let lactHint = (!isNaN(lactate) && lactate>2) ? '<br>Lactate = '+lactate+' mmol/L (สูงกว่าปกติ) → สนับสนุน lactic acidosis เป็นสาเหตุ' : '';
-      steps += abgStep('6','Anion Gap', agLabel, abgBadge(agCls,'AG = '+ag.toFixed(1)+' mEq/L')+causes+lactHint, agCls);
-    } else {
-      steps += abgStep('6','Anion Gap','ต้องการ Na⁺/Cl⁻','พบ metabolic acidosis component แต่ยังไม่ได้กรอก Na⁺ และ Cl⁻ — กรอกเพิ่มเพื่อคำนวณ Anion Gap และแยกสาเหตุ (high AG vs normal AG)', 'warn');
-    }
-  }
-
-  // Oxygenation
-  let oxyHTML = '';
-  let oxyCls = 'ok';
-  let oxyLabel = 'Oxygenation ปกติ';
-  if(!isNaN(pao2)){
-    let hypoxNote = pao2 < 80 ? 'PaO₂ = '+pao2+' mmHg ต่ำกว่าปกติ → hypoxemia' : 'PaO₂ = '+pao2+' mmHg อยู่ในช่วงปกติ (room air)';
-    oxyHTML = hypoxNote;
-    if(pao2<80){ oxyCls='acid'; oxyLabel='Hypoxemia'; }
-    if(!isNaN(fio2pct) && fio2pct>0){
-      const pf = pao2/(fio2pct/100);
-      let pfNote;
-      if(pf>=300){ pfNote='P/F ≈ '+pf.toFixed(0)+' — oxygenation อยู่ในเกณฑ์ปกติ/ดี'; oxyCls = pao2<80?'warn':'ok'; }
-      else if(pf>=200){ pfNote='P/F ≈ '+pf.toFixed(0)+' — บ่งชี้ mild impairment ของ oxygenation'; oxyCls='warn'; oxyLabel='Mild oxygenation impairment'; }
-      else if(pf>=100){ pfNote='P/F ≈ '+pf.toFixed(0)+' — บ่งชี้ moderate impairment ของ oxygenation'; oxyCls='acid'; oxyLabel='Moderate oxygenation impairment'; }
-      else { pfNote='P/F ≈ '+pf.toFixed(0)+' — บ่งชี้ severe impairment ของ oxygenation'; oxyCls='acid'; oxyLabel='Severe oxygenation impairment'; }
-      oxyHTML += '<br>FiO₂ = '+fio2pct+'% → '+pfNote+' (ใช้เป็นข้อมูลอ้างอิงประกอบคลินิก ไม่ใช่เกณฑ์วินิจฉัยอัตโนมัติ)';
-    } else {
-      oxyHTML += '<br>ยังไม่ได้กรอก FiO₂ — หากได้รับออกซิเจนเสริม การแปล PaO₂ เพียงค่าเดียวอาจคลาดเคลื่อน แนะนำกรอก FiO₂ เพื่อคำนวณ P/F ratio';
-    }
-  } else {
-    oxyHTML = 'ยังไม่ได้กรอก PaO₂';
-    oxyCls='warn'; oxyLabel='ไม่มีข้อมูล';
-  }
-  steps += abgStep('7','Oxygenation', oxyLabel, oxyHTML, oxyCls);
-
-  const clamp = (v,a,b)=>Math.max(a,Math.min(b,v));
-  const pos = clamp((ph-6.8)/(7.8-6.8),0,1)*100;
-
-  let summary;
-  if(primary.length===0){
-    summary = 'ไม่พบ acid–base disorder ที่ชัดเจนจากค่าที่กรอก';
-  } else if(primary.length===1){
-    summary = (primary[0].includes('compensated') ? 'Fully compensated ' : (hco3Dir==='normal'&&co2Dir!=='normal' || co2Dir==='normal'&&hco3Dir!=='normal' ? 'Uncompensated ' : 'Partially compensated ') ) + primary[0].replace(' (compensated)','');
-  } else {
-    summary = 'Mixed acid–base disorder: ' + primary.join(' + ');
-  }
-
-  const html = `
-    <div class="abg-summary-banner">
-      <div class="n">สรุปผลการวิเคราะห์</div>
-      <div class="head">${summary}</div>
-    </div>
-    <div class="card">
-      <span class="name">pH Gauge</span>
-      <div class="abg-gauge-wrap">
-        <div class="abg-gauge-track">
-          <div class="abg-gauge-marker" style="left:${pos}%" data-val="${ph}"></div>
-        </div>
-        <div class="abg-gauge-labels"><span>6.8 · Acidemia</span><span>7.35–7.45</span><span>Alkalemia · 7.8</span></div>
-      </div>
-    </div>
-    ${steps}
-  `;
-  document.getElementById('abgResults').innerHTML = html;
-  document.getElementById('abgResultsSection').style.display = 'block';
-  document.getElementById('abgResultsSection').scrollIntoView({behavior:'smooth', block:'start'});
 }
 </script>
 </body>
