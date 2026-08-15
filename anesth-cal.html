@@ -89,6 +89,9 @@
   .card .prep{font-size:12.5px; color:var(--ink-soft); margin-top:4px; line-height:1.5;}
 
   .row{display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:10px;}
+  .sliderow{margin-top:12px;}
+  .sliderow input[type=range]{width:100%;}
+  .row.dosevalrow{margin-top:8px; justify-content:space-between;}
   .result{
     font-family:var(--mono); font-weight:700; font-size:22px; color:var(--accent);
     background:#F1E6FA; border-radius:10px; padding:6px 14px; min-width:110px; text-align:center;
@@ -268,8 +271,10 @@
   <!-- Adrenaline -->
   <div class="card" data-drug="adrenaline">
     <div class="head"><span class="name">5. Adrenaline (Epinephrine)</span><span class="conc">1 mg (1 ml) + NSS 19 ml = 50 mcg/ml</span></div>
-    <div class="row">
-      <input type="range" id="adr-r" min="0.01" max="0.3" step="0.005" value="0.1" style="flex:1">
+    <div class="sliderow">
+      <input type="range" id="adr-r" min="0.01" max="0.3" step="0.005" value="0.1">
+    </div>
+    <div class="row dosevalrow">
       <span class="doselabel" id="adr-d">0.100 mcg/kg/min</span>
       <span class="result-wrap"><input type="number" class="rate-input" id="adr-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
     </div>
@@ -294,8 +299,10 @@
       </div>
     </div>
     <div class="prep" id="lev-prep">ยา 1 ml (1,000 mcg) + 5%D/W 19 ml</div>
-    <div class="row">
-      <input type="range" id="lev-r" min="0.01" max="0.7" step="0.005" value="0.1" style="flex:1">
+    <div class="sliderow">
+      <input type="range" id="lev-r" min="0.01" max="0.7" step="0.005" value="0.1">
+    </div>
+    <div class="row dosevalrow">
       <span class="doselabel" id="lev-d">0.100 mcg/kg/min</span>
       <span class="result-wrap"><input type="number" class="rate-input" id="lev-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
     </div>
@@ -317,8 +324,10 @@
       </div>
     </div>
     <div class="prep" id="dobu-prep">ยา vial 4 ml (50 mg) + NSS 46 ml = 50 ml</div>
-    <div class="row">
-      <input type="range" id="dobu-r" min="1" max="20" step="0.5" value="5" style="flex:1">
+    <div class="sliderow">
+      <input type="range" id="dobu-r" min="1" max="20" step="0.5" value="5">
+    </div>
+    <div class="row dosevalrow">
       <span class="doselabel" id="dobu-d">5.0 mcg/kg/min</span>
       <span class="result-wrap"><input type="number" class="rate-input" id="dobu-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
     </div>
@@ -334,8 +343,10 @@
   <!-- Nitroglycerin -->
   <div class="card" data-drug="ntg">
     <div class="head"><span class="name">8. Nitroglycerin</span><span class="conc">50 mg (10 ml) + NSS 40 ml = 1 mg/ml</span></div>
-    <div class="row">
-      <input type="range" id="ntg-r" min="1" max="4" step="0.1" value="1" style="flex:1">
+    <div class="sliderow">
+      <input type="range" id="ntg-r" min="1" max="4" step="0.1" value="1">
+    </div>
+    <div class="row dosevalrow">
       <span class="doselabel" id="ntg-d">1.0 mcg/kg/min</span>
       <span class="result-wrap"><input type="number" class="rate-input" id="ntg-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
     </div>
@@ -359,8 +370,10 @@
   <div class="card" data-drug="primacor">
     <div class="head"><span class="name">10. Primacor (Milrinone) — Maintenance</span><span class="conc">เจือจาง 1:5 → 200 mcg/ml</span></div>
     <div class="prep">NSS ที่ผสม = ยาที่เหลือในขวด (ml) × 4</div>
-    <div class="row">
-      <input type="range" id="prim-r" min="0.1" max="0.75" step="0.025" value="0.375" style="flex:1">
+    <div class="sliderow">
+      <input type="range" id="prim-r" min="0.1" max="0.75" step="0.025" value="0.375">
+    </div>
+    <div class="row dosevalrow">
       <span class="doselabel" id="prim-d">0.375 mcg/kg/min</span>
       <span class="result-wrap"><input type="number" class="rate-input" id="prim-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
     </div>
@@ -386,8 +399,10 @@
   <!-- Precedex -->
   <div class="card" data-drug="precedex">
     <div class="head"><span class="name">12. Precedex (Dexmedetomidine)</span><span class="conc">amp 100 mcg (1 ml) + NSS 24 ml = 4 mcg/ml</span></div>
-    <div class="row">
-      <input type="range" id="prec-r" min="0.10" max="1.0" step="0.05" value="0.4" style="flex:1">
+    <div class="sliderow">
+      <input type="range" id="prec-r" min="0.10" max="1.0" step="0.05" value="0.4">
+    </div>
+    <div class="row dosevalrow">
       <span class="doselabel" id="prec-d">0.40 mcg/kg/hr</span>
       <span class="result-wrap"><input type="number" class="rate-input" id="prec-out" step="0.1" min="0"><span class="u">ml/hr</span></span>
     </div>
