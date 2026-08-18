@@ -58,6 +58,17 @@
   .tabpanel{ display:none; }
   .tabpanel.active{ display:block; }
 
+  .topic-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .topic-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px 14px;
+    cursor:pointer; text-align:center; box-shadow:0 2px 8px rgba(6,58,44,.04);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .topic-card:active{ transform:scale(.97); background:#F0FBF6; }
+  .topic-icon{ font-size:30px; margin-bottom:8px; }
+  .topic-name{ font-weight:800; font-size:14px; color:var(--em-deep); margin-bottom:6px; line-height:1.3; }
+  .topic-desc{ font-size:11px; color:var(--ink-soft); line-height:1.5; }
+
   section.block{margin-top:24px;}
   .block h2{
     font-size:16px; color:var(--em-deep); border-bottom:2px solid var(--em);
@@ -124,6 +135,24 @@
     border-radius:10px; padding:10px 12px; margin-top:10px; line-height:1.6;
   }
 
+  /* ---- EKG strip ---- */
+  .ecg-box{
+    margin-top:10px; border-radius:8px; overflow:hidden; border:1px solid #F0C4C0;
+    background-color:#FFF8F5;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(220,38,38,0.14) 4px, rgba(220,38,38,0.14) 5px),
+      repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(220,38,38,0.14) 4px, rgba(220,38,38,0.14) 5px),
+      repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(220,38,38,0.32) 19px, rgba(220,38,38,0.32) 20px),
+      repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(220,38,38,0.32) 19px, rgba(220,38,38,0.32) 20px);
+  }
+  .ecg-box svg{ width:100%; height:auto; display:block; }
+  .ecg-caption{ font-size:10.5px; color:var(--ink-soft); margin-top:5px; text-align:center; font-weight:600; }
+
+  .ecg-photo{
+    width:100%; height:auto; display:block; border-radius:12px; margin-top:10px;
+    border:1px solid var(--line); box-shadow:0 2px 8px rgba(6,58,44,.08);
+  }
+
   /* ---- Medication guide ---- */
   .med-search-wrap{ position:relative; margin-bottom:14px; }
   .med-search{
@@ -182,14 +211,37 @@
   </div>
 </header>
 
-<div class="maintabs">
-  <button class="mtab active" id="mtabPac" onclick="showMainTab('pac')">🏥 PAC Guideline</button>
-  <button class="mtab" id="mtabLab" onclick="showMainTab('lab')">🩺 ASA & Lab</button>
-  <button class="mtab" id="mtabMed" onclick="showMainTab('med')">💊 Medication Guide</button>
+<div id="viewHome" class="tabpanel active">
+<div class="wrap" style="padding-top:20px;">
+  <div class="topic-grid">
+    <div class="topic-card" onclick="showTopic('pac')">
+      <div class="topic-icon">🏥</div>
+      <div class="topic-name">PAC Guideline</div>
+      <div class="topic-desc">แนวทางประเมิน/เตรียมความพร้อมผู้ป่วยก่อนผ่าตัด · ODS criteria · Fasting</div>
+    </div>
+    <div class="topic-card" onclick="showTopic('lab')">
+      <div class="topic-icon">🩺</div>
+      <div class="topic-name">ASA & Lab</div>
+      <div class="topic-desc">ASA classification · Cardiac risk stratification · แนวทางส่งตรวจ lab</div>
+    </div>
+    <div class="topic-card" onclick="showTopic('med')">
+      <div class="topic-icon">💊</div>
+      <div class="topic-name">Medication Guide</div>
+      <div class="topic-desc">ค้นหายาที่ผู้ป่วยรับประทานต่อเนื่อง 190 รายการ 16 กลุ่ม</div>
+    </div>
+    <div class="topic-card" onclick="showTopic('ekg')">
+      <div class="topic-icon">📈</div>
+      <div class="topic-name">EKG Guide</div>
+      <div class="topic-desc">คลื่นไฟฟ้าหัวใจ, arrhythmia, การเลือก lead สำหรับวิสัญญี</div>
+    </div>
+  </div>
 </div>
+</div><!-- /viewHome -->
 
-<div id="tabPac" class="tabpanel active">
+<div id="tabPac" class="tabpanel">
 <div class="wrap">
+
+  <button class="med-back" onclick="showHome()">← กลับหน้าหลัก</button>
 
   <section class="block">
     <h2>ภาพรวมและคำจำกัดความ <span class="tag">RCAT 4/2564</span></h2>
@@ -341,6 +393,8 @@
 <div id="tabLab" class="tabpanel">
 <div class="wrap">
 
+  <button class="med-back" onclick="showHome()">← กลับหน้าหลัก</button>
+
   <section class="block">
     <h2>ASA Physical Status Classification</h2>
     <div class="card">
@@ -476,6 +530,8 @@
 <div id="tabMed" class="tabpanel">
 <div class="wrap">
 
+  <button class="med-back" onclick="showHome()">← กลับหน้าหลัก</button>
+
   <section class="block">
     <h2>ค้นหายาที่ผู้ป่วยรับประทานต่อเนื่อง <span class="tag">190 รายการ / 16 กลุ่ม</span></h2>
     <div class="card">
@@ -503,6 +559,272 @@
 </div>
 </div><!-- /tabMed -->
 
+<div id="tabEkg" class="tabpanel">
+<div class="wrap">
+
+  <button class="med-back" onclick="showHome()">← กลับหน้าหลัก</button>
+
+  <section class="block">
+    <h2>พื้นฐาน EKG <span class="tag">Basics</span></h2>
+    <div class="card">
+      <details open>
+        <summary>องค์ประกอบคลื่นไฟฟ้าหัวใจปกติ</summary>
+        <img class="ecg-photo" src="images/ekg/normal.jpg" alt="Normal Sinus Rhythm EKG" loading="lazy">
+        <div class="infobox">
+          <ul>
+            <li><b>P wave</b> — atrial depolarization (กว้าง &lt;0.12 วินาที)</li>
+            <li><b>PR interval</b> — 0.12–0.20 วินาที (จากต้น P ถึงต้น QRS) ยาวขึ้น = AV conduction ช้าลง</li>
+            <li><b>QRS complex</b> — ventricular depolarization ปกติ &lt;0.12 วินาที กว้างขึ้นบ่งชี้ bundle branch block หรือ ventricular origin</li>
+            <li><b>ST segment</b> — ช่วงระหว่าง depolarization กับ repolarization ของ ventricle ปกติอยู่แนบเส้น isoelectric</li>
+            <li><b>QT interval</b> — จากต้น QRS ถึงปลาย T wave แปรตาม heart rate จึงต้อง correct เป็น QTc</li>
+            <li><b>T wave</b> — ventricular repolarization</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>QTc (Corrected QT Interval)</summary>
+        <div class="infobox">
+          สูตรที่ใช้บ่อยที่สุด (Bazett's formula): <b>QTc = QT / √RR</b> (RR เป็นวินาที)<br><br>
+          ค่าอ้างอิงทั่วไป: ชาย QTc ปกติ &lt;450 ms, หญิง &lt;460 ms — QTc &gt;500 ms ถือว่าเสี่ยงสูงต่อ <b>Torsades de Pointes</b><br><br>
+          <b>ยาที่ใช้บ่อยทางวิสัญญีที่มีผลยืด QT:</b> ondansetron, droperidol, methadone, บาง antipsychotic/antiemetic, macrolide/fluoroquinolone antibiotics บางชนิด — ควรระวังเป็นพิเศษเมื่อใช้ร่วมกันหลายตัวหรือในผู้ป่วยที่มี baseline QTc ยาวอยู่แล้ว
+        </div>
+      </details>
+      <details>
+        <summary>การเลือก Lead สำหรับ Monitor ระหว่างผ่าตัด</summary>
+        <div class="infobox">
+          <b>Lead II</b> — ดี rhythm/P wave ชัดที่สุด และดู inferior wall ischemia (RCA territory) จึงเป็น lead หลักที่ monitor ตลอดเวลา<br>
+          <b>Lead V5</b> — sensitivity สูงสุดสำหรับ anterior-lateral ischemia เพียง lead เดียวตรวจจับได้ ~75% ของ ischemic event ที่เห็นใน 12-lead ทั้งหมด<br><br>
+          <b>ความไวในการตรวจจับ ischemia เมื่อรวม lead:</b>
+          <ul>
+            <li>V5 เดี่ยว ≈ 75%</li>
+            <li>II + V5 ≈ 80%</li>
+            <li>V4 + V5 ≈ 90%</li>
+            <li>II + V4 + V5 ≈ 96%</li>
+          </ul>
+          <div style="margin-top:8px;">ผู้ป่วยความเสี่ยงหัวใจสูง แนะนำ monitor อย่างน้อย lead II ร่วมกับ V5 (5-lead system) แทนการใช้ 3-lead แบบมาตรฐานที่ sensitivity ต่ำกว่ามาก</div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Arrhythmia ที่พบบ่อยและความสำคัญทางวิสัญญี</h2>
+    <div class="card">
+      <details open>
+        <summary>Sinus Bradycardia / Tachycardia</summary>
+        <img class="ecg-photo" src="images/ekg/bradycardia.jpg" alt="Sinus Bradycardia EKG" loading="lazy"><img class="ecg-photo" src="images/ekg/tachycardia.jpg" alt="Sinus Tachycardia EKG" loading="lazy">
+        <div class="infobox">
+          <b>Bradycardia</b> (HR &lt;60): พบบ่อยจากยาชา/opioid/vagal stimulation (เช่น traction ลูกตา, peritoneal traction) — ถ้ามีอาการ hypotension ร่วมด้วยพิจารณา atropine/glycopyrrolate<br><br>
+          <b>Tachycardia</b> (HR &gt;100): พิจารณาสาเหตุก่อนรักษา — pain, light anesthesia, hypovolemia, hypoxia, hypercarbia, fever, drug effect (เช่น ketamine, pancuronium, atropine) มักแก้ที่สาเหตุมากกว่าให้ยาลด HR ทันที
+        </div>
+      </details>
+      <details>
+        <summary>Atrial Fibrillation / Flutter</summary>
+        <img class="ecg-photo" src="images/ekg/af.jpg" alt="Atrial Fibrillation EKG" loading="lazy"><img class="ecg-photo" src="images/ekg/flutter.jpg" alt="Atrial Flutter EKG" loading="lazy">
+        <div class="infobox">
+          Irregularly irregular rhythm ไม่มี P wave ชัดเจน (AF) หรือ sawtooth pattern (flutter) — เป็น arrhythmia ที่พบบ่อยหลังผ่าตัดหัวใจ/ทรวงอก ประเมิน hemodynamic stability เป็นหลัก หากมี rapid ventricular response ร่วมกับ hypotension ควรแจ้งทีมทันที
+        </div>
+      </details>
+      <details>
+        <summary>PAC / PVC (Premature Beats)</summary>
+        <img class="ecg-photo" src="images/ekg/pvc.jpg" alt="PVC EKG" loading="lazy">
+        <div class="infobox">
+          Premature atrial/ventricular complex พบได้บ่อยแม้ในคนปกติ มักไม่ต้องรักษาถ้าไม่บ่อยและไม่มีผลต่อ hemodynamic — PVC ที่ถี่ขึ้นระหว่างผ่าตัดอาจสัมพันธ์กับ hypoxia, hypercarbia, electrolyte imbalance (โดยเฉพาะ hypokalemia/hypomagnesemia), หรือ light anesthesia ควรพิจารณาแก้ที่สาเหตุ
+        </div>
+      </details>
+      <details>
+        <summary>SVT (Supraventricular Tachycardia)</summary>
+        <img class="ecg-photo" src="images/ekg/svt.jpg" alt="SVT EKG" loading="lazy">
+        <div class="infobox">
+          Narrow-complex tachycardia ที่มาเร็วและสม่ำเสมอ มักมาจาก reentry circuit — หากมี hemodynamic compromise ต้องพิจารณา synchronized cardioversion ทันที หากเสถียรพิจารณา vagal maneuver หรือ adenosine ตามแนวทาง ACLS
+        </div>
+      </details>
+      <details>
+        <summary>Heart Block (AV Block)</summary>
+        <img class="ecg-photo" src="images/ekg/avb1.jpg" alt="1st Degree AV Block EKG" loading="lazy"><img class="ecg-photo" src="images/ekg/avb2.jpg" alt="2nd Degree AV Block EKG" loading="lazy"><img class="ecg-photo" src="images/ekg/avb3.jpg" alt="3rd Degree AV Block EKG" loading="lazy">
+        <div class="infobox">
+          <b>1st degree</b> — PR interval ยาว (&gt;0.20 วินาที) แต่ conduction ยังผ่านครบทุก beat มักไม่ต้องรักษา<br>
+          <b>2nd degree Mobitz I (Wenckebach)</b> — PR ยาวขึ้นเรื่อยๆ จนมี beat ที่ drop มักไม่ progress เป็น complete block เฝ้าระวังเพียงพอ<br>
+          <b>2nd degree Mobitz II</b> — PR คงที่แต่มี beat ที่ drop กะทันหันโดยไม่มีสัญญาณเตือน มีความเสี่ยง progress เป็น complete block สูงกว่า ต้องเฝ้าระวังใกล้ชิด<br>
+          <b>3rd degree (Complete heart block)</b> — atrial และ ventricular activity แยกกันสมบูรณ์ (AV dissociation) เป็นภาวะฉุกเฉินที่ต้องการ pacing
+        </div>
+      </details>
+      <details>
+        <summary>VT / VF / Asystole — Life-threatening</summary>
+        <img class="ecg-photo" src="images/ekg/vt.jpg" alt="Ventricular Tachycardia EKG" loading="lazy"><img class="ecg-photo" src="images/ekg/vf.jpg" alt="Ventricular Fibrillation EKG" loading="lazy"><img class="ecg-photo" src="images/ekg/asystole.jpg" alt="Asystole EKG" loading="lazy">
+        <div class="infobox">
+          <b>Ventricular Tachycardia (VT)</b> — wide-complex tachycardia ต่อเนื่อง หากไม่มี pulse ต้อง defibrillate ทันทีตาม ACLS<br>
+          <b>Ventricular Fibrillation (VF)</b> — irregular chaotic wave ไม่มี organized complex เป็น cardiac arrest ต้อง CPR + defibrillate ทันที<br>
+          <b>Asystole</b> — ไม่มี electrical activity เลย (flat line) รักษาด้วย CPR + epinephrine ตาม ACLS ไม่ shock<br><br>
+          <span class="sub">รายละเอียดขั้นตอนการช่วยชีวิตดูเพิ่มเติมได้ที่หมวด CPR Guideline ของแอป</span>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Ventricular Arrhythmias เชิงลึก <span class="tag">Advanced</span></h2>
+    <div class="card">
+      <div class="infobox" style="font-size:13px; line-height:1.75; color:var(--ink); padding:10px 12px; background:#F3F3FD; border-radius:10px;">
+        Ventricular arrhythmias เป็นสาเหตุที่พบบ่อยที่สุดของ Sudden Cardiac Death การรู้จักแยกชนิดและให้การรักษาที่ถูกต้องรวดเร็วช่วยลดอัตราการเสียชีวิตได้อย่างมีนัยสำคัญ เนื้อหาส่วนนี้สรุปจากบทความ Review ปี 2024 (ดูรายการอ้างอิงท้ายหัวข้อ)
+      </div>
+      <details open>
+        <summary>ชนิดย่อยของ PVC และภาวะแทรกซ้อนระยะยาว</summary>
+        <div class="infobox">
+          <b>Unifocal (Monomorphic)</b> — PVC หน้าตาเหมือนกันทุกตัว มาจากตำแหน่งเดียวใน ventricle · <b>Polymorphic</b> — PVC หลายหน้าตา มาจากหลายตำแหน่ง<br><br>
+          <b>รูปแบบการเกิดซ้ำ:</b> Bigeminy (สลับกับ QRS ปกติทุกตัว), Trigeminy (ทุก QRS ตัวที่ 3), Quadrigeminy (ทุก QRS ตัวที่ 4), Couplet (ติดกัน 2 ตัว) — หากติดกันตั้งแต่ 3 ตัวขึ้นไปนับเป็น VT<br><br>
+          <b>กลไก:</b> Ectopic foci ใน ventricle จาก local ischemia, calcified plaque, หรือถูกกระตุ้นจาก infection/ยา/nicotine/caffeine<br><br>
+          <b>PVC-induced cardiomyopathy:</b> PVC burden สูง (&gt;10-20%) ต่อเนื่องเป็นเวลานานร่วมกับ LVEF ลดลงโดยไม่มีสาเหตุอื่นชัดเจน — พิจารณา catheter ablation เพื่อกำจัดต้นตอ
+        </div>
+      </details>
+      <details>
+        <summary>ชนิดย่อยของ VT และกลไกการเกิด</summary>
+        <div class="infobox">
+          <b>Sustained</b> — ต้องได้รับการรักษาหรือไม่หยุดเอง · <b>Non-sustained (NSVT)</b> — หยุดเองภายใน 30 วินาที<br>
+          <b>Monomorphic</b> — QRS หน้าตาเหมือนกันทุกตัว มักมาจาก scar-related reentry · <b>Polymorphic</b> — QRS หน้าตาแตกต่างกัน<br><br>
+          <b>Torsades de Pointes (TdP)</b> — polymorphic VT ที่ QRS amplitude หมุนเป็นเกลียว สัมพันธ์กับ QT prolongation มักเริ่มด้วย PVC/EAD ตามด้วย compensatory pause แล้วเกิด R-on-T กระตุ้น TdP ตามมา (สังเกต EKG ก่อนเกิดมักเห็น RR interval แบบ short-long-short)<br>
+          <b>Bidirectional VT</b> — QRS สลับทิศไปมา สัมพันธ์กับ digitalis toxicity หรือ catecholaminergic polymorphic VT (CPVT)<br><br>
+          <b>กลไก 3 แบบหลัก:</b> (1) <b>Automaticity</b> เพิ่มขึ้น — เซลล์ ventricle ผลิตไฟฟ้าได้เร็วกว่า SA node (2) <b>Trigger activity</b> — Early afterdepolarization (EAD) ช่วง repolarization มักสัมพันธ์ TdP/QT ยาว, Delayed afterdepolarization (DAD) ช่วง resting phase มักสัมพันธ์ digoxin toxicity (3) <b>Reentry</b> — ไฟฟ้าหมุนวนรอบรอยแผลเป็น มักทำให้เกิด monomorphic VT
+        </div>
+      </details>
+      <details>
+        <summary>แยก VT จาก SVT ใน Wide Complex Tachycardia</summary>
+        <div class="infobox">
+          การแยกภาวะนี้สำคัญมากเพราะแนวทางรักษาต่างกัน — <b>7 ลักษณะที่บ่งชี้ VT:</b>
+          <ol style="margin:6px 0 0; padding-left:18px;">
+            <li>AV dissociation (P wave ไม่สัมพันธ์กับ QRS)</li>
+            <li>Fusion หรือ capture beats (QRS ปกติแทรกขึ้นมา)</li>
+            <li>QRS กว้างมาก (LBBB-like &gt;160 ms, RBBB-like &gt;140 ms)</li>
+            <li>Northwest axis</li>
+            <li>Concordance (QRS ทุก lead ทิศเดียวกัน)</li>
+            <li>ไม่พบ RS complex ใน precordial lead</li>
+            <li>RS interval ยาวที่สุด &gt;100 ms ใน precordial lead ใดก็ได้</li>
+          </ol>
+          <b>Brugada algorithm</b> — ใช้ 4 เกณฑ์ข้างต้น (ข้อ 6,7,1) ร่วมกับ morphology criteria ที่ V1/V2/V6 (แยก RBBB-like vs LBBB-like pattern) เพื่อวินิจฉัย VT<br><br>
+          <b>aVR/Vereckei algorithm</b> — ดูเฉพาะ lead aVR ใช้งานง่ายกว่า: มี initial R wave, initial R/Q wave &gt;40 ms, มี notch บน negative QRS, หรือ Vi/Vt ≤ 1 (อัตราส่วนความชัน QRS 40ms แรกต่อ 40ms สุดท้าย) — เข้าได้กับ VT
+        </div>
+      </details>
+      <details>
+        <summary>การรักษาเฉียบพลัน (Acute Management)</summary>
+        <div class="infobox">
+          <b>ไม่คงที่ (Unstable)</b> — Synchronized cardioversion ทันทีตาม ACLS<br><br>
+          <b>คงที่ (Stable) + สงสัย Structural heart disease</b> — แนะนำ cardioversion ก่อน (ผู้ป่วยกลุ่มนี้ทรุดไว) หากความเสี่ยง cardioversion สูง พิจารณา Procainamide หรือ Amiodarone แทน<br><br>
+          <b>คงที่ + ไม่สงสัย Structural heart disease</b> — ประเมินว่าเข้าได้กับ Fascicular VT หรือ Outflow tract VT หรือไม่ (มักตอบสนองยาดี):
+          <ul style="margin:6px 0; padding-left:18px;">
+            <li><b>Fascicular VT</b> → Verapamil IV (ในไทยมักใช้ Diltiazem แทน): bolus 0.25 mg/kg (เช่น Diltiazem 20 mg + NSS/D5W 20 ml IV push over 2 min) ตามด้วย maintenance 5-15 mg/hr (Diltiazem 125 mg + NSS/D5W 100 ml IV drip 4-12 ml/hr)</li>
+            <li><b>Outflow tract VT</b> → Beta-blocker: Esmolol bolus 0.5 mg/kg ตามด้วย infusion 0.05 mg/kg/min (เช่น 2500 mg + NSS/D5W 250 ml IV drip 15 ml/hr ในผู้ป่วย 50 kg) หรือ Propranolol รับประทาน 10-40 mg q6h (immediate release) / 60-160 mg q12h (extended release)</li>
+            <li>VT ชนิดอื่น → Cardioversion เป็นหลัก หรือ Procainamide/Amiodarone หากมีความเสี่ยงต่อ cardioversion สูง</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Electrical Storm</summary>
+        <div class="infobox">
+          <b>นิยาม:</b> Ventricular arrhythmias เกิดซ้ำ &gt;3 ครั้งใน 24 ชม. (ห่างกันอย่างน้อย 5 นาที) แต่ละครั้งต้องได้รับการรักษา — มักพบในผู้ป่วยที่ใส่ ICD แล้วโดน shock ซ้ำๆ<br><br>
+          <b>ขั้นตอนดูแล:</b> (1) ยืนยันวินิจฉัย/ตรวจสอบว่า ICD ทำงานถูกต้อง ไม่ได้ shock โดยไม่จำเป็น (2) ดูแลตาม ACLS หากสัญญาณชีพไม่คงที่ ให้ sedation ลด sympathetic tone หากคงที่ (3) แยกรักษาตามชนิด Polymorphic vs Monomorphic<br><br>
+          <b>Polymorphic VA:</b> แยกก่อนว่าเป็น TdP หรือไม่ (ดู short-long-short pattern, baseline QT)
+          <ul style="margin:6px 0; padding-left:18px;">
+            <li><b>สาเหตุ QT prolongation:</b> ยา (Amiodarone, Macrolides, Fluoroquinolones, SSRIs, TCAs, Haloperidol, Ondansetron), Electrolyte (Hypokalemia, Hypomagnesemia, Hypocalcemia), Bradycardia, สารพิษ (Alcohol, Cocaine, Opioid)</li>
+            <li><b>แก้ Electrolyte เร่งด่วน</b> — เป้าหมายสูงกว่าปกติเล็กน้อย K⁺ 4.5-5 mEq/L, Mg²⁺ 2-3 mEq/L เช่น KCl 10-20 mEq + NSS 100-250 ml IV drip ใน 1 ชม., MgSO4 1-2 g + NSS 100 ml IV drip over 5-15 min</li>
+            <li><b>Overdrive pacing</b> — ตั้งอัตราเร็วกว่า baseline 10-20 bpm เพื่อลด QT/refractory period เริ่มตั้งไฟฟ้าที่ 70 mA เพิ่มทีละ 5-10 mA จน capture แล้วตั้งเผื่อสูงกว่านั้นอีก 5-10 mA</li>
+            <li><b>ยา:</b> Isoproterenol เป็นตัวเลือกแรกแต่มักไม่มีในไทย — ใช้ <b>Lidocaine</b> แทน (ไม่ทำให้ QT ยาวขึ้น) bolus 1-1.5 mg/kg (50-200 mg) maintenance 1-4 mg/min · <b>หลีกเลี่ยง Amiodarone</b> ในกลุ่มนี้เพราะยืด QT เพิ่ม</li>
+            <li>Polymorphic VA ที่ไม่เกี่ยวกับ QT ยาว (Brugada, idiopathic VF) → Isoproterenol/Quinidine · STEMI → เปิดหลอดเลือดด่วนที่สุด</li>
+          </ul>
+          <b>Monomorphic VA:</b> Beta-blocker + Amiodarone (bolus 150-300 mg ซ้ำได้ 2-3 ครั้งใน 24 ชม., maintenance 600-1200 mg/24 ชม.)
+        </div>
+      </details>
+      <details>
+        <summary>การดูแลระยะยาวและสาเหตุของ VA</summary>
+        <div class="infobox">
+          หัวใจสำคัญคือหาสาเหตุที่แท้จริงและรักษาที่ต้นเหตุ ในรายที่รักษาสาเหตุไม่ได้ควรพิจารณาใส่ ICD ป้องกันเหตุซ้ำ และพิจารณา catheter ablation หากเป็นไปได้<br><br>
+          <b>กลุ่มสาเหตุหลัก:</b> Coronary artery disease, Cardiomyopathy (dilated, hypertrophic, arrhythmogenic RV, amyloidosis ฯลฯ), Inflammatory heart disease (myocarditis, sarcoidosis), Valvular heart disease, Congenital heart disease (เช่น Tetralogy of Fallot), Primary electrical disease (Long/Short QT syndrome, Brugada syndrome, CPVT, idiopathic VF)
+        </div>
+      </details>
+      <details>
+        <summary>เอกสารอ้างอิง (References)</summary>
+        <div class="infobox">
+          <ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.9;">
+            <li>Zeppenfeld, K., et al. (2022). 2022 ESC Guidelines for the management of patients with ventricular arrhythmias and the prevention of sudden cardiac death. <i>European Heart Journal</i>, 43(40), 3997–4126.</li>
+            <li>Al-Khatib, S. M., et al. (2017). 2017 AHA/ACC/HRS Guideline for Management of Patients with Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death. <i>Circulation</i>, 138(13).</li>
+            <li>Roberts-Thomson, K. C., et al. (2011). The diagnosis and management of ventricular arrhythmias. <i>Nature Reviews Cardiology</i>, 8(6), 311–321.</li>
+            <li>Könemann, H., et al. (2023). Management of ventricular arrhythmias worldwide. <i>JACC: Clinical Electrophysiology</i>, 9(5), 715–728.</li>
+            <li>Gaztañaga, L., et al. (2011). Mechanisms of cardiac arrhythmias. <i>Revista Española de Cardiología (English Edition)</i>, 65(2), 174–185.</li>
+            <li>Vereckei, A., et al. (2007). New algorithm using only lead aVR for differential diagnosis of wide QRS complex tachycardia. <i>Heart Rhythm</i>, 5(1), 89–98.</li>
+            <li>Guyton and Hall Textbook of Medical Physiology, 14th edition.</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>EKG กับ Electrolyte Imbalance</h2>
+    <div class="card">
+      <details open>
+        <summary>Hyperkalemia</summary>
+        <img class="ecg-photo" src="images/ekg/hyperk.jpg" alt="Hyperkalemia EKG" loading="lazy">
+        <div class="infobox">
+          เปลี่ยนแปลงตามความรุนแรงเป็นลำดับ: <b>Peaked T wave</b> (mild) → <b>PR ยาวขึ้น, P wave แบนลง/หายไป</b> → <b>QRS กว้างขึ้น</b> → <b>Sine wave pattern</b> (รุนแรงมาก ใกล้ cardiac arrest) — ถือเป็นภาวะฉุกเฉินทางวิสัญญีที่ต้องรักษาทันทีเมื่อพบ ECG change เหล่านี้ (calcium, insulin+glucose, ปรับ ventilation)
+        </div>
+      </details>
+      <details>
+        <summary>Hypokalemia</summary>
+        <img class="ecg-photo" src="images/ekg/hypok.jpg" alt="Hypokalemia EKG" loading="lazy">
+        <div class="infobox">
+          T wave แบนลง, <b>U wave</b> เด่นขึ้น (มักเห็นตามหลัง T wave), ST depression เล็กน้อย, PVC พบบ่อยขึ้น — เพิ่มความเสี่ยง arrhythmia โดยเฉพาะเมื่อใช้ digoxin ร่วมด้วย
+        </div>
+      </details>
+      <details>
+        <summary>Hypercalcemia / Hypocalcemia</summary>
+        <img class="ecg-photo" src="images/ekg/hypercalc.jpg" alt="Hypercalcemia EKG" loading="lazy"><img class="ecg-photo" src="images/ekg/hypocalc.jpg" alt="Hypocalcemia EKG" loading="lazy">
+        <div class="infobox">
+          <b>Hypercalcemia</b> — QT interval สั้นลง<br>
+          <b>Hypocalcemia</b> — QT interval ยาวขึ้น เพิ่มความเสี่ยง Torsades de Pointes
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Ischemia และ Pacemaker</h2>
+    <div class="card">
+      <details open>
+        <summary>ECG Changes บ่งชี้ Myocardial Ischemia</summary>
+        <img class="ecg-photo" src="images/ekg/stemi.jpg" alt="ST Elevation EKG" loading="lazy"><img class="ecg-photo" src="images/ekg/stdep.jpg" alt="ST Depression EKG" loading="lazy">
+        <div class="infobox">
+          <b>ST depression</b> (มักเป็น horizontal/downsloping ≥1 mm) — บ่งชี้ subendocardial ischemia<br>
+          <b>ST elevation</b> — บ่งชี้ transmural injury/acute MI ถือเป็นภาวะฉุกเฉิน ต้องแจ้งทีมทันที<br>
+          <b>T wave inversion ใหม่</b> หรือ <b>new LBBB</b> — อาจบ่งชี้ ischemia เช่นกัน ควรพิจารณาร่วมกับอาการทางคลินิกและ hemodynamic เสมอ
+        </div>
+      </details>
+      <details>
+        <summary>ผู้ป่วยที่มี Pacemaker / ICD</summary>
+        <div class="infobox">
+          สังเกต pacing spike บน EKG ก่อนแต่ละ complex — หากไม่เห็น spike ที่ควรมี หรือ spike ไม่ตามด้วย capture (ไม่มี QRS ตามหลัง) ให้สงสัย pacemaker malfunction<br><br>
+          <b>Electrocautery</b> ระหว่างผ่าตัดรบกวนสัญญาณ pacemaker/ICD ได้ — ควรทราบชนิดเครื่อง (pacemaker-dependent หรือไม่) ก่อนผ่าตัด และอาจต้องปรับ ICD เป็นโหมด async หรือปิดฟังก์ชัน anti-tachycardia therapy ชั่วคราวร่วมกับทีมที่ดูแลเครื่อง พร้อม defibrillator ภายนอกสำรองเสมอ
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>คำแนะนำเชิงปฏิบัติสำหรับวิสัญญีพยาบาล</h2>
+    <div class="card">
+      <div class="infobox">
+        <ul>
+          <li>Monitor EKG ต่อเนื่องตลอดการระงับความรู้สึกทุกราย เลือก lead ให้เหมาะกับความเสี่ยงผู้ป่วย (lead II เป็นมาตรฐาน เพิ่ม V5 ในผู้ป่วยความเสี่ยงหัวใจสูง)</li>
+          <li>เมื่อพบ arrhythmia หรือ ECG change ใหม่ ให้ประเมิน hemodynamic status ของผู้ป่วยเป็นอันดับแรกเสมอ (BP, pulse, SpO2) ก่อนตัดสินใจแก้ไข</li>
+          <li>ตรวจสอบสาเหตุที่แก้ไขได้ง่ายก่อนเสมอ — hypoxia, hypercarbia, electrolyte imbalance, depth of anesthesia, surgical stimulation, lead/electrode หลุด</li>
+          <li>บันทึกและรายงานการเปลี่ยนแปลงของ EKG ที่ผิดปกติให้วิสัญญีแพทย์ทราบทันที โดยเฉพาะ new ST change, new arrhythmia, หรือ heart block ที่ progress</li>
+          <li>ในผู้ป่วยที่มี pacemaker/ICD ควรทราบข้อมูลเครื่องและแผนการจัดการก่อนผ่าตัดเสมอ ไม่ควรสันนิษฐานเอง</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div><!-- /tabEkg -->
+
 <footer>
   เครื่องมือนี้จัดทำเพื่อการศึกษาและเป็นแนวทางเบื้องต้น ไม่ทดแทนดุลยพินิจทางคลินิกของผู้ปฏิบัติงาน หรือแนวทางของราชวิทยาลัยวิสัญญีแพทย์แห่งประเทศไทยฉบับล่าสุด ควรตรวจสอบซ้ำกับคำสั่งแพทย์และนโยบายของหน่วยงานทุกครั้งก่อนใช้กับผู้ป่วยจริง
 </footer>
@@ -519,11 +841,16 @@ MEDS.forEach((sub, subIdx) => {
   });
 });
 
-function showMainTab(name){
-  ['pac','lab','med'].forEach(t=>{
-    document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===name);
-    document.getElementById('mtab'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===name);
-  });
+function showHome(){
+  document.querySelectorAll('.tabpanel').forEach(el=>el.classList.remove('active'));
+  document.getElementById('viewHome').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function showTopic(name){
+  const map = {pac:'tabPac', lab:'tabLab', med:'tabMed', ekg:'tabEkg'};
+  document.querySelectorAll('.tabpanel').forEach(el=>el.classList.remove('active'));
+  document.getElementById(map[name]).classList.add('active');
   window.scrollTo(0,0);
   if(name==='med' && !window._medInit){ medInit(); window._medInit = true; }
 }
