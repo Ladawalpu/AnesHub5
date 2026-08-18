@@ -41,13 +41,6 @@
     --accent: #4CAF25;
     --line: #DCEFD1;
   }
-  /* ABG tab ใช้โทนม่วงคราม แยกจาก Airway/Fluid — override เฉพาะภายใน #tabAbg */
-  #tabAbg{
-    --teal-deep: #3730A3;
-    --teal: #4F46E5;
-    --accent: #6366F1;
-    --line: #E3E3FA;
-  }
   *{box-sizing:border-box;}
   body{
     margin:0; font-family:var(--sans); background:var(--bg); color:var(--ink);
@@ -64,10 +57,6 @@
     background: linear-gradient(160deg, #288A05 0%, #1D6704 100%);
   }
   body.fluid-active .mtab.active{ color:#1D6704; }
-  body.abg-active header{
-    background: linear-gradient(160deg, #4F46E5 0%, #3730A3 100%);
-  }
-  body.abg-active .mtab.active{ color:#3730A3; }
   header .inner{max-width:920px; margin:0 auto; position:relative; z-index:2;}
   header h1{font-size:22px; margin:0 0 4px; font-weight:700; letter-spacing:.2px;}
   header p.sub{margin:0; font-size:13.5px; color:#BFE8E6; font-weight:500;}
@@ -142,8 +131,8 @@
     display:flex; gap:8px; max-width:920px; margin:0 auto; padding:14px 20px 0;
   }
   .mtab{
-    flex:1; border:none; border-radius:12px 12px 0 0; padding:12px 2px; cursor:pointer;
-    font-family:var(--sans); font-weight:700; font-size:12.5px; background:#E4F4F4; color:var(--ink-soft);
+    flex:1; border:none; border-radius:12px 12px 0 0; padding:12px 0; cursor:pointer;
+    font-family:var(--sans); font-weight:700; font-size:14px; background:#E4F4F4; color:var(--ink-soft);
   }
   .mtab.active{ background:var(--panel); color:var(--teal-deep); box-shadow:0 -2px 10px rgba(13,59,57,.06); }
   .tabpanel{ display:none; }
@@ -178,15 +167,14 @@
 <header>
   <div class="inner">
     <h1>Airway & Fluid</h1>
-    <p class="sub">อุปกรณ์ทางเดินหายใจ, MABL/สารน้ำ และวิเคราะห์ Blood Gas</p>
+    <p class="sub">อุปกรณ์ทางเดินหายใจ (ETT/LMA/Blade/Suction/NGT) และ MABL/สารน้ำระหว่างผ่าตัด</p>
   </div>
   <svg class="wave" viewBox="0 0 900 40" preserveAspectRatio="none"><path d="M0,20 Q50,5 100,20 T200,20 T300,20 T400,20 T500,20 T600,20 T700,20 T800,20 T900,20"/></svg>
 </header>
 
 <div class="maintabs">
   <button class="mtab active" id="mtabAirway" onclick="showMainTab('airway')">🫁 Airway</button>
-  <button class="mtab" id="mtabFluid" onclick="showMainTab('fluid')">💧 Fluid</button>
-  <button class="mtab" id="mtabAbg" onclick="showMainTab('abg')">🩸 ABG</button>
+  <button class="mtab" id="mtabFluid" onclick="showMainTab('fluid')">💧 Fluid & Blood Loss</button>
 </div>
 
 <div id="tabAirway" class="tabpanel active">
@@ -215,13 +203,6 @@
 
   <section class="block" id="resultsSection" style="display:none;">
     <h2>ผลการคำนวณ <span class="tag">Airway devices</span></h2>
-
-    <div class="card">
-      <span class="name">⚖️ Ideal Body Weight & Tidal Volume</span>
-      <div class="metric"><span class="k">Ideal Body Weight (IBW)</span><span class="v" id="ibwValue">-</span></div>
-      <div class="metric"><span class="k">Tidal Volume (Lung-protective 6-8 mL/kg)</span><span class="v" id="tvRange">-</span></div>
-      <div class="note" id="ibwNote"></div>
-    </div>
 
     <div class="card">
       <span class="name">🫁 Endotracheal Tube (ETT)</span>
@@ -260,6 +241,13 @@
       <span class="name">👃 Nasopharyngeal Airway (NPA)</span>
       <div class="metric"><span class="k">ขนาด ID</span><span class="v" id="npaSize">-</span></div>
       <div class="metric"><span class="k">ความยาวโดยประมาณ</span><span class="v" id="npaLen">-</span></div>
+    </div>
+
+    <div class="card">
+      <span class="name">⚖️ Ideal Body Weight & Tidal Volume</span>
+      <div class="metric"><span class="k">Ideal Body Weight (IBW)</span><span class="v" id="ibwValue">-</span></div>
+      <div class="metric"><span class="k">Tidal Volume (Lung-protective 6-8 mL/kg)</span><span class="v" id="tvRange">-</span></div>
+      <div class="note" id="ibwNote"></div>
     </div>
 
     <div class="card">
@@ -463,119 +451,8 @@
 
 </div><!-- /tabFluid -->
 
-<div id="tabAbg" class="tabpanel">
-
-<div class="wrap" style="padding-top:20px;">
-
-  <section class="block">
-    <h2>หลักการวิเคราะห์ Blood Gas <span class="tag">แนวทางทั่วไป</span></h2>
-    <div class="card">
-      <div class="infobox" style="font-size:13px; line-height:1.75; color:var(--ink); padding:10px 12px; background:#F3F3FD; border-radius:10px;">
-        เนื้อหานี้เป็น<b>ความรู้ทั่วไป</b>สำหรับหลักการวิเคราะห์และแนวทางแก้ไข ไม่ใช่เครื่องคำนวณอัตโนมัติ เนื่องจาก<b>ค่า reference range ปกติของแต่ละห้องปฏิบัติการ/สถาบันอาจแตกต่างกันเล็กน้อย</b> ควรยึดตามค่าอ้างอิงของห้อง lab ที่ใช้งานจริงเสมอ ค่าที่แสดงในหน้านี้เป็นเพียงช่วงอ้างอิงสากลที่ใช้กันทั่วไปเพื่อประกอบการเรียนรู้เท่านั้น
-      </div>
-    </div>
-
-    <div class="card">
-      <details open>
-        <summary>ขั้นตอนที่ 1-4: หา Primary Disorder</summary>
-        <div class="infobox">
-          <ol style="margin:0; padding-left:20px;">
-            <li style="margin-bottom:8px;"><b>ดู pH ก่อนเสมอ</b> — Acidemia (pH ต่ำ) / Alkalemia (pH สูง) / อยู่ในช่วงปกติ (อาจมี fully compensated disorder ซ่อนอยู่)</li>
-            <li style="margin-bottom:8px;"><b>ดู PaCO₂</b> — สูงกว่าปกติ = respiratory acidosis component, ต่ำกว่าปกติ = respiratory alkalosis component</li>
-            <li style="margin-bottom:8px;"><b>ดู HCO₃⁻</b> — ต่ำกว่าปกติ = metabolic acidosis component, สูงกว่าปกติ = metabolic alkalosis component</li>
-            <li><b>จับคู่ทิศทาง</b> — ตัวแปร (PaCO₂ หรือ HCO₃⁻) ที่เปลี่ยนแปลง<b>ไปทางเดียวกับ pH</b> คือ primary disorder ส่วนอีกตัวที่เปลี่ยนสวนทางคือกลไก compensation หากทั้งสองตัวเปลี่ยนไปคนละทิศกับที่ควรชดเชย ให้นึกถึง <b>mixed acid-base disorder</b></li>
-          </ol>
-        </div>
-      </details>
-      <details>
-        <summary>ขั้นตอนที่ 5: ประเมิน Compensation (สูตรคาดคะเน)</summary>
-        <div class="infobox">
-          <ul style="margin:0; padding-left:18px;">
-            <li style="margin-bottom:8px;"><b>Metabolic acidosis</b> — Winter's formula: expected PaCO₂ ≈ 1.5 × HCO₃⁻ + 8 (±2)</li>
-            <li style="margin-bottom:8px;"><b>Metabolic alkalosis</b> — expected PaCO₂ ≈ 0.7 × HCO₃⁻ + 20 (±5)</li>
-            <li style="margin-bottom:8px;"><b>Acute respiratory acidosis</b> — expected HCO₃⁻ ≈ 24 + 0.1 × (PaCO₂−40)</li>
-            <li style="margin-bottom:8px;"><b>Chronic respiratory acidosis</b> — expected HCO₃⁻ ≈ 24 + 0.35 × (PaCO₂−40)</li>
-            <li style="margin-bottom:8px;"><b>Acute respiratory alkalosis</b> — expected HCO₃⁻ ≈ 24 − 0.2 × (40−PaCO₂)</li>
-            <li><b>Chronic respiratory alkalosis</b> — expected HCO₃⁻ ≈ 24 − 0.4 × (40−PaCO₂)</li>
-          </ul>
-          <div style="margin-top:10px;">ถ้าค่าจริงอยู่ในช่วงที่คาดคะเน → compensation เหมาะสมตามสรีรวิทยา · ถ้าอยู่นอกช่วง → นึกถึง mixed disorder ที่มีกระบวนการอื่นซ้อนอยู่</div>
-        </div>
-      </details>
-      <details>
-        <summary>Anion Gap</summary>
-        <div class="infobox">
-          สูตร: <b>AG = Na⁺ − (Cl⁻ + HCO₃⁻)</b> ค่าปกติโดยทั่วไปประมาณ 8-12 mEq/L (แตกต่างกันได้ตามวิธีตรวจของแต่ละห้อง lab)<br><br>
-          <b>High AG</b> (มัก &gt;12): lactic acidosis, ketoacidosis, renal failure, toxic alcohols/สารพิษ (มักช่วยจำด้วย mnemonic เช่น MUDPILES)<br>
-          <b>Normal AG</b>: diarrhea, renal tubular acidosis, การสูญเสีย bicarbonate ทางอื่น
-        </div>
-      </details>
-      <details>
-        <summary>การประเมิน Oxygenation</summary>
-        <div class="infobox">
-          <b>P/F ratio</b> (PaO₂ / FiO₂) ช่วยประเมินความรุนแรงของ oxygenation impairment โดยทั่วไป (อ้างอิงแนวคิด Berlin ARDS criteria):
-          <ul style="margin:6px 0 0; padding-left:18px;">
-            <li>P/F ≥ 300 — ปกติ/เล็กน้อย</li>
-            <li>P/F 200-300 — mild impairment</li>
-            <li>P/F 100-200 — moderate impairment</li>
-            <li>P/F &lt; 100 — severe impairment</li>
-          </ul>
-          <div style="margin-top:8px;">A-a gradient ช่วยแยกว่า hypoxemia มาจาก hypoventilation ล้วนๆ (A-a gradient ปกติ) หรือมีปัญหา V/Q mismatch, shunt, diffusion defect ร่วมด้วย (A-a gradient กว้างขึ้น)</div>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <section class="block">
-    <h2>แนวทางการแก้ไข <span class="tag">Correction</span></h2>
-    <div class="card">
-      <details open>
-        <summary>Respiratory Acidosis</summary>
-        <div class="infobox">
-          แก้ที่ <b>ventilation</b> เป็นหลัก: เพิ่ม minute ventilation (เพิ่ม RR หรือ TV ตามความเหมาะสม), ตรวจสอบตำแหน่ง ETT/circuit ว่าไม่มี obstruction หรือ hypoventilation จากสาเหตุอื่น, แก้ไข bronchospasm หากมี, ปรับ ventilator setting ให้เหมาะสมกับผู้ป่วย<br><br>
-          ⚠️ ในผู้ป่วย <b>chronic respiratory acidosis</b> (เช่น COPD) ระวังการแก้ไข PaCO₂ ให้กลับปกติเร็วเกินไป เพราะไตชดเชยด้วย HCO₃⁻ สูงไว้นานแล้ว การลด PaCO₂ ฉับพลันอาจทำให้เกิด <b>post-hypercapnic alkalosis</b>
-        </div>
-      </details>
-      <details>
-        <summary>Respiratory Alkalosis</summary>
-        <div class="infobox">
-          หาสาเหตุของ hyperventilation แล้วแก้ที่ต้นเหตุ: ปวด, วิตกกังวล, ไข้, pulmonary embolism, hypoxemia ที่กระตุ้นการหายใจ, หรือ ventilator setting ที่ตั้ง minute ventilation สูงเกินไป — หากเกิดจาก ventilator ให้ปรับลด RR หรือ TV ลง
-        </div>
-      </details>
-      <details>
-        <summary>Metabolic Acidosis — High Anion Gap</summary>
-        <div class="infobox">
-          แก้ที่สาเหตุเป็นหลัก: lactic acidosis → improve tissue perfusion/oxygenation, DKA → insulin + fluid replacement, renal failure → dialysis, toxin/alcohol → antidote เฉพาะหรือ hemodialysis<br><br>
-          Bicarbonate therapy พิจารณาเฉพาะกรณีรุนแรงมาก (pH ต่ำมากจนกระทบ cardiovascular function) และยังเป็นประเด็นที่มีความเห็นแตกต่างทางวิชาการ ไม่ใช้เป็น routine
-        </div>
-      </details>
-      <details>
-        <summary>Metabolic Acidosis — Normal Anion Gap</summary>
-        <div class="infobox">
-          แก้ที่สาเหตุ: diarrhea → fluid/electrolyte replacement, renal tubular acidosis → bicarbonate replacement ตามชนิดของ RTA
-        </div>
-      </details>
-      <details>
-        <summary>Metabolic Alkalosis</summary>
-        <div class="infobox">
-          แก้ไข volume depletion ด้วย NSS (chloride-responsive type พบบ่อยที่สุด), correct hypokalemia และ hypochloremia ร่วมด้วย, ลดหรือหยุดสาเหตุกระตุ้นถ้าเป็นไปได้ (diuretic, NG suction ต่อเนื่อง)<br><br>
-          แยก <b>chloride-responsive</b> (urine Cl⁻ ต่ำ ตอบสนองต่อ NSS) กับ <b>chloride-resistant</b> (urine Cl⁻ สูง เช่น hyperaldosteronism ต้องแก้ที่สาเหตุฮอร์โมน ไม่ใช่แค่ให้ NSS)
-        </div>
-      </details>
-      <details>
-        <summary>Hypoxemia</summary>
-        <div class="infobox">
-          เพิ่ม FiO₂, พิจารณา PEEP/recruitment maneuver ตามความเหมาะสม, หาและแก้ไขสาเหตุเฉพาะ (V/Q mismatch, shunt, diffusion defect, hypoventilation) — ใช้ A-a gradient ช่วยแยกกลุ่มสาเหตุเบื้องต้น
-        </div>
-      </details>
-    </div>
-  </section>
-
-</div>
-
-</div><!-- /tabAbg -->
-
 <footer>
-  เครื่องมือนี้ใช้สูตรและค่ามาตรฐานทางคลินิกทั่วไปเพื่อการศึกษาและเป็นจุดเริ่มต้นในการประเมิน ไม่ทดแทนดุลยพินิจทางคลินิกของผู้ปฏิบัติงาน ควรตรวจสอบตำแหน่ง/ขนาดจริงหน้างานเสมอ (Airway) · ไม่ทดแทนดุลยพินิจทางคลินิก ควรพิจารณาร่วมกับ vital signs, urine output และ clinical context ของผู้ป่วยแต่ละราย (Fluid) · ใช้หลักการวิเคราะห์แบบขั้นตอน ผลที่ได้ต้องพิจารณาร่วมกับ clinical picture เสมอ ไม่ใช่เครื่องมือวินิจฉัยหรือตัดสินใจทางคลินิกโดยลำพัง (ABG)
+  เครื่องมือนี้ใช้สูตรและค่ามาตรฐานทางคลินิกทั่วไปเพื่อการศึกษาและเป็นจุดเริ่มต้นในการประเมิน ไม่ทดแทนดุลยพินิจทางคลินิกของผู้ปฏิบัติงาน ควรตรวจสอบตำแหน่ง/ขนาดจริงหน้างานเสมอ (Airway) · ไม่ทดแทนดุลยพินิจทางคลินิก ควรพิจารณาร่วมกับ vital signs, urine output และ clinical context ของผู้ป่วยแต่ละราย (Fluid)
 </footer>
 
 <script>
@@ -773,12 +650,9 @@ function showMainTab(name){
   else if(name==='airway') syncFluidToAirway();
   document.getElementById('tabAirway').classList.toggle('active', name==='airway');
   document.getElementById('tabFluid').classList.toggle('active', name==='fluid');
-  document.getElementById('tabAbg').classList.toggle('active', name==='abg');
   document.getElementById('mtabAirway').classList.toggle('active', name==='airway');
   document.getElementById('mtabFluid').classList.toggle('active', name==='fluid');
-  document.getElementById('mtabAbg').classList.toggle('active', name==='abg');
   document.body.classList.toggle('fluid-active', name==='fluid');
-  document.body.classList.toggle('abg-active', name==='abg');
   window.scrollTo(0,0);
 }
 
