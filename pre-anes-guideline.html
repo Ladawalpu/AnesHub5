@@ -7,13 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Pre Anes Guideline — AnesHub</title>
+<title>Pre Anes Evaluation — AnesHub</title>
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#065F46">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Pre Anes Guideline">
+<meta name="apple-mobile-web-app-title" content="Pre Anes Evaluation">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
 
@@ -206,7 +206,7 @@
 
 <header>
   <div class="inner">
-    <h1>📋 Pre Anes Guideline</h1>
+    <h1>📋 Pre Anes Evaluation</h1>
     <p class="sub">แนวทางประเมิน/เตรียมความพร้อมผู้ป่วยก่อนผ่าตัด และการจัดการยาต่อเนื่อง</p>
   </div>
 </header>
@@ -233,6 +233,11 @@
       <div class="topic-icon">📈</div>
       <div class="topic-name">EKG Guide</div>
       <div class="topic-desc">คลื่นไฟฟ้าหัวใจ, arrhythmia, การเลือก lead สำหรับวิสัญญี</div>
+    </div>
+    <div class="topic-card" onclick="showTopic('mets')">
+      <div class="topic-icon">📊</div>
+      <div class="topic-name">METs / Functional Capacity</div>
+      <div class="topic-desc">ประเมินสมรรถภาพการทำกิจกรรมก่อนผ่าตัด · DASI · 2024 AHA/ACC</div>
     </div>
   </div>
 </div>
@@ -825,6 +830,105 @@
 </div>
 </div><!-- /tabEkg -->
 
+<div id="tabMets" class="tabpanel">
+<div class="wrap">
+
+  <button class="med-back" onclick="showHome()">← กลับหน้าหลัก</button>
+
+  <section class="block">
+    <h2>METs (Metabolic Equivalents) — Functional Capacity Score</h2>
+    <div class="card">
+      <img class="ecg-photo" src="images/preop/mets.jpg" alt="METs Functional Capacity Score Infographic" loading="lazy">
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>สรุปเนื้อหา <span class="tag">2024 AHA/ACC</span></h2>
+    <div class="card">
+      <details open>
+        <summary>1 MET คืออะไร และทำไมต้องประเมิน</summary>
+        <div class="infobox">
+          <b>1 MET (Metabolic Equivalent of Task)</b> = 3.5 mL O₂/kg/min คือหน่วยที่ใช้บอกระดับการใช้พลังงานขณะทำกิจกรรม เทียบกับภาวะพัก — METs สูง หมายถึง functional capacity ดี ทำกิจกรรมได้มากขึ้น ส่วน METs ต่ำ อาจสัมพันธ์กับความเสี่ยงทางหัวใจที่เพิ่มขึ้น<br><br>
+          <b>ทำไมต้องประเมิน:</b> ใช้ประเมินความเสี่ยงของ cardiovascular events หลังผ่าตัด ช่วยวางแผนการดูแลผู้ป่วยอย่างเหมาะสม เป็นส่วนหนึ่งของ preoperative assessment ร่วมกับโรคประจำตัวและความเสี่ยงของการผ่าตัด — <b>ไม่ใช่เกณฑ์ตัดสินใจผ่าตัดเพียงอย่างเดียว</b> ต้องประเมินร่วมกับปัจจัยอื่นเสมอ
+        </div>
+      </details>
+      <details>
+        <summary>ตัวอย่างกิจกรรมตามระดับ METs</summary>
+        <div class="infobox">
+          <ul>
+            <li><b>&lt; 4 METs (ต่ำ — Poor)</b>: รับประทานอาหาร, แต่งตัว/อาบน้ำ, เดินภายในบ้าน, เดินระยะสั้นบนพื้นราบ, ทำงานบ้านเบาๆ</li>
+            <li><b>4-6 METs (ปานกลาง — Moderate)</b>: ขึ้นบันได 1 ชั้น, เดินขึ้นเนิน, เดินเร็ว (~6 km/h), ทำงานบ้านระดับปานกลาง</li>
+            <li><b>7-10 METs (ดี — Good)</b>: วิ่งเหยาะๆ, ปั่นจักรยาน, เทนนิส (คู่), ทำสวน, ยกของหนัก</li>
+            <li><b>&gt; 10 METs (ดีมาก — Excellent)</b>: วิ่งระยะไกล, ว่ายน้ำ, Competitive sports (Basketball, Tennis เดี่ยว, Skiing)</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>คำถามง่ายๆ ในการประเมิน</summary>
+        <div class="infobox">
+          <ol style="margin:0; padding-left:18px;">
+            <li>สามารถเดิน 1-2 ช่วงตึกบนพื้นราบได้หรือไม่?</li>
+            <li>สามารถขึ้นบันได 1 ชั้นโดยไม่หยุดพักได้หรือไม่?</li>
+            <li>สามารถขึ้นบันได 2 ชั้นต่อเนื่องได้หรือไม่? (กิจกรรมนี้มัก &gt;4 METs)</li>
+            <li>สามารถวิ่งระยะสั้นได้หรือไม่?</li>
+          </ol>
+          <div style="margin-top:8px;">⭐ การขึ้นบันได 2 ชั้นเป็นตัวอย่างกิจกรรมที่สัมพันธ์กับ &gt;4 METs ตามแนวทาง AHA/ACC 2024</div>
+        </div>
+      </details>
+      <details>
+        <summary>DASI — Duke Activity Status Index</summary>
+        <div class="infobox">
+          แบบประเมินความสามารถในการทำกิจกรรม 12 ข้อ ผู้ป่วยเลือกกิจกรรมที่ "ทำได้" ระบบคำนวณคะแนนถ่วงน้ำหนัก คะแนนรวมอยู่ในช่วง 0-58.2 — ยิ่งคะแนนสูง functional capacity ยิ่งดี<br><br>
+          <b>เกณฑ์การแปลผล:</b> DASI ≤ 34 = Poor functional capacity · DASI &gt; 34 = Functional capacity มากกว่า threshold
+        </div>
+      </details>
+      <details>
+        <summary>ประเมินอาการขณะออกแรง (Exercise-related symptoms)</summary>
+        <div class="infobox">
+          อาการที่ควรซักถามร่วมด้วยเสมอ: เจ็บ/แน่นหน้าอก, เหนื่อยผิดปกติ, หายใจไม่อิ่ม, ใจสั่น, หน้ามืด/เกือบเป็นลม, เป็นลม, ต้องหยุดพักเนื่องจากเหนื่อย<br><br>
+          <b>หากมีอาการผิดปกติ</b> ควรประเมินทางคลินิกเพิ่มเติม และพิจารณาร่วมกับ cardiovascular risk และ surgical risk
+        </div>
+      </details>
+      <details>
+        <summary>การแปลผลและข้อแนะนำสำหรับวิสัญญีพยาบาล</summary>
+        <div class="infobox">
+          <b>≥ 4 METs:</b> Functional capacity ไม่อยู่ในกลุ่ม poor พิจารณาร่วมกับอาการ โรคประจำตัว และความเสี่ยงของการผ่าตัด โดยทั่วไปอาจไม่จำเป็นต้องตรวจ cardiac stress test เป็น routine เพื่อเตรียมผ่าตัด (หากความเสี่ยงอื่นไม่สูง)<br><br>
+          <b>&lt; 4 METs:</b> Functional capacity ต่ำ ควรประเมินร่วมกับ perioperative cardiovascular risk และความเสี่ยงของการผ่าตัด อาจพิจารณาการตรวจเพิ่มเติมเป็นรายบุคคล หากผลตรวจจะมีผลต่อการจัดการผู้ป่วย<br><br>
+          <b>Unable to assess / Unknown:</b> ไม่สามารถประเมิน functional capacity ได้ชัดเจน พิจารณาใช้ DASI หรือประเมินเพิ่มเติมตาม clinical context
+        </div>
+      </details>
+      <details>
+        <summary>การนำไปใช้ในการประเมินก่อนผ่าตัด (Workflow)</summary>
+        <div class="infobox">
+          ลำดับการประเมิน: ประเมิน Functional Capacity (METs/DASI) → ประเมินอาการและโรคประจำตัว → ประเมิน Cardiovascular Risk → ประเมิน Surgical Risk → พิจารณาการตรวจเพิ่มเติมตามข้อบ่งชี้ → วางแผนการดูแลผู้ป่วยร่วมกับทีมสหสาขา
+        </div>
+      </details>
+      <details>
+        <summary>Clinical Pearls 💡</summary>
+        <div class="infobox">
+          <ul>
+            <li>&lt; 4 METs = Poor functional capacity</li>
+            <li>DASI ≤ 34 ใช้เป็นเกณฑ์ในแนวทาง AHA/ACC 2024</li>
+            <li>Functional capacity ≥ 4 METs ไม่ได้แปลว่าไม่มีความเสี่ยงเลย ต้องประเมินร่วมกับอาการ โรคประจำตัว และความเสี่ยงของการผ่าตัดเสมอ</li>
+            <li>หากไม่สามารถประเมิน METs ได้ ควรพิจารณา DASI หรือการประเมินเพิ่มเติม</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>เอกสารอ้างอิง (References)</summary>
+        <div class="infobox">
+          <ol style="margin:0; padding-left:18px; font-size:12px; line-height:1.9;">
+            <li>2024 AHA/ACC Guideline for Perioperative Cardiovascular Management for Noncardiac Surgery.</li>
+            <li>Hlatky, M. A., et al. (1999). A brief self-administered questionnaire to determine functional capacity (the Duke Activity Status Index). <i>American Journal of Cardiology</i>.</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+  </section>
+
+</div>
+</div><!-- /tabMets -->
+
 <footer>
   เครื่องมือนี้จัดทำเพื่อการศึกษาและเป็นแนวทางเบื้องต้น ไม่ทดแทนดุลยพินิจทางคลินิกของผู้ปฏิบัติงาน หรือแนวทางของราชวิทยาลัยวิสัญญีแพทย์แห่งประเทศไทยฉบับล่าสุด ควรตรวจสอบซ้ำกับคำสั่งแพทย์และนโยบายของหน่วยงานทุกครั้งก่อนใช้กับผู้ป่วยจริง
 </footer>
@@ -848,7 +952,7 @@ function showHome(){
 }
 
 function showTopic(name){
-  const map = {pac:'tabPac', lab:'tabLab', med:'tabMed', ekg:'tabEkg'};
+  const map = {pac:'tabPac', lab:'tabLab', med:'tabMed', ekg:'tabEkg', mets:'tabMets'};
   document.querySelectorAll('.tabpanel').forEach(el=>el.classList.remove('active'));
   document.getElementById(map[name]).classList.add('active');
   window.scrollTo(0,0);
