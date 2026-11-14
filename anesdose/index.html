@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="th">
+<!-- © 2026 Puladawal S. — MNST Hospital. AnesDose module for AnesHub -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AnesDose – คำนวณยาวิสัญญีตามน้ำหนัก</title>
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<meta name="theme-color" content="#9d174d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf1f6;--card:#fff;--ink:#2a0f1c;--muted:#7d5568;--line:#f0d6e2;
+  --accent:#be185d;--accent-soft:#fce7f1;--hdr:linear-gradient(135deg,#5e0b33 0%,#9d174d 55%,#c2185b 100%);--hdr-ink:#831843;--warn:#9a3412;--warn-soft:#fff3e8;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#1a0a12;--card:#261019;--ink:#f8e6ef;--muted:#c094a8;--line:#40192b;
+  --accent:#f472b6;--accent-soft:#3a1427;--hdr:linear-gradient(135deg,#33061b 0%,#5c0f33 60%,#7a1645 100%);--hdr-ink:#5c0f33;--warn:#fdba74;--warn-soft:#2c1f14;}
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Sarabun",system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.45}
+header{position:sticky;top:0;z-index:5;background:var(--hdr);color:#fff;padding:12px 14px 10px;box-shadow:0 2px 12px rgba(94,11,51,.3)}
+.back{display:inline-block;color:#fff;text-decoration:none;font-size:13px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:3px 12px;margin-bottom:8px}
+.logo{width:34px;height:34px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+.wrap{max-width:760px;margin:0 auto}
+h1{font-size:19px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+h1 small{font-weight:400;color:rgba(255,255,255,.78);font-size:12.5px;flex:1;min-width:0;line-height:1.25}
+.mode{flex:none}
+.inputs{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.1fr;gap:8px}
+.f label{display:block;font-size:12px;color:rgba(255,255,255,.8);margin-bottom:2px}
+.f input{width:100%;font:inherit;font-size:17px;padding:8px 10px;border:1px solid transparent;border-radius:10px;background:var(--card);color:var(--ink)}
+.f input:focus{outline:2px solid #fbcfe8;border-color:transparent}
+#w{font-weight:700;font-size:20px}
+.sex{display:flex;border:1px solid transparent;border-radius:10px;overflow:hidden;background:var(--card)}
+.sex button{flex:1;border:0;background:none;font:inherit;padding:9px 0;color:var(--muted);cursor:pointer}
+.sex button.on{background:var(--accent);color:#fff}
+.mode{display:flex;border:1px solid rgba(255,255,255,.3);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.12);margin-left:auto}
+.mode button{border:0;background:none;font:inherit;font-size:14px;padding:5px 14px;color:rgba(255,255,255,.85);cursor:pointer}
+.mode button.on{background:#fff;color:var(--hdr-ink);font-weight:700}
+.ped{background:var(--accent-soft);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:12px}
+.ped .name{margin-bottom:4px}
+.ped .row{border-top:1px dashed var(--line)}
+.na{font-size:13.5px;color:var(--warn);padding:6px 0}
+.info{font-size:12.5px;color:rgba(255,255,255,.8);margin-top:6px}
+.tools{display:flex;gap:8px;margin-top:8px}
+#q{flex:1;font:inherit;padding:8px 12px;border:1px solid transparent;border-radius:999px;background:var(--card);color:var(--ink)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:5px 12px;font:inherit;font-size:14px;cursor:pointer}
+.chip.on{background:#fff;border-color:#fff;color:var(--hdr-ink);font-weight:600}
+main{padding:12px 14px 40px}
+.disc{background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:9px 12px;font-size:13.5px;margin-bottom:12px}
+.cat-h{font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--c,var(--accent));margin:20px 2px 8px;font-weight:700;display:flex;align-items:center;gap:8px}
+.cat-h::before{content:'';width:10px;height:10px;border-radius:3px;background:var(--c,var(--accent))}
+.cat-h::after{content:'';flex:1;height:2px;border-radius:2px;background:var(--c,var(--accent));opacity:.25}
+.cc{--c:var(--cl)}
+@media (prefers-color-scheme:dark){.cc{--c:var(--cd)}}
+.chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px;background:var(--cd)}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c,var(--accent));border-radius:14px;box-shadow:0 1px 3px rgba(131,24,67,.07);padding:12px 14px;margin-bottom:10px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.name{font-weight:700;font-size:17px}
+.conc{display:flex;align-items:center;gap:4px;font-size:12.5px;color:var(--muted)}
+.conc input{width:62px;font:inherit;font-size:14px;padding:3px 6px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);text-align:right}
+.row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:8px 0;border-top:1px dashed var(--line)}
+.row:first-of-type{border-top:0}
+.lbl{font-weight:600;font-size:14.5px}
+.pk{font-size:12.5px;color:var(--muted)}
+.res{text-align:right;font-weight:700;font-size:16.5px;color:var(--c,var(--accent));white-space:nowrap}
+.vol{text-align:right;font-size:13px;color:var(--muted);white-space:nowrap}
+.cap{font-size:11.5px;color:var(--warn);font-weight:600}
+.note{font-size:13px;color:var(--muted);margin-top:4px;padding-top:6px;border-top:1px solid var(--line)}
+.note b{color:var(--warn);font-weight:600}
+.empty{color:var(--muted);text-align:center;padding:30px}
+footer{font-size:12px;color:var(--muted);text-align:center;padding:10px 14px 30px}
+@media (max-width:520px){.inputs{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="../anesth-drugs.html">‹ หมวดยา</a>
+  <h1><img class="logo" src="icons/logo.png" alt=""> AnesDose <small id="sub">คำนวณยาวิสัญญีตามน้ำหนัก</small>
+    <span class="mode"><button data-m="A" class="on">ผู้ใหญ่</button><button data-m="P">เด็ก</button></span></h1>
+  <div class="inputs">
+    <div class="f"><label>น้ำหนัก (kg)</label><input id="w" type="number" inputmode="decimal" min="0" placeholder="เช่น 60"></div>
+    <div class="f"><label>อายุ (ปี)</label><input id="age" type="number" inputmode="decimal" min="0" step="any" placeholder="เช่น 40"></div>
+    <div class="f"><label>ส่วนสูง (cm)</label><input id="ht" type="number" inputmode="decimal" min="0" placeholder="ใช้คิด IBW"></div>
+    <div class="f"><label>เพศ</label><div class="sex"><button data-s="M" class="on">ชาย</button><button data-s="F">หญิง</button></div></div>
+  </div>
+  <div class="info" id="info">กรอกน้ำหนักเพื่อคำนวณ</div>
+  <div class="tools"><input id="q" type="search" placeholder="ค้นหายา…"></div>
+  <div class="chips" id="chips"></div>
+</div></header>
+
+<main><div class="wrap">
+  <div class="disc" id="disc"></div>
+  <div class="ped" id="ped" hidden></div>
+  <div id="list"></div>
+  <div class="empty" id="empty" hidden>ไม่พบยาที่ค้นหา</div>
+</div></main>
+<footer>อ้างอิง: StatPearls, NYSORA, Morgan &amp; Mikhail's Clinical Anesthesiology, Miller's Anesthesia, Smith's Anesthesia for Infants and Children, Harriet Lane Handbook, AHA ACLS/PALS</footer>
+
+<script>
+const D=[
+// ================= IV hypnotics
+{c:'ยานำสลบ IV',n:'Propofol',conc:10,cu:'mg',it:[
+ {l:'Induction',k:'b',lo:1.5,hi:2.5,u:'mg'},
+ {l:'Maintenance (TIVA)',k:'i',lo:100,hi:200,u:'mcg',per:'min'},
+ {l:'Sedation',k:'i',lo:25,hi:75,u:'mcg',per:'min'}],
+ note:'ลดขนาดในผู้สูงอายุ ผู้ที่ EF ต่ำ และผู้ป่วย shock · ทำให้ apnea และ BP ลดลง',
+ pd:[{l:'Induction',k:'b',lo:2.5,hi:3.5,u:'mg'},
+ {l:'Maintenance (TIVA)',k:'i',lo:150,hi:300,u:'mcg',per:'min'},
+ {l:'Sedation',k:'i',lo:50,hi:150,u:'mcg',per:'min'}],
+ pnote:'เด็กเล็กต้องใช้ขนาดสูงกว่าผู้ใหญ่ · ระวัง propofol infusion syndrome เมื่อให้ขนาดสูงเป็นเวลานาน'},
+{c:'ยานำสลบ IV',n:'Thiopental',conc:25,cu:'mg',it:[{l:'Induction',k:'b',lo:3,hi:5,u:'mg'}],
+ note:'ปกติไม่ใช้ infusion · ระวัง extravasation',
+ pd:[{l:'Induction',k:'b',lo:5,hi:6,u:'mg'}],pnote:'ทารกใช้ 7–8 mg/kg · ปกติไม่ใช้ infusion'},
+{c:'ยานำสลบ IV',n:'Etomidate',conc:2,cu:'mg',it:[{l:'Induction',k:'b',lo:0.2,hi:0.3,u:'mg'}],
+ note:'Hemodynamics นิ่ง · <b>ห้ามให้ซ้ำหรือให้ infusion</b> เพราะกด adrenal นาน 6–12 ชม. · อาจเกิด myoclonus',
+ pnote:'ข้อมูลรับรองการใช้ในเด็กอายุ ≥10 ปี · <b>ห้ามให้ซ้ำหรือให้ infusion</b> เพราะกด adrenal'},
+{c:'ยานำสลบ IV',n:'Ketamine',conc:10,cu:'mg',it:[
+ {l:'Induction IV',k:'b',lo:1,hi:2,u:'mg'},
+ {l:'Induction IM',k:'b',lo:4,hi:6,u:'mg'},
+ {l:'Analgesic bolus',k:'b',lo:0.1,hi:0.3,u:'mg'},
+ {l:'Maintenance',k:'i',lo:15,hi:90,u:'mcg',per:'min'},
+ {l:'Low-dose analgesic infusion',k:'i',lo:0.1,hi:0.25,u:'mg',per:'h'}],
+ note:'ทำให้ BP/HR เพิ่มขึ้น เพิ่ม secretion และอาจเกิด emergence reaction · ขวดเข้มข้น 50 mg/ml ต้องแก้ค่าความเข้มข้นถ้าไม่ได้เจือจาง',
+ pd:[{l:'Induction IV',k:'b',lo:1,hi:2,u:'mg'},
+ {l:'IM (sedation / induction)',k:'b',lo:4,hi:6,u:'mg'},
+ {l:'Premed PO',k:'b',lo:5,hi:6,u:'mg',nv:1},
+ {l:'Analgesic bolus',k:'b',lo:0.1,hi:0.3,u:'mg'},
+ {l:'Maintenance',k:'i',lo:15,hi:90,u:'mcg',per:'min'}],
+ pnote:'เพิ่ม secretion ให้ atropine หรือ glycopyrrolate ร่วมได้ · ปริมาตรของยา PO ไม่ได้คำนวณ เพราะความเข้มข้นต่างจากยา IV'},
+{c:'ยานำสลบ IV',n:'Midazolam',conc:1,cu:'mg',it:[
+ {l:'Premedication',k:'b',lo:0.02,hi:0.05,u:'mg'},
+ {l:'Induction',k:'b',lo:0.1,hi:0.3,u:'mg'},
+ {l:'Sedation (titrate)',k:'fx',lo:0.5,hi:1,u:'mg'}],note:'ลดขนาดในผู้สูงอายุ และเมื่อให้ร่วมกับ opioid',
+ pd:[{l:'Premed PO',k:'b',lo:0.25,hi:0.5,u:'mg',max:20,nv:1},
+ {l:'Premed intranasal',k:'b',lo:0.2,hi:0.3,u:'mg',max:10,nv:1},
+ {l:'IV sedation / premed',k:'b',lo:0.05,hi:0.1,u:'mg'}],
+ pnote:'ยา PO ให้ก่อนผ่าตัด 20–30 นาที · ปริมาตรของยา PO/IN ไม่ได้คำนวณ'},
+{c:'ยานำสลบ IV',n:'Dexmedetomidine',conc:4,cu:'mcg',it:[
+ {l:'Loading (ให้นาน 10 นาที)',k:'b',lo:0.5,hi:1,u:'mcg'},
+ {l:'Maintenance',k:'i',lo:0.2,hi:0.7,u:'mcg',per:'h'}],note:'อาจเกิด bradycardia และ hypotension · ผู้ป่วยไม่เสถียรอาจข้าม loading',
+ pd:[{l:'Premed intranasal',k:'b',lo:1,hi:2,u:'mcg',nv:1},
+ {l:'Loading (ให้นาน 10 นาที)',k:'b',lo:0.5,hi:1,u:'mcg'},
+ {l:'Maintenance',k:'i',lo:0.2,hi:1,u:'mcg',per:'h'}],
+ pnote:'ยา IN ใช้ยาไม่เจือจาง (100 mcg/ml) ให้ก่อนผ่าตัด 30–45 นาที · อาจเกิด bradycardia'},
+// ================= Opioids
+{c:'Opioids',n:'Fentanyl',conc:50,cu:'mcg',it:[
+ {l:'Induction',k:'b',lo:1,hi:3,u:'mcg'},
+ {l:'Cardiac high-dose',k:'b',lo:10,hi:50,u:'mcg'},
+ {l:'Maintenance',k:'i',lo:0.5,hi:2,u:'mcg',per:'h'}],note:'ให้ bolus ซ้ำครั้งละ 25–50 mcg ได้ · ให้เร็วอาจเกิด chest wall rigidity',
+ pd:[{l:'Intraop bolus',k:'b',lo:1,hi:2,u:'mcg'},
+ {l:'Intranasal',k:'b',lo:1,hi:2,u:'mcg',nv:1},
+ {l:'Cardiac high-dose',k:'b',lo:10,hi:50,u:'mcg'},
+ {l:'Maintenance',k:'i',lo:1,hi:2,u:'mcg',per:'h'}],pnote:'ทารกต้อง monitor การหายใจหลังผ่าตัด'},
+{c:'Opioids',n:'Morphine',conc:1,cu:'mg',it:[{l:'IV bolus',k:'b',lo:0.05,hi:0.1,u:'mg'}],
+ note:'กระตุ้นการหลั่ง histamine · ยาสะสมในผู้ที่ไตบกพร่อง',pnote:'ทารกอายุ <3 เดือนให้ลดขนาดลงและ monitor การหายใจอย่างใกล้ชิด'},
+{c:'Opioids',n:'Remifentanil',conc:50,cu:'mcg',it:[
+ {l:'Bolus',k:'b',lo:0.5,hi:1,u:'mcg'},
+ {l:'Maintenance',k:'i',lo:0.05,hi:0.5,u:'mcg',per:'min'}],note:'ฤทธิ์หมดเร็ว ต้องวางแผน analgesia ก่อนหยุดยา · ระวัง bradycardia'},
+{c:'Opioids',n:'Sufentanil',conc:5,cu:'mcg',it:[
+ {l:'Induction',k:'b',lo:0.1,hi:0.5,u:'mcg'},
+ {l:'Maintenance',k:'i',lo:0.1,hi:0.5,u:'mcg',per:'h'}]},
+// ================= NMB
+{c:'ยาหย่อนกล้ามเนื้อ',n:'Succinylcholine',conc:20,cu:'mg',it:[{l:'Intubation',k:'b',lo:1,hi:1.5,u:'mg'}],
+ note:'<b>ห้ามใช้</b>ในผู้ที่ K⁺ สูง เป็น burn/crush เกิน 24 ชม. หรือมีประวัติ MH · ไม่ใช้ maintenance',
+ pd:[{l:'ทารก (<1 ปี)',k:'b',lo:2,hi:2,u:'mg'},{l:'เด็ก',k:'b',lo:1,hi:2,u:'mg'},{l:'IM (กรณีฉุกเฉิน)',k:'b',lo:4,hi:4,u:'mg'}],
+ pnote:'<b>ไม่ใช้ routine ในเด็ก</b> เพราะเสี่ยง hyperkalemia ใน myopathy ที่ยังไม่วินิจฉัย · ให้ atropine ก่อนเพื่อป้องกัน bradycardia · ห้ามใช้ในผู้ที่มีประวัติ MH'},
+{c:'ยาหย่อนกล้ามเนื้อ',n:'Rocuronium',conc:10,cu:'mg',it:[
+ {l:'Intubation',k:'b',lo:0.6,hi:0.6,u:'mg'},
+ {l:'RSI',k:'b',lo:1.2,hi:1.2,u:'mg'},
+ {l:'Maintenance bolus',k:'b',lo:0.1,hi:0.2,u:'mg'},
+ {l:'Infusion',k:'i',lo:5,hi:12,u:'mcg',per:'min'}]},
+{c:'ยาหย่อนกล้ามเนื้อ',n:'Vecuronium',conc:1,cu:'mg',it:[
+ {l:'Intubation',k:'b',lo:0.08,hi:0.1,u:'mg'},
+ {l:'Maintenance bolus',k:'b',lo:0.01,hi:0.02,u:'mg'},
+ {l:'Infusion',k:'i',lo:1,hi:1,u:'mcg',per:'min'}],pnote:'ทารกออกฤทธิ์นานกว่าผู้ใหญ่'},
+{c:'ยาหย่อนกล้ามเนื้อ',n:'Atracurium',conc:10,cu:'mg',it:[
+ {l:'Intubation',k:'b',lo:0.5,hi:0.5,u:'mg'},
+ {l:'Maintenance bolus',k:'b',lo:0.1,hi:0.1,u:'mg'},
+ {l:'Infusion',k:'i',lo:5,hi:10,u:'mcg',per:'min'}],note:'กระตุ้นการหลั่ง histamine · ถูกกำจัดด้วย Hofmann elimination'},
+{c:'ยาหย่อนกล้ามเนื้อ',n:'Cisatracurium',conc:2,cu:'mg',it:[
+ {l:'Intubation',k:'b',lo:0.15,hi:0.2,u:'mg'},
+ {l:'Maintenance bolus',k:'b',lo:0.03,hi:0.03,u:'mg'},
+ {l:'Infusion',k:'i',lo:1,hi:3,u:'mcg',per:'min'}],note:'ไม่ขึ้นกับการทำงานของตับและไต',
+ pd:[{l:'Intubation',k:'b',lo:0.1,hi:0.15,u:'mg'},{l:'Maintenance bolus',k:'b',lo:0.02,hi:0.03,u:'mg'},{l:'Infusion',k:'i',lo:1,hi:3,u:'mcg',per:'min'}]},
+{c:'ยาหย่อนกล้ามเนื้อ',n:'Pancuronium',conc:2,cu:'mg',it:[
+ {l:'Intubation',k:'b',lo:0.1,hi:0.1,u:'mg'},
+ {l:'Maintenance bolus',k:'b',lo:0.01,hi:0.02,u:'mg'}],note:'ทำให้ HR เพิ่มขึ้น (vagolytic) · ออกฤทธิ์นาน'},
+// ================= Inhalational
+{c:'ยาดมสลบ',n:'Sevoflurane',k:'mac',mac:2.0,note:'ใช้ mask induction ได้ เปิด 6–8%'},
+{c:'ยาดมสลบ',n:'Desflurane',k:'mac',mac:6.0,note:'ไม่ใช้ induction เพราะระคายทางเดินหายใจ',pnote:'ไม่ใช้ induction ในเด็ก เพราะเสี่ยง laryngospasm'},
+{c:'ยาดมสลบ',n:'Isoflurane',k:'mac',mac:1.15},
+{c:'ยาดมสลบ',n:'Nitrous oxide (N₂O)',k:'mac',mac:104,note:'ใช้เป็นยาเสริมที่ 50–70% · <b>ห้ามใช้</b>ใน pneumothorax, bowel obstruction และ air embolism'},
+// ================= Reversal
+{c:'Reversal',n:'Neostigmine',conc:0.5,cu:'mg',it:[{l:'Reversal',k:'b',lo:0.04,hi:0.07,u:'mg',max:5}],
+ note:'ต้องให้ร่วมกับ atropine หรือ glycopyrrolate · สูงสุด 5 mg'},
+{c:'Reversal',n:'Atropine',conc:0.6,cu:'mg',it:[
+ {l:'ให้ร่วมกับ neostigmine',k:'b',lo:0.02,hi:0.02,u:'mg'},
+ {l:'Bradycardia',k:'fx',lo:0.5,hi:1,u:'mg'}],note:'ภาวะ bradycardia ให้ซ้ำได้ทุก 3–5 นาที สูงสุด 3 mg',
+ pd:[{l:'ให้ร่วมกับ neostigmine',k:'b',lo:0.01,hi:0.02,u:'mg'},
+ {l:'Bradycardia / premed',k:'b',lo:0.02,hi:0.02,u:'mg',min:0.1,max:0.5}],pnote:'Bradycardia ให้ขั้นต่ำ 0.1 mg และสูงสุด 0.5 mg ต่อครั้ง'},
+{c:'Reversal',n:'Glycopyrrolate',conc:0.2,cu:'mg',it:[{l:'ให้ร่วมกับ neostigmine',k:'b',lo:0.01,hi:0.01,u:'mg'}]},
+{c:'Reversal',n:'Sugammadex',conc:100,cu:'mg',it:[
+ {l:'TOF count ≥ 2',k:'b',lo:2,hi:2,u:'mg'},
+ {l:'PTC 1–2 (deep block)',k:'b',lo:4,hi:4,u:'mg'},
+ {l:'Immediate (หลัง roc 1.2)',k:'b',lo:16,hi:16,u:'mg'}],note:'ใช้ reverse rocuronium และ vecuronium เท่านั้น',
+ pd:[{l:'TOF count ≥ 2',k:'b',lo:2,hi:2,u:'mg'},{l:'PTC 1–2 (deep block)',k:'b',lo:4,hi:4,u:'mg'}],pnote:'ข้อมูลรับรองการใช้ในเด็กอายุ ≥2 ปี'},
+// ================= PONV
+{c:'PONV',n:'Ondansetron',conc:2,cu:'mg',it:[{l:'Prophylaxis',k:'b',lo:0.1,hi:0.1,u:'mg',max:4}],
+ note:'ให้ช่วงท้ายของการผ่าตัด · ผู้ใหญ่ 4 mg · ระวัง QT ยาว',pnote:'ใช้ได้ตั้งแต่อายุ 1 เดือน · ระวัง QT ยาว'},
+{c:'PONV',n:'Dexamethasone',conc:4,cu:'mg',it:[
+ {l:'ผู้ใหญ่',k:'fx',lo:4,hi:8,u:'mg'},
+ {l:'ตามน้ำหนัก',k:'b',lo:0.15,hi:0.15,u:'mg',max:8}],note:'ให้หลัง induction · ทำให้ glucose สูงขึ้น',
+ pd:[{l:'Prophylaxis',k:'b',lo:0.15,hi:0.15,u:'mg',max:5}],pnote:'ให้หลัง induction · หลีกเลี่ยงในผู้ป่วยที่สงสัย leukemia/lymphoma'},
+{c:'PONV',n:'Granisetron',conc:1,cu:'mg',it:[{l:'Prophylaxis',k:'fx',lo:0.35,hi:1,u:'mg'}],note:'ให้ช่วงท้ายของการผ่าตัด',
+ pd:[{l:'Prophylaxis',k:'b',lo:0.04,hi:0.04,u:'mg',max:0.6}]},
+{c:'PONV',n:'Metoclopramide',conc:5,cu:'mg',it:[
+ {l:'ผู้ใหญ่',k:'fx',lo:10,hi:10,u:'mg'},
+ {l:'ตามน้ำหนัก',k:'b',lo:0.1,hi:0.15,u:'mg',max:10}],note:'อาจเกิด extrapyramidal symptoms',
+ pd:[{l:'Prophylaxis',k:'b',lo:0.1,hi:0.15,u:'mg',max:10}],pnote:'เด็กเสี่ยงเกิด EPS มากกว่าผู้ใหญ่'},
+{c:'PONV',n:'Droperidol',conc:2.5,cu:'mg',it:[{l:'Prophylaxis',k:'fx',lo:0.625,hi:1.25,u:'mg'}],note:'ระวัง QT ยาว',
+ pd:[{l:'Prophylaxis',k:'b',lo:0.01,hi:0.015,u:'mg',max:1.25}]},
+// ================= Analgesics
+{c:'ยาแก้ปวด',n:'Paracetamol IV',conc:10,cu:'mg',it:[{l:'ต่อครั้ง ทุก 6 ชม. (drip 15 นาที)',k:'apap'}],
+ note:'น้ำหนัก ≥50 kg: ครั้งละ 1 g สูงสุด 4 g/วัน · น้ำหนัก <50 kg: 15 mg/kg สูงสุด 60 mg/kg/วัน (ไม่เกิน 3 g) · ผู้ที่ตับบกพร่องให้ไม่เกิน 3 g/วัน',
+ pnote:'น้ำหนัก ≤10 kg: 7.5 mg/kg สูงสุด 30 mg/kg/วัน · 10–33 kg: 15 mg/kg สูงสุด 60 mg/kg/วัน (ไม่เกิน 2 g) · 33–50 kg: 15 mg/kg (ไม่เกิน 3 g/วัน) · ให้ห่างกันอย่างน้อย 4 ชม.'},
+{c:'ยาแก้ปวด',n:'Parecoxib',conc:20,cu:'mg',it:[
+ {l:'Loading',k:'fx',lo:40,hi:40,u:'mg'},
+ {l:'ต่อมา ทุก 6–12 ชม.',k:'fx',lo:20,hi:40,u:'mg'}],note:'สูงสุด 80 mg/วัน · <b>ห้ามใช้หลัง CABG</b> · ระวังในผู้ที่ไตบกพร่อง',
+ pd:null,pnote:'ไม่มีข้อมูลรับรองการใช้ในเด็ก'},
+{c:'ยาแก้ปวด',n:'Ketorolac',conc:30,cu:'mg',it:[{l:'ทุก 6 ชม.',k:'fx',lo:15,hi:30,u:'mg'}],
+ note:'สูงสุด 120 mg/วัน (ผู้สูงอายุ 60 mg) ใช้ไม่เกิน 5 วัน · <b>ห้ามใช้หลัง CABG</b>',
+ pd:[{l:'ทุก 6 ชม.',k:'b',lo:0.5,hi:0.5,u:'mg',max:30}],pnote:'ใช้ในเด็กอายุ >6 เดือน · สูงสุด 30 mg ต่อครั้ง · ระวังในผู้ที่ไตบกพร่องหรือเสี่ยงเลือดออก'},
+{c:'ยาแก้ปวด',n:'Ibuprofen IV',conc:4,cu:'mg',it:[{l:'ทุก 6 ชม.',k:'fx',lo:400,hi:800,u:'mg'}],
+ note:'ต้องเจือจางให้ไม่เกิน 4 mg/ml ก่อนให้ · สูงสุด 3.2 g/วัน · <b>ห้ามใช้หลัง CABG</b>',
+ pd:[{l:'ทุก 6 ชม.',k:'b',lo:10,hi:10,u:'mg',max:400}],pnote:'ใช้ในเด็กอายุ ≥6 เดือน · สูงสุด 40 mg/kg/วัน หรือ 2.4 g'},
+{c:'ยาแก้ปวด',n:'Nefopam',conc:10,cu:'mg',it:[{l:'ทุก 4–6 ชม. (drip ช้า)',k:'fx',lo:20,hi:20,u:'mg'}],
+ note:'สูงสุด 120 mg/วัน · ทำให้ HR เร็ว เหงื่อออก · ห้ามใช้ในผู้ที่มีประวัติชัก',pd:null,pnote:'ไม่แนะนำในเด็กอายุ <15 ปี'},
+{c:'ยาแก้ปวด',n:'Tramadol',conc:50,cu:'mg',it:[{l:'ทุก 4–6 ชม.',k:'fx',lo:50,hi:100,u:'mg'}],
+ note:'สูงสุด 400 mg/วัน · ลดระดับ seizure threshold · ระวังการใช้ร่วมกับ SSRI',
+ pd:[{l:'ทุก 4–6 ชม.',k:'b',lo:1,hi:2,u:'mg',max:100}],pnote:'<b>ห้ามใช้</b>ในเด็กอายุ <12 ปี และในผู้อายุ <18 ปีหลัง tonsillectomy/adenoidectomy (FDA)'},
+// ================= Adjunct infusions
+{c:'Infusion เสริม',n:'Lidocaine IV',conc:20,cu:'mg',it:[
+ {l:'Bolus (IBW)',k:'b',lo:1,hi:1.5,u:'mg',ibw:1},
+ {l:'Infusion (IBW)',k:'i',lo:1,hi:2,u:'mg',per:'h',ibw:1}],
+ note:'คำนวณจาก IBW ถ้ากรอกส่วนสูง · <b>ห้ามให้ร่วมกับ</b> regional block ที่ใช้ local anesthetic ปริมาณมาก · ระวัง LAST',
+ pnote:'ข้อมูลในเด็กยังจำกัด · ระวัง LAST · ห้ามให้ร่วมกับ regional block'},
+{c:'Infusion เสริม',n:'Magnesium sulfate',conc:500,cu:'mg',it:[
+ {l:'Bolus (ให้นาน 10–15 นาที)',k:'b',lo:30,hi:50,u:'mg'},
+ {l:'Infusion',k:'i',lo:10,hi:15,u:'mg',per:'h'}],note:'ความเข้มข้นตั้งต้น 50% = 500 mg/ml แก้ตามที่ผสมจริง · เสริมฤทธิ์ NMB · ทำให้ BP ลดลง',
+ pd:[{l:'Bolus (ให้นาน 10–15 นาที)',k:'b',lo:30,hi:50,u:'mg',max:2000},{l:'Infusion',k:'i',lo:10,hi:15,u:'mg',per:'h'}]},
+// ================= CVT / Vasoactive
+{c:'CVT / Vasoactive',n:'Adrenaline (Epinephrine)',conc:80,cu:'mcg',it:[
+ {l:'Infusion',k:'i',lo:0.01,hi:0.1,u:'mcg',per:'min'},
+ {l:'Hypotension bolus',k:'fx',lo:5,hi:10,u:'mcg'},
+ {l:'Cardiac arrest',k:'fx',lo:1,hi:1,u:'mg',nv:1}],
+ note:'ความเข้มข้นตั้งต้น 4 mg/50 ml = 80 mcg/ml · infusion ปรับได้ถึง 0.5 mcg/kg/min · ภาวะ arrest ให้ทุก 3–5 นาทีจากขวด 1 mg/ml',
+ pd:[{l:'Infusion',k:'i',lo:0.01,hi:0.1,u:'mcg',per:'min'},
+ {l:'Cardiac arrest',k:'b',lo:0.01,hi:0.01,u:'mg',max:1,nv:1}],
+ pnote:'ภาวะ arrest ให้ 0.01 mg/kg (0.1 ml/kg ของยา 0.1 mg/ml) ทุก 3–5 นาที · infusion ปรับได้ถึง 1 mcg/kg/min'},
+{c:'CVT / Vasoactive',n:'Norepinephrine',conc:80,cu:'mcg',it:[{l:'Infusion',k:'i',lo:0.02,hi:0.5,u:'mcg',per:'min'}],
+ note:'ความเข้มข้นตั้งต้น 4 mg/50 ml = 80 mcg/ml · ควรให้ทาง central line'},
+{c:'CVT / Vasoactive',n:'Dopamine',conc:3,cu:'mg',it:[{l:'Infusion',k:'i',lo:2,hi:20,u:'mcg',per:'min'}],note:'ความเข้มข้นตั้งต้น 150 mg/50 ml · อาจเกิด tachyarrhythmia'},
+{c:'CVT / Vasoactive',n:'Dobutamine',conc:5,cu:'mg',it:[{l:'Infusion',k:'i',lo:2,hi:20,u:'mcg',per:'min'}],note:'ความเข้มข้นตั้งต้น 250 mg/50 ml · inotrope ที่อาจทำให้ BP ลดลงจาก vasodilation'},
+{c:'CVT / Vasoactive',n:'Milrinone',conc:0.2,cu:'mg',it:[
+ {l:'Loading (ให้นาน 10 นาที)',k:'b',lo:50,hi:50,u:'mcg'},
+ {l:'Infusion',k:'i',lo:0.375,hi:0.75,u:'mcg',per:'min'}],note:'ลดขนาดในผู้ที่ไตบกพร่อง · ทำให้ hypotension (มักข้าม loading)',
+ pd:[{l:'Loading (ให้นาน 10–60 นาที)',k:'b',lo:50,hi:75,u:'mcg'},{l:'Infusion',k:'i',lo:0.25,hi:0.75,u:'mcg',per:'min'}]},
+{c:'CVT / Vasoactive',n:'Vasopressin',conc:0.4,cu:'U',it:[{l:'Infusion (ไม่คิดตามน้ำหนัก)',k:'fi',lo:0.01,hi:0.04,u:'U',per:'min'}],
+ note:'ความเข้มข้นตั้งต้น 20 U/50 ml = 0.4 U/ml · ใช้ใน vasoplegia หลัง CPB',
+ pd:[{l:'Infusion',k:'i',lo:0.0003,hi:0.002,u:'U',per:'min'}]},
+{c:'CVT / Vasoactive',n:'Phenylephrine',conc:100,cu:'mcg',it:[
+ {l:'Bolus',k:'fx',lo:50,hi:100,u:'mcg'},
+ {l:'Infusion',k:'i',lo:0.1,hi:1,u:'mcg',per:'min'}],note:'อาจเกิด reflex bradycardia',
+ pd:[{l:'Bolus',k:'b',lo:1,hi:2,u:'mcg'},{l:'Tet spell',k:'b',lo:5,hi:20,u:'mcg'},{l:'Infusion',k:'i',lo:0.1,hi:0.5,u:'mcg',per:'min'}],
+ pnote:'Tet spell: ให้ร่วมกับ O₂, เพิ่ม volume, knee-chest position และ opioid/β-blocker'},
+{c:'CVT / Vasoactive',n:'Ephedrine',conc:3,cu:'mg',it:[{l:'Bolus',k:'fx',lo:5,hi:10,u:'mg'}],note:'ความเข้มข้นตั้งต้น 30 mg/10 ml',
+ pd:[{l:'Bolus',k:'b',lo:0.1,hi:0.2,u:'mg'}]},
+{c:'CVT / Vasoactive',n:'Nitroglycerin',conc:0.2,cu:'mg',it:[{l:'Infusion',k:'i',lo:0.2,hi:3,u:'mcg',per:'min'}],
+ note:'ความเข้มข้นตั้งต้น 10 mg/50 ml = 200 mcg/ml · อาจเกิด headache และ tachyphylaxis',
+ pd:[{l:'Infusion',k:'i',lo:0.5,hi:5,u:'mcg',per:'min'}]},
+{c:'CVT / Vasoactive',n:'Sodium nitroprusside',conc:0.2,cu:'mg',it:[{l:'Infusion',k:'i',lo:0.3,hi:4,u:'mcg',per:'min'}],
+ note:'ต้องป้องกันแสง · ให้ได้ถึง 10 mcg/kg/min ในช่วงสั้น · ระวัง cyanide toxicity · ต้องมี arterial line'},
+{c:'CVT / Vasoactive',n:'Nicardipine',conc:0.5,cu:'mg',it:[{l:'Infusion (ไม่คิดตามน้ำหนัก)',k:'fi',lo:5,hi:15,u:'mg',per:'h'}],
+ note:'ความเข้มข้นตั้งต้น 25 mg/50 ml · เริ่ม 5 mg/h แล้วปรับเพิ่มครั้งละ 2.5 mg/h ทุก 5–15 นาที',
+ pd:[{l:'Infusion',k:'i',lo:0.5,hi:3,u:'mcg',per:'min'}]},
+{c:'CVT / Vasoactive',n:'Esmolol',conc:10,cu:'mg',it:[
+ {l:'Bolus (ให้นาน 1 นาที)',k:'b',lo:0.5,hi:0.5,u:'mg'},
+ {l:'Infusion',k:'i',lo:50,hi:300,u:'mcg',per:'min'}],note:'ทำให้ HR และ BP ลดลง',
+ pd:[{l:'Bolus',k:'b',lo:0.1,hi:0.5,u:'mg'},{l:'Infusion',k:'i',lo:50,hi:300,u:'mcg',per:'min'}]},
+{c:'CVT / Vasoactive',n:'Amiodarone',conc:1.8,cu:'mg',it:[
+ {l:'Arrest (VF/pVT)',k:'fx',lo:300,hi:300,u:'mg',nv:1},
+ {l:'Loading (มี pulse, ให้นาน 10 นาที)',k:'fx',lo:150,hi:150,u:'mg',nv:1},
+ {l:'Infusion 6 ชม.แรก',k:'fi',lo:1,hi:1,u:'mg',per:'min'},
+ {l:'Infusion 18 ชม.ต่อมา',k:'fi',lo:0.5,hi:0.5,u:'mg',per:'min'}],
+ note:'ภาวะ arrest ให้ครั้งที่ 2 ที่ 150 mg · ความเข้มข้นตั้งต้นของ infusion 450 mg/250 ml · ทำให้ hypotension และ bradycardia',
+ pd:[{l:'Arrest / Loading',k:'b',lo:5,hi:5,u:'mg',max:300,nv:1},{l:'Infusion',k:'i',lo:5,hi:15,u:'mcg',per:'min'}],
+ pnote:'ภาวะ arrest ให้ซ้ำได้ รวมสูงสุด 15 mg/kg · กรณีมี pulse ให้ loading นาน 20–60 นาที'},
+{c:'CVT / Vasoactive',n:'Adenosine',conc:3,cu:'mg',it:[
+ {l:'ครั้งที่ 1',k:'fx',lo:6,hi:6,u:'mg'},{l:'ครั้งที่ 2',k:'fx',lo:12,hi:12,u:'mg'}],note:'push เร็ว ตามด้วย flush NSS ทันที',
+ pd:[{l:'ครั้งที่ 1',k:'b',lo:0.1,hi:0.1,u:'mg',max:6},{l:'ครั้งที่ 2',k:'b',lo:0.2,hi:0.2,u:'mg',max:12}]},
+{c:'CVT / Vasoactive',n:'Calcium chloride 10%',conc:100,cu:'mg',it:[{l:'Bolus',k:'b',lo:10,hi:20,u:'mg'}],
+ note:'10% = 100 mg/ml · ควรให้ทาง central line',pd:[{l:'Bolus',k:'b',lo:20,hi:20,u:'mg'}]},
+{c:'CVT / Vasoactive',n:'Calcium gluconate 10%',conc:100,cu:'mg',it:[{l:'Bolus',k:'b',lo:30,hi:60,u:'mg'}],
+ note:'10% = 100 mg/ml · ให้ทาง peripheral line ได้',pd:[{l:'Bolus',k:'b',lo:60,hi:60,u:'mg'}]},
+{c:'CVT / Vasoactive',n:'Sodium bicarbonate',conc:1,cu:'mEq',it:[{l:'Bolus',k:'b',lo:1,hi:1,u:'mEq'}],
+ note:'8.4% = 1 mEq/ml · ปรับขนาดตาม ABG',pnote:'ทารกใช้ 4.2% (0.5 mEq/ml) ต้องแก้ค่าความเข้มข้น · ปรับขนาดตาม ABG'},
+{c:'CVT / Vasoactive',n:'Furosemide',conc:10,cu:'mg',it:[{l:'Bolus',k:'fx',lo:20,hi:40,u:'mg'}],
+ pd:[{l:'Bolus',k:'b',lo:0.5,hi:1,u:'mg',max:40}]},
+{c:'CVT / Vasoactive',n:'Heparin (CPB)',conc:5000,cu:'U',it:[{l:'ก่อน cannulation',k:'b',lo:300,hi:400,u:'U'}],
+ note:'Target ACT >480 วินาที · ให้เพิ่มครั้งละ 5,000–10,000 U ถ้า ACT ไม่ถึงเป้า',pnote:'เด็กมักใช้ 400 U/kg · Target ACT >480 วินาที'},
+{c:'CVT / Vasoactive',n:'Protamine',conc:10,cu:'mg',it:[{l:'Neutralize (1 mg ต่อ heparin 100 U)',k:'b',lo:3,hi:4,u:'mg'}],
+ note:'ค่าที่แสดงคิดจาก heparin 300–400 U/kg · ควรคิดจาก heparin รวมหรือ titration ตาม ACT · ให้ช้าไม่เกิน 5 mg/min · ระวัง hypotension และ anaphylaxis'},
+{c:'CVT / Vasoactive',n:'Tranexamic acid',conc:100,cu:'mg',it:[
+ {l:'Loading',k:'b',lo:10,hi:30,u:'mg'},
+ {l:'Infusion',k:'i',lo:1,hi:2,u:'mg',per:'h'}],
+ note:'แต่ละโปรโตคอลใช้ขนาดต่างกัน (บางโปรโตคอล infusion สูงถึง 16 mg/kg/h) · ขนาดสูงเพิ่มความเสี่ยงชัก · ลดขนาดในผู้ที่ไตบกพร่อง',
+ pd:[{l:'Loading',k:'b',lo:10,hi:30,u:'mg'},{l:'Infusion',k:'i',lo:1,hi:10,u:'mg',per:'h'}],pnote:'ใช้ขนาดตามโปรโตคอลของหน่วยงาน · ขนาดสูงเพิ่มความเสี่ยงชัก'}
+];
+
+const CATS=[...new Set(D.map(d=>d.c))];
+const COL={'ยานำสลบ IV':['#7c3aed','#a78bfa'],'Opioids':['#1d4ed8','#60a5fa'],'ยาหย่อนกล้ามเนื้อ':['#c2410c','#fb923c'],'ยาดมสลบ':['#0f766e','#2dd4bf'],'Reversal':['#a16207','#facc15'],'PONV':['#15803d','#4ade80'],'ยาแก้ปวด':['#0e7490','#22d3ee'],'Infusion เสริม':['#4338ca','#818cf8'],'CVT / Vasoactive':['#b91c1c','#f87171']};
+function col(el,c){const v=COL[c];if(v){el.style.setProperty('--cl',v[0]);el.style.setProperty('--cd',v[1]);}}
+const S={w:NaN,age:NaN,ht:NaN,sex:'M',mode:'A',cat:'ทั้งหมด',q:''};
+const $=s=>document.querySelector(s);
+const P=()=>S.mode==='P';
+
+function fmt(n){if(!isFinite(n))return '—';const a=Math.abs(n);const d=a>=100?0:a>=10?1:a>=0.1?2:a>=0.01?3:4;return (+n.toFixed(d)).toLocaleString('en-US',{maximumFractionDigits:d});}
+function rng(a,b,u){return (Math.abs(a-b)<1e-9?fmt(a):fmt(a)+'–'+fmt(b))+(u?' '+u:'');}
+function conv(v,f,t){if(f===t)return v;if(f==='mg'&&t==='mcg')return v*1000;if(f==='mcg'&&t==='mg')return v/1000;return NaN;}
+function ibw(){if(!(S.ht>0))return NaN;const v=(S.sex==='M'?50:45.5)+0.91*(S.ht-152.4);return v>0?v:NaN;}
+function items(d){return P()&&d.pd!==undefined?d.pd:d.it;}
+function note(d){return P()&&d.pnote?d.pnote:d.note;}
+function pkLabel(it){
+  const r=Math.abs(it.lo-it.hi)<1e-9?it.lo:it.lo+'–'+it.hi;
+  const lim=(it.min?'ขั้นต่ำ '+it.min+' ':'')+(it.max?'สูงสุด '+it.max+' '+it.u:'');
+  if(it.k==='b')return r+' '+it.u+'/kg'+(lim?' ('+lim.trim()+')':'');
+  if(it.k==='i')return r+' '+it.u+'/kg/'+it.per;
+  if(it.k==='fi')return r+' '+it.u+'/'+it.per;
+  if(it.k==='fx')return 'ขนาดคงที่';
+  if(it.k==='apap')return P()?'≤10 kg: 7.5 mg/kg · >10 kg: 15 mg/kg · >50 kg: 1 g':'≥50 kg: 1 g · <50 kg: 15 mg/kg';
+  return '';
+}
+function volTxt(a,b,u,d,suf){const c=d._conc;if(!(c>0))return '';const x=conv(a,u,d.cu),y=conv(b,u,d.cu);if(!isFinite(x))return '';return '≈ '+rng(x/c,y/c,suf);}
+
+function compute(it,d){
+  const out={res:'—',vol:'',cap:''};
+  if(it.k==='fx'){out.res=rng(it.lo,it.hi,it.u);if(!it.nv)out.vol=volTxt(it.lo,it.hi,it.u,d,'ml');return out;}
+  if(it.k==='fi'){const m=it.per==='min'?60:1;const a=it.lo*m,b=it.hi*m;out.res=rng(a,b,it.u+'/h');out.vol=volTxt(a,b,it.u,d,'ml/h');return out;}
+  const wt=it.ibw&&isFinite(ibw())?Math.min(ibw(),S.w):S.w;
+  if(!(wt>0))return out;
+  if(it.k==='b'){
+    let a=it.lo*wt,b=it.hi*wt;
+    if(it.max&&b>it.max){a=Math.min(a,it.max);b=it.max;out.cap='จำกัดที่ขนาดสูงสุด';}
+    if(it.min&&a<it.min){a=it.min;b=Math.max(b,it.min);out.cap='ใช้ขนาดขั้นต่ำ';}
+    out.res=rng(a,b,it.u);if(!it.nv)out.vol=volTxt(a,b,it.u,d,'ml');
+  }else if(it.k==='i'){
+    const m=it.per==='min'?60:1;const a=it.lo*wt*m,b=it.hi*wt*m;
+    let da=a,db=b,du=it.u;if(du==='mcg'&&b>=1000){da/=1000;db/=1000;du='mg';}
+    out.res=rng(da,db,du+'/h');out.vol=volTxt(a,b,it.u,d,'ml/h');
+  }else if(it.k==='apap'){
+    let dose,mx;
+    if(P()&&S.w<=10){dose=7.5*S.w;mx=fmt(30*S.w)+' mg';}
+    else if(S.w<=50&&(P()||S.w<50)){dose=15*S.w;mx=fmt(Math.min(60*S.w,P()&&S.w<=33?2000:3000))+' mg';}
+    else{dose=1000;mx='4 g';}
+    out.res=fmt(dose)+' mg';out.vol=volTxt(dose,dose,'mg',d,'ml');out.cap='สูงสุด/วัน: '+mx;
+  }
+  if(it.ibw&&isFinite(ibw()))out.cap='ใช้ IBW '+fmt(Math.min(ibw(),S.w))+' kg';
+  return out;
+}
+function macAge(m){const a=S.age>=0&&isFinite(S.age)?S.age:40;return m*Math.pow(10,-0.00269*(a-40));}
+
+function build(){
+  const list=$('#list');list.innerHTML='';
+  CATS.forEach(c=>{
+    const h=document.createElement('div');h.className='cat-h cc';col(h,c);h.textContent=c;h.dataset.cat=c;list.appendChild(h);
+    D.filter(d=>d.c===c).forEach(d=>{
+      if(d._conc===undefined)d._conc=d.conc;
+      const card=document.createElement('div');card.className='card cc';col(card,c);d._el=card;
+      const its=d.k==='mac'?[]:items(d);
+      let html='<div class="top"><div class="name">'+d.n+'</div>';
+      if(d.conc!=null&&its)html+='<label class="conc">ความเข้มข้น <input type="number" inputmode="decimal" step="any" value="'+d._conc+'"> '+d.cu+'/ml</label>';
+      html+='</div>';
+      if(d.k==='mac'){
+        html+='<div class="row"><div><div class="lbl">MAC ตามอายุ</div><div class="pk">ค่าที่อายุ 40 ปี = '+d.mac+'%</div></div><div><div class="res" data-r="mac"></div></div></div>';
+        html+='<div class="row"><div><div class="lbl">Maintenance 1–1.3 MAC</div><div class="pk">ลดลงเมื่อให้ร่วมกับ opioid หรือ N₂O</div></div><div><div class="res" data-r="maint"></div></div></div>';
+      }else if(!its){
+        html+='<div class="na">⛔ ไม่แนะนำหรือไม่มีข้อมูลในเด็ก</div>';
+      }else{
+        its.forEach((it,i)=>{html+='<div class="row"><div><div class="lbl">'+it.l+'</div><div class="pk">'+pkLabel(it)+'</div></div><div><div class="res" data-i="'+i+'"></div><div class="vol" data-v="'+i+'"></div><div class="cap" data-c="'+i+'" style="text-align:right"></div></div></div>';});
+      }
+      const nt=note(d);if(nt)html+='<div class="note">'+nt+'</div>';
+      card.innerHTML=html;
+      const ci=card.querySelector('.conc input');
+      if(ci)ci.addEventListener('input',()=>{d._conc=parseFloat(ci.value);updCard(d);});
+      list.appendChild(card);
+    });
+  });
+}
+function updCard(d){
+  const el=d._el;
+  if(d.k==='mac'){const m=macAge(d.mac);
+    el.querySelector('[data-r=mac]').textContent=fmt(m)+'%';
+    el.querySelector('[data-r=maint]').textContent=rng(m,m*1.3,'%');return;}
+  const its=items(d);if(!its)return;
+  its.forEach((it,i)=>{const o=compute(it,d);
+    el.querySelector('[data-i="'+i+'"]').textContent=o.res;
+    el.querySelector('[data-v="'+i+'"]').textContent=o.vol;
+    el.querySelector('[data-c="'+i+'"]').textContent=o.cap;});
+}
+function pedCard(){
+  const box=$('#ped');if(!P()){box.hidden=true;return;}box.hidden=false;
+  const a=S.age,w=S.w,rows=[];
+  const R=(l,v,s)=>rows.push('<div class="row"><div><div class="lbl">'+l+'</div>'+(s?'<div class="pk">'+s+'</div>':'')+'</div><div class="res">'+v+'</div></div>');
+  if(a>=1&&a<=10)R('น้ำหนักประมาณ (APLS)',fmt((a+4)*2)+' kg','(อายุ + 4) × 2');
+  if(isFinite(a)&&a>=0){
+    if(a>=2){const h=x=>Math.floor(x*2)/2;const cf=h(a/4+3.5),uc=h(a/4+4);
+      R('ETT size','cuffed '+cf+' / uncuffed '+uc,'ID = อายุ/4 + 3.5 (cuffed) หรือ + 4 (uncuffed) · เตรียมเบอร์ ±0.5 ไว้ด้วย');
+      R('ETT depth (oral)',fmt(a/2+12)+' cm','อายุ/2 + 12 หรือ 3 × ID');}
+    else R('ETT size',a<1?'cuffed 3.0–3.5':'cuffed 3.5–4.0','ทารกแรกเกิดดูตามน้ำหนัก');
+  }
+  if(w>0){
+    const f=w<=10?4*w:w<=20?40+2*(w-10):60+(w-20);
+    R('Maintenance fluid (4-2-1)',fmt(f)+' ml/h');
+    const ebvk=isFinite(a)&&a<1?80:75;R('EBV',fmt(ebvk*w)+' ml',ebvk+' ml/kg (ทารกแรกเกิด 85–90)');
+    R('Defibrillation',fmt(2*w)+' → '+fmt(4*w)+' J','2 J/kg แล้วเพิ่มเป็น 4 J/kg (สูงสุด 10 J/kg)');
+    R('Sync. cardioversion',fmt(0.5*w)+'–'+fmt(w)+' → '+fmt(2*w)+' J','0.5–1 J/kg แล้วเพิ่มเป็น 2 J/kg');
+  }
+  box.innerHTML='<div class="name">👶 ข้อมูลเด็กแบบย่อ</div>'+(rows.length?rows.join(''):'<div class="pk">กรอกน้ำหนักและอายุเพื่อคำนวณ</div>');
+}
+function updAll(){
+  D.forEach(updCard);pedCard();
+  const parts=[];
+  if(S.w>0)parts.push('น้ำหนัก '+fmt(S.w)+' kg');else parts.push('กรอกน้ำหนักเพื่อคำนวณ');
+  if(!P()&&isFinite(ibw()))parts.push('IBW '+fmt(ibw())+' kg');
+  if(isFinite(S.age))parts.push('อายุ '+S.age+' ปี (ใช้ปรับ MAC)');
+  if(!P()&&S.w>0&&S.w<40)parts.push('⚠️ ถ้าเป็นเด็ก ให้สลับไปใช้โหมดเด็ก');
+  $('#info').textContent=parts.join(' · ');
+  try{localStorage.setItem('anesdose',JSON.stringify({w:S.w,age:S.age,ht:S.ht,sex:S.sex,mode:S.mode}));}catch(e){}
+}
+function setMode(m){
+  S.mode=m;document.querySelectorAll('.mode button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
+  $('#sub').textContent=P()?'โหมดเด็ก (อายุ >1 เดือน)':'คำนวณยาวิสัญญีตามน้ำหนัก (ผู้ใหญ่)';
+  $('#disc').innerHTML=P()
+   ?'⚠️ <b>โหมดเด็ก</b> ใช้ขนาดยาสำหรับเด็กอายุมากกว่า 1 เดือน ไม่ครอบคลุมทารกแรกเกิดและทารกคลอดก่อนกำหนด ขนาดที่คำนวณได้ต้องไม่เกินขนาดของผู้ใหญ่ ควร double-check ทุกครั้ง และ titrate ตามอาการ'
+   :'⚠️ ใช้เป็นเครื่องมือช่วยคำนวณเท่านั้น ขนาดยาเป็นค่ามาตรฐานจากตำราสำหรับผู้ใหญ่ ต้อง titrate ตามอาการ และปรับตามอายุ ภาวะหัวใจ ตับ ไต และโปรโตคอลของโรงพยาบาลเสมอ ส่วนความเข้มข้นแก้ไขให้ตรงกับยาที่ผสมจริงได้';
+  $('#ht').closest('.f').style.display=P()?'none':'';$('.sex').closest('.f').style.display=P()?'none':'';
+  $('#w').placeholder=P()?'เช่น 15':'เช่น 60';$('#age').placeholder=P()?'เช่น 3':'เช่น 40';
+  build();updAll();filter();
+}
+function filter(){
+  const q=S.q.trim().toLowerCase();let any=false;
+  CATS.forEach(c=>{let vis=0;
+    D.filter(d=>d.c===c).forEach(d=>{const ok=(S.cat==='ทั้งหมด'||S.cat===c)&&(!q||d.n.toLowerCase().includes(q)||c.toLowerCase().includes(q));d._el.hidden=!ok;if(ok)vis++;});
+    document.querySelector('.cat-h[data-cat="'+c+'"]').hidden=!vis;if(vis)any=true;});
+  $('#empty').hidden=any;
+}
+function chips(){
+  const box=$('#chips');box.innerHTML='';
+  ['ทั้งหมด',...CATS].forEach(c=>{const b=document.createElement('button');b.className='chip'+(S.cat===c?' on':'');b.textContent=c;if(COL[c]){const dt=document.createElement('span');dt.className='dot';dt.style.setProperty('--cd',COL[c][1]);b.prepend(dt);}
+    b.onclick=()=>{S.cat=c;chips();filter();window.scrollTo({top:0});};box.appendChild(b);});
+}
+
+chips();
+let saved=null;try{saved=JSON.parse(localStorage.getItem('anesdose')||'null');}catch(e){}
+if(saved){['w','age','ht'].forEach(k=>{if(isFinite(saved[k])&&saved[k]!==null){S[k]=saved[k];$('#'+k).value=saved[k];}});if(saved.sex)S.sex=saved.sex;}
+document.querySelectorAll('.sex button').forEach(b=>{b.classList.toggle('on',b.dataset.s===S.sex);
+  b.onclick=()=>{S.sex=b.dataset.s;document.querySelectorAll('.sex button').forEach(x=>x.classList.toggle('on',x===b));updAll();};});
+document.querySelectorAll('.mode button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+['w','age','ht'].forEach(k=>$('#'+k).addEventListener('input',e=>{S[k]=parseFloat(e.target.value);updAll();}));
+$('#q').addEventListener('input',e=>{S.q=e.target.value;filter();});
+setMode(saved&&saved.mode==='P'?'P':'A');
+</script>
+</body>
+</html>
