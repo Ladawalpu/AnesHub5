@@ -193,7 +193,7 @@
   .home-card .hc-icon { width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; font-size: 30px; flex: none; }
   .home-card.info .hc-icon { background: var(--purple-50); }
   .home-card.dose .hc-icon { background: #fce7f1; }
-  .home-card.dose .hc-icon img { width: 42px; height: 42px; }
+  .home-card .hc-icon img { width: 42px; height: 42px; }
   .home-card h2 { margin: 0 0 3px; font-size: 1.08rem; color: var(--purple-900); }
   .home-card.dose h2 { color: #9d174d; }
   .home-card p { margin: 0; font-size: 0.82rem; color: var(--gray-500); line-height: 1.45; }
@@ -218,12 +218,12 @@
 
 <div class="view-home" id="viewHome">
   <div class="home-card info" onclick="showList()">
-    <div class="hc-icon">💉</div>
+    <div class="hc-icon"><img src="icons/syringe.png" alt=""></div>
     <div><h2>ยาทางวิสัญญี</h2><p>ข้อมูลยา 26 รายการ: กลไกการออกฤทธิ์ เภสัชจลนศาสตร์ ขนาดยา ข้อห้ามใช้ การเตรียมยา และการพยาบาล</p></div>
     <span class="go">›</span>
   </div>
   <a class="home-card dose" href="anesdose/index.html">
-    <div class="hc-icon"><img src="anesdose/icons/logo.png" alt=""></div>
+    <div class="hc-icon"><img src="anesdose/icons/calc.svg" alt=""></div>
     <div><h2>AnesDose</h2><p>คำนวณขนาดยาตามน้ำหนัก ทั้ง induction, maintenance, adjuvant, ยาเด็ก และยา CVT</p></div>
     <span class="go">›</span>
   </a>
@@ -412,7 +412,7 @@ function showList() {
   document.getElementById('viewHome').classList.add('hidden');
   document.getElementById('viewList').classList.remove('hidden');
   document.getElementById('backBtn').classList.remove('hidden');
-  document.getElementById('hdrTitle').textContent = '💉 ยาทางวิสัญญี';
+  document.getElementById('hdrTitle').textContent = 'ยาทางวิสัญญี';
   document.getElementById('hdrSub').textContent = 'Thai National Formulary 2016 + ข้อมูลเภสัชวิทยาและการพยาบาล';
   window.scrollTo(0, 0);
 }
