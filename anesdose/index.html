@@ -244,6 +244,27 @@ const D=[
 {c:'ยาแก้ปวด',n:'Tramadol',conc:50,cu:'mg',it:[{l:'ทุก 4–6 ชม.',k:'fx',lo:50,hi:100,u:'mg'}],
  note:'สูงสุด 400 mg/วัน · ลดระดับ seizure threshold · ระวังการใช้ร่วมกับ SSRI',
  pd:[{l:'ทุก 4–6 ชม.',k:'b',lo:1,hi:2,u:'mg',max:100}],pnote:'<b>ห้ามใช้</b>ในเด็กอายุ <12 ปี และในผู้อายุ <18 ปีหลัง tonsillectomy/adenoidectomy (FDA)'},
+// ================= Local anesthetics
+{c:'ยาชาเฉพาะที่',n:'Lidocaine (plain)',conc:10,cu:'mg',it:[
+ {l:'ขนาดสูงสุด (ไม่มี adrenaline)',k:'b',lo:4.5,hi:4.5,u:'mg',max:300}],
+ note:'1% = 10 mg/ml · 2% = 20 mg/ml แก้ค่าความเข้มข้นตามที่ใช้ · Onset เร็ว 2–5 นาที · Duration 1–2 ชม. · ขนาดสูงสุดเป็นยาชา<b>รวมทุกตำแหน่ง</b> ลดขนาดในผู้สูงอายุ ตั้งครรภ์ หัวใจหรือตับบกพร่อง · Aspirate ก่อนฉีดทุกครั้ง'},
+{c:'ยาชาเฉพาะที่',n:'Lidocaine + adrenaline',conc:10,cu:'mg',it:[
+ {l:'ขนาดสูงสุด (มี adrenaline 1:200,000)',k:'b',lo:7,hi:7,u:'mg',max:500}],
+ note:'Duration 2–3 ชม. · <b>ห้ามใช้</b>ยาผสม adrenaline ที่นิ้ว ใบหู จมูก และองคชาต (end-artery)'},
+{c:'ยาชาเฉพาะที่',n:'Bupivacaine (Marcaine)',conc:5,cu:'mg',it:[
+ {l:'ขนาดสูงสุด (ไม่มี adrenaline)',k:'b',lo:2.5,hi:2.5,u:'mg',max:175},
+ {l:'ขนาดสูงสุด (มี adrenaline)',k:'b',lo:3,hi:3,u:'mg',max:225}],
+ note:'0.25% = 2.5 mg/ml · 0.5% = 5 mg/ml · Onset 10–20 นาที · Duration 4–8 ชม. · <b>Cardiotoxicity สูง</b> ห้ามใช้ทำ IV regional (Bier block)'},
+{c:'ยาชาเฉพาะที่',n:'Levobupivacaine (Chirocaine)',conc:5,cu:'mg',it:[
+ {l:'ขนาดสูงสุด',k:'b',lo:2.5,hi:2.5,u:'mg',max:150}],
+ note:'0.25% = 2.5 mg/ml · 0.5% = 5 mg/ml · Duration ใกล้เคียง bupivacaine แต่ cardiotoxicity น้อยกว่า'},
+{c:'ยาชาเฉพาะที่',n:'Ropivacaine (Naropin)',conc:5,cu:'mg',it:[
+ {l:'ขนาดสูงสุด',k:'b',lo:3,hi:3,u:'mg',max:225}],
+ note:'0.2% = 2 mg/ml · 0.5% = 5 mg/ml · 0.75% = 7.5 mg/ml · Motor block น้อยกว่า bupivacaine · cardiotoxicity น้อยกว่า'},
+{c:'ยาชาเฉพาะที่',n:'Lipid emulsion 20% (รักษา LAST)',it:[
+ {l:'Bolus (ให้นาน 2–3 นาที)',k:'b',lo:1.5,hi:1.5,u:'ml',max:100,nv:1},
+ {l:'Infusion',k:'i',lo:0.25,hi:0.25,u:'ml',per:'min'}],
+ note:'น้ำหนัก >70 kg: bolus 100 ml แล้ว infusion 200–250 ml ใน 15–20 นาที · ถ้ายังไม่เสถียร ให้ bolus ซ้ำได้ 1–2 ครั้ง และเพิ่ม infusion เป็น 0.5 ml/kg/min · ขนาดสูงสุด 12 ml/kg · หยุดยาชาทันที ช่วยหายใจ และรักษาอาการชัก (benzodiazepine)'},
 // ================= Adjunct infusions
 {c:'Infusion เสริม',n:'Lidocaine IV',conc:20,cu:'mg',it:[
  {l:'Bolus (IBW)',k:'b',lo:1,hi:1.5,u:'mg',ibw:1},
@@ -324,7 +345,7 @@ const D=[
 ];
 
 const CATS=[...new Set(D.map(d=>d.c))];
-const COL={'ยานำสลบ IV':['#7c3aed','#a78bfa'],'Opioids':['#1d4ed8','#60a5fa'],'ยาหย่อนกล้ามเนื้อ':['#c2410c','#fb923c'],'ยาดมสลบ':['#0f766e','#2dd4bf'],'Reversal':['#a16207','#facc15'],'PONV':['#15803d','#4ade80'],'ยาแก้ปวด':['#0e7490','#22d3ee'],'Infusion เสริม':['#4338ca','#818cf8'],'CVT / Vasoactive':['#b91c1c','#f87171']};
+const COL={'ยานำสลบ IV':['#7c3aed','#a78bfa'],'Opioids':['#1d4ed8','#60a5fa'],'ยาหย่อนกล้ามเนื้อ':['#c2410c','#fb923c'],'ยาดมสลบ':['#0f766e','#2dd4bf'],'Reversal':['#a16207','#facc15'],'PONV':['#15803d','#4ade80'],'ยาแก้ปวด':['#0e7490','#22d3ee'],'ยาชาเฉพาะที่':['#4d7c0f','#a3e635'],'Infusion เสริม':['#4338ca','#818cf8'],'CVT / Vasoactive':['#b91c1c','#f87171']};
 function col(el,c){const v=COL[c];if(v){el.style.setProperty('--cl',v[0]);el.style.setProperty('--cd',v[1]);}}
 const S={w:NaN,age:NaN,ht:NaN,sex:'M',mode:'A',cat:'ทั้งหมด',q:''};
 const $=s=>document.querySelector(s);
